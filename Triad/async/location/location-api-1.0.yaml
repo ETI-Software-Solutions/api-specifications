@@ -1,0 +1,536 @@
+asyncapi: 3.0.0
+info:
+  title: location-api
+  version: "1.0"
+  x-generator: springwolf
+defaultContentType: application/json
+servers:
+  kafka-server:
+    host: kafka.kafka.svc:9092
+    protocol: kafka
+channels:
+  location-add-update-topic:
+    address: location-add-update-topic
+    messages:
+      com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop:
+        $ref: "#/components/messages/com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop"
+    bindings:
+      kafka:
+        bindingVersion: 0.5.0
+  location-delete-topic:
+    address: location-delete-topic
+    messages:
+      com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop:
+        $ref: "#/components/messages/com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop"
+    bindings:
+      kafka:
+        bindingVersion: 0.5.0
+components:
+  schemas:
+    Headers-1106304967:
+      title: Headers-1106304967
+      type: object
+      properties:
+        Authorization:
+          type: string
+          enum:
+            - Bearer <value>
+          examples:
+            - Bearer <value>
+      examples:
+        - Authorization: Bearer <value>
+    SpringKafkaDefaultHeaders-AsyncAddUpdateLocationEnvelop:
+      title: SpringKafkaDefaultHeaders-AsyncAddUpdateLocationEnvelop
+      type: object
+      properties:
+        __TypeId__:
+          type: string
+          description: Spring Type Id Header
+          enum:
+            - com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop
+          examples:
+            - com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop
+      examples:
+        - __TypeId__: com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop
+    SpringKafkaDefaultHeaders-AsyncDeleteLocationEnvelop:
+      title: SpringKafkaDefaultHeaders-AsyncDeleteLocationEnvelop
+      type: object
+      properties:
+        __TypeId__:
+          type: string
+          description: Spring Type Id Header
+          enum:
+            - com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop
+          examples:
+            - com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop
+      examples:
+        - __TypeId__: com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop
+    com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel:
+      title: CustomFieldModel
+      type: object
+      properties:
+        label:
+          type: string
+          description: "The unique label for this custom field (alphanumeric, up to\
+            \ 20 characters long). This tag must be included if a CustomField structure\
+            \ is present."
+          minLength: 1
+          examples:
+            - CTLR_VERSION
+        value:
+          type: string
+          description: "The value for this custom field (alphanumeric, up to 80 characters\
+            \ long). The value must meet the constraints for this field. A blank value\
+            \ is not allowed if a default value for the custom field has been defined.\
+            \ This tag must be included if a CustomField structure is present."
+          examples:
+            - 5.3.6
+      description: The custom fields for the location
+      examples:
+        - label: CTLR_VERSION
+          value: 5.3.6
+      required:
+        - label
+    com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop:
+      title: AsyncAddUpdateLocationEnvelop
+      type: object
+      properties:
+        correlationId:
+          type: string
+        eventId:
+          type: string
+        eventName:
+          type: string
+        payload:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationRequestBody"
+        spanId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        traceId:
+          type: string
+      description: Used for creating or updating location.
+      examples:
+        - correlationId: string
+          eventId: string
+          eventName: string
+          payload:
+            address1: 123 Main Street
+            address2: Apartment 302
+            city: Atlanta
+            headendCode: "01"
+            locationCustomFields:
+              - label: CTLR_VERSION
+                value: 5.3.6
+            locationId: "123414"
+            locationNote:
+              noteCode: CONVERSION
+              noteText: DPI to Triad load 10-01-2011
+            networkLocCode: "009009"
+            ratecenterName: "5437"
+            state: GA
+            xcoord: -85.2282187295
+            ycoord: 41.2247645
+            zip: "30076"
+          spanId: string
+          timestamp: 2015-07-20T15:49:04-07:00
+          traceId: string
+    com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationRequestBody:
+      title: AsyncAddUpdateLocationRequestBody
+      type: object
+      properties:
+        address1:
+          type: string
+          description: "The first line of street address information for this location.\
+            \ Alphanumeric, up to 64 characters long. If Address1 is omitted for a\
+            \ new location, it is left blank. If Address1 is omitted on an update,\
+            \ the current value is unchanged. A blank value clears the field in the\
+            \ database."
+          minLength: 0
+          maxLength: 64
+          examples:
+            - 123 Main Street
+        address2:
+          type: string
+          description: "The second line of street address information for this location.\
+            \ Alphanumeric, up to 64 characters long. If Address2 is omitted for a\
+            \ new location, it is left blank. If Address2 is omitted on an update,\
+            \ the current value is unchanged. A blank value clears the field in the\
+            \ database."
+          minLength: 0
+          maxLength: 64
+          examples:
+            - Apartment 302
+        city:
+          type: string
+          description: "The city for this location. Alphanumeric, up to 40 characters\
+            \ long. If City is omitted for a new location, it is left blank. If City\
+            \ is omitted on an update, the current value is unchanged. A blank value\
+            \ clears the field in the database."
+          minLength: 0
+          maxLength: 40
+          examples:
+            - Atlanta
+        headendCode:
+          type: string
+          description: "The headend code for the headend that services this location.\
+            \ Alphanumeric (but restricted to digits 0 through 9 and capital letters\
+            \ A through Z), up to 4 characters long. Must match one of the headend\
+            \ codes configured."
+          minLength: 0
+          maxLength: 4
+          examples:
+            - "01"
+        locationCustomFields:
+          type: array
+          description: The custom fields for the location
+          items:
+            $ref: "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+        locationId:
+          type: string
+          description: The unique identifier for location
+          examples:
+            - "123414"
+        locationNote:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.model.v1.NotesModel"
+        networkLocCode:
+          type: string
+          description: "A network location code that identifies the physical location\
+            \ within the broadband network (for example, a node identifier). Alphanumeric,\
+            \ up to 16 characters long. If NetLocCode is omitted for a new location,\
+            \ it is left blank. If NetLocCode is omitted on an update, the current\
+            \ value is unchanged. A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 16
+          examples:
+            - "009009"
+        ratecenterName:
+          type: string
+          description: "The rate center name for this location. Alphanumeric, up to\
+            \ 40 characters long. Must match one of the rate center names already\
+            \ configured. Only used for systems with switch provisioning. If RateCenterName\
+            \ is omitted for a new location, it is left blank. If RateCenterName is\
+            \ omitted on an update, the current value is unchanged. A blank value\
+            \ clears the field in the database."
+          minLength: 0
+          maxLength: 40
+          examples:
+            - "5437"
+        state:
+          type: string
+          description: "The state or province for this location. Alphanumeric, up\
+            \ to 10 characters long. If State is omitted for a new location, it is\
+            \ left blank. If State is omitted on an update, the current value is unchanged.\
+            \ A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 10
+          examples:
+            - GA
+        xcoord:
+          type: number
+          description: "The X-coordinate of this location in the mapping system. Alphanumeric,\
+            \ up to 15 characters long. If XCoord is omitted for a new location, it\
+            \ set to zero. If XCoord is omitted on an update, the current value is\
+            \ unchanged."
+          maximum: 10000000000.00
+          minimum: -10000000000.00
+          examples:
+            - -85.2282187295
+        ycoord:
+          type: number
+          description: "The Y-coordinate of this location in the mapping system. Alphanumeric,\
+            \ up to 15 characters long. If YCoord is omitted for a new location, it\
+            \ is set to zero. If YCoord is omitted on an update, the current value\
+            \ is unchanged."
+          maximum: 10000000000.00
+          minimum: -10000000000.00
+          examples:
+            - 41.2247645
+        zip:
+          type: string
+          description: "The zip code or postal code for this location. Alphanumeric,\
+            \ up to 13 characters long. If Zip is omitted for a new location, it is\
+            \ left blank. If Zip is omitted on an update, the current value is unchanged.\
+            \ A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 13
+          examples:
+            - "30076"
+      examples:
+        - address1: 123 Main Street
+          address2: Apartment 302
+          city: Atlanta
+          headendCode: "01"
+          locationCustomFields:
+            - label: CTLR_VERSION
+              value: 5.3.6
+          locationId: "123414"
+          locationNote:
+            noteCode: CONVERSION
+            noteText: DPI to Triad load 10-01-2011
+          networkLocCode: "009009"
+          ratecenterName: "5437"
+          state: GA
+          xcoord: -85.2282187295
+          ycoord: 41.2247645
+          zip: "30076"
+      required:
+        - headendCode
+    com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop:
+      title: AsyncDeleteLocationEnvelop
+      type: object
+      properties:
+        correlationId:
+          type: string
+        eventId:
+          type: string
+        eventName:
+          type: string
+        payload:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationRequestBody"
+        spanId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        traceId:
+          type: string
+      description: Used for deleting location.
+      examples:
+        - correlationId: string
+          eventId: string
+          eventName: string
+          payload:
+            address1: 123 Main Street
+            address2: Apartment 302
+            city: Atlanta
+            headendCode: "01"
+            locationCustomFields:
+              - label: CTLR_VERSION
+                value: 5.3.6
+            locationId: "123414"
+            locationNote:
+              noteCode: CONVERSION
+              noteText: DPI to Triad load 10-01-2011
+            networkLocCode: "009009"
+            ratecenterName: "5437"
+            state: GA
+            xcoord: -85.2282187295
+            ycoord: 41.2247645
+            zip: "30076"
+          spanId: string
+          timestamp: 2015-07-20T15:49:04-07:00
+          traceId: string
+    com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationRequestBody:
+      title: AsyncDeleteLocationRequestBody
+      type: object
+      properties:
+        address1:
+          type: string
+          description: "The first line of street address information for this location.\
+            \ Alphanumeric, up to 64 characters long. If Address1 is omitted for a\
+            \ new location, it is left blank. If Address1 is omitted on an update,\
+            \ the current value is unchanged. A blank value clears the field in the\
+            \ database."
+          minLength: 0
+          maxLength: 64
+          examples:
+            - 123 Main Street
+        address2:
+          type: string
+          description: "The second line of street address information for this location.\
+            \ Alphanumeric, up to 64 characters long. If Address2 is omitted for a\
+            \ new location, it is left blank. If Address2 is omitted on an update,\
+            \ the current value is unchanged. A blank value clears the field in the\
+            \ database."
+          minLength: 0
+          maxLength: 64
+          examples:
+            - Apartment 302
+        city:
+          type: string
+          description: "The city for this location. Alphanumeric, up to 40 characters\
+            \ long. If City is omitted for a new location, it is left blank. If City\
+            \ is omitted on an update, the current value is unchanged. A blank value\
+            \ clears the field in the database."
+          minLength: 0
+          maxLength: 40
+          examples:
+            - Atlanta
+        headendCode:
+          type: string
+          description: "The headend code for the headend that services this location.\
+            \ Alphanumeric (but restricted to digits 0 through 9 and capital letters\
+            \ A through Z), up to 4 characters long. Must match one of the headend\
+            \ codes configured."
+          minLength: 0
+          maxLength: 4
+          examples:
+            - "01"
+        locationCustomFields:
+          type: array
+          description: The custom fields for the location
+          items:
+            $ref: "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+        locationId:
+          type: string
+          description: The unique identifier for location
+          examples:
+            - "123414"
+        locationNote:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.model.v1.NotesModel"
+        networkLocCode:
+          type: string
+          description: "A network location code that identifies the physical location\
+            \ within the broadband network (for example, a node identifier). Alphanumeric,\
+            \ up to 16 characters long. If NetLocCode is omitted for a new location,\
+            \ it is left blank. If NetLocCode is omitted on an update, the current\
+            \ value is unchanged. A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 16
+          examples:
+            - "009009"
+        ratecenterName:
+          type: string
+          description: "The rate center name for this location. Alphanumeric, up to\
+            \ 40 characters long. Must match one of the rate center names already\
+            \ configured. Only used for systems with switch provisioning. If RateCenterName\
+            \ is omitted for a new location, it is left blank. If RateCenterName is\
+            \ omitted on an update, the current value is unchanged. A blank value\
+            \ clears the field in the database."
+          minLength: 0
+          maxLength: 40
+          examples:
+            - "5437"
+        state:
+          type: string
+          description: "The state or province for this location. Alphanumeric, up\
+            \ to 10 characters long. If State is omitted for a new location, it is\
+            \ left blank. If State is omitted on an update, the current value is unchanged.\
+            \ A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 10
+          examples:
+            - GA
+        xcoord:
+          type: number
+          description: "The X-coordinate of this location in the mapping system. Alphanumeric,\
+            \ up to 15 characters long. If XCoord is omitted for a new location, it\
+            \ set to zero. If XCoord is omitted on an update, the current value is\
+            \ unchanged."
+          maximum: 10000000000.00
+          minimum: -10000000000.00
+          examples:
+            - -85.2282187295
+        ycoord:
+          type: number
+          description: "The Y-coordinate of this location in the mapping system. Alphanumeric,\
+            \ up to 15 characters long. If YCoord is omitted for a new location, it\
+            \ is set to zero. If YCoord is omitted on an update, the current value\
+            \ is unchanged."
+          maximum: 10000000000.00
+          minimum: -10000000000.00
+          examples:
+            - 41.2247645
+        zip:
+          type: string
+          description: "The zip code or postal code for this location. Alphanumeric,\
+            \ up to 13 characters long. If Zip is omitted for a new location, it is\
+            \ left blank. If Zip is omitted on an update, the current value is unchanged.\
+            \ A blank value clears the field in the database."
+          minLength: 0
+          maxLength: 13
+          examples:
+            - "30076"
+      examples:
+        - address1: 123 Main Street
+          address2: Apartment 302
+          city: Atlanta
+          headendCode: "01"
+          locationCustomFields:
+            - label: CTLR_VERSION
+              value: 5.3.6
+          locationId: "123414"
+          locationNote:
+            noteCode: CONVERSION
+            noteText: DPI to Triad load 10-01-2011
+          networkLocCode: "009009"
+          ratecenterName: "5437"
+          state: GA
+          xcoord: -85.2282187295
+          ycoord: 41.2247645
+          zip: "30076"
+      required:
+        - headendCode
+    com.etisoftware.location_api.webapi.model.v1.NotesModel:
+      title: NotesModel
+      type: object
+      properties:
+        noteCode:
+          type: string
+          description: "The note code associated with the note. Alphanumeric, up to\
+            \ 12 characters long. The value must match one of the note codes configured\
+            \ for this note type. This tag is required if the Note object is present.\
+            \ A blank value is not allowed."
+          examples:
+            - CONVERSION
+        noteText:
+          type: string
+          description: "The note text associated with the note. Alphanumeric, up to\
+            \ 200 characters long. This tag is required if the Note object is included.\
+            \ A blank value is not allowed."
+          examples:
+            - DPI to Triad load 10-01-2011
+      description: Used to create a Triad note field
+      examples:
+        - noteCode: CONVERSION
+          noteText: DPI to Triad load 10-01-2011
+  messages:
+    com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop:
+      headers:
+        $ref: "#/components/schemas/Headers-1106304967"
+      payload:
+        schemaFormat: application/vnd.aai.asyncapi+json;version=3.0.0
+        schema:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop"
+      name: com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop
+      title: AsyncAddUpdateLocationEnvelop
+      bindings:
+        kafka:
+          bindingVersion: 0.5.0
+    com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop:
+      headers:
+        $ref: "#/components/schemas/Headers-1106304967"
+      payload:
+        schemaFormat: application/vnd.aai.asyncapi+json;version=3.0.0
+        schema:
+          $ref: "#/components/schemas/com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop"
+      name: com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop
+      title: AsyncDeleteLocationEnvelop
+      bindings:
+        kafka:
+          bindingVersion: 0.5.0
+operations:
+  location-add-update-topic_receive_consumeAddUpdateLocation:
+    action: receive
+    channel:
+      $ref: "#/channels/location-add-update-topic"
+    title: location-add-update-topic_receive
+    description: Location add or update consumer
+    bindings:
+      kafka:
+        bindingVersion: 0.5.0
+    messages:
+      - $ref: "#/channels/location-add-update-topic/messages/com.etisoftware.location_api.webapi.consumers.data.AsyncAddUpdateLocationEnvelop"
+  location-delete-topic_receive_consumeDeleteLocation:
+    action: receive
+    channel:
+      $ref: "#/channels/location-delete-topic"
+    title: location-delete-topic_receive
+    description: Perform location device consumer
+    bindings:
+      kafka:
+        bindingVersion: 0.5.0
+    messages:
+      - $ref: "#/channels/location-delete-topic/messages/com.etisoftware.location_api.webapi.consumers.data.AsyncDeleteLocationEnvelop"

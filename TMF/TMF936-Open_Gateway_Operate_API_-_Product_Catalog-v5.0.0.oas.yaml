@@ -1,0 +1,2661 @@
+openapi: 3.0.1
+info:
+  title: Open Gateway Operate API - Product Catalog
+  description: >
+    **TMF936 - Open Gateway Operate API Product Catalog**  
+
+    This Operate API covers the Product Catalog management as described by GSMA for Open Gateway
+    context. This API focusses on : 
+
+    - Product Offering API Management (retrieving)
+
+    - Product Specification API Management (retrieving)
+
+    This API is a DCS (Domain Context Specialization) of TMF620 Product Catalog API for Open Gateway
+    context.
+
+    Disclaimer: All prices examples appearing in this specification are fictitious. Any resemblance
+    to real offers is purely coincidental.
+
+
+    Copyright © TM Forum 2025. All Rights Reserved
+  version: 5.0.0
+  x-generation-tooling-version: v8.5.10
+  x-generation-data-model-version: unknown
+servers:
+  - url: '{apiRoot}/openGatewayOperateAPIProductCatalog/v5/'
+    variables:
+      apiRoot:
+        default: 'https://serverRoot/tmf-api/openGatewayOperateAPIProductCatalog/v5'
+        enum:
+          - 'https://serverRoot/tmf-api/openGatewayOperateAPIProductCatalog/v5'
+tags:
+  - name: productOffering
+    description: Operations for productOffering Resource
+  - name: productSpecification
+    description: Operations for productSpecification Resource
+  - name: notification listener
+    description: Notifications for Resource Lifecycle and event notifications
+  - name: events subscription
+    description: Endpoints to register and terminate an Event Listener
+paths:
+  /hub:
+    post:
+      operationId: createHub
+      summary: Create a subscription (hub) to receive Events
+      description: Sets the communication endpoint to receive Events.
+      tags:
+        - events subscription
+      requestBody:
+        $ref: '#/components/requestBodies/Hub_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+  '/hub/{id}':
+    get:
+      operationId: hubGet
+      summary: Retrieve a subscription (hub)
+      description: This operation retrieves the subscription to receive Events.
+      tags:
+        - events subscription
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+    delete:
+      operationId: hubDelete
+      summary: Remove a subscription (hub) to receive Events
+      description: This operation removes the subscription to receive Events.
+      tags:
+        - events subscription
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Deleted
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/productOfferingAttributeValueChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity productOfferingAttributeValueChangeEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        productOfferingAttributeValueChangeEvent
+      operationId: productOfferingAttributeValueChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/OpenGatewayProductOfferingAttributeValueChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/productOfferingCreateEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity productOfferingCreateEvent
+      description: Example of a client listener for receiving the notification productOfferingCreateEvent
+      operationId: productOfferingCreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/OpenGatewayProductOfferingCreateEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/productOfferingDeleteEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity productOfferingDeleteEvent
+      description: Example of a client listener for receiving the notification productOfferingDeleteEvent
+      operationId: productOfferingDeleteEvent
+      requestBody:
+        $ref: '#/components/requestBodies/OpenGatewayProductOfferingDeleteEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/productOfferingStateChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity productOfferingStateChangeEvent
+      description: Example of a client listener for receiving the notification productOfferingStateChangeEvent
+      operationId: productOfferingStateChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/OpenGatewayProductOfferingStateChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /productOffering:
+    get:
+      tags:
+        - productOffering
+      summary: List or find productOffering objects
+      description: List or find productOffering objects
+      operationId: listProductOffering
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Before'
+        - $ref: '#/components/parameters/After'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200OpenGatewayProductOfferingArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  '/productOffering/{id}':
+    get:
+      tags:
+        - productOffering
+      summary: Retrieves a productOffering by ID
+      description: >-
+        This operation retrieves a productOffering entity. Attribute selection enabled for all first
+        level attributes.
+      operationId: retrieveProductOffering
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200OpenGatewayProductOffering_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /productSpecification:
+    get:
+      tags:
+        - productSpecification
+      summary: List or find productSpecification objects
+      description: List or find productSpecification objects
+      operationId: listProductSpecification
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Before'
+        - $ref: '#/components/parameters/After'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200OpenGatewayProductSpecificationArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  '/productSpecification/{id}':
+    get:
+      tags:
+        - productSpecification
+      summary: Retrieves a productSpecification by ID
+      description: >-
+        This operation retrieves a productSpecification entity. Attribute selection enabled for all
+        first level attributes.
+      operationId: retrieveProductSpecification
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200OpenGatewayProductSpecification_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  schemas:
+    Addressable:
+      type: object
+      description: Base schema for addressable entities
+      properties:
+        href:
+          type: string
+          description: Hyperlink reference
+        id:
+          type: string
+          description: unique identifier
+    ApiGrantInformation:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            ApiGrantInformation is a structured set of information regarding the grant of access to
+            an API product, detailing its purpose, scope, grant type, and legal basis for usage.
+          properties:
+            purpose:
+              $ref: '#/components/schemas/DpvPurposeType'
+            scope:
+              type: array
+              items:
+                type: string
+              description: >-
+                One or several scopes of the API, as stated in the API that has been purchased.
+                Examples: "sim-swap:retrieve-date" 
+            grantType:
+              type: array
+              items:
+                type: string
+              description: >-
+                One or several grantType of the API, as stated in the API that has been purchased.
+                Examples:
+                  "authorization_code"   "client_credentials"   "urn:ietf:params:oauth:grant-type:token-exchange"   "urn:ietf:params:oauth:grant-type:jwt-bearer"   "urn:ietf:params:oauth:grant-type:saml2-bearer"   "urn:ietf:params:oauth:grant-type:device_code"   "urn:openid:params:grant-type:ciba"
+            legalBasis:
+              $ref: '#/components/schemas/DpvLegalBasisType'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ApiGrantInformation: '#/components/schemas/ApiGrantInformation'
+    ApiProductSpecification:
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayProductSpecification'
+        - type: object
+          description: Specification for the API Product with the supported API versions.
+          properties:
+            apiStandardName:
+              $ref: '#/components/schemas/ApiStandardNameType'
+            apiVersionInformation:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApiVersionInformation'
+              description: >-
+                All values of apiVersionInformation in a same ApiProductSpecification should
+                correspond to the same API.
+    ApiStandardNameType:
+      enum:
+        - CAMARA
+        - nonStandard
+      type: string
+      description: >-
+        Valid values for the name of standard organization of project that is responsible of the API
+        specification.
+    ApiVersionInformation:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Technical information of an API version, including base path, and OAuth 2.0 supported
+            authorization methods and scopes which can be used to request access tokens.
+          properties:
+            apiName:
+              type: string
+              description: >-
+                Exact name of API. For CAMARA standard it must correspond to the API name column of
+                this table https://github.com/camaraproject. Example : location-verification. It may
+                happen that the exact name of the API changes from a version to another.
+            apiVersion:
+              type: string
+              description: >-
+                Version of the API. CAMARA project recommends [Semantic Versioning
+                2.0.0](https://semver.org/) where versions are definied as x.y.z version number
+                which corresponds to a major, minor and fix.
+            apiBasePath:
+              type: string
+              description: >-
+                Base path of the API. CAMARA project recommends to set the base path as
+                `/<apiName>/v<major>` or `/apiName/v0.<minor>` (minor version only allowed for
+                unstable APIs in 0 major version).
+            apiGrantInformation:
+              type: array
+              items:
+                $ref: '#/components/schemas/ApiGrantInformation'
+              description: >-
+                ApiGrantInformation is a structured set of information regarding the grant of access
+                to an API product, detailing its purpose, scope, grant type, and legal basis for
+                usage.
+            apiStatus:
+              type: string
+              description: >-
+                Is the lifecycle status of the API. Active means the Application can consume this
+                API on this version after a future order. Retired means that the Application can
+                consume this API on this version only if the order has already been done, no new
+                order on this Product Specification can give the right to consume this API on this
+                version.
+              enum:
+                - active
+                - retired
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ApiVersionInformation: '#/components/schemas/ApiVersionInformation'
+    BaseEvent:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: Base event with common attributes.
+          properties:
+            event:
+              type: object
+              description: The event linked to the involved resource object
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOcurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BaseEvent: '#/components/schemas/BaseEvent'
+    BundledProductOffering:
+      allOf:
+        - $ref: '#/components/schemas/ProductOfferingRef'
+        - type: object
+          description: >-
+            Represents a containment of a product offering within another product offering,
+            including specification of cardinality (e.g. is the bundled offering mandatory, how many
+            times can it be instantiated in the parent product, etc.).
+          properties:
+            bundledProductOfferingOption:
+              $ref: '#/components/schemas/BundledProductOfferingOption'
+    BundledProductOfferingOption:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            A set of numbers that specifies the lower and upper limits for a ProductOffering that
+            can be procured as part of the related BundledProductOffering. Values can range from 0
+            to unbounded
+          properties:
+            numberRelOfferDefault:
+              type: integer
+              description: >-
+                Default number of produc offereings that should be procured as part of the related
+                BundledProductOffering
+            numberRelOfferLowerLimit:
+              type: integer
+              description: >-
+                lower limit for a product offering that can be procured as part of the related
+                BundledProductOffering
+            numberRelOfferUpperLimit:
+              type: integer
+              description: >-
+                upper limit for a product offering that can be procured as part of the related
+                BundledProductOffering
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BundledProductOfferingOption: '#/components/schemas/BundledProductOfferingOption'
+    Characteristic:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Describes a given characteristic of an object or entity through a name/value pair. This
+            is an abstract base class, the actual value is in one of the strongly-typed subclasses :
+            StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic,
+            NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic,
+            ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic,
+            IntegerArrayCharacteristic...
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              description: Collection of characteristic relationships
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic'
+    CharacteristicRelationship:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship'
+    DcsAllowedProductAction:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Defines an action that can be taken on a product in the inventory as part of a product
+            order. It is expected that this entity will be attached to product catalog items such as
+            specifications and offerings. This DCS schema is a subset of the standard
+            AllowedProductAction schema, that can be extended for specific contexts. This must be
+            done reusing existing attributes in the standard AllowedProductAction schema or adding
+            specific attributes.
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the AllowedProductAction within the array.
+            action:
+              type: string
+              description: >-
+                The name of the action. Values must be taken from this list (or extended it adding
+                more values) : add, modify, delete.
+            '@targetProductOrderItemSchema':
+              $ref: '#/components/schemas/TargetProductOrderItemSchema'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsAllowedProductAction: '#/components/schemas/DcsAllowedProductAction'
+          OpenGatewayAllowedProductAction: '#/components/schemas/OpenGatewayAllowedProductAction'
+    DcsCategoryRef:
+      type: object
+      description: >-
+        Reference to a category in the catalog. This DCS schema is a subset of the standard
+        CategoryRef schema, that can be extended for specific contexts. This must be done reusing
+        existing attributes in the standard CategoryRef schema or adding specific attributes.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsCategoryRef: '#/components/schemas/DcsCategoryRef'
+    DcsProductOffering:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            Represents entities that are orderable from the provider of the catalog, this resource
+            includes pricing information. This DCS schema is a subset of the standard
+            ProductOffering schema, that can be extended for specific contexts. This must be done
+            reusing existing attributes in the standard ProductOffering schema or adding specific
+            attributes.
+          properties:
+            name:
+              type: string
+              description: Name of the productOffering
+            description:
+              type: string
+              description: Description of the productOffering
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Date and time of the last update
+            lifecycleStatus:
+              type: string
+              description: >-
+                Used to indicate the current lifecycle status. Values must be taken from this list
+                (or extended it adding more values) : inStudy, inDesign, inTest, active, launched,
+                retired, obsolete, rejected.
+            category:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsCategoryRef'
+              description: >-
+                The category resource is used to group product offerings, service and resource
+                candidates in logical containers. Categories can contain other categories and/or
+                product offerings, resource or service candidates.
+            productOfferingPrice:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsProductOfferingPrice'
+              description: >-
+                An amount, usually of money, that is asked for or allowed when a ProductOffering is
+                bought, rented, or leased. The price is valid for a defined period of time and may
+                not represent the actual price paid by a customer.
+            allowedAction:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsAllowedProductAction'
+              description: >-
+                List of actions that can be executed (in context of a product order) on products
+                instantiated from this productOffering
+            productSpecification:
+              $ref: '#/components/schemas/DcsProductSpecificationRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductOffering: '#/components/schemas/DcsProductOffering'
+          OpenGatewayProductOffering: '#/components/schemas/OpenGatewayProductOffering'
+    DcsProductOfferingPrice:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Is based on both the basic cost to develop and produce products and the enterprises
+            policy on revenue targets. This price may be further revised through discounting (a
+            Product Offering Price that reflects an alteration). This DCS schema is a subset of the
+            standard ProductOfferingPrice schema, that can be extended for specific contexts. This
+            must be done reusing existing attributes in the standard ProductOfferingPrice schema or
+            adding specific attributes.
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the ProductOfferingPrice within the array.
+            name:
+              type: string
+              description: Name of the productOfferingPrice
+            description:
+              type: string
+              description: Description of the productOfferingPrice
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            lastUpdate:
+              type: string
+              format: date-time
+              description: the last update time of this ProductOfferingPrice
+            lifecycleStatus:
+              type: string
+              description: >-
+                Used to indicate the current lifecycle status. Values must be taken from this list
+                (or extended it adding more values for a specific context) : inStudy, inDesign,
+                inTest, active, launched, retired, obsolete, rejected.
+            priceType:
+              type: string
+              description: >-
+                Used to indicate the current price type. Values must be taken from this list (or
+                extended it adding more values for a specific context) : usage, oneTime, recurring,
+                discountFee, discountPercentage, taxFee, taxPercentage, taxRule, replacementUsage,
+                remplacementOneTime, replacementRecurring.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductOfferingPrice: '#/components/schemas/DcsProductOfferingPrice'
+          OpenGatewayProductOfferingPrice: '#/components/schemas/OpenGatewayProductOfferingPrice'
+    DcsProductOfferingTermOrConditionSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Specification of Terms or Conditions of the ProductOffering. This DCS schema is a subset
+            of the standard ProductOfferingTermOrCondition schema, that can be extended for specific
+            contexts. This must be done reusing existing attributes in the standard
+            ProductOfferingTermOrCondition schema or adding specific attributes.
+          properties:
+            id:
+              type: string
+              description: >-
+                Locally unique identifier of the productOfferingTermOrConditionSpecification within
+                its product offering
+            name:
+              type: string
+              description: Name of the productOfferingTermOrConditionSpecification
+            description:
+              type: string
+              description: >-
+                A narrative that explains in detail what the
+                productOfferingTermOrConditionSpecification is
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductOfferingTermOrConditionSpecification: '#/components/schemas/DcsProductOfferingTermOrConditionSpecification'
+          OpenGatewayProductOfferingTermOrConditionSpecification: '#/components/schemas/OpenGatewayProductOfferingTermOrConditionSpecification'
+    DcsProductSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            Is a detailed description of a tangible or intangible object made available externally
+            in the form of a ProductOffering to customers or other parties playing a party role.
+            This DCS schema is a subset of the standard ProductSpecification schema, that can be
+            extended for specific contexts. This must be done reusing existing attributes in the
+            standard ProductSpecification schema or adding specific attributes.
+          properties:
+            name:
+              type: string
+              description: Name of the product specification
+            description:
+              type: string
+              description: A narrative that explains in detail what the product specification is
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Date and time of the last update
+            lifecycleStatus:
+              type: string
+              description: >-
+                Used to indicate the current lifecycle status. Values must be taken from this list
+                (or extended it adding more values for a specific context) : inStudy, inDesign,
+                inTest, active, launched, retired, obsolete, rejected.
+            category:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsCategoryRef'
+              description: >-
+                The category resource is used to group product specifications in logical containers.
+                Categories can contain other categories and/or other catalog entries.
+            productSpecificationRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsProductSpecificationRelationship'
+              description: >-
+                A migration, substitution, dependency or exclusivity relationship between/among
+                product specifications.
+            allowedAction:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsAllowedProductAction'
+              description: >-
+                List of actions that can be executed (in context of a product order) on products
+                instantiated from this productSpecification
+            targetProductSchema:
+              $ref: '#/components/schemas/TargetProductSchema'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductSpecification: '#/components/schemas/DcsProductSpecification'
+          OpenGatewayProductSpecification: '#/components/schemas/OpenGatewayProductSpecification'
+          UsageVolumeProductSpecification: '#/components/schemas/UsageVolumeProductSpecification'
+          ApiProductSpecification: '#/components/schemas/ApiProductSpecification'
+    DcsProductSpecificationRef:
+      type: object
+      description: >-
+        ProductSpecification reference. A product specification represents entities that are
+        orderable from the provider of the catalog. This DCS schema is a subset of the standard
+        ProductSpecificationRef schema, that can be extended for specific contexts. This must be
+        done reusing existing attributes in the standard ProductSpecificationRef schema or adding
+        specific attributes.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductSpecificationRef: '#/components/schemas/DcsProductSpecificationRef'
+          OpenGatewayProductSpecificationRef: '#/components/schemas/OpenGatewayProductSpecificationRef'
+    DcsProductSpecificationRelationship:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            A migration, substitution, dependency or exclusivity relationship between/among product
+            specifications. This DCS schema is a subset of the standard
+            ProductSpecificationRelationship schema, that can be extended for specific contexts.
+            This must be done reusing existing attributes in the standard
+            ProductSpecificationRelationship schema or adding specific attributes.
+          properties:
+            relationshipType:
+              type: string
+              description: >-
+                type of the relationship. Values must be taken from this list (or extended it adding
+                more values for a specific context) : requires, appliesOn
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          DcsProductSpecificationRelationship: '#/components/schemas/DcsProductSpecificationRelationship'
+          OpenGatewayProductSpecificationRelationship: '#/components/schemas/OpenGatewayProductSpecificationRelationship'
+    DpvLegalBasisType:
+      enum:
+        - 'dpv:Consent'
+        - 'dpv:Contract'
+        - 'dpv:ContractPerformance'
+        - 'dpv:DataTransferLegalBasis'
+        - 'dpv:EnterIntoContract'
+        - 'dpv:LegalBasis'
+        - 'dpv:LegalObligation'
+        - 'dpv:LegitimateInterest'
+        - 'dpv:LegitimateInterestOfController'
+        - 'dpv:LegitimateInterestOfDataSubject'
+        - 'dpv:LegitimateInterestOfThirdParty'
+        - 'dpv:OfficialAuthorityOfController'
+        - 'dpv:PublicInterest'
+        - 'dpv:VitalInterest'
+        - 'dpv:VitalInterestOfDataSubject'
+        - 'dpv:VitalInterestOfNaturalPerson'
+        - 'dpv:InformedConsent'
+        - 'dpv:DataControllerContract'
+        - 'dpv:ImpliedConsent'
+        - 'dpv:DataSubjectContract'
+        - 'dpv:ExplicitlyExpressedConsent'
+        - 'dpv:UninformedConsent'
+        - 'dpv:DataProcessorContract'
+        - 'dpv:ExpressedConsent'
+        - 'dpv:ThirdPartyContract'
+      type: string
+      description: >-
+        Valid values for Legal Basis based on W3C Data Privacy Vocabulary v2
+        https://w3c.github.io/dpv/2.0/dpv/ 
+    DpvPurposeType:
+      enum:
+        - 'dpv:AcademicResearch'
+        - 'dpv:AccountManagement'
+        - 'dpv:Advertising'
+        - 'dpv:AgeVerification'
+        - 'dpv:CombatClimateChange'
+        - 'dpv:CommercialPurpose'
+        - 'dpv:CommercialResearch'
+        - 'dpv:CommunicationForCustomerCare'
+        - 'dpv:CommunicationManagement'
+        - 'dpv:CounterMoneyLaundering'
+        - 'dpv:Counterterrorism'
+        - 'dpv:CreditChecking'
+        - 'dpv:CustomerCare'
+        - 'dpv:CustomerClaimsManagement'
+        - 'dpv:CustomerManagement'
+        - 'dpv:CustomerOrderManagement'
+        - 'dpv:CustomerRelationshipManagement'
+        - 'dpv:CustomerSolvencyMonitoring'
+        - 'dpv:DataAltruism'
+        - 'dpv:DeliveryOfGoods'
+        - 'dpv:DirectMarketing'
+        - 'dpv:DisputeManagement'
+        - 'dpv:EnforceAccessControl'
+        - 'dpv:EnforceSecurity'
+        - 'dpv:EstablishContractualAgreement'
+        - 'dpv:FraudPreventionAndDetection'
+        - 'dpv:FulfilmentOfContractualObligation'
+        - 'dpv:FulfilmentOfObligation'
+        - 'dpv:HumanResourceManagement'
+        - 'dpv:IdentityAuthentication'
+        - 'dpv:IdentityVerification'
+        - 'dpv:ImproveExistingProductsAndServices'
+        - 'dpv:ImproveHealthcare'
+        - 'dpv:ImproveInternalCRMProcesses'
+        - 'dpv:ImprovePublicServices'
+        - 'dpv:ImproveTransportMobility'
+        - 'dpv:IncreaseServiceRobustness'
+        - 'dpv:InternalResourceOptimisation'
+        - 'dpv:LegalCompliance'
+        - 'dpv:MaintainCreditCheckingDatabase'
+        - 'dpv:MaintainCreditRatingDatabase'
+        - 'dpv:MaintainFraudDatabase'
+        - 'dpv:Marketing'
+        - 'dpv:MemberPartnerManagement'
+        - 'dpv:MisusePreventionAndDetection'
+        - 'dpv:NonCommercialPurpose'
+        - 'dpv:NonCommercialResearch'
+        - 'dpv:OptimisationForConsumer'
+        - 'dpv:OptimisationForController'
+        - 'dpv:OptimiseUserInterface'
+        - 'dpv:OrganisationComplianceManagement'
+        - 'dpv:OrganisationGovernance'
+        - 'dpv:OrganisationRiskManagement'
+        - 'dpv:PaymentManagement'
+        - 'dpv:Personalisation'
+        - 'dpv:PersonalisedAdvertising'
+        - 'dpv:PersonalisedBenefits'
+        - 'dpv:PersonnelHiring'
+        - 'dpv:PersonnelManagement'
+        - 'dpv:PersonnelPayment'
+        - 'dpv:ProtectionOfIPR'
+        - 'dpv:ProtectionOfNationalSecurity'
+        - 'dpv:ProtectionOfPublicSecurity'
+        - 'dpv:ProvideEventRecommendations'
+        - 'dpv:ProvideOfficialStatistics'
+        - 'dpv:ProvidePersonalisedRecommendations'
+        - 'dpv:ProvideProductRecommendations'
+        - 'dpv:PublicBenefit'
+        - 'dpv:PublicPolicyMaking'
+        - 'dpv:PublicRelations'
+        - 'dpv:RecordManagement'
+        - 'dpv:RepairImpairments'
+        - 'dpv:RequestedServiceProvision'
+        - 'dpv:ResearchAndDevelopment'
+        - 'dpv:RightsFulfillment'
+        - 'dpv:ScientificResearch'
+        - 'dpv:SearchFunctionalities'
+        - 'dpv:SellDataToThirdParties'
+        - 'dpv:SellInsightsFromData'
+        - 'dpv:SellProducts'
+        - 'dpv:SellProductsToDataSubject'
+        - 'dpv:ServiceOptimisation'
+        - 'dpv:ServicePersonalisation'
+        - 'dpv:ServiceProvision'
+        - 'dpv:ServiceRegistration'
+        - 'dpv:ServiceUsageAnalytics'
+        - 'dpv:SocialMediaMarketing'
+        - 'dpv:TargetedAdvertising'
+        - 'dpv:TechnicalServiceProvision'
+        - 'dpv:UserInterfacePersonalisation'
+        - 'dpv:VendorManagement'
+        - 'dpv:VendorPayment'
+        - 'dpv:VendorRecordsManagement'
+        - 'dpv:VendorSelectionAssessment'
+        - 'dpv:Verification'
+      type: string
+      description: >-
+        Valid values for the purpose based on W3C Data Privacy Vocabulary v2
+        https://w3c.github.io/dpv/2.0/dpv/ 
+    Entity:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+    EntityRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: Entity reference schema to be use for all entityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+          required:
+            - id
+    Event:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: event with common attributes.
+          properties:
+            href:
+              type: string
+              description: Hyperlink reference
+            id:
+              type: string
+              description: unique identifier
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanation of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOccurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+            source:
+              $ref: '#/components/schemas/EntityRef'
+            reportingSystem:
+              $ref: '#/components/schemas/EntityRef'
+            relatedParty:
+              type: array
+              description: Collection of related parties
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            analyticCharacteristic:
+              type: array
+              description: Collection of analytic characteristics
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            event:
+              description: The event linked to the involved resource object
+              type: object
+    Extensible:
+      type: object
+      description: >-
+        Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means
+        that the Entity described by the schema  MUST be extended with the @type
+      properties:
+        '@type':
+          type: string
+          description: 'When sub-classing, this defines the sub-class Extensible name'
+        '@baseType':
+          type: string
+          description: 'When sub-classing, this defines the super-class'
+        '@schemaLocation':
+          type: string
+          description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      required:
+        - '@type'
+    OpenGatewayAllowedProductAction:
+      allOf:
+        - $ref: '#/components/schemas/DcsAllowedProductAction'
+        - type: object
+          description: >-
+            Defines an action that can be taken on a product in the inventory as part of a product
+            order. It is expected that this entity will be attached to product catalog items such as
+            specifications and offerings. This DCS schema is a subset of the standard DCS
+            AllowedProductAction schema, that can be extended for specific contexts. This must be
+            done reusing existing attributes in the standard AllowedProductAction schema or adding
+            specific attributes.
+          properties:
+            action:
+              $ref: '#/components/schemas/OpenGatewayAllowedProductActionType'
+    OpenGatewayAllowedProductActionType:
+      enum:
+        - add
+        - delete
+      type: string
+      description: >-
+        Used to indicate the AllowedProductAction action with limited enum values for Open Gateway
+        context.
+    OpenGatewayAttachment:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Generic schema for attachment in Open Gateway context.
+          properties:
+            attachmentType:
+              $ref: '#/components/schemas/OpenGatewayAttachmentType'
+            mimeType:
+              type: string
+              description: a technical characterization of the attachment content format using IETF Mime Types
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          OpenGatewayAttachment: '#/components/schemas/OpenGatewayAttachment'
+          OpenGatewayFileAttachment: '#/components/schemas/OpenGatewayFileAttachment'
+          OpenGatewayURLAttachment: '#/components/schemas/OpenGatewayURLAttachment'
+    OpenGatewayAttachmentType:
+      enum:
+        - termsAndConditions
+        - developerDocumentation
+      type: string
+      description: >-
+        Used to indicate the Attachment attachmentType with limited enum values for Open Gateway
+        context.
+    OpenGatewayFileAttachment:
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayAttachment'
+        - type: object
+          description: Binary file attachment.
+          properties:
+            content:
+              type: string
+              format: base64
+              description: 'The actual contents of the attachment object, if embedded, encoded as base64'
+            mimeType:
+              type: string
+              description: >-
+                Describes the possible values for the mimeType of the attachment. A media type (also
+                known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature
+                and format of a document, file, or assortment of bytes. MIME types are defined and
+                standardized in IETF's RFC 6838. 
+              enum:
+                - application/pdf
+    OpenGatewayProductOffering:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductOffering'
+        - type: object
+          description: The specialized ProductOffering for GSMA Open Gateway Operate API.
+          properties:
+            id:
+              type: string
+              description: unique identifier. Recommended UUID format
+              maxLength: 200
+            name:
+              type: string
+              description: Name of the productOffering
+              maxLength: 200
+            description:
+              type: string
+              description: Description of the productOffering
+              maxLength: 5000
+            version:
+              type: string
+              description: >-
+                Version of the ProductOffering. Version SHOULD use the semantic versioning X.Y.Z
+                version format where X identifies a major version, Y is the minor version and Z a
+                fix.
+            lifecycleStatus:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingLifecycleStatusType'
+            category:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsCategoryRef'
+              description: NOT USED YET IN OPEN GATEWAY CONTEXT.
+            allowedAction:
+              type: array
+              items:
+                $ref: '#/components/schemas/OpenGatewayAllowedProductAction'
+              description: >-
+                List of actions that can be executed (in context of a product order) on products
+                instantiated from this offering
+            productOfferingTermOrConditionSpecification:
+              type: array
+              items:
+                $ref: '#/components/schemas/OpenGatewayProductOfferingTermOrConditionSpecification'
+              description: >-
+                List of ProductOfferingTermOrConditionSpecification applicable for the
+                ProductOffering.
+            productSpecification:
+              $ref: '#/components/schemas/OpenGatewayProductSpecificationRef'
+            productOfferingPrice:
+              type: array
+              items:
+                $ref: '#/components/schemas/OpenGatewayProductOfferingPrice'
+              description: >-
+                An amount, usually of money, that is asked for or allowed when a ProductOffering is
+                bought, rented, or leased. The price is valid for a defined period of time and may
+                not represent the actual price paid by a customer.
+            bundledProductOffering:
+              type: array
+              items:
+                $ref: '#/components/schemas/BundledProductOffering'
+              description: >-
+                A type of ProductOffering that belongs to a grouping of ProductOfferings made
+                available to the market. It inherits of all attributes of ProductOffering.
+            attachment:
+              type: array
+              description: >-
+                This attribute can be used to attach additional documentation for the
+                productOffering, like marketing documentation ...
+              items:
+                $ref: '#/components/schemas/OpenGatewayAttachment'
+    OpenGatewayProductOffering_RES:
+      type: object
+      description: Response object for OpenGatewayProductOffering
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayProductOffering'
+      required:
+        - id
+        - href
+    OpenGatewayProductOfferingAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: OpenGatewayProductOfferingAttributeValueChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingAttributeValueChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          OpenGatewayProductOfferingAttributeValueChangeEvent: '#/components/schemas/OpenGatewayProductOfferingAttributeValueChangeEvent'
+    OpenGatewayProductOfferingAttributeValueChangeEventPayload:
+      type: object
+      description: OpenGatewayProductOfferingAttributeValueChangeEventPayload
+      properties:
+        productOffering:
+          $ref: '#/components/schemas/OpenGatewayProductOffering'
+    OpenGatewayProductOfferingCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: OpenGatewayProductOfferingCreateEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingCreateEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          OpenGatewayProductOfferingCreateEvent: '#/components/schemas/OpenGatewayProductOfferingCreateEvent'
+    OpenGatewayProductOfferingCreateEventPayload:
+      type: object
+      description: OpenGatewayProductOfferingCreateEventPayload
+      properties:
+        productOffering:
+          $ref: '#/components/schemas/OpenGatewayProductOffering'
+    OpenGatewayProductOfferingDeleteEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: OpenGatewayProductOfferingDeleteEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingDeleteEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          OpenGatewayProductOfferingDeleteEvent: '#/components/schemas/OpenGatewayProductOfferingDeleteEvent'
+    OpenGatewayProductOfferingDeleteEventPayload:
+      type: object
+      description: OpenGatewayProductOfferingDeleteEventPayload
+      properties:
+        productOffering:
+          $ref: '#/components/schemas/OpenGatewayProductOffering'
+    OpenGatewayProductOfferingLifecycleStatusType:
+      enum:
+        - inTest
+        - active
+        - launched
+        - retired
+        - obsolete
+      type: string
+      description: >-
+        Used to indicate the ProductOffering lifecycleStatus with limited enum values for Open
+        Gateway context.
+    OpenGatewayProductOfferingPrice:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductOfferingPrice'
+        - type: object
+          description: ProductOfferingPrice applied to the ProductOffering.
+          properties:
+            name:
+              type: string
+              description: Name of the productOfferingPrice
+              maxLength: 200
+            description:
+              type: string
+              description: Description of the productOfferingPrice
+              maxLength: 5000
+            lifecycleStatus:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingPriceLifecycleStatus'
+            priceType:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingPriceType'
+    OpenGatewayProductOfferingPriceLifecycleStatus:
+      enum:
+        - inTest
+        - active
+        - retired
+        - obsolete
+      type: string
+      description: >-
+        Used to indicate the current ProductOfferingPrice lifecyclestatus with limited enum values
+        for Open Gateway context.
+    OpenGatewayProductOfferingPriceType:
+      enum:
+        - composite
+      type: string
+      description: >-
+        Used to indicate the ProductOfferingPrice priceType with limited enum values for Open
+        Gateway context. Kept for base schema ProductOfferingPrice backward compatibility reason.
+    OpenGatewayProductOfferingStateChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: OpenGatewayProductOfferingStateChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/OpenGatewayProductOfferingStateChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          OpenGatewayProductOfferingStateChangeEvent: '#/components/schemas/OpenGatewayProductOfferingStateChangeEvent'
+    OpenGatewayProductOfferingStateChangeEventPayload:
+      type: object
+      description: OpenGatewayProductOfferingStateChangeEventPayload
+      properties:
+        productOffering:
+          $ref: '#/components/schemas/OpenGatewayProductOffering'
+    OpenGatewayProductOfferingTermOrConditionSpecification:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductOfferingTermOrConditionSpecification'
+        - type: object
+          description: Specification of Terms or Conditions of the ProductOffering.
+          properties:
+            attachment:
+              $ref: '#/components/schemas/OpenGatewayFileAttachment'
+    OpenGatewayProductSpecification:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductSpecification'
+        - type: object
+          description: The specialized ProductSpecification for GSMA Open Gateway Operate API.
+          properties:
+            id:
+              type: string
+              description: unique identifier. Recommended UUID format
+              maxLength: 200
+            name:
+              type: string
+              description: Name of the productSpecification
+              maxLength: 200
+            description:
+              type: string
+              description: Description of the productSpecification
+              maxLength: 5000
+            version:
+              type: string
+              description: >-
+                Version of the ProductSpecification. Version SHOULD use the semantic versioning
+                X.Y.Z version format where X identifies a major version, Y is the minor version and
+                Z a fix.
+            lifecycleStatus:
+              $ref: '#/components/schemas/OpenGatewayProductSpecificationLifecycleStatus'
+            category:
+              type: array
+              items:
+                $ref: '#/components/schemas/DcsCategoryRef'
+              description: NOT USED YET IN OPEN GATEWAY CONTEXT.
+            attachment:
+              type: array
+              description: >-
+                This attribute can be used to attach additional documentation for the
+                productSpecification, like technical documentation, frequently asked questions,
+                getting started, ...
+              items:
+                $ref: '#/components/schemas/OpenGatewayAttachment'
+            productSpecificationRelationship:
+              type: array
+              description: >-
+                A migration, substitution, dependency or exclusivity relationship between/among
+                product specifications.
+              items:
+                $ref: '#/components/schemas/OpenGatewayProductSpecificationRelationship'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ApiProductSpecification: '#/components/schemas/ApiProductSpecification'
+          UsageVolumeProductSpecification: '#/components/schemas/UsageVolumeProductSpecification'
+    OpenGatewayProductSpecification_RES:
+      type: object
+      description: Response object for OpenGatewayProductSpecification
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayProductSpecification'
+      required:
+        - id
+        - href
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ApiProductSpecification: '#/components/schemas/ApiProductSpecification'
+          UsageVolumeProductSpecification: '#/components/schemas/UsageVolumeProductSpecification'
+    OpenGatewayProductSpecificationLifecycleStatus:
+      enum:
+        - inTest
+        - active
+        - retired
+        - obsolete
+      type: string
+      description: >-
+        Used to indicate the current ProductSpecification lifecycleStatus with limited enum values
+        for Open Gateway context.
+    OpenGatewayProductSpecificationRef:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductSpecificationRef'
+        - type: object
+          description: The specialized ProductSpecification for GSMA Open Gateway Operate API.
+          properties:
+            version:
+              type: string
+              description: >-
+                Version of the ProductSpecification. Version SHOULD use the semantic versioning
+                X.Y.Z version format where X identifies a major version, Y is the minor version and
+                Z a fix.
+    OpenGatewayProductSpecificationRelationship:
+      allOf:
+        - $ref: '#/components/schemas/DcsProductSpecificationRelationship'
+        - type: object
+          description: >-
+            A migration, substitution, dependency or exclusivity relationship between/among product
+            specifications.
+          properties:
+            relationshipType:
+              description: >-
+                Indicates the possible values of relationshipType between ProductSpecification.
+                requires means that the related productSpecification is required to be ordered
+                before; appliesOne means that the related productSpecification describes the product
+                to which the productspecification will apply (for example a UsageVolume product
+                applies on an Api product).
+              type: string
+              enum:
+                - requires
+                - appliesOn
+    OpenGatewayURLAttachment:
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayAttachment'
+        - type: object
+          description: URL for attachment.
+          properties:
+            url:
+              type: string
+              description: 'Uniform Resource Locator, is a web page address (a subset of URI)'
+            mimeType:
+              type: string
+              description: >-
+                Describes the possible values for the mimeType of the attachment. A media type (also
+                known as a Multipurpose Internet Mail Extensions or MIME type) indicates the nature
+                and format of a document, file, or assortment of bytes. MIME types are defined and
+                standardized in IETF's RFC 6838. 
+    PartyRef:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+    PartyRefOrPartyRoleRef:
+      type: object
+      description: ''
+      oneOf:
+        - $ref: '#/components/schemas/PartyRef'
+        - $ref: '#/components/schemas/PartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    PartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    ProductOfferingRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            ProductOffering reference. A product offering represents entities that are orderable
+            from the provider of the catalog, this resource includes pricing information.
+          properties:
+            version:
+              type: string
+              description: Version of the product offering
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BundledProductOffering: '#/components/schemas/BundledProductOffering'
+          ProductOfferingRef: '#/components/schemas/ProductOfferingRef'
+    RelatedPartyRefOrPartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+    TargetProductOrderItemSchema:
+      type: object
+      description: >-
+        The reference object to the schema and type of target product order item which is described
+        by product allowed action
+      properties:
+        '@type':
+          type: string
+          description: Class type of the target product order item
+        '@schemaLocation':
+          type: string
+          format: uri
+          description: This field provides a link to the schema describing the target product order item
+    TargetProductSchema:
+      type: object
+      description: >-
+        The reference object to the schema and type of target product which is described by product
+        specification
+      properties:
+        '@type':
+          type: string
+          description: Class type of the target product
+        '@schemaLocation':
+          type: string
+          format: uri
+          description: This field provides a link to the schema describing the target product
+    TimePeriod:
+      type: object
+      description: 'A period of time, either as a deadline (endDateTime only) a startDateTime only, or both'
+      properties:
+        startDateTime:
+          description: 'Start of the time period, using IETC-RFC-3339 format'
+          type: string
+          format: date-time
+          example: '1985-04-12T23:20:50.52Z'
+        endDateTime:
+          description: 'End of the time period, using IETC-RFC-3339 format'
+          type: string
+          format: date-time
+          example: '1985-04-12T23:20:50.52Z'
+    UsageVolumeProductSpecification:
+      type: object
+      description: Specification for the Usage Volume Product.
+      allOf:
+        - $ref: '#/components/schemas/OpenGatewayProductSpecification'
+    Error:
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Error: '#/components/schemas/Error'
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          required:
+            - code
+            - reason
+          properties:
+            code:
+              type: string
+              description: 'Application relevant detail, defined in the API or a common list.'
+            reason:
+              type: string
+              description: Explanation of the reason for the error which can be shown to a client user.
+            message:
+              type: string
+              description: >-
+                More details and corrective actions related to the error which can be shown to a
+                client user.
+            status:
+              type: string
+              description: HTTP Error code extension
+            referenceError:
+              type: string
+              description: URI of documentation describing the error.
+      description: 'Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)'
+    Hub_FVO:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      required:
+        - callback
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - properties:
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+    Hub:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - properties:
+            id:
+              type: string
+              description: Id of the listener
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+          required:
+            - callback
+  parameters:
+    Id:
+      name: id
+      required: true
+      schema:
+        type: string
+      in: path
+      description: Identifier of the Resource
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated properties to be provided in response
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Requested index for start of resources to be provided in response
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      description: Requested number of resources to be provided in response
+      schema:
+        type: integer
+    Before:
+      name: before
+      in: query
+      description: An opaque string value representing the page results before the cursor value
+      schema:
+        type: string
+    After:
+      name: after
+      in: query
+      description: An opaque string value representing the page results after the cursor value
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: >-
+        The default direction is Ascending order, the use of the modifier in front of the sort field
+        name, “-“, changes the sort order direction.
+      schema:
+        type: string
+    Filter:
+      name: filter
+      in: query
+      description: Filter a collection using JSONPath
+      schema:
+        type: string
+        example: 'attachment[?(@size==300)]'
+  requestBodies:
+    OpenGatewayProductOfferingCreateEvent:
+      description: OpenGatewayProductOffering create Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductOfferingCreateEvent'
+          examples:
+            Notification_for_creation_of_a_ProductOffering:
+              $ref: '#/components/examples/Notification_for_creation_of_a_ProductOffering_request'
+      required: true
+    OpenGatewayProductOfferingStateChangeEvent:
+      description: OpenGatewayProductOffering stateChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductOfferingStateChangeEvent'
+          examples:
+            Notification_for_lifecycleStatus_change_of_a_ProductOffering:
+              $ref: >-
+                #/components/examples/Notification_for_lifecycleStatus_change_of_a_ProductOffering_request
+      required: true
+    OpenGatewayProductOfferingAttributeValueChangeEvent:
+      description: OpenGatewayProductOffering attributeValueChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductOfferingAttributeValueChangeEvent'
+          examples:
+            Notification_for_an_attribute_value_change_of_a_ProductOffering:
+              $ref: >-
+                #/components/examples/Notification_for_an_attribute_value_change_of_a_ProductOffering_request
+      required: true
+    OpenGatewayProductOfferingDeleteEvent:
+      description: OpenGatewayProductOffering delete Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductOfferingDeleteEvent'
+          examples:
+            Notification_for_a_deletion_of_a_ProductOffering:
+              $ref: '#/components/examples/Notification_for_a_deletion_of_a_ProductOffering_request'
+      required: true
+    Hub_FVO:
+      description: Data containing the callback endpoint to deliver the information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub_FVO'
+          examples:
+            Basic Hub Example Request:
+              value:
+                '@type': Hub
+                callback: 'https://host/tmf-api/specificAPIName/v5/listener/specificEventListener'
+                query: data
+      required: true
+  responses:
+    '200':
+      description: OK
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Bad Request Error
+              value:
+                '@type': Error
+                code: ERR400
+                reason: Bad Request
+                message: >-
+                  The server could not understand the request due to invalid syntax. Please correct
+                  the syntax and try again.
+                referenceError: 'https://host/errors'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Unauthorized Error
+              value:
+                '@type': Error
+                code: ERR401
+                reason: Unauthorized
+                message: >-
+                  You are not authorized to access the requested resource. Please provide the
+                  correct credentials.
+                referenceError: 'https://host/errors'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Forbidden Error
+              value:
+                '@type': Error
+                code: ERR403
+                reason: Forbidden
+                message: >-
+                  You don't have the permission to access the requested resource. It is either
+                  read-protected or not readable by the server.
+                referenceError: 'https://host/errors'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Found Error
+              value:
+                '@type': Error
+                code: ERR404
+                reason: Not Found
+                message: The requested URL was not found on the server.
+                referenceError: 'https://host/errors'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Method Not allowed Error
+              value:
+                '@type': Error
+                code: ERR405
+                reason: Method Not allowed
+                message: The method is not allowed for the requested URL.
+                referenceError: 'https://host/errors'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Conflict Error
+              value:
+                '@type': Error
+                code: ERR409
+                reason: Conflict
+                message: >-
+                  The request could not be completed due to a conflict with the current state of the
+                  target resource.
+                referenceError: 'https://host/errors'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Internal Server Error example
+              value:
+                '@type': Error
+                code: ERR500
+                reason: Internal Server Error
+                message: The server encountered an internal error. Please contact the system administrator.
+                referenceError: 'https://host/errors'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Implemented Error
+              value:
+                '@type': Error
+                code: ERR501
+                reason: The requested operation is not implemented
+                message: >-
+                  The requested operation is not implemented. Please contact the system
+                  administrator.
+                referenceError: 'https://host/errors'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Service Unavailable Error
+              value:
+                '@type': Error
+                code: ERR503
+                reason: Service Unavailable
+                message: The service is currently unavailable. Please try again later.
+                referenceError: 'https://host/errors'
+    200OpenGatewayProductOfferingArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/OpenGatewayProductOffering_RES'
+          examples:
+            List_all_productOffering_with_lifecycleStatus_launched:
+              $ref: >-
+                #/components/examples/List_all_productOffering_with_lifecycleStatus_launched_response
+    200OpenGatewayProductOffering_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductOffering_RES'
+          examples:
+            Retrieve_a_standalone_productOffering:
+              $ref: '#/components/examples/Retrieve_a_standalone_productOffering_response'
+            Retrieve_a_bundle_productOffering:
+              $ref: '#/components/examples/Retrieve_a_bundle_productOffering_response'
+            Retrieve_a_bundled_productOffering_for_API:
+              $ref: '#/components/examples/Retrieve_a_bundled_productOffering_for_API_response'
+            Retrieve_a_bundled_productOffering_for_usage_volume:
+              $ref: '#/components/examples/Retrieve_a_bundled_productOffering_for_usage_volume_response'
+    200OpenGatewayProductSpecificationArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/OpenGatewayProductSpecification_RES'
+          examples:
+            List_all_productSpecification_with_lifecycleStatus_launched:
+              $ref: >-
+                #/components/examples/List_all_productSpecification_with_lifecycleStatus_launched_response
+    200OpenGatewayProductSpecification_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OpenGatewayProductSpecification_RES'
+          examples:
+            Retrieve_a_productSpecification_by_id:
+              $ref: '#/components/examples/Retrieve_a_productSpecification_by_id_response'
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Error example
+              value:
+                '@type': Error
+                code: ERR001
+                reason: Missing information
+                message: Please provide the additional example information
+                referenceError: 'https://host/errors'
+    Hub:
+      description: Notified
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub'
+          examples:
+            basic:
+              summary: Hub example
+              value:
+                '@type': Hub
+                callback: 'https://host/tmf-api/specificAPIName/v5/listener/specificEventListener'
+  headers:
+    X-Total-Count:
+      description: Total number of items matching criteria
+      schema:
+        type: integer
+    X-Result-Count:
+      description: Actual number of items returned in the response body
+      schema:
+        type: integer
+  securitySchemes: {}
+  examples:
+    List_all_productOffering_with_lifecycleStatus_launched_response:
+      value:
+        - id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+          '@type': OpenGatewayProductOffering
+          '@baseType': DcsProductOffering
+          lifecycleStatus: launched
+          version: 1.0.0
+          name: Location Verification Verify Usage Volume Recurring Bundled
+          description: >-
+            Location Verification Usage Volume of 10000 API calls for verify location usage,
+            included in a bucket, recurring monthly, usage non blocked when bucket is empty.
+          lastUpdate: '2023-07-01T00:00:00Z'
+          allowedAction:
+            - '@type': OpenGatewayAllowedProductAction
+              id: '1'
+              action: add
+              '@targetProductOrderItemSchema':
+                '@type': OpenGatewayProductOrderItemAdd
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/OpenGatewayProductOrderItemAdd.schema.json#/definitions/OpenGatewayProductOrderItemAdd
+            - '@type': OpenGatewayAllowedProductAction
+              id: '2'
+              action: delete
+              '@targetProductOrderItemSchema':
+                '@type': DcsProductOrderItemDelete
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+          productSpecification:
+            '@type': OpenGatewayProductSpecificationRef
+            id: 7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+            name: Location Verification Verify Usage Volume
+            version: 1.0.0
+            '@referredType': UsageVolumeProductSpecification
+          productOfferingTermOrConditionSpecification:
+            - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+              id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d_terms_1
+              name: >-
+                Location Verification Verify Usage Volume Recurring Bundled Product Offering Terms
+                and Conditions for ApplicationOwner
+              description: Terms and conditions to be approved by ApplicationOwner at the order.
+              attachment:
+                '@type': OpenGatewayFileAttachment
+                content: LjcNCiW...vUGFnZXMg==
+                mimeType: application/pdf
+                attachmentType: termsAndConditions
+        - id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+          '@type': OpenGatewayProductOffering
+          '@baseType': DcsProductOffering
+          lifecycleStatus: launched
+          version: 1.0.0
+          name: Location Verification Antifraud CAMARA API Standalone
+          description: >-
+            Location Verification product offering standalone, for antifraud purpose, accessible
+            with CAMARA API.
+          lastUpdate: '2023-07-01T00:00:00Z'
+          allowedAction:
+            - '@type': OpenGatewayAllowedProductAction
+              id: '1'
+              action: add
+              '@targetProductOrderItemSchema':
+                '@type': ProductOrderItemAddLocationVerificationAntifraudStandalone
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraudStandalone.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudStandalone
+            - '@type': OpenGatewayAllowedProductAction
+              id: '2'
+              action: delete
+              '@targetProductOrderItemSchema':
+                '@type': DcsProductOrderItemDelete
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+          productSpecification:
+            '@type': OpenGatewayProductSpecificationRef
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/4b6591ef-5ede-4885-9543-0c5e9070ade9
+            id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+            name: Location Verification Antifraud CAMARA API
+            version: 1.0.0
+            '@referredType': ApiProductSpecification
+          productOfferingTermOrConditionSpecification:
+            - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+              id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb_terms_1
+              name: >-
+                Location Verification Antifraud CAMARA API Standalone Product Offering Terms and
+                Conditions for ApplicationOwner
+              description: Terms and conditions to be approved by ApplicationOwner at the order.
+              attachment:
+                '@type': OpenGatewayFileAttachment
+                content: JVBERi0xL...DQolJUVPRg==
+                mimeType: application/pdf
+                attachmentType: termsAndConditions
+          productOfferingPrice:
+            - id: '1'
+              '@type': OpenGatewayProductOfferingPrice
+              lifecycleStatus: active
+              name: Location Verification Antifraud CAMARA API Standalone Usage Price
+              description: >-
+                Location Verification for Antifraud standalone product offering price. 8 EUR per API
+                call for usage verify for FR, ES and GB. 8 USD per API call for usage verify for US.
+              lastUpdate: '2023-09-01T00:00:00Z'
+              priceType: composite
+        - id: 5e9b10e5-d707-4a16-89d1-687c7f0bf81a
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/5e9b10e5-d707-4a16-89d1-687c7f0bf81a
+          '@type': OpenGatewayProductOffering
+          '@baseType': DcsProductOffering
+          lifecycleStatus: launched
+          version: 1.0.0
+          name: Open Gateway Location Verification bundle offer
+          description: >-
+            Location Verification bundle offer. Includes Location Verification CAMARA API for
+            antifraud purpose and a bucket of 10000 API calls for verify location usage, recurring
+            monthly, usage non blocked when bucket is empty.
+          lastUpdate: '2023-07-01T00:00:00Z'
+          allowedAction:
+            - '@type': OpenGatewayAllowedProductAction
+              id: '1'
+              action: add
+              '@targetProductOrderItemSchema':
+                '@type': OpenGatewayProductOrderItemAdd
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/OpenGatewayProductOrderItemAdd.schema.json#/definitions/OpenGatewayProductOrderItemAdd
+            - '@type': OpenGatewayAllowedProductAction
+              id: '2'
+              action: delete
+              '@targetProductOrderItemSchema':
+                '@type': DcsProductOrderItemDelete
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+          bundledProductOffering:
+            - '@type': BundledProductOffering
+              bundledProductOfferingOption:
+                '@type': BundledProductOfferingOption
+                numberRelOfferDefault: 1
+                numberRelOfferLowerLimit: 1
+                numberRelOfferUpperLimit: 1
+              id: ab7792f8-6628-4c4b-a557-699adc26d4ce
+              href: >-
+                https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/ab7792f8-6628-4c4b-a557-699adc26d4ce
+              '@referredType': OpenGatewayProductOffering
+              version: 1.0.0
+            - '@type': BundledProductOffering
+              bundledProductOfferingOption:
+                '@type': BundledProductOfferingOption
+                numberRelOfferDefault: 1
+                numberRelOfferLowerLimit: 1
+                numberRelOfferUpperLimit: 1
+              id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+              href: >-
+                https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+              '@referredType': OpenGatewayProductOffering
+              version: 1.0.0
+          productOfferingTermOrConditionSpecification:
+            - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+              id: 5e9b10e5-d707-4a16-89d1-687c7f0bf81a_terms_1
+              name: >-
+                Open Gateway Location Verification bundle Product Offering Terms and Conditions for
+                ApplicationOwner
+              description: Terms and conditions to be approved by ApplicationOwner at the order.
+              attachment:
+                '@type': OpenGatewayFileAttachment
+                content: cvUGFnZXMg...2l0ZUlkKD==
+                mimeType: application/pdf
+                attachmentType: termsAndConditions
+          productOfferingPrice:
+            - id: '1'
+              '@type': OpenGatewayProductOfferingPrice
+              lifecycleStatus: active
+              name: Bundle price for Location Verification
+              description: >-
+                One Time 3 EUR + recurring 10 EUR/month, including 100000 API calls monthly + 9 EUR
+                per Verify Location API call usage when usage bucket is over until the bucket is
+                refilled next month for FR, ES and GB. One Time 3 USD + recurring 10 USD/month,
+                including 100000 API calls monthly + 9 USD per Verify Location API call usage for
+                US.
+              lastUpdate: '2023-09-01T00:00:00Z'
+              priceType: composite
+        - id: ab7792f8-6628-4c4b-a557-699adc26d4ce
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/ab7792f8-6628-4c4b-a557-699adc26d4ce
+          '@type': OpenGatewayProductOffering
+          '@baseType': DcsProductOffering
+          lifecycleStatus: launched
+          version: 1.0.0
+          name: Location Verification Antifraud CAMARA API Bundled
+          description: >-
+            Location Verification product offering bundled, for antifraud purpose, accessible with
+            CAMARA API.
+          lastUpdate: '2023-07-01T00:00:00Z'
+          allowedAction:
+            - '@type': OpenGatewayAllowedProductAction
+              id: '1'
+              action: add
+              '@targetProductOrderItemSchema':
+                '@type': ProductOrderItemAddLocationVerificationAntifraudBundled
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/ProductOrderItemAddLocationVerificationAntifraudBundled.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudBundled
+            - '@type': OpenGatewayAllowedProductAction
+              id: '2'
+              action: delete
+              '@targetProductOrderItemSchema':
+                '@type': DcsProductOrderItemDelete
+                '@schemaLocation': >-
+                  https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+          productSpecification:
+            '@type': OpenGatewayProductSpecificationRef
+            id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/4b6591ef-5ede-4885-9543-0c5e9070ade9
+            name: Location Verification Antifraud CAMARA API
+            version: 1.0.0
+            '@referredType': ApiProductSpecification
+          productOfferingTermOrConditionSpecification:
+            - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+              id: ab7792f8-6628-4c4b-a557-699adc26d4ce_terms_1
+              name: >-
+                Location Verification Antifraud CAMARA API Standalone Product Offering Terms and
+                Conditions for ApplicationOwner
+              description: Terms and conditions to be approved by ApplicationOwner at the order.
+              attachment:
+                '@type': OpenGatewayFileAttachment
+                content: JVBERi0xL...DQolJUVPRg==
+                mimeType: application/pdf
+                attachmentType: termsAndConditions
+      description: This is an example of a response when all entity has lifecycleStatus launched
+    Retrieve_a_standalone_productOffering_response:
+      value:
+        id: 5e9b10e5-d707-4a16-89d1-687c7f0bf81a
+        href: >-
+          https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/5e9b10e5-d707-4a16-89d1-687c7f0bf81a
+        '@type': OpenGatewayProductOffering
+        '@baseType': DcsProductOffering
+        lifecycleStatus: launched
+        version: 1.0.0
+        name: Open Gateway Location Verification bundle offer
+        description: >-
+          Location Verification bundle offer. Includes Location Verification CAMARA API for
+          antifraud purpose and a bucket of 10000 API calls for verify location usage, recurring
+          monthly, usage non blocked when bucket is empty.
+        lastUpdate: '2023-07-01T00:00:00Z'
+        allowedAction:
+          - '@type': OpenGatewayAllowedProductAction
+            id: '1'
+            action: add
+            '@targetProductOrderItemSchema':
+              '@type': OpenGatewayProductOrderItemAdd
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/OpenGatewayProductOrderItemAdd.schema.json#/definitions/OpenGatewayProductOrderItemAdd
+          - '@type': OpenGatewayAllowedProductAction
+            id: '2'
+            action: delete
+            '@targetProductOrderItemSchema':
+              '@type': DcsProductOrderItemDelete
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+        bundledProductOffering:
+          - '@type': BundledProductOffering
+            bundledProductOfferingOption:
+              '@type': BundledProductOfferingOption
+              numberRelOfferDefault: 1
+              numberRelOfferLowerLimit: 1
+              numberRelOfferUpperLimit: 1
+            id: ab7792f8-6628-4c4b-a557-699adc26d4ce
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/ab7792f8-6628-4c4b-a557-699adc26d4ce
+            '@referredType': OpenGatewayProductOffering
+            version: 1.0.0
+          - '@type': BundledProductOffering
+            bundledProductOfferingOption:
+              '@type': BundledProductOfferingOption
+              numberRelOfferDefault: 1
+              numberRelOfferLowerLimit: 1
+              numberRelOfferUpperLimit: 1
+            id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+            '@referredType': OpenGatewayProductOffering
+            version: 1.0.0
+        productOfferingTermOrConditionSpecification:
+          - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+            id: 5e9b10e5-d707-4a16-89d1-687c7f0bf81a_terms_1
+            name: >-
+              Open Gateway Location Verification bundle Product Offering Terms and Conditions for
+              ApplicationOwner
+            description: Terms and conditions to be approved by ApplicationOwner at the order.
+            attachment:
+              '@type': OpenGatewayFileAttachment
+              content: cvUGFnZXMg...2l0ZUlkKD==
+              mimeType: application/pdf
+              attachmentType: termsAndConditions
+        productOfferingPrice:
+          - id: '1'
+            '@type': OpenGatewayProductOfferingPrice
+            lifecycleStatus: active
+            name: Bundle price for Location Verification
+            description: >-
+              One Time 3 EUR + recurring 10 EUR/month, including 100000 API calls monthly + 9 EUR
+              per Verify Location API call usage when usage bucket is over until the bucket is
+              refilled next month for FR, ES and GB. One Time 3 USD + recurring 10 USD/month,
+              including 100000 API calls monthly + 9 USD per Verify Location API call usage for US.
+            lastUpdate: '2023-09-01T00:00:00Z'
+            priceType: composite
+      description: >-
+        This is an example of a response when the entity has @type value as
+        OpenGatewayProductOffering
+    Retrieve_a_bundle_productOffering_response:
+      value:
+        id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+        href: >-
+          https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+        '@type': OpenGatewayProductOffering
+        '@baseType': DcsProductOffering
+        lifecycleStatus: launched
+        version: 1.0.0
+        name: Location Verification Antifraud CAMARA API Standalone
+        description: >-
+          Location Verification product offering standalone, for antifraud purpose, accessible with
+          CAMARA API.
+        lastUpdate: '2023-07-01T00:00:00Z'
+        allowedAction:
+          - '@type': OpenGatewayAllowedProductAction
+            id: '1'
+            action: add
+            '@targetProductOrderItemSchema':
+              '@type': ProductOrderItemAddLocationVerificationAntifraudStandalone
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraudStandalone.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudStandalone
+          - '@type': OpenGatewayAllowedProductAction
+            id: '2'
+            action: delete
+            '@targetProductOrderItemSchema':
+              '@type': DcsProductOrderItemDelete
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+        productSpecification:
+          '@type': OpenGatewayProductSpecificationRef
+          id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/4b6591ef-5ede-4885-9543-0c5e9070ade9
+          name: Location Verification Antifraud CAMARA API
+          version: 1.0.0
+          '@referredType': ApiProductSpecification
+        productOfferingTermOrConditionSpecification:
+          - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+            id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb_terms_1
+            name: >-
+              Location Verification Antifraud CAMARA API Standalone Product Offering Terms and
+              Conditions for ApplicationOwner
+            description: Terms and conditions to be approved by ApplicationOwner at the order.
+            attachment:
+              '@type': OpenGatewayFileAttachment
+              content: JVBERi0xL...DQolJUVPRg==
+              mimeType: application/pdf
+              attachmentType: termsAndConditions
+        productOfferingPrice:
+          - id: '1'
+            '@type': OpenGatewayProductOfferingPrice
+            lifecycleStatus: active
+            name: Location Verification Antifraud CAMARA API Standalone Usage Price
+            description: >-
+              Location Verification for Antifraud standalone product offering price. 8 EUR per API
+              call for usage verify location for FR, ES and GB. 8 USD per API call for usage verify
+              location for US.
+            lastUpdate: '2023-09-01T00:00:00Z'
+            priceType: composite
+      description: >-
+        This is an example of a response when the entity has @type value as
+        OpenGatewayProductOffering
+    Retrieve_a_bundled_productOffering_for_API_response:
+      value:
+        id: ab7792f8-6628-4c4b-a557-699adc26d4ce
+        href: >-
+          https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/ab7792f8-6628-4c4b-a557-699adc26d4ce
+        '@type': OpenGatewayProductOffering
+        '@baseType': DcsProductOffering
+        lifecycleStatus: launched
+        version: 1.0.0
+        name: Location Verification Antifraud CAMARA API Bundled
+        description: >-
+          Location Verification product offering bundled, for antifraud purpose, accessible with
+          CAMARA API.
+        lastUpdate: '2023-07-01T00:00:00Z'
+        allowedAction:
+          - '@type': OpenGatewayAllowedProductAction
+            id: '1'
+            action: add
+            '@targetProductOrderItemSchema':
+              '@type': ProductOrderItemAddLocationVerificationAntifraudBundled
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/ProductOrderItemAddLocationVerificationAntifraudBundled.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudBundled
+          - '@type': OpenGatewayAllowedProductAction
+            id: '2'
+            action: delete
+            '@targetProductOrderItemSchema':
+              '@type': DcsProductOrderItemDelete
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+        productSpecification:
+          '@type': OpenGatewayProductSpecificationRef
+          id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productSpecification/4b6591ef-5ede-4885-9543-0c5e9070ade9
+          name: Location Verification Antifraud CAMARA API
+          version: 1.0.0
+          '@referredType': ApiProductSpecification
+        productOfferingTermOrConditionSpecification:
+          - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+            id: ab7792f8-6628-4c4b-a557-699adc26d4ce_terms_1
+            name: >-
+              Location Verification Antifraud CAMARA API Standalone Product Offering Terms and
+              Conditions for ApplicationOwner
+            description: Terms and conditions to be approved by ApplicationOwner at the order.
+            attachment:
+              '@type': OpenGatewayFileAttachment
+              content: JVBERi0xL...DQolJUVPRg==
+              mimeType: application/pdf
+              attachmentType: termsAndConditions
+      description: >-
+        This is an example of a response when the entity has @type value as
+        OpenGatewayProductOffering
+    Retrieve_a_bundled_productOffering_for_usage_volume_response:
+      value:
+        id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+        href: >-
+          https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/0a2782b7-81a7-4af9-9e4f-d51bc690ec2d
+        '@type': OpenGatewayProductOffering
+        '@baseType': DcsProductOffering
+        lifecycleStatus: launched
+        version: 1.0.0
+        name: Location Verification Verify Usage Volume Recurring Bundled
+        description: >-
+          Location Verification Usage Volume of 10000 API calls for verify location usage, included
+          in a bucket, recurring monthly, usage non blocked when bucket is empty.
+        lastUpdate: '2023-07-01T00:00:00Z'
+        allowedAction:
+          - '@type': OpenGatewayAllowedProductAction
+            id: '1'
+            action: add
+            '@targetProductOrderItemSchema':
+              '@type': OpenGatewayProductOrderItemAdd
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/OpenGatewayProductOrderItemAdd.schema.json#/definitions/OpenGatewayProductOrderItemAdd
+          - '@type': OpenGatewayAllowedProductAction
+            id: '2'
+            action: delete
+            '@targetProductOrderItemSchema':
+              '@type': DcsProductOrderItemDelete
+              '@schemaLocation': >-
+                https://mycsp.com/tmf-api/schemas/Tmf/Customer/DCS/GSMAOperateAPI/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+        productSpecification:
+          '@type': OpenGatewayProductSpecificationRef
+          id: 7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+          name: Location Verification Verify Usage Volume
+          version: 1.0.0
+          '@referredType': UsageVolumeProductSpecification
+        productOfferingTermOrConditionSpecification:
+          - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+            id: 0a2782b7-81a7-4af9-9e4f-d51bc690ec2d_terms_1
+            name: >-
+              Location Verification Verify Usage Volume Recurring Bundled Product Offering Terms and
+              Conditions for ApplicationOwner
+            description: Terms and conditions to be approved by ApplicationOwner at the order.
+            attachment:
+              '@type': OpenGatewayFileAttachment
+              content: LjcNCiW...vUGFnZXMg==
+              mimeType: application/pdf
+              attachmentType: termsAndConditions
+      description: >-
+        This is an example of a response when the entity has @type value as
+        OpenGatewayProductOffering
+    List_all_productSpecification_with_lifecycleStatus_launched_response:
+      value:
+        - '@type': UsageVolumeProductSpecification
+          '@baseType': OpenGatewayProductSpecification
+          id: 7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/7407a0fd-9a01-47a2-b32a-1ab85bde3d32
+          name: Location Verification Verify Usage Volume
+          version: 1.0.0
+          lifecycleStatus: active
+          description: >-
+            Location Verification Usage Volume of 10000 API calls for verify location usage,
+            included in a bucket, recurring monthly, usage non blocked when bucket is empty.
+          lastUpdate: '2023-09-23T16:42:23Z'
+          targetProductSchema:
+            '@type': UsageVolumeProductLocationVerification
+            '@schemaLocation': >-
+              https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/UsageVolumeLocationVerification.schema.json#/definitions/UsageVolumeProductLocationVerification
+          productSpecificationRelationship:
+            - '@type': OpenGatewayProductSpecificationRelationship
+              id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+              relationshipType: requires
+              '@referredType': ApiProductSpecification
+        - '@type': ApiProductSpecification
+          '@baseType': OpenGatewayProductSpecification
+          id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+          href: >-
+            https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/4b6591ef-5ede-4885-9543-0c5e9070ade9
+          name: Location Verification Antifraud CAMARA API
+          version: 1.0.0
+          lifecycleStatus: active
+          description: >-
+            Location Verification product specification, for antifraud purpose, accessible with
+            CAMARA API.
+          lastUpdate: '2023-09-23T16:42:23Z'
+          targetProductSchema:
+            '@type': ApiProductLocationVerificationAntifraud
+            '@schemaLocation': >-
+              https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraudStandalone.schema.json#/definitions/ApiProductLocationVerificationAntifraud
+          apiStandardName: CAMARA
+          apiVersionInformation:
+            - '@type': ApiVersionInformation
+              apiName: location-verification
+              apiVersion: 1.0.0
+              apiBasePath: /location-verification/v1
+              apiStatus: active
+              apiGrantInformation:
+                - '@type': ApiGrantInformation
+                  purpose: 'dpv:FraudPreventionAndDetection'
+                  legalBasis: 'dpv:Consent'
+                  scope:
+                    - 'location-verification:verify'
+                  grantType:
+                    - authorization_code
+                    - 'urn:openid:params:grant-type:ciba'
+          attachment:
+            - '@type': OpenGatewayURLAttachment
+              url: 'https://mycsp.com/OpenGateway/documentation/LocationVerificationDeveloperGuide.html'
+              attachmentType: developerDocumentation
+              mimeType: text/html
+      description: >-
+        This is an example of a response with several ProductSpecification with lifecycleStatus
+        active
+    Retrieve_a_productSpecification_by_id_response:
+      value:
+        '@type': ApiProductSpecification
+        '@baseType': OpenGatewayProductSpecification
+        id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+        href: >-
+          https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/4b6591ef-5ede-4885-9543-0c5e9070ade9
+        name: Location Verification Antifraud CAMARA API
+        version: 1.0.0
+        lifecycleStatus: active
+        description: >-
+          Location Verification product specification, for antifraud purpose, accessible with CAMARA
+          API.
+        lastUpdate: '2023-09-23T16:42:23Z'
+        targetProductSchema:
+          '@type': ApiProductLocationVerificationAntifraud
+          '@schemaLocation': >-
+            https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraud.schema.json#/definitions/ApiProductLocationVerificationAntifraud
+        apiStandardName: CAMARA
+        apiVersionInformation:
+          - '@type': ApiVersionInformation
+            apiName: location-verification
+            apiVersion: 1.0.0
+            apiBasePath: /location-verification/v1
+            apiStatus: active
+            apiGrantInformation:
+              - '@type': ApiGrantInformation
+                purpose: 'dpv:FraudPreventionAndDetection'
+                legalBasis: 'dpv:Consent'
+                scope:
+                  - 'location-verification:verify'
+                grantType:
+                  - authorization_code
+                  - 'urn:openid:params:grant-type:ciba'
+        attachment:
+          - '@type': OpenGatewayURLAttachment
+            url: 'https://mycsp.com/OpenGateway/documentation/LocationVerificationDeveloperGuide.html'
+            attachmentType: developerDocumentation
+            mimeType: text/html
+      description: This is an example of a response when the entity has @type value as ApiProductSpecification
+    Notification_for_creation_of_a_ProductOffering_request:
+      value:
+        '@type': OpenGatewayProductOfferingCreateEvent
+        correlationId: '13654384718'
+        domain: Open Gateway Catalog
+        timeOccurred: '2024-11-25T14:04:27Z'
+        eventId: '23'
+        eventType: ProductOfferingCreateEvent
+        event:
+          productOffering:
+            id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            '@type': OpenGatewayProductOffering
+            '@baseType': DcsProductOffering
+            lifecycleStatus: launched
+            version: 1.0.0
+            name: Location Verification Antifraud CAMARA API Standalone
+            description: >-
+              Location Verification product offering standalone, for antifraud purpose, accessible
+              with CAMARA API.
+            lastUpdate: '2023-07-01T00:00:00Z'
+            allowedAction:
+              - '@type': OpenGatewayAllowedProductAction
+                id: '1'
+                action: add
+                '@targetProductOrderItemSchema':
+                  '@type': ProductOrderItemAddLocationVerificationAntifraudStandalone
+                  '@schemaLocation': >-
+                    https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/GSMAOperateAPI/LocationVerificationAntifraudStandalone.schema.json#/definitions/ProductOrderItemAddLocationVerificationAntifraudStandalone
+              - '@type': OpenGatewayAllowedProductAction
+                id: '2'
+                action: delete
+                '@targetProductOrderItemSchema':
+                  '@type': DcsProductOrderItemDelete
+                  '@schemaLocation': >-
+                    https://mycsp.com/tmf-api/schemas/Tmf/Product/DCS/DcsProductOrderItemDelete.schema.json#/definitions/DcsProductOrderItemDelete
+            productSpecification:
+              '@type': OpenGatewayProductSpecificationRef
+              href: >-
+                https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productSpecification/4b6591ef-5ede-4885-9543-0c5e9070ade9
+              id: 4b6591ef-5ede-4885-9543-0c5e9070ade9
+              name: Location Verification Antifraud CAMARA API
+              version: 1.0.0
+              '@referredType': ApiProductSpecification
+            productOfferingTermOrConditionSpecification:
+              - '@type': OpenGatewayProductOfferingTermOrConditionSpecification
+                id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb_terms_1
+                name: >-
+                  Location Verification Antifraud CAMARA API Standalone Product Offering Terms and
+                  Conditions for ApplicationOwner
+                description: Terms and conditions to be approved by ApplicationOwner at the order.
+                attachment:
+                  '@type': OpenGatewayFileAttachment
+                  content: JVBERi0x...DQolJUVPRg==
+                  mimeType: application/pdf
+                  attachmentType: termsAndConditions
+            productOfferingPrice:
+              - id: '1'
+                '@type': OpenGatewayProductOfferingPrice
+                lifecycleStatus: active
+                name: Location Verification Antifraud CAMARA API Standalone Usage Price
+                description: >-
+                  Location Verification for Antifraud standalone product offering price. 8 EUR per
+                  API call for usage verify for FR, ES and GB. 8 USD per API call for usage verify
+                  for US.
+                lastUpdate: '2023-09-01T00:00:00Z'
+                priceType: composite
+      description: >-
+        This is an example of a request to create a new entity at the
+        /listener/productOfferingCreateEvent endpoint when the entity has @type value as
+        OpenGatewayProductOffering
+    Notification_for_lifecycleStatus_change_of_a_ProductOffering_request:
+      value:
+        '@type': OpenGatewayProductOfferingStateChangeEvent
+        correlationId: '13654384711'
+        domain: Open Gateway Catalog
+        timeOccurred: '2024-11-25T14:04:27Z'
+        eventId: '25'
+        eventType: ProductOfferingStateChangeEvent
+        event:
+          productOffering:
+            id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            '@type': OpenGatewayProductOffering
+            '@baseType': DcsProductOffering
+            lifecycleStatus: retired
+      description: >-
+        This is an example of a request to create a new entity at the
+        /listener/productOfferingStateChangeEvent endpoint when the entity has @type value as
+        OpenGatewayProductOffering
+    Notification_for_an_attribute_value_change_of_a_ProductOffering_request:
+      value:
+        '@type': OpenGatewayProductOfferingAttributeValueChangeEvent
+        '@baseType': DcsProductOffering
+        correlationId: '13654384715'
+        domain: Open Gateway Catalog
+        timeOccurred: '2024-11-25T14:04:27Z'
+        eventId: '22'
+        eventType: ProductOfferingAttributeValueChangeEvent
+        event:
+          productOffering:
+            id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            '@type': OpenGatewayProductOffering
+            '@baseType': DcsProductOffering
+            version: 1.1.0
+            productOfferingPrice:
+              - id: '1'
+                '@type': OpenGatewayProductOfferingPrice
+                description: >-
+                  Location Verification for Antifraud standalone product offering price, usage
+                  price. 9 EUR per API call for usage verify for FR, ES and GB. 9 USD per API call
+                  for usage verify for US.
+      description: >-
+        This is an example of a request to create a new entity at the
+        /listener/productOfferingAttributeValueChangeEvent endpoint when the entity has @type value
+        as OpenGatewayProductOffering
+    Notification_for_a_deletion_of_a_ProductOffering_request:
+      value:
+        '@type': OpenGatewayProductOfferingDeleteEvent
+        correlationId: '13654384719'
+        domain: Open Gateway Catalog
+        timeOccurred: '2024-11-25T14:04:27Z'
+        eventId: '24'
+        eventType: ProductOfferingDeleteEvent
+        event:
+          productOffering:
+            '@type': OpenGatewayProductOffering
+            '@baseType': DcsProductOffering
+            id: 2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+            href: >-
+              https://mycsp.com/tmf-api/openGatewayOperateAPIProductCatalog/v5/productOffering/2d4ef4d3-08ce-441d-ac76-133b6dad0ccb
+      description: >-
+        This is an example of a request to create a new entity at the
+        /listener/productOfferingDeleteEvent endpoint when the entity has @type value as
+        OpenGatewayProductOffering

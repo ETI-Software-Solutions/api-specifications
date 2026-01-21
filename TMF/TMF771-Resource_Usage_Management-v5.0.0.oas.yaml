@@ -1,0 +1,4004 @@
+openapi: 3.0.1
+info:
+  title: Resource Usage Management
+  description: >-
+    TMF771 Resource Usage Management provides a standaised mechanism for usage management such as
+    creation, update, retrieval, import and export of a collection of resource usage. A Resource
+    usage represents is an occurrence of usage on a Resource, which can be further used to generate
+    interest to a billing system, and can have charges applied to it. It is comprised of
+    characteristics which define all attributes known for a particular type of Resource usage.
+  version: 5.0.0
+servers:
+  - url: '{apiRoot}/tmf-api/resourceUsageManagement/v5/'
+    variables:
+      apiRoot:
+        default: 'http://serverRoot'
+        enum:
+          - 'http://serverRoot'
+tags:
+  - name: resourceUsage
+    description: Operations for ResourceUsage Resource
+  - name: resourceUsageSpecification
+    description: Operations for ResourceUsageSpecification Resource
+  - name: notification listener
+    description: Notifications for Resource Lifecycle and event notifications
+  - name: events subscription
+    description: Endpoints to register and terminate an Event Listener
+paths:
+  /hub:
+    post:
+      operationId: createHub
+      summary: Create a subscription (hub) to receive Events
+      description: Sets the communication endpoint to receive Events.
+      tags:
+        - events subscription
+      requestBody:
+        $ref: '#/components/requestBodies/Hub_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+  '/hub/{id}':
+    get:
+      operationId: hubGet
+      summary: Retrieve a subscription (hub)
+      description: ''
+      tags:
+        - events subscription
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+    delete:
+      operationId: hubDelete
+      summary: Remove a subscription (hub) to receive Events
+      description: ''
+      tags:
+        - events subscription
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Deleted
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageAttributeValueChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageAttributeValueChangeEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        ResourceUsageAttributeValueChangeEvent
+      operationId: resourceUsageAttributeValueChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageAttributeValueChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageCreateEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageCreateEvent
+      description: Example of a client listener for receiving the notification ResourceUsageCreateEvent
+      operationId: resourceUsageCreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageCreateEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageDeleteEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageDeleteEvent
+      description: Example of a client listener for receiving the notification ResourceUsageDeleteEvent
+      operationId: resourceUsageDeleteEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageDeleteEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageSpecificationAttributeValueChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageSpecificationAttributeValueChangeEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        ResourceUsageSpecificationAttributeValueChangeEvent
+      operationId: resourceUsageSpecificationAttributeValueChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageSpecificationAttributeValueChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageSpecificationCreateEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageSpecificationCreateEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        ResourceUsageSpecificationCreateEvent
+      operationId: resourceUsageSpecificationCreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageSpecificationCreateEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/resourceUsageSpecificationDeleteEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity ResourceUsageSpecificationDeleteEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        ResourceUsageSpecificationDeleteEvent
+      operationId: resourceUsageSpecificationDeleteEvent
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageSpecificationDeleteEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /resourceUsage:
+    get:
+      tags:
+        - resourceUsage
+      summary: List or find ResourceUsage objects
+      description: List or find ResourceUsage objects
+      operationId: listResourceUsage
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsageArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+        - resourceUsage
+      summary: Creates a ResourceUsage
+      description: This operation creates a ResourceUsage entity.
+      operationId: createResourceUsage
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsage_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201ResourceUsage'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  '/resourceUsage/{id}':
+    get:
+      tags:
+        - resourceUsage
+      summary: Retrieves a ResourceUsage by ID
+      description: >-
+        This operation retrieves a ResourceUsage entity. Attribute selection enabled for all first
+        level attributes.
+      operationId: retrieveResourceUsage
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsage_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    patch:
+      tags:
+        - resourceUsage
+      summary: Updates partially a ResourceUsage
+      description: This operation updates partially a ResourceUsage entity.
+      operationId: patchResourceUsage
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsage_MVO'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsage_Patch'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    delete:
+      tags:
+        - resourceUsage
+      summary: Deletes a ResourceUsage
+      description: This operation deletes a ResourceUsage entity.
+      operationId: deleteResourceUsage
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '202':
+          $ref: '#/components/responses/202'
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /resourceUsageSpecification:
+    get:
+      tags:
+        - resourceUsageSpecification
+      summary: List or find ResourceUsageSpecification objects
+      description: List or find ResourceUsageSpecification objects
+      operationId: listResourceUsageSpecification
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsageSpecificationArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+        - resourceUsageSpecification
+      summary: Creates a ResourceUsageSpecification
+      description: This operation creates a ResourceUsageSpecification entity.
+      operationId: createResourceUsageSpecification
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageSpecification_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201ResourceUsageSpecification'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  '/resourceUsageSpecification/{id}':
+    get:
+      tags:
+        - resourceUsageSpecification
+      summary: Retrieves a ResourceUsageSpecification by ID
+      description: >-
+        This operation retrieves a ResourceUsageSpecification entity. Attribute selection enabled
+        for all first level attributes.
+      operationId: retrieveResourceUsageSpecification
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsageSpecification_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    patch:
+      tags:
+        - resourceUsageSpecification
+      summary: Updates partially a ResourceUsageSpecification
+      description: This operation updates partially a ResourceUsageSpecification entity.
+      operationId: patchResourceUsageSpecification
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/ResourceUsageSpecification_MVO'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ResourceUsageSpecification_Patch'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    delete:
+      tags:
+        - resourceUsageSpecification
+      summary: Deletes a ResourceUsageSpecification
+      description: This operation deletes a ResourceUsageSpecification entity.
+      operationId: deleteResourceUsageSpecification
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '202':
+          $ref: '#/components/responses/202'
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  schemas:
+    Addressable:
+      type: object
+      description: Base schema for addressable entities
+      properties:
+        href:
+          type: string
+          description: Hyperlink reference
+        id:
+          type: string
+          description: unique identifier
+    Attachment:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            Complements the description of an element (for instance a product) through video,
+            pictures...
+          properties:
+            name:
+              type: string
+              description: The name of the attachment
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+              example: Photograph of the Product
+            url:
+              type: string
+              description: 'Uniform Resource Locator, is a web page address (a subset of URI)'
+              example: 'https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f'
+            content:
+              type: string
+              format: base64
+              description: 'The actual contents of the attachment object, if embedded, encoded as base64'
+            size:
+              $ref: '#/components/schemas/Quantity'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            attachmentType:
+              type: string
+              description: >-
+                a business characterization of the purpose of the attachment, for example logo,
+                instructionManual, contractCopy
+            mimeType:
+              type: string
+              description: a technical characterization of the attachment content format using IETF Mime Types
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment'
+    AttachmentRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Attachment reference. An attachment complements the description of an element (for
+            instance a product) through video, pictures
+          properties:
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+            url:
+              description: Link to the attachment media/content
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          AttachmentRef: '#/components/schemas/AttachmentRef'
+    AttachmentRefOrValue:
+      type: object
+      description: >-
+        The polymorphic attributes @type, @schemaLocation & @referredType are related to the
+        Attachment entity and not the AttachmentRefOrValue class itself
+      oneOf:
+        - $ref: '#/components/schemas/Attachment'
+        - $ref: '#/components/schemas/AttachmentRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment'
+          AttachmentRef: '#/components/schemas/AttachmentRef'
+    AttachmentRefOrValue_FVO:
+      type: object
+      description: >-
+        The polymorphic attributes @type, @schemaLocation & @referredType are related to the
+        Attachment entity and not the AttachmentRefOrValue class itself
+      oneOf:
+        - $ref: '#/components/schemas/Attachment_FVO'
+        - $ref: '#/components/schemas/AttachmentRef_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment_FVO'
+          AttachmentRef: '#/components/schemas/AttachmentRef_FVO'
+    AttachmentRefOrValue_MVO:
+      type: object
+      description: >-
+        The polymorphic attributes @type, @schemaLocation & @referredType are related to the
+        Attachment entity and not the AttachmentRefOrValue class itself
+      oneOf:
+        - $ref: '#/components/schemas/Attachment_MVO'
+        - $ref: '#/components/schemas/AttachmentRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment_MVO'
+          AttachmentRef: '#/components/schemas/AttachmentRef_MVO'
+    AttachmentRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Attachment reference. An attachment complements the description of an element (for
+            instance a product) through video, pictures
+          properties:
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+            url:
+              description: Link to the attachment media/content
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          AttachmentRef: '#/components/schemas/AttachmentRef_FVO'
+    AttachmentRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - type: object
+          description: >-
+            Attachment reference. An attachment complements the description of an element (for
+            instance a product) through video, pictures
+          properties:
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+            url:
+              description: Link to the attachment media/content
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          AttachmentRef: '#/components/schemas/AttachmentRef_MVO'
+    Attachment_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - type: object
+          description: >-
+            Complements the description of an element (for instance a product) through video,
+            pictures...
+          properties:
+            name:
+              type: string
+              description: The name of the attachment
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+              example: Photograph of the Product
+            url:
+              type: string
+              description: 'Uniform Resource Locator, is a web page address (a subset of URI)'
+              example: 'https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f'
+            content:
+              type: string
+              format: base64
+              description: 'The actual contents of the attachment object, if embedded, encoded as base64'
+            size:
+              $ref: '#/components/schemas/Quantity'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            attachmentType:
+              type: string
+              description: >-
+                a business characterization of the purpose of the attachment, for example logo,
+                instructionManual, contractCopy
+            mimeType:
+              type: string
+              description: a technical characterization of the attachment content format using IETF Mime Types
+          required:
+            - attachmentType
+            - mimeType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment_FVO'
+    Attachment_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - type: object
+          description: >-
+            Complements the description of an element (for instance a product) through video,
+            pictures...
+          properties:
+            name:
+              type: string
+              description: The name of the attachment
+            description:
+              type: string
+              description: A narrative text describing the content of the attachment
+              example: Photograph of the Product
+            url:
+              type: string
+              description: 'Uniform Resource Locator, is a web page address (a subset of URI)'
+              example: 'https://host/Content/4aafacbd-11ff-4dc8-b445-305f2215715f'
+            content:
+              type: string
+              format: base64
+              description: 'The actual contents of the attachment object, if embedded, encoded as base64'
+            size:
+              $ref: '#/components/schemas/Quantity'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            attachmentType:
+              type: string
+              description: >-
+                a business characterization of the purpose of the attachment, for example logo,
+                instructionManual, contractCopy
+            mimeType:
+              type: string
+              description: a technical characterization of the attachment content format using IETF Mime Types
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Attachment: '#/components/schemas/Attachment_MVO'
+    BaseEvent:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: Base event with common attributes.
+          properties:
+            event:
+              type: object
+              description: The event linked to the involved resource object
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOcurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BaseEvent: '#/components/schemas/BaseEvent'
+    Characteristic:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Describes a given characteristic of an object or entity through a name/value pair. This
+            is an abstract base class, the actual value is in one of the strongly-typed subclasses :
+            StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic,
+            NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic,
+            ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic,
+            IntegerArrayCharacteristic...
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              description: Collection of characteristic relationships
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic'
+          StringCharacteristic: '#/components/schemas/StringCharacteristic'
+    CharacteristicRelationship:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship'
+    CharacteristicRelationship_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+          required:
+            - id
+            - relationshipType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship_FVO'
+    CharacteristicRelationship_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship_MVO'
+    CharacteristicSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: This class defines a characteristic specification.
+          properties:
+            id:
+              type: string
+              description: Unique ID for the characteristic
+            name:
+              type: string
+              description: >-
+                A word, term, or phrase by which this characteristic specification is known and
+                distinguished from other characteristic specifications.
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic can take on, such as numeric, text and so
+                forth
+            description:
+              type: string
+              description: A narrative that explains the CharacteristicSpecification.
+            configurable:
+              type: boolean
+              description: 'If true, the Boolean indicates that the target Characteristic is configurable'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            minCardinality:
+              type: integer
+              description: >-
+                The minimum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where zero is the value for the
+                minCardinality.
+            maxCardinality:
+              type: integer
+              description: >-
+                The maximum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where five is the value for the
+                maxCardinality.
+            isUnique:
+              type: boolean
+              description: >-
+                Specifies if the value of this characteristic is unique across all entities
+                instantiated from the specification that uses this characteristic. For example,
+                consider a ProductSpecification for a set-top box, with a
+                CharacteristicSpecification cardID. Each set-top box must have a different value for
+                cardID, so this isUnique attribute would be set to true for the characteristic.
+            regex:
+              type: string
+              description: >-
+                A rule or principle represented in regular expression used to derive the value of a
+                characteristic value.
+            extensible:
+              type: boolean
+              description: >-
+                An indicator that specifies that the values for the characteristic can be extended
+                by adding new values when instantiating a characteristic for a resource.
+            '@valueSchemaLocation':
+              type: string
+              description: This (optional) field provides a link to the schema describing the value type.
+            charSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecificationRelationship'
+              description: >-
+                An aggregation, migration, substitution, dependency or exclusivity relationship
+                between/among Specification Characteristics.
+            characteristicValueSpecification:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicValueSpecification'
+              description: >-
+                A CharacteristicValueSpecification object is used to define a set of attributes,
+                each of which can be assigned to a corresponding set of attributes in a
+                CharacteristicSpecification object. The values of the attributes in the
+                CharacteristicValueSpecification object describe the values of the attributes that a
+                corresponding Characteristic object can take on.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecification: '#/components/schemas/CharacteristicSpecification'
+    CharacteristicSpecificationRelationship:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An aggregation, migration, substitution, dependency or exclusivity relationship
+            between/among Characteristic specifications. The specification characteristic is
+            embedded within the specification whose ID and href are in this entity, and identified
+            by its ID.
+          properties:
+            relationshipType:
+              type: string
+              description: >-
+                Type of relationship such as aggregation, migration, substitution, dependency,
+                exclusivity
+            name:
+              type: string
+              description: Name of the target characteristic within the specification
+            characteristicSpecificationId:
+              type: string
+              description: Unique identifier of the characteristic within the specification
+            parentSpecificationHref:
+              type: string
+              format: uri
+              description: Hyperlink reference to the parent specification containing the target characteristic
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            parentSpecificationId:
+              type: string
+              description: Unique identifier of the parent specification containing the target characteristic
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecificationRelationship: '#/components/schemas/CharacteristicSpecificationRelationship'
+    CharacteristicSpecificationRelationship_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An aggregation, migration, substitution, dependency or exclusivity relationship
+            between/among Characteristic specifications. The specification characteristic is
+            embedded within the specification whose ID and href are in this entity, and identified
+            by its ID.
+          properties:
+            relationshipType:
+              type: string
+              description: >-
+                Type of relationship such as aggregation, migration, substitution, dependency,
+                exclusivity
+            name:
+              type: string
+              description: Name of the target characteristic within the specification
+            characteristicSpecificationId:
+              type: string
+              description: Unique identifier of the characteristic within the specification
+            parentSpecificationHref:
+              type: string
+              format: uri
+              description: Hyperlink reference to the parent specification containing the target characteristic
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            parentSpecificationId:
+              type: string
+              description: Unique identifier of the parent specification containing the target characteristic
+          required:
+            - parentSpecificationId
+            - name
+            - relationshipType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecificationRelationship: '#/components/schemas/CharacteristicSpecificationRelationship_FVO'
+    CharacteristicSpecificationRelationship_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An aggregation, migration, substitution, dependency or exclusivity relationship
+            between/among Characteristic specifications. The specification characteristic is
+            embedded within the specification whose ID and href are in this entity, and identified
+            by its ID.
+          properties:
+            relationshipType:
+              type: string
+              description: >-
+                Type of relationship such as aggregation, migration, substitution, dependency,
+                exclusivity
+            name:
+              type: string
+              description: Name of the target characteristic within the specification
+            characteristicSpecificationId:
+              type: string
+              description: Unique identifier of the characteristic within the specification
+            parentSpecificationHref:
+              type: string
+              format: uri
+              description: Hyperlink reference to the parent specification containing the target characteristic
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            parentSpecificationId:
+              type: string
+              description: Unique identifier of the parent specification containing the target characteristic
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecificationRelationship: '#/components/schemas/CharacteristicSpecificationRelationship_MVO'
+    CharacteristicSpecification_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: This class defines a characteristic specification.
+          properties:
+            id:
+              type: string
+              description: Unique ID for the characteristic
+            name:
+              type: string
+              description: >-
+                A word, term, or phrase by which this characteristic specification is known and
+                distinguished from other characteristic specifications.
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic can take on, such as numeric, text and so
+                forth
+            description:
+              type: string
+              description: A narrative that explains the CharacteristicSpecification.
+            configurable:
+              type: boolean
+              description: 'If true, the Boolean indicates that the target Characteristic is configurable'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            minCardinality:
+              type: integer
+              description: >-
+                The minimum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where zero is the value for the
+                minCardinality.
+            maxCardinality:
+              type: integer
+              description: >-
+                The maximum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where five is the value for the
+                maxCardinality.
+            isUnique:
+              type: boolean
+              description: >-
+                Specifies if the value of this characteristic is unique across all entities
+                instantiated from the specification that uses this characteristic. For example,
+                consider a ProductSpecification for a set-top box, with a
+                CharacteristicSpecification cardID. Each set-top box must have a different value for
+                cardID, so this isUnique attribute would be set to true for the characteristic.
+            regex:
+              type: string
+              description: >-
+                A rule or principle represented in regular expression used to derive the value of a
+                characteristic value.
+            extensible:
+              type: boolean
+              description: >-
+                An indicator that specifies that the values for the characteristic can be extended
+                by adding new values when instantiating a characteristic for a resource.
+            '@valueSchemaLocation':
+              type: string
+              description: This (optional) field provides a link to the schema describing the value type.
+            charSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecificationRelationship_FVO'
+              description: >-
+                An aggregation, migration, substitution, dependency or exclusivity relationship
+                between/among Specification Characteristics.
+            characteristicValueSpecification:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicValueSpecification_FVO'
+              description: >-
+                A CharacteristicValueSpecification object is used to define a set of attributes,
+                each of which can be assigned to a corresponding set of attributes in a
+                CharacteristicSpecification object. The values of the attributes in the
+                CharacteristicValueSpecification object describe the values of the attributes that a
+                corresponding Characteristic object can take on.
+          required:
+            - name
+            - valueType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecification: '#/components/schemas/CharacteristicSpecification_FVO'
+    CharacteristicSpecification_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: This class defines a characteristic specification.
+          properties:
+            id:
+              type: string
+              description: Unique ID for the characteristic
+            name:
+              type: string
+              description: >-
+                A word, term, or phrase by which this characteristic specification is known and
+                distinguished from other characteristic specifications.
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic can take on, such as numeric, text and so
+                forth
+            description:
+              type: string
+              description: A narrative that explains the CharacteristicSpecification.
+            configurable:
+              type: boolean
+              description: 'If true, the Boolean indicates that the target Characteristic is configurable'
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            minCardinality:
+              type: integer
+              description: >-
+                The minimum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where zero is the value for the
+                minCardinality.
+            maxCardinality:
+              type: integer
+              description: >-
+                The maximum number of instances a CharacteristicValue can take on. For example, zero
+                to five phone numbers in a group calling plan, where five is the value for the
+                maxCardinality.
+            isUnique:
+              type: boolean
+              description: >-
+                Specifies if the value of this characteristic is unique across all entities
+                instantiated from the specification that uses this characteristic. For example,
+                consider a ProductSpecification for a set-top box, with a
+                CharacteristicSpecification cardID. Each set-top box must have a different value for
+                cardID, so this isUnique attribute would be set to true for the characteristic.
+            regex:
+              type: string
+              description: >-
+                A rule or principle represented in regular expression used to derive the value of a
+                characteristic value.
+            extensible:
+              type: boolean
+              description: >-
+                An indicator that specifies that the values for the characteristic can be extended
+                by adding new values when instantiating a characteristic for a resource.
+            '@valueSchemaLocation':
+              type: string
+              description: This (optional) field provides a link to the schema describing the value type.
+            charSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecificationRelationship_MVO'
+              description: >-
+                An aggregation, migration, substitution, dependency or exclusivity relationship
+                between/among Specification Characteristics.
+            characteristicValueSpecification:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicValueSpecification_MVO'
+              description: >-
+                A CharacteristicValueSpecification object is used to define a set of attributes,
+                each of which can be assigned to a corresponding set of attributes in a
+                CharacteristicSpecification object. The values of the attributes in the
+                CharacteristicValueSpecification object describe the values of the attributes that a
+                corresponding Characteristic object can take on.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicSpecification: '#/components/schemas/CharacteristicSpecification_MVO'
+    CharacteristicValueSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            specification of a value (number or text or an object) that can be assigned to a
+            Characteristic. This is an abstract base class, the actual value is in one of the
+            strongly-typed subclasses : BooleanArrayCharacteristicValueSpecification,
+            BooleanCharacteristicValueSpecification, FloatArrayCharacteristicValueSpecification,
+            FloatCharacteristicValueSpecification, IntegerArrayCharacteristicValueSpecification,
+            IntegerCharacteristicValueSpecification, MapArrayCharacteristicValueSpecification,
+            MapCharacteristicValueSpecification, NumberArrayCharacteristicValueSpecification,
+            NumberCharacteristicValueSpecification, ObjectArrayCharacteristicValueSpecification,
+            ObjectCharacteristicValueSpecification, StringArrayCharacteristicValueSpecification,
+            StringCharacteristicValueSpecification...
+          properties:
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic value can take on, such as numeric, text and
+                so forth
+            isDefault:
+              type: boolean
+              description: >-
+                If true, the Boolean Indicates if the value is the default value for a
+                characteristic
+            unitOfMeasure:
+              type: string
+              description: >-
+                A length, surface, volume, dry measure, liquid measure, money, weight, time, and the
+                like. In general, a determinate quantity or magnitude of the kind designated, taken
+                as a standard of comparison for others of the same kind, in assigning to them
+                numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            valueFrom:
+              type: integer
+              description: The low range value that a characteristic can take on
+            valueTo:
+              type: integer
+              description: The upper range value that a characteristic can take on
+            rangeInterval:
+              type: string
+              description: >-
+                An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo
+                attributes. If applicable, possible values are "open", "closed", "closedBottom" and
+                "closedTop".
+            regex:
+              type: string
+              description: A regular expression constraint for given value
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicValueSpecification: '#/components/schemas/CharacteristicValueSpecification'
+    CharacteristicValueSpecification_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            specification of a value (number or text or an object) that can be assigned to a
+            Characteristic. This is an abstract base class, the actual value is in one of the
+            strongly-typed subclasses : BooleanArrayCharacteristicValueSpecification,
+            BooleanCharacteristicValueSpecification, FloatArrayCharacteristicValueSpecification,
+            FloatCharacteristicValueSpecification, IntegerArrayCharacteristicValueSpecification,
+            IntegerCharacteristicValueSpecification, MapArrayCharacteristicValueSpecification,
+            MapCharacteristicValueSpecification, NumberArrayCharacteristicValueSpecification,
+            NumberCharacteristicValueSpecification, ObjectArrayCharacteristicValueSpecification,
+            ObjectCharacteristicValueSpecification, StringArrayCharacteristicValueSpecification,
+            StringCharacteristicValueSpecification...
+          properties:
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic value can take on, such as numeric, text and
+                so forth
+            isDefault:
+              type: boolean
+              description: >-
+                If true, the Boolean Indicates if the value is the default value for a
+                characteristic
+            unitOfMeasure:
+              type: string
+              description: >-
+                A length, surface, volume, dry measure, liquid measure, money, weight, time, and the
+                like. In general, a determinate quantity or magnitude of the kind designated, taken
+                as a standard of comparison for others of the same kind, in assigning to them
+                numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            valueFrom:
+              type: integer
+              description: The low range value that a characteristic can take on
+            valueTo:
+              type: integer
+              description: The upper range value that a characteristic can take on
+            rangeInterval:
+              type: string
+              description: >-
+                An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo
+                attributes. If applicable, possible values are "open", "closed", "closedBottom" and
+                "closedTop".
+            regex:
+              type: string
+              description: A regular expression constraint for given value
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicValueSpecification: '#/components/schemas/CharacteristicValueSpecification_FVO'
+    CharacteristicValueSpecification_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            specification of a value (number or text or an object) that can be assigned to a
+            Characteristic. This is an abstract base class, the actual value is in one of the
+            strongly-typed subclasses : BooleanArrayCharacteristicValueSpecification,
+            BooleanCharacteristicValueSpecification, FloatArrayCharacteristicValueSpecification,
+            FloatCharacteristicValueSpecification, IntegerArrayCharacteristicValueSpecification,
+            IntegerCharacteristicValueSpecification, MapArrayCharacteristicValueSpecification,
+            MapCharacteristicValueSpecification, NumberArrayCharacteristicValueSpecification,
+            NumberCharacteristicValueSpecification, ObjectArrayCharacteristicValueSpecification,
+            ObjectCharacteristicValueSpecification, StringArrayCharacteristicValueSpecification,
+            StringCharacteristicValueSpecification...
+          properties:
+            valueType:
+              type: string
+              description: >-
+                A kind of value that the characteristic value can take on, such as numeric, text and
+                so forth
+            isDefault:
+              type: boolean
+              description: >-
+                If true, the Boolean Indicates if the value is the default value for a
+                characteristic
+            unitOfMeasure:
+              type: string
+              description: >-
+                A length, surface, volume, dry measure, liquid measure, money, weight, time, and the
+                like. In general, a determinate quantity or magnitude of the kind designated, taken
+                as a standard of comparison for others of the same kind, in assigning to them
+                numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+            valueFrom:
+              type: integer
+              description: The low range value that a characteristic can take on
+            valueTo:
+              type: integer
+              description: The upper range value that a characteristic can take on
+            rangeInterval:
+              type: string
+              description: >-
+                An indicator that specifies the inclusion or exclusion of the valueFrom and valueTo
+                attributes. If applicable, possible values are "open", "closed", "closedBottom" and
+                "closedTop".
+            regex:
+              type: string
+              description: A regular expression constraint for given value
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicValueSpecification: '#/components/schemas/CharacteristicValueSpecification_MVO'
+    Characteristic_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Describes a given characteristic of an object or entity through a name/value pair. This
+            is an abstract base class, the actual value is in one of the strongly-typed subclasses :
+            StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic,
+            NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic,
+            ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic,
+            IntegerArrayCharacteristic...
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              description: Collection of characteristic relationships
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship_FVO'
+          required:
+            - name
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic_FVO'
+          StringCharacteristic: '#/components/schemas/StringCharacteristic_FVO'
+    Characteristic_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            Describes a given characteristic of an object or entity through a name/value pair. This
+            is an abstract base class, the actual value is in one of the strongly-typed subclasses :
+            StringCharacteristic, ObjectCharacteristic, FloatCharacteristic, BooleanCharacteristic,
+            NumberCharacteristic, IntegerCharacteristic, StringArrayCharacteristic,
+            ObjectArrayCharacteristic, BooleanArrayCharacteristic, NumberArrayCharacteristic,
+            IntegerArrayCharacteristic...
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              description: Collection of characteristic relationships
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic_MVO'
+          StringCharacteristic: '#/components/schemas/StringCharacteristic_MVO'
+    Entity:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+    EntityRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: Entity reference schema to be use for all entityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+          required:
+            - id
+    EntityRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: Entity reference schema to be use for all entityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+    Entity_FVO:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+    Entity_MVO:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+    Event:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: event with common attributes.
+          properties:
+            href:
+              type: string
+              description: Hyperlink reference
+            id:
+              type: string
+              description: unique identifier
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanation of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOccurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+            source:
+              $ref: '#/components/schemas/EntityRef'
+            reportingSystem:
+              $ref: '#/components/schemas/EntityRef'
+            relatedParty:
+              type: array
+              description: Collection of related parties
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            analyticCharacteristic:
+              type: array
+              description: Collection of analytic characteristics
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            event:
+              description: The event linked to the involved resource object
+              type: object
+    Extensible:
+      type: object
+      description: >-
+        Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means
+        that the Entity described by the schema  MUST be extended with the @type
+      properties:
+        '@type':
+          type: string
+          description: 'When sub-classing, this defines the sub-class Extensible name'
+        '@baseType':
+          type: string
+          description: 'When sub-classing, this defines the super-class'
+        '@schemaLocation':
+          type: string
+          description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      required:
+        - '@type'
+    ExternalIdentifier:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An identification of an entity that is owned by or originates in a software system
+            different from the current system, for example a ProductOrder handed off from a commerce
+            platform into an order handling system. The structure identifies the system itself, the
+            nature of the entity within the system (e.g. class name) and the unique ID of the entity
+            within the system. It is anticipated that multiple external IDs can be held for a single
+            entity, e.g. if the entity passed through multiple systems on the way to the current
+            system. In this case the consumer is expected to sequence the IDs in the array in
+            reverse order of provenance, i.e. most recent system first in the list.
+          properties:
+            owner:
+              type: string
+              description: Name of the external system that owns the entity.
+              example: MagentoCommerce
+            externalIdentifierType:
+              type: string
+              description: >-
+                Type of the identification, typically would be the type of the entity within the
+                external system
+              example: ProductOrder
+            id:
+              type: string
+              description: identification of the entity within the external system.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ExternalIdentifier: '#/components/schemas/ExternalIdentifier'
+    ExternalIdentifier_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An identification of an entity that is owned by or originates in a software system
+            different from the current system, for example a ProductOrder handed off from a commerce
+            platform into an order handling system. The structure identifies the system itself, the
+            nature of the entity within the system (e.g. class name) and the unique ID of the entity
+            within the system. It is anticipated that multiple external IDs can be held for a single
+            entity, e.g. if the entity passed through multiple systems on the way to the current
+            system. In this case the consumer is expected to sequence the IDs in the array in
+            reverse order of provenance, i.e. most recent system first in the list.
+          properties:
+            owner:
+              type: string
+              description: Name of the external system that owns the entity.
+              example: MagentoCommerce
+            externalIdentifierType:
+              type: string
+              description: >-
+                Type of the identification, typically would be the type of the entity within the
+                external system
+              example: ProductOrder
+            id:
+              type: string
+              description: identification of the entity within the external system.
+          required:
+            - id
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ExternalIdentifier: '#/components/schemas/ExternalIdentifier_FVO'
+    ExternalIdentifier_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            An identification of an entity that is owned by or originates in a software system
+            different from the current system, for example a ProductOrder handed off from a commerce
+            platform into an order handling system. The structure identifies the system itself, the
+            nature of the entity within the system (e.g. class name) and the unique ID of the entity
+            within the system. It is anticipated that multiple external IDs can be held for a single
+            entity, e.g. if the entity passed through multiple systems on the way to the current
+            system. In this case the consumer is expected to sequence the IDs in the array in
+            reverse order of provenance, i.e. most recent system first in the list.
+          properties:
+            owner:
+              type: string
+              description: Name of the external system that owns the entity.
+              example: MagentoCommerce
+            externalIdentifierType:
+              type: string
+              description: >-
+                Type of the identification, typically would be the type of the entity within the
+                external system
+              example: ProductOrder
+            id:
+              type: string
+              description: identification of the entity within the external system.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ExternalIdentifier: '#/components/schemas/ExternalIdentifier_MVO'
+    PartyRef:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+    PartyRefOrPartyRoleRef:
+      type: object
+      description: ''
+      oneOf:
+        - $ref: '#/components/schemas/PartyRef'
+        - $ref: '#/components/schemas/PartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    PartyRefOrPartyRoleRef_FVO:
+      type: object
+      description: ''
+      oneOf:
+        - $ref: '#/components/schemas/PartyRef_FVO'
+        - $ref: '#/components/schemas/PartyRoleRef_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_FVO'
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_FVO'
+    PartyRefOrPartyRoleRef_MVO:
+      type: object
+      description: ''
+      oneOf:
+        - $ref: '#/components/schemas/PartyRef_MVO'
+        - $ref: '#/components/schemas/PartyRoleRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_MVO'
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_MVO'
+    PartyRef_FVO:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_FVO'
+    PartyRef_MVO:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_MVO'
+    PartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    PartyRoleRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_FVO'
+    PartyRoleRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_MVO'
+    Quantity:
+      type: object
+      description: An amount in a given unit
+      properties:
+        amount:
+          type: number
+          format: float
+          default: 1
+          description: Numeric value in a given unit
+        units:
+          type: string
+          description: Unit
+    RelatedPartyRefOrPartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+    RelatedPartyRefOrPartyRoleRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef_FVO'
+          required:
+            - role
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_FVO'
+    RelatedPartyRefOrPartyRoleRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_MVO'
+    ResourceRef:
+      type: object
+      description: 'Resource reference, for when Resource is used by other entities.'
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceRef: '#/components/schemas/ResourceRef'
+    ResourceRef_FVO:
+      type: object
+      description: 'Resource reference, for when Resource is used by other entities.'
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceRef: '#/components/schemas/ResourceRef_FVO'
+    ResourceRef_MVO:
+      type: object
+      description: 'Resource reference, for when Resource is used by other entities.'
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceRef: '#/components/schemas/ResourceRef_MVO'
+    ResourceSpecificationRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Resources are physical or non-physical components (or some combination of these) within
+            an enterprise's infrastructure or inventory. They are typically consumed or used by
+            services (for example a physical port assigned to a service) or contribute to the
+            realization of a Product (for example, a SIM card). They can be drawn from the
+            Application, Computing and Network domains, and include, for example, Network Elements,
+            software, IT systems, content and information, and technology components.
+
+            A ResourceSpecification is an abstract base class for representing a generic means for
+            implementing a particular type of Resource. In essence, a ResourceSpecification defines
+            the common attributes and relationships of a set of related Resources, while Resource
+            defines a specific instance that is based on a particular ResourceSpecification.
+          properties:
+            version:
+              type: string
+              description: Resource Specification version
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceSpecificationRef: '#/components/schemas/ResourceSpecificationRef'
+    ResourceSpecificationRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Resources are physical or non-physical components (or some combination of these) within
+            an enterprise's infrastructure or inventory. They are typically consumed or used by
+            services (for example a physical port assigned to a service) or contribute to the
+            realization of a Product (for example, a SIM card). They can be drawn from the
+            Application, Computing and Network domains, and include, for example, Network Elements,
+            software, IT systems, content and information, and technology components.
+
+            A ResourceSpecification is an abstract base class for representing a generic means for
+            implementing a particular type of Resource. In essence, a ResourceSpecification defines
+            the common attributes and relationships of a set of related Resources, while Resource
+            defines a specific instance that is based on a particular ResourceSpecification.
+          properties:
+            version:
+              type: string
+              description: Resource Specification version
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceSpecificationRef: '#/components/schemas/ResourceSpecificationRef_FVO'
+    ResourceSpecificationRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - type: object
+          description: >-
+            Resources are physical or non-physical components (or some combination of these) within
+            an enterprise's infrastructure or inventory. They are typically consumed or used by
+            services (for example a physical port assigned to a service) or contribute to the
+            realization of a Product (for example, a SIM card). They can be drawn from the
+            Application, Computing and Network domains, and include, for example, Network Elements,
+            software, IT systems, content and information, and technology components.
+
+            A ResourceSpecification is an abstract base class for representing a generic means for
+            implementing a particular type of Resource. In essence, a ResourceSpecification defines
+            the common attributes and relationships of a set of related Resources, while Resource
+            defines a specific instance that is based on a particular ResourceSpecification.
+          properties:
+            version:
+              type: string
+              description: Resource Specification version
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceSpecificationRef: '#/components/schemas/ResourceSpecificationRef_MVO'
+    ResourceUsage:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            An occurrence of usage on a Resource,derived from various Service usages. It is
+            comprised of characteristics, which represent attributes of service usage.
+          properties:
+            usageDate:
+              type: string
+              format: date-time
+              description: Date of usage
+              example: '2020-09-21T09:13:16-07:00'
+            description:
+              type: string
+              description: Description of resource usage
+              example: Voicemail Retrieval
+            usageType:
+              type: string
+              description: Type of usage
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether usage represents a single usage (false), or a bundle of
+                usages specifications (true).
+            usageCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            resource:
+              $ref: '#/components/schemas/ResourceRef'
+            usageSpecification:
+              $ref: '#/components/schemas/ResourceUsageSpecificationRef'
+            bundledResourceUsage:
+              description: Relationship to Resource Usage in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageRef'
+            externalIdentifier:
+              type: array
+              description: A list of external identifiers assoicated with this resource usage
+              items:
+                $ref: '#/components/schemas/ExternalIdentifier'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsage: '#/components/schemas/ResourceUsage'
+    ResourceUsageAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageAttributeValueChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageAttributeValueChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageAttributeValueChangeEvent: '#/components/schemas/ResourceUsageAttributeValueChangeEvent'
+    ResourceUsageAttributeValueChangeEventPayload:
+      type: object
+      description: ResourceUsageAttributeValueChangeEventPayload generic structure
+      properties:
+        usage:
+          $ref: '#/components/schemas/ResourceUsage'
+    ResourceUsageCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageCreateEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageCreateEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageCreateEvent: '#/components/schemas/ResourceUsageCreateEvent'
+    ResourceUsageCreateEventPayload:
+      type: object
+      description: ResourceUsageCreateEventPayload generic structure
+      properties:
+        usage:
+          $ref: '#/components/schemas/ResourceUsage'
+    ResourceUsageDeleteEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageDeleteEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageDeleteEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageDeleteEvent: '#/components/schemas/ResourceUsageDeleteEvent'
+    ResourceUsageDeleteEventPayload:
+      type: object
+      description: ResourceUsageDeleteEventPayload generic structure
+      properties:
+        usage:
+          $ref: '#/components/schemas/ResourceUsage'
+    ResourceUsageRef:
+      type: object
+      description: ResourceUsage reference. ResourceUsage is usage event for Resource.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - $ref: '#/components/schemas/Entity'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageRef: '#/components/schemas/ResourceUsageRef'
+    ResourceUsageRef_FVO:
+      type: object
+      description: ResourceUsage reference. ResourceUsage is usage event for Resource.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - $ref: '#/components/schemas/Entity_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageRef: '#/components/schemas/ResourceUsageRef_FVO'
+    ResourceUsageRef_MVO:
+      type: object
+      description: ResourceUsage reference. ResourceUsage is usage event for Resource.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - $ref: '#/components/schemas/Entity_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageRef: '#/components/schemas/ResourceUsageRef_MVO'
+    ResourceUsageSpecRelationship:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            A dependency, substitution or exclusivity relationship between/among resource usage
+            specifications.
+          properties:
+            relationshipType:
+              type: string
+              description: 'Type of relationship such as dependency, substitution or exclusivity'
+            role:
+              type: string
+              description: The association role for this service specification
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecRelationship: '#/components/schemas/ResourceUsageSpecRelationship'
+    ResourceUsageSpecRelationship_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            A dependency, substitution or exclusivity relationship between/among resource usage
+            specifications.
+          properties:
+            relationshipType:
+              type: string
+              description: 'Type of relationship such as dependency, substitution or exclusivity'
+            role:
+              type: string
+              description: The association role for this service specification
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+          required:
+            - relationshipType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecRelationship: '#/components/schemas/ResourceUsageSpecRelationship_FVO'
+    ResourceUsageSpecRelationship_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - type: object
+          description: >-
+            A dependency, substitution or exclusivity relationship between/among resource usage
+            specifications.
+          properties:
+            relationshipType:
+              type: string
+              description: 'Type of relationship such as dependency, substitution or exclusivity'
+            role:
+              type: string
+              description: The association role for this service specification
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecRelationship: '#/components/schemas/ResourceUsageSpecRelationship_MVO'
+    ResourceUsageSpecification:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            A detailed description of a Resource usage event that are of interest to the business
+            and can have charges applied to it. It is comprised of characteristics, which define all
+            attributes known for a particular type of usage.
+          properties:
+            name:
+              type: string
+              description: Name given to the specification
+            description:
+              type: string
+              description: Description of the specification
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether specification represents a single specification (false),
+                or a bundle of specifications (true).
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Date and time of the last update of the specification
+            lifecycleStatus:
+              type: string
+              description: Used to indicate the current lifecycle status of this catalog item.
+            version:
+              type: string
+              description: specification version
+            resourceSpecification:
+              description: Relationship to Resource specification
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceSpecificationRef'
+            specCharacteristic:
+              description: List of characteristics that the entity can take
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecification'
+            attachment:
+              type: array
+              description: >-
+                Attachments that may be of relevance to this specification, such as picture,
+                document, media
+              items:
+                $ref: '#/components/schemas/AttachmentRefOrValue'
+            bundledResourceUsageSpecification:
+              description: Relationship to Resource specification in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecificationRef'
+            resourceUsageSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecRelationship'
+              description: >-
+                A list of resource usage specifications related to this specification, e.g.
+                migration, substitution, dependency or exclusivity relationship
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecification: '#/components/schemas/ResourceUsageSpecification'
+    ResourceUsageSpecificationAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageSpecificationAttributeValueChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageSpecificationAttributeValueChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationAttributeValueChangeEvent: '#/components/schemas/ResourceUsageSpecificationAttributeValueChangeEvent'
+    ResourceUsageSpecificationAttributeValueChangeEventPayload:
+      type: object
+      description: ResourceUsageSpecificationAttributeValueChangeEventPayload generic structure
+      properties:
+        usageSpecification:
+          $ref: '#/components/schemas/ResourceUsageSpecification'
+    ResourceUsageSpecificationCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageSpecificationCreateEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageSpecificationCreateEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationCreateEvent: '#/components/schemas/ResourceUsageSpecificationCreateEvent'
+    ResourceUsageSpecificationCreateEventPayload:
+      type: object
+      description: ResourceUsageSpecificationCreateEventPayload generic structure
+      properties:
+        usageSpecification:
+          $ref: '#/components/schemas/ResourceUsageSpecification'
+    ResourceUsageSpecificationDeleteEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: ResourceUsageSpecificationDeleteEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/ResourceUsageSpecificationDeleteEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationDeleteEvent: '#/components/schemas/ResourceUsageSpecificationDeleteEvent'
+    ResourceUsageSpecificationDeleteEventPayload:
+      type: object
+      description: ResourceUsageSpecificationDeleteEventPayload generic structure
+      properties:
+        usageSpecification:
+          $ref: '#/components/schemas/ResourceUsageSpecification'
+    ResourceUsageSpecificationRef:
+      type: object
+      description: >-
+        ResourceUsageSpecification reference. ResourceUsageSpecification is a detailed description
+        of a usage event that are of interest to the business and can have charges applied to it. It
+        is comprised of characteristics, which define all attributes known for a particular type of
+        usage.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - $ref: '#/components/schemas/Entity'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationRef: '#/components/schemas/ResourceUsageSpecificationRef'
+    ResourceUsageSpecificationRef_FVO:
+      type: object
+      description: >-
+        ResourceUsageSpecification reference. ResourceUsageSpecification is a detailed description
+        of a usage event that are of interest to the business and can have charges applied to it. It
+        is comprised of characteristics, which define all attributes known for a particular type of
+        usage.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - $ref: '#/components/schemas/Entity_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationRef: '#/components/schemas/ResourceUsageSpecificationRef_FVO'
+    ResourceUsageSpecificationRef_MVO:
+      type: object
+      description: >-
+        ResourceUsageSpecification reference. ResourceUsageSpecification is a detailed description
+        of a usage event that are of interest to the business and can have charges applied to it. It
+        is comprised of characteristics, which define all attributes known for a particular type of
+        usage.
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_MVO'
+        - $ref: '#/components/schemas/Entity_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecificationRef: '#/components/schemas/ResourceUsageSpecificationRef_MVO'
+    ResourceUsageSpecification_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - type: object
+          description: >-
+            A detailed description of a Resource usage event that are of interest to the business
+            and can have charges applied to it. It is comprised of characteristics, which define all
+            attributes known for a particular type of usage.
+          properties:
+            name:
+              type: string
+              description: Name given to the specification
+            description:
+              type: string
+              description: Description of the specification
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether specification represents a single specification (false),
+                or a bundle of specifications (true).
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Date and time of the last update of the specification
+            lifecycleStatus:
+              type: string
+              description: Used to indicate the current lifecycle status of this catalog item.
+            version:
+              type: string
+              description: specification version
+            resourceSpecification:
+              description: Relationship to Resource specification
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceSpecificationRef_FVO'
+            specCharacteristic:
+              description: List of characteristics that the entity can take
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecification_FVO'
+            attachment:
+              type: array
+              description: >-
+                Attachments that may be of relevance to this specification, such as picture,
+                document, media
+              items:
+                $ref: '#/components/schemas/AttachmentRefOrValue_FVO'
+            bundledResourceUsageSpecification:
+              description: Relationship to Resource specification in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecificationRef_FVO'
+            resourceUsageSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecRelationship_FVO'
+              description: >-
+                A list of resource usage specifications related to this specification, e.g.
+                migration, substitution, dependency or exclusivity relationship
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+          required:
+            - name
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecification: '#/components/schemas/ResourceUsageSpecification_FVO'
+    ResourceUsageSpecification_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - type: object
+          description: >-
+            A detailed description of a Resource usage event that are of interest to the business
+            and can have charges applied to it. It is comprised of characteristics, which define all
+            attributes known for a particular type of usage.
+          properties:
+            name:
+              type: string
+              description: Name given to the specification
+            description:
+              type: string
+              description: Description of the specification
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether specification represents a single specification (false),
+                or a bundle of specifications (true).
+            lastUpdate:
+              type: string
+              format: date-time
+              description: Date and time of the last update of the specification
+            lifecycleStatus:
+              type: string
+              description: Used to indicate the current lifecycle status of this catalog item.
+            version:
+              type: string
+              description: specification version
+            resourceSpecification:
+              description: Relationship to Resource specification
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceSpecificationRef_MVO'
+            specCharacteristic:
+              description: List of characteristics that the entity can take
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicSpecification_MVO'
+            attachment:
+              type: array
+              description: >-
+                Attachments that may be of relevance to this specification, such as picture,
+                document, media
+              items:
+                $ref: '#/components/schemas/AttachmentRefOrValue_MVO'
+            bundledResourceUsageSpecification:
+              description: Relationship to Resource specification in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecificationRef_MVO'
+            resourceUsageSpecRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageSpecRelationship_MVO'
+              description: >-
+                A list of resource usage specifications related to this specification, e.g.
+                migration, substitution, dependency or exclusivity relationship
+            validFor:
+              $ref: '#/components/schemas/TimePeriod'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsageSpecification: '#/components/schemas/ResourceUsageSpecification_MVO'
+    ResourceUsage_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - type: object
+          description: >-
+            An occurrence of usage on a Resource,derived from various Service usages. It is
+            comprised of characteristics, which represent attributes of service usage.
+          properties:
+            usageDate:
+              type: string
+              format: date-time
+              description: Date of usage
+              example: '2020-09-21T09:13:16-07:00'
+            description:
+              type: string
+              description: Description of resource usage
+              example: Voicemail Retrieval
+            usageType:
+              type: string
+              description: Type of usage
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether usage represents a single usage (false), or a bundle of
+                usages specifications (true).
+            usageCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic_FVO'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_FVO'
+            resource:
+              $ref: '#/components/schemas/ResourceRef_FVO'
+            usageSpecification:
+              $ref: '#/components/schemas/ResourceUsageSpecificationRef_FVO'
+            bundledResourceUsage:
+              description: Relationship to Resource Usage in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageRef_FVO'
+            externalIdentifier:
+              type: array
+              description: A list of external identifiers assoicated with this resource usage
+              items:
+                $ref: '#/components/schemas/ExternalIdentifier_FVO'
+          required:
+            - usageCharacteristic
+            - usageDate
+            - resource
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsage: '#/components/schemas/ResourceUsage_FVO'
+    ResourceUsage_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - type: object
+          description: >-
+            An occurrence of usage on a Resource,derived from various Service usages. It is
+            comprised of characteristics, which represent attributes of service usage.
+          properties:
+            description:
+              type: string
+              description: Description of resource usage
+              example: Voicemail Retrieval
+            usageType:
+              type: string
+              description: Type of usage
+            isBundle:
+              type: boolean
+              description: >-
+                isBundle determines whether usage represents a single usage (false), or a bundle of
+                usages specifications (true).
+            usageCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic_MVO'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_MVO'
+            resource:
+              $ref: '#/components/schemas/ResourceRef_MVO'
+            usageSpecification:
+              $ref: '#/components/schemas/ResourceUsageSpecificationRef_MVO'
+            bundledResourceUsage:
+              description: Relationship to Resource Usage in bundle
+              type: array
+              items:
+                $ref: '#/components/schemas/ResourceUsageRef_MVO'
+            externalIdentifier:
+              type: array
+              description: A list of external identifiers assoicated with this resource usage
+              items:
+                $ref: '#/components/schemas/ExternalIdentifier_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ResourceUsage: '#/components/schemas/ResourceUsage_MVO'
+    StringCharacteristic:
+      allOf:
+        - $ref: '#/components/schemas/Characteristic'
+        - type: object
+          description: A characteristic which value is a String.
+          properties:
+            value:
+              type: string
+              description: Value of the characteristic
+    StringCharacteristic_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Characteristic_FVO'
+        - type: object
+          description: A characteristic which value is a String.
+          properties:
+            value:
+              type: string
+              description: Value of the characteristic
+          required:
+            - value
+    StringCharacteristic_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Characteristic_MVO'
+        - type: object
+          description: A characteristic which value is a String.
+          properties:
+            value:
+              type: string
+              description: Value of the characteristic
+    TimePeriod:
+      type: object
+      description: 'A period of time, either as a deadline (endDateTime only) a startDateTime only, or both'
+      properties:
+        startDateTime:
+          description: 'Start of the time period, using IETC-RFC-3339 format'
+          type: string
+          format: date-time
+          example: '1985-04-12T23:20:50.52Z'
+        endDateTime:
+          description: 'End of the time period, using IETC-RFC-3339 format'
+          type: string
+          format: date-time
+          example: '1985-04-12T23:20:50.52Z'
+    Error:
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Error: '#/components/schemas/Error'
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          required:
+            - code
+            - reason
+          properties:
+            code:
+              type: string
+              description: 'Application relevant detail, defined in the API or a common list.'
+            reason:
+              type: string
+              description: Explanation of the reason for the error which can be shown to a client user.
+            message:
+              type: string
+              description: >-
+                More details and corrective actions related to the error which can be shown to a
+                client user.
+            status:
+              type: string
+              description: HTTP Error code extension
+            referenceError:
+              type: string
+              description: URI of documentation describing the error.
+      description: 'Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)'
+    Hub_FVO:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      required:
+        - callback
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - properties:
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+    Hub:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - properties:
+            id:
+              type: string
+              description: Id of the listener
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+          required:
+            - callback
+    JsonPatch:
+      type: object
+      description: A JSONPatch document as defined by RFC 6902
+      required:
+        - op
+        - path
+      properties:
+        op:
+          type: string
+          description: The operation to be performed
+          enum:
+            - add
+            - remove
+            - replace
+            - move
+            - copy
+            - test
+        path:
+          type: string
+          description: A JSON-Pointer
+        value:
+          description: The value to be used within the operations.
+        from:
+          type: string
+          description: A string containing a JSON Pointer value.
+    JsonPatchOperations:
+      description: JSONPatch Operations document as defined by RFC 6902
+      type: array
+      items:
+        $ref: '#/components/schemas/JsonPatch'
+  parameters:
+    Id:
+      name: id
+      required: true
+      schema:
+        type: string
+      in: path
+      description: Identifier of the Resource
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated properties to be provided in response
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Requested index for start of resources to be provided in response
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      description: Requested number of resources to be provided in response
+      schema:
+        type: integer
+  requestBodies:
+    ResourceUsage_FVO:
+      description: The ResourceUsage to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage_FVO'
+          examples:
+            ResourceUsage_Create_example:
+              $ref: '#/components/examples/ResourceUsage_Create_example_request'
+      required: true
+    ResourceUsage_MVO:
+      description: The ResourceUsage to be patched
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage_MVO'
+          examples:
+            Resource_Usage_Update_example_application-json_:
+              $ref: '#/components/examples/Resource_Usage_Update_example_application-json__request'
+        application/merge-patch+json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage_MVO'
+          examples:
+            Resource_Usage_Update_example_Merge_:
+              $ref: '#/components/examples/Resource_Usage_Update_example_Merge__request'
+        application/json-patch+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            Resource_Usage_Update_example_JSON-PATCH_:
+              $ref: '#/components/examples/Resource_Usage_Update_example_JSON-PATCH__request'
+        application/json-patch-query+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            Resource_Usage_Update_example_JSON-PATCH-QUERY_:
+              $ref: '#/components/examples/Resource_Usage_Update_example_JSON-PATCH-QUERY__request'
+      required: true
+    ResourceUsageCreateEvent:
+      description: ResourceUsage create Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageCreateEvent'
+          examples:
+            ResourceUsageCreate:
+              $ref: '#/components/examples/ResourceUsageCreate_request'
+      required: true
+    ResourceUsageAttributeValueChangeEvent:
+      description: ResourceUsage attributeValueChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageAttributeValueChangeEvent'
+          examples:
+            ResourceUsageAttributeValueChange:
+              $ref: '#/components/examples/ResourceUsageAttributeValueChange_request'
+      required: true
+    ResourceUsageDeleteEvent:
+      description: ResourceUsage delete Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageDeleteEvent'
+          examples:
+            ResourceUsageDelete:
+              $ref: '#/components/examples/ResourceUsageDelete_request'
+      required: true
+    ResourceUsageSpecification_FVO:
+      description: The ResourceUsageSpecification to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification_FVO'
+          examples:
+            ResourceUsageSpecification_Create_example:
+              $ref: '#/components/examples/ResourceUsageSpecification_Create_example_request'
+      required: true
+    ResourceUsageSpecification_MVO:
+      description: The ResourceUsageSpecification to be patched
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification_MVO'
+          examples:
+            ResourceUsageSpecification_Update_example_application-json_:
+              $ref: >-
+                #/components/examples/ResourceUsageSpecification_Update_example_application-json__request
+        application/merge-patch+json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification_MVO'
+          examples:
+            ResourceUsageSpecification_Update_example_Merge_:
+              $ref: '#/components/examples/ResourceUsageSpecification_Update_example_Merge__request'
+        application/json-patch+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            ResourceUsageSpecification_Update_example_JSON-PATCH_:
+              $ref: '#/components/examples/ResourceUsageSpecification_Update_example_JSON-PATCH__request'
+        application/json-patch-query+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            ResourceUsageSpecification_Update_example_JSON-PATCH-QUERY_:
+              $ref: >-
+                #/components/examples/ResourceUsageSpecification_Update_example_JSON-PATCH-QUERY__request
+      required: true
+    ResourceUsageSpecificationCreateEvent:
+      description: ResourceUsageSpecification create Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecificationCreateEvent'
+          examples:
+            Create:
+              $ref: '#/components/examples/Create_request'
+      required: true
+    ResourceUsageSpecificationAttributeValueChangeEvent:
+      description: ResourceUsageSpecification attributeValueChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecificationAttributeValueChangeEvent'
+          examples:
+            AttributeValueChange:
+              $ref: '#/components/examples/AttributeValueChange_request'
+      required: true
+    ResourceUsageSpecificationDeleteEvent:
+      description: ResourceUsageSpecification delete Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecificationDeleteEvent'
+          examples:
+            Delete:
+              $ref: '#/components/examples/Delete_request'
+      required: true
+    Hub_FVO:
+      description: Data containing the callback endpoint to deliver the information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub_FVO'
+          examples:
+            Basic Hub Example Request:
+              value:
+                '@type': Hub
+                callback: 'https://host/tmf-api/specificAPIName/v5/listener/specificEventListener'
+                query: data
+      required: true
+  responses:
+    '200':
+      description: OK
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Bad Request Error
+              value:
+                '@type': Error
+                code: ERR400
+                reason: Bad Request
+                message: >-
+                  The server could not understand the request due to invalid syntax. Please correct
+                  the syntax and try again.
+                referenceError: 'https://host/errors'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Unauthorized Error
+              value:
+                '@type': Error
+                code: ERR401
+                reason: Unauthorized
+                message: >-
+                  You are not authorized to access the requested resource. Please provide the
+                  correct credentials.
+                referenceError: 'https://host/errors'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Forbidden Error
+              value:
+                '@type': Error
+                code: ERR403
+                reason: Forbidden
+                message: >-
+                  You don't have the permission to access the requested resource. It is either
+                  read-protected or not readable by the server.
+                referenceError: 'https://host/errors'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Found Error
+              value:
+                '@type': Error
+                code: ERR404
+                reason: Not Found
+                message: The requested URL was not found on the server.
+                referenceError: 'https://host/errors'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Method Not allowed Error
+              value:
+                '@type': Error
+                code: ERR405
+                reason: Method Not allowed
+                message: The method is not allowed for the requested URL.
+                referenceError: 'https://host/errors'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Conflict Error
+              value:
+                '@type': Error
+                code: ERR409
+                reason: Conflict
+                message: >-
+                  The request could not be completed due to a conflict with the current state of the
+                  target resource.
+                referenceError: 'https://host/errors'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Internal Server Error example
+              value:
+                '@type': Error
+                code: ERR500
+                reason: Internal Server Error
+                message: The server encountered an internal error. Please contact the system administrator.
+                referenceError: 'https://host/errors'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Implemented Error
+              value:
+                '@type': Error
+                code: ERR501
+                reason: The requested operation is not implemented
+                message: >-
+                  The requested operation is not implemented. Please contact the system
+                  administrator.
+                referenceError: 'https://host/errors'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Service Unavailable Error
+              value:
+                '@type': Error
+                code: ERR503
+                reason: Service Unavailable
+                message: The service is currently unavailable. Please try again later.
+                referenceError: 'https://host/errors'
+    200ResourceUsageArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResourceUsage'
+          examples:
+            Resource_Usage_list_example:
+              $ref: '#/components/examples/Resource_Usage_list_example_response'
+    200ResourceUsage_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage'
+          examples:
+            Resource_Usage_retrieve_example:
+              $ref: '#/components/examples/Resource_Usage_retrieve_example_response'
+    200ResourceUsage_Patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage'
+          examples:
+            Resource_Usage_Update_example_application-json_:
+              $ref: '#/components/examples/Resource_Usage_Update_example_application-json__response'
+    201ResourceUsage:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsage'
+          examples:
+            ResourceUsage_Create_example:
+              $ref: '#/components/examples/ResourceUsage_Create_example_response'
+    200ResourceUsageSpecificationArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ResourceUsageSpecification'
+          examples:
+            ResourceUsageSpecification_list_example:
+              $ref: '#/components/examples/ResourceUsageSpecification_list_example_response'
+    200ResourceUsageSpecification_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification'
+          examples:
+            ResourceUsageSpecification_retrieve_example:
+              $ref: '#/components/examples/ResourceUsageSpecification_retrieve_example_response'
+    200ResourceUsageSpecification_Patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification'
+          examples:
+            ResourceUsageSpecification_Update_example_application-json_:
+              $ref: >-
+                #/components/examples/ResourceUsageSpecification_Update_example_application-json__response
+    201ResourceUsageSpecification:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceUsageSpecification'
+          examples:
+            ResourceUsageSpecification_Create_example:
+              $ref: '#/components/examples/ResourceUsageSpecification_Create_example_response'
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Error example
+              value:
+                '@type': Error
+                code: ERR001
+                reason: Missing information
+                message: Please provide the additional example information
+                referenceError: 'https://host/errors'
+    Hub:
+      description: Notified
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub'
+          examples:
+            basic:
+              summary: Hub example
+              value:
+                '@type': Hub
+                callback: 'https://host/tmf-api/specificAPIName/v5/listener/specificEventListener'
+  headers:
+    X-Total-Count:
+      description: Total number of items matching criteria
+      schema:
+        type: integer
+    X-Result-Count:
+      description: Actual number of items returned in the response body
+      schema:
+        type: integer
+  securitySchemes: {}
+  examples:
+    Resource_Usage_list_example_response:
+      value:
+        - '@type': ResourceUsage
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/8cc2840d-b408-4f43-80c0-11da13d84147
+          id: 8cc2840d-b408-4f43-80c0-11da13d84147
+          usageDate: '2024-08-26T12:19:14Z'
+          usageType: DATA
+          usageCharacteristic:
+            - '@type': StringCharacteristic
+              name: direction
+              valueType: string
+              value: download
+            - '@type': StringCharacteristic
+              name: dataTransfered
+              valueType: string
+              value: '45'
+          relatedParty:
+            - '@type': RelatedPartyRefOrPartyRoleRef
+              role: Organization
+              partyOrPartyRole:
+                '@type': PartyRef
+                href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+                id: 8a41-d6451fe98963
+          resource:
+            '@type': ResourceRef
+            href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+            id: qerr-475
+            name: Antenna
+          usageSpecification:
+            '@type': ResourceUsageSpecificationRef
+            href: >-
+              https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+            id: af59-b504c742900e
+            name: Antenna for 5G slice
+        - '@type': ResourceUsage
+          href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+          id: 5130d5131a23
+          usageDate: '2024-08-25T12:19:14Z'
+          usageType: DATA
+          relatedParty:
+            - '@type': RelatedPartyRefOrPartyRoleRef
+              role: Organization
+              partyOrPartyRole:
+                '@type': PartyRef
+                href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+                id: 8a41-d6451fe98963
+          usageCharacteristic:
+            - '@type': StringCharacteristic
+              name: direction
+              valueType: string
+              value: download
+            - '@type': StringCharacteristic
+              name: dataTransfered
+              valueType: string
+              value: '20'
+          resource:
+            '@type': ResourceRef
+            href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+            id: qerr-475
+            name: Antenna
+          usageSpecification:
+            '@type': ResourceUsageSpecificationRef
+            href: >-
+              https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+            id: af59-b504c742900e
+            name: Antenna for 5G slice
+      description: Retrieving previous Usage details for the usageType of 'Voice'.
+    Resource_Usage_retrieve_example_response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '20'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+      description: A request for a previous Usage event. The criteria is the Usage id 5130d5131a23
+    ResourceUsageSpecification_list_example_response:
+      value:
+        - '@type': ResourceUsageSpecification
+          name: Antenna for 5G slice
+          description: Specification for onsite antenna for 5G slices
+          version: '0.8'
+          specCharacteristic:
+            - '@type': CharacteristicSpecification
+              name: direction
+              valueType: string
+              description: direction of the data transfer on the antenna
+              configurable: true
+              minCardinality: 0
+              maxCardinality: 2
+            - '@type': CharacteristicSpecification
+              name: dataTransfered
+              valueType: string
+              description: volume of the data transfered for the usage.
+              configurable: true
+              minCardinality: 1
+              maxCardinality: 1
+          lifecycleStatus: inDesign
+          validFor:
+            startDateTime: '2022-02-20T17:00:00Z'
+            endDateTime: '2099-01-11T00:00:00Z'
+      description: Retrieving previous UsageSpecifications which are at version 2.5
+    ResourceUsageSpecification_retrieve_example_response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '2.0'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: direction of the data transfer on the antenna
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: active
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+      description: A request for a specific ResourceUsageSpecification with an id 9aa3-3e7737dd5080
+    ResourceUsage_Create_example_request:
+      value:
+        '@type': ResourceUsage
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '20'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+      description: Here is an example of a request for creating a specific Usage resource.
+    ResourceUsage_Create_example_response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '20'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+      description: Here is an example of a response for creating a Usage resource.
+    ResourceUsageSpecification_Create_example_request:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '0.8'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: direction of the data transfer on the antenna
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+      description: >-
+        Here is an example of a request for creating a specific Resource Usage Specification
+        resource.
+    ResourceUsageSpecification_Create_example_response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '0.8'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: direction of the data transfer on the antenna
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: inDesign
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+      description: Here is an example of a response for creating a Resource Usage Specification resource.
+    Resource_Usage_Update_example_application-json__request:
+      value:
+        '@type': ResourceUsage
+        isBundle: false
+    Resource_Usage_Update_example_application-json__response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        isBundle: false
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '22'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+    Resource_Usage_Update_example_Merge__request:
+      value:
+        '@type': ResourceUsage
+        isBundle: false
+    Resource_Usage_Update_example_Merge__response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        isBundle: false
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '22'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+    Resource_Usage_Update_example_JSON-PATCH__request:
+      value:
+        - op: replace
+          path: /isBundle
+          value: false
+    Resource_Usage_Update_example_JSON-PATCH__response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        isBundle: false
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '20'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+    Resource_Usage_Update_example_JSON-PATCH-QUERY__request:
+      value:
+        - op: replace
+          path: /usageCharacteristic/value?name=dataTransfered
+          value: '22'
+    Resource_Usage_Update_example_JSON-PATCH-QUERY__response:
+      value:
+        '@type': ResourceUsage
+        href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+        id: 5130d5131a23
+        usageDate: '2024-08-25T12:19:14Z'
+        usageType: DATA
+        usageCharacteristic:
+          - '@type': StringCharacteristic
+            name: direction
+            valueType: string
+            value: download
+          - '@type': StringCharacteristic
+            name: dataTransfered
+            valueType: string
+            value: '22'
+        relatedParty:
+          - '@type': RelatedPartyRefOrPartyRoleRef
+            role: Organization
+            partyOrPartyRole:
+              '@type': PartyRef
+              href: 'http://api.csp.com/tmf-api/partyManagement/organization/8a41-d6451fe98963'
+              id: 8a41-d6451fe98963
+        resource:
+          '@type': ResourceRef
+          href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+          id: qerr-475
+          name: Antenna
+        usageSpecification:
+          '@type': ResourceUsageSpecificationRef
+          href: >-
+            https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+          id: af59-b504c742900e
+          name: Antenna for 5G slice
+    ResourceUsageSpecification_Update_example_application-json__request:
+      value:
+        '@type': ResourceUsageSpecification
+        version: '3.2'
+    ResourceUsageSpecification_Update_example_application-json__response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '3.2'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: Direction of the data transfer on the antenna.
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: Volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: active
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+    ResourceUsageSpecification_Update_example_Merge__request:
+      value:
+        '@type': ResourceUsageSpecification
+        version: '3.2'
+    ResourceUsageSpecification_Update_example_Merge__response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '3.2'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: Direction of the data transfer on the antenna.
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: Volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: active
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+    ResourceUsageSpecification_Update_example_JSON-PATCH__request:
+      value:
+        - op: replace
+          path: /version
+          value: '3.0'
+    ResourceUsageSpecification_Update_example_JSON-PATCH__response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '3.0'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: direction of the data transfer on the antenna
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: active
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+    ResourceUsageSpecification_Update_example_JSON-PATCH-QUERY__request:
+      value:
+        - op: replace
+          path: /specCharacteristic/description?name=direction
+          value: Direction of the data transfer on the antenna.
+    ResourceUsageSpecification_Update_example_JSON-PATCH-QUERY__response:
+      value:
+        '@type': ResourceUsageSpecification
+        name: Antenna for 5G slice
+        description: Specification for onsite antenna for 5G slices
+        version: '3.0'
+        specCharacteristic:
+          - '@type': CharacteristicSpecification
+            name: direction
+            valueType: string
+            description: Direction of the data transfer on the antenna.
+            configurable: true
+            minCardinality: 0
+            maxCardinality: 2
+          - '@type': CharacteristicSpecification
+            name: dataTransfered
+            valueType: string
+            description: Volume of the data transfered for the usage.
+            configurable: true
+            minCardinality: 1
+            maxCardinality: 1
+        lifecycleStatus: active
+        validFor:
+          startDateTime: '2022-02-20T17:00:00Z'
+          endDateTime: '2099-01-11T00:00:00Z'
+    ResourceUsageCreate_request:
+      value:
+        '@type': ResourceUsageCreateEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageCreateEvent
+        description: ResourceUsageCreateEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageCreateEvent
+        event:
+          usage:
+            '@type': ResourceUsage
+            href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+            id: 5130d5131a23
+            usageDate: '2024-08-25T12:19:14Z'
+            usageType: VOICE
+            usageCharacteristic:
+              - '@type': StringCharacteristic
+                name: originatingCountryCode
+                valueType: string
+                value: '43'
+              - '@type': StringCharacteristic
+                name: destinationCountryCode
+                valueType: string
+                value: '49'
+              - '@type': StringCharacteristic
+                name: destinationNumber
+                valueType: string
+                value: '170123456789'
+              - '@type': StringCharacteristic
+                name: duration
+                valueType: string
+                value: '20'
+              - '@type': StringCharacteristic
+                name: startDateTime
+                valueType: datetime
+                value: '2024-08-25T12:19:14Z'
+              - '@type': StringCharacteristic
+                name: endDateTime
+                valueType: datetime
+                value: '2024-08-25T12:19:34Z'
+            relatedParty:
+              - '@type': RelatedPartyRefOrPartyRoleRef
+                role: Individual
+                partyOrPartyRole:
+                  '@type': PartyRef
+                  href: 'http://api.csp.com/tmf-api/partyManagement/individual/8a41-d6451fe98963'
+                  id: 8a41-d6451fe98963
+              - '@type': RelatedPartyRefOrPartyRoleRef
+                role: Organization
+                partyOrPartyRole:
+                  '@type': PartyRef
+                  href: 'http://api.csp.com/tmf-api/partyManagement/organization/a396-5c90a41a23ea'
+                  id: a396-5c90a41a23ea
+            resource:
+              '@type': ResourceRef
+              href: 'https://api.csp.com/tmf-api//resource/qerr-475'
+              id: qerr-475
+              name: Voice resource
+            usageSpecification:
+              '@type': ResourceUsageSpecificationRef
+              href: >-
+                https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/af59-b504c742900e
+              id: af59-b504c742900e
+              name: VoiceCall
+      description: Message example for ResourceUsageCreateEvent event
+    ResourceUsageAttributeValueChange_request:
+      value:
+        '@type': ResourceUsageAttributeValueChangeEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageAttributeValueChangeEvent
+        description: ResourceUsageAttributeValueChangeEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageAttributeValueChangeEvent
+        event:
+          usage:
+            '@type': ResourceUsage
+            href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+            id: 5130d5131a23
+            usageCharacteristic:
+              - '@type': StringCharacteristic
+                name: originatingCountryCode
+                valueType: string
+                value: '43'
+              - '@type': StringCharacteristic
+                name: destinationCountryCode
+                valueType: string
+                value: '49'
+              - '@type': StringCharacteristic
+                name: destinationNumber
+                valueType: string
+                value: '170123456789'
+              - '@type': StringCharacteristic
+                name: duration
+                valueType: string
+                value: '20'
+              - '@type': StringCharacteristic
+                name: startDateTime
+                valueType: datetime
+                value: '2024-08-25T12:19:14Z'
+              - '@type': StringCharacteristic
+                name: endDateTime
+                valueType: datetime
+                value: '2024-08-25T12:19:34Z'
+      description: Message example for UsageAttributeValueChangeEvent event
+    ResourceUsageDelete_request:
+      value:
+        '@type': ResourceUsageDeleteEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageDeleteEvent
+        description: ResourceUsageDeleteEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageDeleteEvent
+        event:
+          usage:
+            '@type': ResourceUsage
+            href: 'https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsage/5130d5131a23'
+            id: 5130d5131a23
+      description: Message example for ResourceUsageDeleteEvent event
+    Create_request:
+      value:
+        '@type': ResourceUsageSpecificationCreateEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageSpecificationCreateEvent
+        description: ResourceUsageSpecificationCreateEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageSpecificationCreateEvent
+        event:
+          usageSpecification:
+            '@type': ResourceUsageSpecification
+            href: >-
+              https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/9aa3-3e7737dd5080
+            id: 9aa3-3e7737dd5080
+            name: Voice-Call-Specification
+            description: Specification for voice calls usage
+            version: '2.5'
+            specCharacteristic:
+              - '@type': CharacteristicSpecification
+                name: originatingCountryCode
+                valueType: string
+                description: country code of the caller
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: originatingNumber
+                valueType: string
+                description: phone number of the caller
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: destinationCountryCode
+                valueType: string
+                description: country code of the called party
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: destinationNumber
+                valueType: string
+                description: phone number of the called party
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: duration
+                valueType: string
+                description: duration of the call
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: startDateTime
+                valueType: dateTime
+                description: startdate and starttime of the call
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: endDateTime
+                valueType: dateTime
+                description: enddate and endtime of the call
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+            validFor:
+              startDateTime: '2022-02-20T17:00:00Z'
+              endDateTime: '2099-01-11T00:00:00Z'
+      description: Message example for ResourceUsageSpecificationCreateEvent event
+    AttributeValueChange_request:
+      value:
+        '@type': ResourceUsageSpecificationAttributeValueChangeEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageSpecificationAttributeValueChangeEvent
+        description: ResourceUsageSpecificationAttributeValueChangeEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageSpecificationAttributeValueChangeEvent
+        event:
+          usageSpecification:
+            '@type': ResourceUsageSpecification
+            href: >-
+              https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/9aa3-3e7737dd5080
+            id: 9aa3-3e7737dd5080
+            name: Voice-Call-Specification
+            specCharacteristic:
+              - '@type': CharacteristicSpecification
+                name: originatingCountryCode
+                valueType: string
+                description: country code of the caller
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: originatingNumber
+                valueType: string
+                description: phone number of the caller
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: destinationCountryCode
+                valueType: string
+                description: country code of the called party
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: destinationNumber
+                valueType: string
+                description: phone number of the called party
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: duration
+                valueType: string
+                description: duration of the call
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+              - '@type': CharacteristicSpecification
+                name: startDateTime
+                valueType: dateTime
+                description: startdate and starttime of the call
+                configurable: true
+                minCardinality: 1
+                maxCardinality: 1
+      description: Message example for ResourceUsageSpecificationAttributeValueChangeEvent event
+    Delete_request:
+      value:
+        '@type': ResourceUsageSpecificationDeleteEvent
+        '@baseType': Event
+        correlationId: fe9b29c9-a31c
+        domain: Commercial
+        title: ResourceUsageSpecificationDeleteEvent
+        description: ResourceUsageSpecificationDeleteEvent illustration
+        priority: '5'
+        timeOccurred: '2022-08-25T12:19:14Z'
+        source:
+          '@type': ReportingResource
+          id: '29'
+          name: APP-171
+          '@referredType': LogicalResource
+        reportingSystem:
+          '@type': ReportingResource
+          id: '182'
+          name: APP-116
+          '@referredType': LogicalResource
+        eventId: 4b9d-b37c-204557d70b97
+        eventTime: '2024-08-25T12:19:14Z'
+        eventType: ResourceUsageSpecificationDeleteEvent
+        event:
+          usageSpecification:
+            '@type': ResourceUsageSpecification
+            href: >-
+              https://api.csp.com/tmf-api/resourceUsageManagement/v5/resourceUsageSpecification/9aa3-3e7737dd5080
+            id: 9aa3-3e7737dd5080
+            name: Voice-Call-Specification
+      description: Message example for ResourceUsageSpecificationDeleteEvent event

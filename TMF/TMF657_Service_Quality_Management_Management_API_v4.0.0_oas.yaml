@@ -1,0 +1,2771 @@
+openapi: 3.0.1
+info:
+  description: This is Swagger UI environment generated for the TMF Service Quality
+    Management specification
+  title: Service Quality Management
+  version: 4.0.0
+servers:
+- url: https://serverRoot/tmf-api/serviceQualityManagement/v4/
+tags:
+- name: serviceLevelObjective
+- name: serviceLevelSpecification
+- name: notification listeners (client side)
+- name: events subscription
+paths:
+  /serviceLevelObjective:
+    get:
+      description: This operation list or find ServiceLevelObjective entities
+      operationId: listServiceLevelObjective
+      parameters:
+      - description: Comma-separated properties to be provided in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      - description: Requested index for start of resources to be provided in response
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Requested number of resources to be provided in response
+        in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                items:
+                  $ref: "#/components/schemas/ServiceLevelObjective"
+                type: array
+          description: Success
+          headers:
+            X-Total-Count:
+              description: Total number of items matching criteria
+              schema:
+                type: integer
+            X-Result-Count:
+              description: Actual number of items returned in the response body
+              schema:
+                type: integer
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: List or find ServiceLevelObjective objects
+      tags:
+      - serviceLevelObjective
+    post:
+      description: This operation creates a ServiceLevelObjective entity.
+      operationId: createServiceLevelObjective
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelObjective_Create"
+        description: The ServiceLevelObjective to be created
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelObjective"
+          description: Created
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Creates a ServiceLevelObjective
+      tags:
+      - serviceLevelObjective
+      x-codegen-request-body-name: serviceLevelObjective
+  /serviceLevelObjective/{id}:
+    delete:
+      description: This operation deletes a ServiceLevelObjective entity.
+      operationId: deleteServiceLevelObjective
+      parameters:
+      - description: Identifier of the ServiceLevelObjective
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: Deleted
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Deletes a ServiceLevelObjective
+      tags:
+      - serviceLevelObjective
+    get:
+      description: This operation retrieves a ServiceLevelObjective entity. Attribute
+        selection is enabled for all first level attributes.
+      operationId: retrieveServiceLevelObjective
+      parameters:
+      - description: Identifier of the ServiceLevelObjective
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Comma-separated properties to provide in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelObjective"
+          description: Success
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Retrieves a ServiceLevelObjective by ID
+      tags:
+      - serviceLevelObjective
+    patch:
+      description: This operation updates partially a ServiceLevelObjective entity.
+      operationId: patchServiceLevelObjective
+      parameters:
+      - description: Identifier of the ServiceLevelObjective
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelObjective_Update"
+        description: The ServiceLevelObjective to be updated
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelObjective"
+          description: Updated
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Updates partially a ServiceLevelObjective
+      tags:
+      - serviceLevelObjective
+      x-codegen-request-body-name: serviceLevelObjective
+  /serviceLevelSpecification:
+    get:
+      description: This operation list or find ServiceLevelSpecification entities
+      operationId: listServiceLevelSpecification
+      parameters:
+      - description: Comma-separated properties to be provided in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      - description: Requested index for start of resources to be provided in response
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Requested number of resources to be provided in response
+        in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                items:
+                  $ref: "#/components/schemas/ServiceLevelSpecification"
+                type: array
+          description: Success
+          headers:
+            X-Total-Count:
+              description: Total number of items matching criteria
+              schema:
+                type: integer
+            X-Result-Count:
+              description: Actual number of items returned in the response body
+              schema:
+                type: integer
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: List or find ServiceLevelSpecification objects
+      tags:
+      - serviceLevelSpecification
+    post:
+      description: This operation creates a ServiceLevelSpecification entity.
+      operationId: createServiceLevelSpecification
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelSpecification_Create"
+        description: The ServiceLevelSpecification to be created
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelSpecification"
+          description: Created
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Creates a ServiceLevelSpecification
+      tags:
+      - serviceLevelSpecification
+      x-codegen-request-body-name: serviceLevelSpecification
+  /serviceLevelSpecification/{id}:
+    delete:
+      description: This operation deletes a ServiceLevelSpecification entity.
+      operationId: deleteServiceLevelSpecification
+      parameters:
+      - description: Identifier of the ServiceLevelSpecification
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: Deleted
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Deletes a ServiceLevelSpecification
+      tags:
+      - serviceLevelSpecification
+    get:
+      description: This operation retrieves a ServiceLevelSpecification entity. Attribute
+        selection is enabled for all first level attributes.
+      operationId: retrieveServiceLevelSpecification
+      parameters:
+      - description: Identifier of the ServiceLevelSpecification
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Comma-separated properties to provide in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelSpecification"
+          description: Success
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Retrieves a ServiceLevelSpecification by ID
+      tags:
+      - serviceLevelSpecification
+    patch:
+      description: This operation updates partially a ServiceLevelSpecification entity.
+      operationId: patchServiceLevelSpecification
+      parameters:
+      - description: Identifier of the ServiceLevelSpecification
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelSpecification_Update"
+        description: The ServiceLevelSpecification to be updated
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ServiceLevelSpecification"
+          description: Updated
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Updates partially a ServiceLevelSpecification
+      tags:
+      - serviceLevelSpecification
+      x-codegen-request-body-name: serviceLevelSpecification
+  /hub:
+    post:
+      description: "Sets the communication endpoint address the service instance must\
+        \ use to deliver information about its health state, execution state, failures\
+        \ and metrics."
+      operationId: registerListener
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/EventSubscriptionInput"
+        description: Data containing the callback endpoint to deliver the information
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Subscribed
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Register a listener
+      tags:
+      - events subscription
+      x-codegen-request-body-name: data
+  /hub/{id}:
+    delete:
+      description: "Resets the communication endpoint address the service instance\
+        \ must use to deliver information about its health state, execution state,\
+        \ failures and metrics."
+      operationId: unregisterListener
+      parameters:
+      - description: The id of the registered listener
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: Deleted
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method not allowed
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Unregister a listener
+      tags:
+      - events subscription
+  /listener/serviceLevelObjectiveCreateEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelObjectiveCreateEvent
+      operationId: listenToServiceLevelObjectiveCreateEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelObjectiveCreateEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelObjectiveCreateEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/serviceLevelObjectiveAttributeValueChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelObjectiveAttributeValueChangeEvent
+      operationId: listenToServiceLevelObjectiveAttributeValueChangeEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelObjectiveAttributeValueChangeEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelObjectiveAttributeValueChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/serviceLevelObjectiveDeleteEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelObjectiveDeleteEvent
+      operationId: listenToServiceLevelObjectiveDeleteEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelObjectiveDeleteEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelObjectiveDeleteEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/serviceLevelSpecificationCreateEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelSpecificationCreateEvent
+      operationId: listenToServiceLevelSpecificationCreateEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelSpecificationCreateEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelSpecificationCreateEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/serviceLevelSpecificationAttributeValueChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelSpecificationAttributeValueChangeEvent
+      operationId: listenToServiceLevelSpecificationAttributeValueChangeEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelSpecificationAttributeValueChangeEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelSpecificationAttributeValueChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/serviceLevelSpecificationDeleteEvent:
+    post:
+      description: Example of a client listener for receiving the notification ServiceLevelSpecificationDeleteEvent
+      operationId: listenToServiceLevelSpecificationDeleteEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceLevelSpecificationDeleteEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity ServiceLevelSpecificationDeleteEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+components:
+  schemas:
+    EntityRef:
+      description: Entity reference schema to be use for all entityRef class.
+      properties:
+        id:
+          description: Unique identifier of a related entity.
+          type: string
+        href:
+          description: Reference of the related entity.
+          type: string
+        name:
+          description: Name of the related entity.
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - id
+      type: object
+    RelatedEntity:
+      description: "A reference to an entity, where the type of the entity is not\
+        \ known in advance."
+      example:
+        '@referredType': '@referredType'
+        role: role
+        '@baseType': '@baseType'
+        '@type': '@type'
+        name: name
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: Unique identifier of a related entity.
+          type: string
+        href:
+          description: Reference of the related entity.
+          type: string
+        name:
+          description: Name of the related entity.
+          type: string
+        role:
+          description: The role of an entity.
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - '@referredType'
+      - id
+      - role
+      type: object
+    ServiceLevelObjective:
+      description: "Service level objectives are defined in terms of parameters and\
+        \ metrics, thresholds, and tolerances \nassociated with the parameters."
+      example:
+        conformanceComparator: conformanceComparator
+        graceTimes: graceTimes
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        serviceLevelObjectiveConsequence:
+        - prescribedAction: prescribedAction
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          '@schemaLocation': https://openapi-generator.tech
+        - prescribedAction: prescribedAction
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          '@schemaLocation': https://openapi-generator.tech
+        conformanceTarget: conformanceTarget
+        toleranceTarget: toleranceTarget
+        '@baseType': '@baseType'
+        tolerancePeriod:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        name: name
+        serviceLevelObjectiveParameter:
+          parameterType: parameterType
+          serviceParmCategory: serviceParmCategory
+          transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+          serviceParmPerspective: serviceParmPerspective
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          relatedEntity:
+          - '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          name: name
+          '@schemaLocation': https://openapi-generator.tech
+        thresholdTarget: thresholdTarget
+        conformancePeriod:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: The identifier of a service level objectives.
+          type: string
+        href:
+          description: The hyperlink to access a service level objective.
+          type: string
+        conformanceComparator:
+          description: "An operator that specifies whether a Service Level Objective\
+            \ is \nviolated above or below the conformanceTarget."
+          type: string
+        conformanceTarget:
+          description: "A value used to determine if Service Level Objective is met.\
+            \ \nThe data type should be adjusted case by case."
+          type: string
+        graceTimes:
+          description: "The number of times an objective can remain un-updated without\
+            \ \na violation of a Service Level Agreement in reference to a measurement\
+            \ period and/or Service Level Agreement reporting period."
+          type: string
+        name:
+          description: The name of the service level objectives.
+          type: string
+        thresholdTarget:
+          description: "A value that used to specify when a warning should be used\
+            \ \nthat indicates an objective is danger of not being met. Notice, the\
+            \ data type should be adjusted case by case."
+          type: string
+        toleranceTarget:
+          description: "A value that specifies the allowable variation of a conformance\
+            \ \nTarget. The data type should be adjusted case by case."
+          type: string
+        conformancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        serviceLevelObjectiveConsequence:
+          description: A list of consequences for this objective.
+          items:
+            $ref: "#/components/schemas/ServiceLevelSpecConsequence"
+          type: array
+        serviceLevelObjectiveParameter:
+          $ref: "#/components/schemas/ServiceLevelSpecParameter"
+        tolerancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    ServiceLevelObjective_Create:
+      description: "Service level objectives are defined in terms of parameters and\
+        \ metrics, thresholds, and tolerances \nassociated with the parameters.\n\
+        Skipped properties: id,href"
+      properties:
+        conformanceComparator:
+          description: "An operator that specifies whether a Service Level Objective\
+            \ is \nviolated above or below the conformanceTarget."
+          type: string
+        conformanceTarget:
+          description: "A value used to determine if Service Level Objective is met.\
+            \ \nThe data type should be adjusted case by case."
+          type: string
+        graceTimes:
+          description: "The number of times an objective can remain un-updated without\
+            \ \na violation of a Service Level Agreement in reference to a measurement\
+            \ period and/or Service Level Agreement reporting period."
+          type: string
+        name:
+          description: The name of the service level objectives.
+          type: string
+        thresholdTarget:
+          description: "A value that used to specify when a warning should be used\
+            \ \nthat indicates an objective is danger of not being met. Notice, the\
+            \ data type should be adjusted case by case."
+          type: string
+        toleranceTarget:
+          description: "A value that specifies the allowable variation of a conformance\
+            \ \nTarget. The data type should be adjusted case by case."
+          type: string
+        conformancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        serviceLevelObjectiveConsequence:
+          description: A list of consequences for this objective.
+          items:
+            $ref: "#/components/schemas/ServiceLevelSpecConsequence"
+          type: array
+        serviceLevelObjectiveParameter:
+          $ref: "#/components/schemas/ServiceLevelSpecParameter"
+        tolerancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      required:
+      - conformanceComparator
+      - conformanceTarget
+      - serviceLevelObjectiveParameter
+      type: object
+    ServiceLevelObjective_Update:
+      description: "Service level objectives are defined in terms of parameters and\
+        \ metrics, thresholds, and tolerances \nassociated with the parameters.\n\
+        Skipped properties: id,href,validFor"
+      properties:
+        conformanceComparator:
+          description: "An operator that specifies whether a Service Level Objective\
+            \ is \nviolated above or below the conformanceTarget."
+          type: string
+        conformanceTarget:
+          description: "A value used to determine if Service Level Objective is met.\
+            \ \nThe data type should be adjusted case by case."
+          type: string
+        graceTimes:
+          description: "The number of times an objective can remain un-updated without\
+            \ \na violation of a Service Level Agreement in reference to a measurement\
+            \ period and/or Service Level Agreement reporting period."
+          type: string
+        name:
+          description: The name of the service level objectives.
+          type: string
+        thresholdTarget:
+          description: "A value that used to specify when a warning should be used\
+            \ \nthat indicates an objective is danger of not being met. Notice, the\
+            \ data type should be adjusted case by case."
+          type: string
+        toleranceTarget:
+          description: "A value that specifies the allowable variation of a conformance\
+            \ \nTarget. The data type should be adjusted case by case."
+          type: string
+        conformancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        serviceLevelObjectiveConsequence:
+          description: A list of consequences for this objective.
+          items:
+            $ref: "#/components/schemas/ServiceLevelSpecConsequence"
+          type: array
+        serviceLevelObjectiveParameter:
+          $ref: "#/components/schemas/ServiceLevelSpecParameter"
+        tolerancePeriod:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    ServiceLevelObjectiveRef:
+      description: A set of Service Level Objectives that are contained in the Service
+        Level Specification.
+      example:
+        '@referredType': '@referredType'
+        '@baseType': '@baseType'
+        '@type': '@type'
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: The identifier of a service level object.
+          type: string
+        href:
+          description: The hyperlink to access a service level object.
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - id
+      type: object
+    ServiceLevelSpecConsequence:
+      description: |-
+        Some consequences for the provider of the Service are resulted when the service level objective
+        does not meet.
+      example:
+        prescribedAction: prescribedAction
+        '@baseType': '@baseType'
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        prescribedAction:
+          description: "Recommended remedy for a violated Service Level Objective.\
+            \ \nThis could be a hyperlink to the recommended action."
+          type: string
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    ServiceLevelSpecParameter:
+      description: "Service Level Specification parameters can be one of two types.\
+        \ A Key Quality Indicator (KQI) \nprovides a measurement of a specific aspect\
+        \ of the performance of a Product (i.e., Product \nSpecification, Product\
+        \ Offering, or Product) or a Service (i.e., Service Specification or Service)."
+      example:
+        parameterType: parameterType
+        serviceParmCategory: serviceParmCategory
+        transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+        serviceParmPerspective: serviceParmPerspective
+        '@baseType': '@baseType'
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        relatedEntity:
+        - '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        - '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        name: name
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        name:
+          description: The name of the parameter
+          type: string
+        parameterType:
+          description: Types of Service Level Specification parameters are KQI or
+            KPI
+          type: string
+        serviceParmCategory:
+          description: "A string that specifies whether the Service Level Specification\
+            \ Parameter is technology specific, service specific, or technology/service\
+            \ independent"
+          type: string
+        serviceParmPerspective:
+          description: A string that specifies whether the Service Level Specification
+            Parameter represents a single user instance parameter or a parameter that
+            represents an aggregation
+          type: string
+        transformationAlgorithmOfKQI:
+          description: The description of a logical step-by-step procedure used to
+            calculate the value of a KQI
+          type: string
+        relatedEntity:
+          description: A list of entities related to this parameter
+          items:
+            $ref: "#/components/schemas/RelatedEntity"
+          type: array
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    ServiceLevelSpecification:
+      description: "A Service Level Specification represents a pre-defined or negotiated\
+        \ set of Service Level \nObjectives. In addition, certain consequences are\
+        \ associated with not meeting the Service Level \nObjectives. Service Level\
+        \ Agreements are expressed in terms of Service Level Specifications."
+      example:
+        relatedServiceLevelObjective:
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        '@baseType': '@baseType'
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': '@type'
+        name: name
+        description: description
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: The identifier to a service level specification.
+          type: string
+        href:
+          description: The hyperlink to access a service level specification.
+          type: string
+        description:
+          description: A brief introduction of a service level specification.
+          type: string
+        name:
+          description: The name of Service Level Specification
+          type: string
+        relatedServiceLevelObjective:
+          description: A list of objectives related to this service level specification
+          items:
+            $ref: "#/components/schemas/ServiceLevelObjectiveRef"
+          type: array
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    ServiceLevelSpecification_Create:
+      description: "A Service Level Specification represents a pre-defined or negotiated\
+        \ set of Service Level \nObjectives. In addition, certain consequences are\
+        \ associated with not meeting the Service Level \nObjectives. Service Level\
+        \ Agreements are expressed in terms of Service Level Specifications.\nSkipped\
+        \ properties: id,href"
+      properties:
+        description:
+          description: A brief introduction of a service level specification.
+          type: string
+        name:
+          description: The name of Service Level Specification
+          type: string
+        relatedServiceLevelObjective:
+          description: A list of objectives related to this service level specification
+          items:
+            $ref: "#/components/schemas/ServiceLevelObjectiveRef"
+          minItems: 1
+          type: array
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      required:
+      - name
+      - relatedServiceLevelObjective
+      type: object
+    ServiceLevelSpecification_Update:
+      description: "A Service Level Specification represents a pre-defined or negotiated\
+        \ set of Service Level \nObjectives. In addition, certain consequences are\
+        \ associated with not meeting the Service Level \nObjectives. Service Level\
+        \ Agreements are expressed in terms of Service Level Specifications.\nSkipped\
+        \ properties: id,href,validFor"
+      properties:
+        description:
+          description: A brief introduction of a service level specification.
+          type: string
+        name:
+          description: The name of Service Level Specification
+          type: string
+        relatedServiceLevelObjective:
+          description: A list of objectives related to this service level specification
+          items:
+            $ref: "#/components/schemas/ServiceLevelObjectiveRef"
+          type: array
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name"
+          type: string
+      type: object
+    TimePeriod:
+      description: "A period of time, either as a deadline (endDateTime only) a startDateTime\
+        \ only, or both"
+      example:
+        startDateTime: 1985-04-12T23:20:50.52Z
+        endDateTime: 1985-04-12T23:20:50.52Z
+      properties:
+        endDateTime:
+          description: "End of the time period, using IETC-RFC-3339 format"
+          example: 1985-04-12T23:20:50.52Z
+          format: date-time
+          type: string
+        startDateTime:
+          description: "Start of the time period, using IETC-RFC-3339 format. If you\
+            \ define a start, you must also define an end"
+          example: 1985-04-12T23:20:50.52Z
+          format: date-time
+          type: string
+      type: object
+    EventSubscription:
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      example:
+        query: query
+        callback: callback
+        id: id
+      properties:
+        id:
+          description: Id of the listener
+          type: string
+        callback:
+          description: The callback being registered.
+          type: string
+        query:
+          description: additional data to be passed
+          type: string
+      required:
+      - callback
+      - id
+      type: object
+    EventSubscriptionInput:
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      example:
+        query: query
+        callback: callback
+      properties:
+        callback:
+          description: The callback being registered.
+          type: string
+        query:
+          description: additional data to be passed
+          type: string
+      required:
+      - callback
+      type: object
+    ServiceLevelObjectiveCreateEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        id: id
+        href: href
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelObjective:
+            conformanceComparator: conformanceComparator
+            graceTimes: graceTimes
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            serviceLevelObjectiveConsequence:
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            conformanceTarget: conformanceTarget
+            toleranceTarget: toleranceTarget
+            '@baseType': '@baseType'
+            tolerancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            name: name
+            serviceLevelObjectiveParameter:
+              parameterType: parameterType
+              serviceParmCategory: serviceParmCategory
+              transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+              serviceParmPerspective: serviceParmPerspective
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              relatedEntity:
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              name: name
+              '@schemaLocation': https://openapi-generator.tech
+            thresholdTarget: thresholdTarget
+            conformancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Identifier of the Process flow
+          type: string
+        href:
+          description: Reference of the ProcessFlow
+          type: string
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelObjectiveCreateEventPayload"
+      type: object
+    ServiceLevelObjectiveCreateEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelObjective:
+          conformanceComparator: conformanceComparator
+          graceTimes: graceTimes
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          serviceLevelObjectiveConsequence:
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          conformanceTarget: conformanceTarget
+          toleranceTarget: toleranceTarget
+          '@baseType': '@baseType'
+          tolerancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          name: name
+          serviceLevelObjectiveParameter:
+            parameterType: parameterType
+            serviceParmCategory: serviceParmCategory
+            transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+            serviceParmPerspective: serviceParmPerspective
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            relatedEntity:
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            name: name
+            '@schemaLocation': https://openapi-generator.tech
+          thresholdTarget: thresholdTarget
+          conformancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelObjective:
+          $ref: "#/components/schemas/ServiceLevelObjective"
+      type: object
+    ServiceLevelObjectiveAttributeValueChangeEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        fieldPath: fieldPath
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelObjective:
+            conformanceComparator: conformanceComparator
+            graceTimes: graceTimes
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            serviceLevelObjectiveConsequence:
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            conformanceTarget: conformanceTarget
+            toleranceTarget: toleranceTarget
+            '@baseType': '@baseType'
+            tolerancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            name: name
+            serviceLevelObjectiveParameter:
+              parameterType: parameterType
+              serviceParmCategory: serviceParmCategory
+              transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+              serviceParmPerspective: serviceParmPerspective
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              relatedEntity:
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              name: name
+              '@schemaLocation': https://openapi-generator.tech
+            thresholdTarget: thresholdTarget
+            conformancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        fieldPath:
+          description: The path identifying the object field concerned by this notification.
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelObjectiveAttributeValueChangeEventPayload"
+      type: object
+    ServiceLevelObjectiveAttributeValueChangeEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelObjective:
+          conformanceComparator: conformanceComparator
+          graceTimes: graceTimes
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          serviceLevelObjectiveConsequence:
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          conformanceTarget: conformanceTarget
+          toleranceTarget: toleranceTarget
+          '@baseType': '@baseType'
+          tolerancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          name: name
+          serviceLevelObjectiveParameter:
+            parameterType: parameterType
+            serviceParmCategory: serviceParmCategory
+            transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+            serviceParmPerspective: serviceParmPerspective
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            relatedEntity:
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            name: name
+            '@schemaLocation': https://openapi-generator.tech
+          thresholdTarget: thresholdTarget
+          conformancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelObjective:
+          $ref: "#/components/schemas/ServiceLevelObjective"
+      type: object
+    ServiceLevelObjectiveDeleteEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        id: id
+        href: href
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelObjective:
+            conformanceComparator: conformanceComparator
+            graceTimes: graceTimes
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            serviceLevelObjectiveConsequence:
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            - prescribedAction: prescribedAction
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              '@schemaLocation': https://openapi-generator.tech
+            conformanceTarget: conformanceTarget
+            toleranceTarget: toleranceTarget
+            '@baseType': '@baseType'
+            tolerancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            name: name
+            serviceLevelObjectiveParameter:
+              parameterType: parameterType
+              serviceParmCategory: serviceParmCategory
+              transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+              serviceParmPerspective: serviceParmPerspective
+              '@baseType': '@baseType'
+              validFor:
+                startDateTime: 1985-04-12T23:20:50.52Z
+                endDateTime: 1985-04-12T23:20:50.52Z
+              '@type': '@type'
+              relatedEntity:
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              - '@referredType': '@referredType'
+                role: role
+                '@baseType': '@baseType'
+                '@type': '@type'
+                name: name
+                id: id
+                href: href
+                '@schemaLocation': https://openapi-generator.tech
+              name: name
+              '@schemaLocation': https://openapi-generator.tech
+            thresholdTarget: thresholdTarget
+            conformancePeriod:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Identifier of the Process flow
+          type: string
+        href:
+          description: Reference of the ProcessFlow
+          type: string
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelObjectiveDeleteEventPayload"
+      type: object
+    ServiceLevelObjectiveDeleteEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelObjective:
+          conformanceComparator: conformanceComparator
+          graceTimes: graceTimes
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          serviceLevelObjectiveConsequence:
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          - prescribedAction: prescribedAction
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            '@schemaLocation': https://openapi-generator.tech
+          conformanceTarget: conformanceTarget
+          toleranceTarget: toleranceTarget
+          '@baseType': '@baseType'
+          tolerancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          name: name
+          serviceLevelObjectiveParameter:
+            parameterType: parameterType
+            serviceParmCategory: serviceParmCategory
+            transformationAlgorithmOfKQI: transformationAlgorithmOfKQI
+            serviceParmPerspective: serviceParmPerspective
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            relatedEntity:
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            name: name
+            '@schemaLocation': https://openapi-generator.tech
+          thresholdTarget: thresholdTarget
+          conformancePeriod:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelObjective:
+          $ref: "#/components/schemas/ServiceLevelObjective"
+      type: object
+    ServiceLevelSpecificationCreateEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        id: id
+        href: href
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelSpecification:
+            relatedServiceLevelObjective:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Identifier of the Process flow
+          type: string
+        href:
+          description: Reference of the ProcessFlow
+          type: string
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelSpecificationCreateEventPayload"
+      type: object
+    ServiceLevelSpecificationCreateEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelSpecification:
+          relatedServiceLevelObjective:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          name: name
+          description: description
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelSpecification:
+          $ref: "#/components/schemas/ServiceLevelSpecification"
+      type: object
+    ServiceLevelSpecificationAttributeValueChangeEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        fieldPath: fieldPath
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelSpecification:
+            relatedServiceLevelObjective:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        fieldPath:
+          description: The path identifying the object field concerned by this notification.
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelSpecificationAttributeValueChangeEventPayload"
+      type: object
+    ServiceLevelSpecificationAttributeValueChangeEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelSpecification:
+          relatedServiceLevelObjective:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          name: name
+          description: description
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelSpecification:
+          $ref: "#/components/schemas/ServiceLevelSpecification"
+      type: object
+    ServiceLevelSpecificationDeleteEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        id: id
+        href: href
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          serviceLevelSpecification:
+            relatedServiceLevelObjective:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            '@baseType': '@baseType'
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          description: Identifier of the Process flow
+          type: string
+        href:
+          description: Reference of the ProcessFlow
+          type: string
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        event:
+          $ref: "#/components/schemas/ServiceLevelSpecificationDeleteEventPayload"
+      type: object
+    ServiceLevelSpecificationDeleteEventPayload:
+      description: The event data structure
+      example:
+        serviceLevelSpecification:
+          relatedServiceLevelObjective:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          '@baseType': '@baseType'
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': '@type'
+          name: name
+          description: description
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+      properties:
+        serviceLevelSpecification:
+          $ref: "#/components/schemas/ServiceLevelSpecification"
+      type: object
+    Error:
+      description: "Used when an API throws an Error, typically with a HTTP error\
+        \ response-code (3xx, 4xx, 5xx)"
+      example:
+        reason: reason
+        code: code
+        '@baseType': '@baseType'
+        '@type': '@type'
+        message: message
+        referenceError: https://openapi-generator.tech
+        '@schemaLocation': https://openapi-generator.tech
+        status: status
+      properties:
+        code:
+          description: "Application relevant detail, defined in the API or a common\
+            \ list."
+          type: string
+        reason:
+          description: Explanation of the reason for the error which can be shown
+            to a client user.
+          type: string
+        message:
+          description: More details and corrective actions related to the error which
+            can be shown to a client user.
+          type: string
+        status:
+          description: HTTP Error code extension
+          type: string
+        referenceError:
+          description: URI of documentation describing the error.
+          format: uri
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class."
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name."
+          type: string
+      required:
+      - code
+      - reason
+      type: object
+x-original-swagger-version: "2.0"

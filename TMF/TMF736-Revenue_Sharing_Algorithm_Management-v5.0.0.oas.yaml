@@ -1,0 +1,2572 @@
+openapi: 3.0.1
+info:
+  title: Revenue Sharing Algorithm Management
+  description: >-
+    Revenue Sharing Algorithm Management API goal is to provide the Algorithm to calculate a revenue
+    share. 
+  version: 5.0.0
+servers:
+  - url: 'https://serverRoot'
+tags:
+  - name: partyRevSharingAlgorithm
+    description: Operations for PartyRevSharingAlgorithm Resource
+  - name: notification listener
+    description: Notifications for Resource Lifecycle and event notifications
+  - name: events subscription
+    description: Endpoints to register and terminate an Event Listener
+paths:
+  /hub:
+    post:
+      operationId: createHub
+      summary: Create a subscription (hub) to receive Events
+      description: Sets the communication endpoint to receive Events.
+      tags:
+        - events subscription
+      requestBody:
+        $ref: '#/components/requestBodies/Hub_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+  '/hub/{id}':
+    delete:
+      operationId: hubDelete
+      summary: Remove a subscription (hub) to receive Events
+      description: ''
+      tags:
+        - events subscription
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Deleted
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/partyRevSharingAlgorithmAttributeValueChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity PartyRevSharingAlgorithmAttributeValueChangeEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        PartyRevSharingAlgorithmAttributeValueChangeEvent
+      operationId: partyRevSharingAlgorithmAttributeValueChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithmAttributeValueChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/partyRevSharingAlgorithmCreateEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity PartyRevSharingAlgorithmCreateEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        PartyRevSharingAlgorithmCreateEvent
+      operationId: partyRevSharingAlgorithmCreateEvent
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithmCreateEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/partyRevSharingAlgorithmDeleteEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity PartyRevSharingAlgorithmDeleteEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        PartyRevSharingAlgorithmDeleteEvent
+      operationId: partyRevSharingAlgorithmDeleteEvent
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithmDeleteEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /listener/partyRevSharingAlgorithmStateChangeEvent:
+    post:
+      tags:
+        - notification listener
+      summary: Client listener for entity PartyRevSharingAlgorithmStateChangeEvent
+      description: >-
+        Example of a client listener for receiving the notification
+        PartyRevSharingAlgorithmStateChangeEvent
+      operationId: partyRevSharingAlgorithmStateChangeEvent
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithmStateChangeEvent'
+      responses:
+        '204':
+          description: Notified
+        default:
+          $ref: '#/components/responses/Error'
+  /partyRevSharingAlgorithm:
+    get:
+      tags:
+        - partyRevSharingAlgorithm
+      summary: List or find PartyRevSharingAlgorithm objects
+      description: List or find PartyRevSharingAlgorithm objects
+      operationId: listPartyRevSharingAlgorithm
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PartyRevSharingAlgorithmArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+        - partyRevSharingAlgorithm
+      summary: Creates a PartyRevSharingAlgorithm
+      description: This operation creates a PartyRevSharingAlgorithm entity.
+      operationId: createPartyRevSharingAlgorithm
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithm_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201PartyRevSharingAlgorithm'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  '/partyRevSharingAlgorithm/{id}':
+    get:
+      tags:
+        - partyRevSharingAlgorithm
+      summary: Retrieves a PartyRevSharingAlgorithm by ID
+      description: >-
+        This operation retrieves a PartyRevSharingAlgorithm entity. Attribute selection enabled for
+        all first level attributes.
+      operationId: retrievePartyRevSharingAlgorithm
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PartyRevSharingAlgorithm_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    delete:
+      tags:
+        - partyRevSharingAlgorithm
+      summary: Deletes a PartyRevSharingAlgorithm
+      description: This operation deletes a PartyRevSharingAlgorithm entity.
+      operationId: deletePartyRevSharingAlgorithm
+      parameters:
+        - $ref: '#/components/parameters/Id'
+      responses:
+        '202':
+          $ref: '#/components/responses/202'
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    patch:
+      tags:
+        - partyRevSharingAlgorithm
+      summary: Updates partially a PartyRevSharingAlgorithm
+      description: This operation updates partially a PartyRevSharingAlgorithm entity.
+      operationId: patchPartyRevSharingAlgorithm
+      parameters:
+        - $ref: '#/components/parameters/Id'
+        - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/PartyRevSharingAlgorithm_MVO'
+      responses:
+        '200':
+          $ref: '#/components/responses/200PartyRevSharingAlgorithm_Patch'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  schemas:
+    Addressable:
+      type: object
+      description: Base schema for adressable entities
+      properties:
+        href:
+          type: string
+          description: Hyperlink reference
+        id:
+          type: string
+          description: unique identifier
+    Addressable_FVO:
+      type: object
+      description: Base schema for adressable entities
+      properties:
+        id:
+          type: string
+          description: unique identifier
+    BaseEvent:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: Base event with common attributes.
+          properties:
+            event:
+              type: object
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOcurred:
+              type: string
+              format: date-time
+              description: The time the event occured.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BaseEvent: '#/components/schemas/BaseEvent'
+    BaseEvent_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: Base event with common attributes.
+          properties:
+            event:
+              type: object
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOcurred:
+              type: string
+              format: date-time
+              description: The time the event occured.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BaseEvent: '#/components/schemas/BaseEvent_FVO'
+    BaseEvent_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - type: object
+          description: Base event with common attributes.
+          properties:
+            event:
+              type: object
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explanatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOcurred:
+              type: string
+              format: date-time
+              description: The time the event occured.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          BaseEvent: '#/components/schemas/BaseEvent_MVO'
+    Characteristic:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Describes a given characteristic of an object or entity through a name/value pair.
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic'
+    CharacteristicRelationship:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship'
+    CharacteristicRelationship_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+          required:
+            - id
+            - relationshipType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship_FVO'
+    CharacteristicRelationship_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Another Characteristic that is related to the current Characteristic;
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            relationshipType:
+              type: string
+              description: The type of relationship
+          required:
+            - id
+            - relationshipType
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          CharacteristicRelationship: '#/components/schemas/CharacteristicRelationship_MVO'
+    Characteristic_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Describes a given characteristic of an object or entity through a name/value pair.
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship'
+          required:
+            - name
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic_FVO'
+    Characteristic_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: Describes a given characteristic of an object or entity through a name/value pair.
+          properties:
+            id:
+              type: string
+              description: Unique identifier of the characteristic
+            name:
+              type: string
+              description: Name of the characteristic
+            valueType:
+              type: string
+              description: Data type of the value of the characteristic
+            characteristicRelationship:
+              type: array
+              items:
+                $ref: '#/components/schemas/CharacteristicRelationship'
+          required:
+            - name
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Characteristic: '#/components/schemas/Characteristic_MVO'
+    Entity:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+    EntityRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: Entity reference schema to be use for all entityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+          required:
+            - id
+    EntityRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible_FVO'
+        - $ref: '#/components/schemas/Addressable_FVO'
+        - type: object
+          description: Entity reference schema to be use for all entityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+          required:
+            - id
+    Entity_FVO:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible_FVO'
+        - $ref: '#/components/schemas/Addressable_FVO'
+    Entity_MVO:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+    Event:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: event with common attributes.
+          properties:
+            href:
+              type: string
+              description: Hyperlink reference
+            id:
+              type: string
+              description: unique identifier
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explnatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOccurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+            source:
+              $ref: '#/components/schemas/EntityRef'
+            reportingSystem:
+              $ref: '#/components/schemas/EntityRef'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            analyticCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            event:
+              description: The event linked to the involved resource object
+              type: object
+    Event_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: event with common attributes.
+          properties:
+            href:
+              type: string
+              description: Hyperlink reference
+            id:
+              type: string
+              description: unique identifier
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explnatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOccurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+            source:
+              $ref: '#/components/schemas/EntityRef_FVO'
+            reportingSystem:
+              $ref: '#/components/schemas/EntityRef_FVO'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            analyticCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            event:
+              description: The event linked to the involved resource object
+              type: object
+          required:
+            - eventId
+            - eventTime
+            - eventType
+            - event
+    Event_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: event with common attributes.
+          properties:
+            href:
+              type: string
+              description: Hyperlink reference
+            id:
+              type: string
+              description: unique identifier
+            correlationId:
+              type: string
+              description: The correlation id for this event.
+            domain:
+              type: string
+              description: The domain of the event.
+            title:
+              type: string
+              description: The title of the event.
+            description:
+              type: string
+              description: An explnatory of the event.
+            priority:
+              type: string
+              description: A priority.
+            timeOccurred:
+              type: string
+              format: date-time
+              description: The time the event occurred.
+            source:
+              $ref: '#/components/schemas/EntityRef'
+            reportingSystem:
+              $ref: '#/components/schemas/EntityRef'
+            relatedParty:
+              type: array
+              items:
+                $ref: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+            analyticCharacteristic:
+              type: array
+              items:
+                $ref: '#/components/schemas/Characteristic'
+            eventId:
+              type: string
+              description: The identifier of the notification.
+            eventTime:
+              type: string
+              format: date-time
+              description: Time of the event occurrence.
+            eventType:
+              type: string
+              description: The type of the notification.
+            event:
+              description: The event linked to the involved resource object
+              type: object
+          required:
+            - eventId
+            - eventTime
+            - eventType
+            - event
+    Extensible:
+      type: object
+      description: >-
+        Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means
+        that the Entity described by the schema  MUST be extended with the @type
+      properties:
+        '@type':
+          type: string
+          description: 'When sub-classing, this defines the sub-class Extensible name'
+        '@baseType':
+          type: string
+          description: 'When sub-classing, this defines the super-class'
+        '@schemaLocation':
+          type: string
+          description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      required:
+        - '@type'
+    Extensible_FVO:
+      type: object
+      description: >-
+        Base Extensible schema for use in TMForum Open-APIs - When used for in a schema it means
+        that the Entity described by the schema  MUST be extended with the @type
+      properties:
+        '@type':
+          type: string
+          description: 'When sub-classing, this defines the sub-class Extensible name'
+        '@baseType':
+          type: string
+          description: 'When sub-classing, this defines the super-class'
+        '@schemaLocation':
+          type: string
+          description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      required:
+        - '@type'
+    PartyRef:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+    PartyRefOrPartyRoleRef:
+      type: object
+      description: ''
+      oneOf:
+        - $ref: '#/components/schemas/PartyRef'
+        - $ref: '#/components/schemas/PartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef'
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    PartyRef_FVO:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_FVO'
+    PartyRef_MVO:
+      type: object
+      description: A Party reference
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRef: '#/components/schemas/PartyRef_MVO'
+    PartyRevSharingAlgorithm:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - type: object
+          description: >-
+            The PartyRevSharingAlgorithm resource is policy type of algorithm to calculate revenue
+            share
+          properties:
+            name:
+              description: The name of party revenue sharing algorithm
+              type: string
+            description:
+              description: The description of party revenue sharing algorithm
+              type: string
+            policy:
+              type: array
+              items:
+                $ref: '#/components/schemas/PolicyRef'
+              minItems: 1
+              description: The policy type algorithm to calculate revenue share
+            conditionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyConditionVariable'
+              description: The policy condition variables of the policy to calculate revenue share
+            actionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyActionVariable'
+              description: The policy action variables of the policy to calculate revenue share
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithm: '#/components/schemas/PartyRevSharingAlgorithm'
+    PartyRevSharingAlgorithmAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: PartyRevSharingAlgorithmAttributeValueChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/PartyRevSharingAlgorithmAttributeValueChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithmAttributeValueChangeEvent: '#/components/schemas/PartyRevSharingAlgorithmAttributeValueChangeEvent'
+    PartyRevSharingAlgorithmAttributeValueChangeEventPayload:
+      type: object
+      description: PartyRevSharingAlgorithmAttributeValueChangeEventPayload generic structure
+      properties:
+        PartyRevSharingAlgorithm:
+          $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+    PartyRevSharingAlgorithmCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: PartyRevSharingAlgorithmCreateEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/PartyRevSharingAlgorithmCreateEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithmCreateEvent: '#/components/schemas/PartyRevSharingAlgorithmCreateEvent'
+    PartyRevSharingAlgorithmCreateEventPayload:
+      type: object
+      description: PartyRevSharingAlgorithmCreateEventPayload generic structure
+      properties:
+        PartyRevSharingAlgorithm:
+          $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+    PartyRevSharingAlgorithmDeleteEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: PartyRevSharingAlgorithmDeleteEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/PartyRevSharingAlgorithmDeleteEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithmDeleteEvent: '#/components/schemas/PartyRevSharingAlgorithmDeleteEvent'
+    PartyRevSharingAlgorithmDeleteEventPayload:
+      type: object
+      description: PartyRevSharingAlgorithmDeleteEventPayload generic structure
+      properties:
+        PartyRevSharingAlgorithm:
+          $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+    PartyRevSharingAlgorithmStateChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          description: PartyRevSharingAlgorithmStateChangeEvent generic structure
+          properties:
+            event:
+              $ref: '#/components/schemas/PartyRevSharingAlgorithmStateChangeEventPayload'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithmStateChangeEvent: '#/components/schemas/PartyRevSharingAlgorithmStateChangeEvent'
+    PartyRevSharingAlgorithmStateChangeEventPayload:
+      type: object
+      description: PartyRevSharingAlgorithmStateChangeEventPayload generic structure
+      properties:
+        PartyRevSharingAlgorithm:
+          $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+    PartyRevSharingAlgorithm_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - type: object
+          description: >-
+            The PartyRevSharingAlgorithm resource is policy type of algorithm to calculate revenue
+            share
+          properties:
+            name:
+              description: The name of party revenue sharing algorithm
+              type: string
+            description:
+              description: The description of party revenue sharing algorithm
+              type: string
+            policy:
+              type: array
+              items:
+                $ref: '#/components/schemas/PolicyRef_FVO'
+              minItems: 1
+              description: The policy type algorithm to calculate revenue share
+            conditionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyConditionVariable_FVO'
+              description: The policy condition variables of the policy to calculate revenue share
+            actionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyActionVariable_FVO'
+              description: The policy action variables of the policy to calculate revenue share
+          required:
+            - '@type'
+            - name
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithm: '#/components/schemas/PartyRevSharingAlgorithm_FVO'
+    PartyRevSharingAlgorithm_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - type: object
+          description: >-
+            The PartyRevSharingAlgorithm resource is policy type of algorithm to calculate revenue
+            share
+          properties:
+            name:
+              description: The name of party revenue sharing algorithm
+              type: string
+            description:
+              description: The description of party revenue sharing algorithm
+              type: string
+            policy:
+              type: array
+              items:
+                $ref: '#/components/schemas/PolicyRef_MVO'
+              minItems: 1
+              description: The policy type algorithm to calculate revenue share
+            conditionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyConditionVariable_MVO'
+              description: The policy condition variables of the policy to calculate revenue share
+            actionVariable:
+              type: array
+              items:
+                $ref: '#/components/schemas/PartyRevSharingPolicyActionVariable_MVO'
+              description: The policy action variables of the policy to calculate revenue share
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingAlgorithm: '#/components/schemas/PartyRevSharingAlgorithm_MVO'
+    PartyRevSharingPolicyActionVariable:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - description: The policy action variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyAction:
+              $ref: '#/components/schemas/PolicyActionRef'
+            policyActionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyActionVariable: '#/components/schemas/PartyRevSharingPolicyActionVariable'
+    PartyRevSharingPolicyActionVariable_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - description: The policy action variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyAction:
+              $ref: '#/components/schemas/PolicyActionRef_FVO'
+            policyActionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyActionVariable: '#/components/schemas/PartyRevSharingPolicyActionVariable_FVO'
+    PartyRevSharingPolicyActionVariable_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - description: The policy action variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyAction:
+              $ref: '#/components/schemas/PolicyActionRef_MVO'
+            policyActionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyActionVariable: '#/components/schemas/PartyRevSharingPolicyActionVariable_MVO'
+    PartyRevSharingPolicyConditionVariable:
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - description: The policy condition variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyCondition:
+              $ref: '#/components/schemas/PolicyConditionRef'
+            policyConditionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyConditionVariable: '#/components/schemas/PartyRevSharingPolicyConditionVariable'
+    PartyRevSharingPolicyConditionVariable_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_FVO'
+        - description: The policy condition variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyCondition:
+              $ref: '#/components/schemas/PolicyConditionRef_FVO'
+            policyConditionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef_FVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyConditionVariable: '#/components/schemas/PartyRevSharingPolicyConditionVariable_FVO'
+    PartyRevSharingPolicyConditionVariable_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Entity_MVO'
+        - description: The policy condition variable and value of PartyRevSharingPolicyAlgorithm
+          properties:
+            value:
+              description: The value of variable
+              type: string
+            policyCondition:
+              $ref: '#/components/schemas/PolicyConditionRef_MVO'
+            policyConditionVariable:
+              $ref: '#/components/schemas/PolicyVariableRef_MVO'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRevSharingPolicyConditionVariable: '#/components/schemas/PartyRevSharingPolicyConditionVariable_MVO'
+    PartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef'
+    PartyRoleRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_FVO'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_FVO'
+    PartyRoleRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: >-
+            Party role reference. A party role represents the part played by a party in a given
+            context.
+          properties:
+            partyId:
+              type: string
+              description: The identifier of the engaged party that is linked to the PartyRole object.
+            partyName:
+              type: string
+              description: The name of the engaged party that is linked to the PartyRole object.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PartyRoleRef: '#/components/schemas/PartyRoleRef_MVO'
+    PolicyActionRef:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef'
+        - type: object
+          description: Reference to PolicyAction object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyActionRef: '#/components/schemas/PolicyActionRef'
+    PolicyActionRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef_FVO'
+        - type: object
+          description: Reference to PolicyAction object
+          properties:
+            '@type':
+              type: string
+          required:
+            - '@type'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyActionRef: '#/components/schemas/PolicyActionRef_FVO'
+    PolicyActionRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef_MVO'
+        - type: object
+          description: Reference to PolicyAction object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyActionRef: '#/components/schemas/PolicyActionRef_MVO'
+    PolicyConditionRef:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef'
+        - type: object
+          description: Reference to managed PolicyCondition object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef'
+    PolicyConditionRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef_FVO'
+        - type: object
+          description: Reference to managed PolicyCondition object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef_FVO'
+    PolicyConditionRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/PolicyEntityRef_MVO'
+        - type: object
+          description: Reference to managed PolicyCondition object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef_MVO'
+    PolicyEntityRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: PolicyEntityRef reference schema to be use for managed PolicyEntityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyEntityRef: '#/components/schemas/PolicyEntityRef'
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef'
+          PolicyActionRef: '#/components/schemas/PolicyActionRef'
+    PolicyEntityRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible_FVO'
+        - $ref: '#/components/schemas/Addressable_FVO'
+        - type: object
+          description: PolicyEntityRef reference schema to be use for managed PolicyEntityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyEntityRef: '#/components/schemas/PolicyEntityRef_FVO'
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef_FVO'
+          PolicyActionRef: '#/components/schemas/PolicyActionRef_FVO'
+    PolicyEntityRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - $ref: '#/components/schemas/Addressable'
+        - type: object
+          description: PolicyEntityRef reference schema to be use for managed PolicyEntityRef class.
+          properties:
+            id:
+              type: string
+              description: The identifier of the referred entity.
+            href:
+              type: string
+              description: The URI of the referred entity.
+            name:
+              type: string
+              description: Name of the referred entity.
+            '@referredType':
+              type: string
+              description: The actual type of the target instance when needed for disambiguation.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyEntityRef: '#/components/schemas/PolicyEntityRef_MVO'
+          PolicyConditionRef: '#/components/schemas/PolicyConditionRef_MVO'
+          PolicyActionRef: '#/components/schemas/PolicyActionRef_MVO'
+    PolicyRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: Reference to managed Policy object
+          properties:
+            id:
+              type: string
+              description: unique identifier
+            href:
+              type: string
+              description: Hyperlink reference
+            version:
+              type: string
+            '@type':
+              type: string
+              description: 'When sub-classing, this defines the sub-class Extensible name'
+            '@baseType':
+              type: string
+              description: 'When sub-classing, this defines the super-class'
+            '@schemaLocation':
+              type: string
+              description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyRef: '#/components/schemas/PolicyRef'
+    PolicyRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_FVO'
+        - type: object
+          description: Reference to managed Policy object
+          properties:
+            id:
+              type: string
+              description: unique identifier
+            href:
+              type: string
+              description: Hyperlink reference
+            version:
+              type: string
+            '@type':
+              type: string
+              description: 'When sub-classing, this defines the sub-class Extensible name'
+            '@baseType':
+              type: string
+              description: 'When sub-classing, this defines the super-class'
+            '@schemaLocation':
+              type: string
+              description: A URI to a JSON-Schema file that defines additional attributes and relationships
+          required:
+            - id
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyRef: '#/components/schemas/PolicyRef_FVO'
+    PolicyRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: Reference to managed Policy object
+          properties:
+            id:
+              type: string
+              description: unique identifier
+            href:
+              type: string
+              description: Hyperlink reference
+            version:
+              type: string
+            '@type':
+              type: string
+              description: 'When sub-classing, this defines the sub-class Extensible name'
+            '@baseType':
+              type: string
+              description: 'When sub-classing, this defines the super-class'
+            '@schemaLocation':
+              type: string
+              description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyRef: '#/components/schemas/PolicyRef_MVO'
+    PolicyVariableRef:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: Reference to PolicyVariable object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyVariableRef: '#/components/schemas/PolicyVariableRef'
+    PolicyVariableRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef_FVO'
+        - type: object
+          description: Reference to PolicyVariable object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyVariableRef: '#/components/schemas/PolicyVariableRef_FVO'
+    PolicyVariableRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/EntityRef'
+        - type: object
+          description: Reference to PolicyVariable object
+          properties:
+            '@type':
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          PolicyVariableRef: '#/components/schemas/PolicyVariableRef_MVO'
+    RelatedPartyRefOrPartyRoleRef:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef'
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef'
+    RelatedPartyRefOrPartyRoleRef_FVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef'
+          required:
+            - role
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_FVO'
+    RelatedPartyRefOrPartyRoleRef_MVO:
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          description: >-
+            RelatedParty reference. A related party defines party or party role or its reference,
+            linked to a specific entity
+          properties:
+            role:
+              description: >-
+                Role played by the related party or party role in the context of the specific entity
+                it is linked to. Such as 'initiator', 'customer',  'salesAgent', 'user'
+              type: string
+            partyOrPartyRole:
+              $ref: '#/components/schemas/PartyRefOrPartyRoleRef'
+          required:
+            - role
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          RelatedPartyRefOrPartyRoleRef: '#/components/schemas/RelatedPartyRefOrPartyRoleRef_MVO'
+    Error:
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Error: '#/components/schemas/Error'
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - type: object
+          required:
+            - code
+            - reason
+          properties:
+            code:
+              type: string
+              description: 'Application relevant detail, defined in the API or a common list.'
+            reason:
+              type: string
+              description: Explanation of the reason for the error which can be shown to a client user.
+            message:
+              type: string
+              description: >-
+                More details and corrective actions related to the error which can be shown to a
+                client user.
+            status:
+              type: string
+              description: HTTP Error code extension
+            referenceError:
+              type: string
+              description: URI of documentation describing the error.
+      description: 'Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)'
+    Hub_FVO:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      required:
+        - callback
+      allOf:
+        - $ref: '#/components/schemas/Extensible'
+        - properties:
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+    Hub:
+      type: object
+      description: >-
+        Sets the communication endpoint address the service instance must use to deliver
+        notification information
+      allOf:
+        - $ref: '#/components/schemas/Entity'
+        - properties:
+            id:
+              type: string
+              description: Id of the listener
+            callback:
+              type: string
+              description: The callback being registered.
+            query:
+              type: string
+              description: additional data to be passed
+          required:
+            - callback
+    JsonPatch:
+      type: object
+      description: A JSONPatch document as defined by RFC 6902
+      required:
+        - op
+        - path
+      properties:
+        op:
+          type: string
+          description: The operation to be performed
+          enum:
+            - add
+            - remove
+            - replace
+            - move
+            - copy
+            - test
+        path:
+          type: string
+          description: A JSON-Pointer
+        value:
+          description: The value to be used within the operations.
+        from:
+          type: string
+          description: A string containing a JSON Pointer value.
+    JsonPatchOperations:
+      description: JSONPatch Operations document as defined by RFC 6902
+      type: array
+      items:
+        $ref: '#/components/schemas/JsonPatch'
+  parameters:
+    Id:
+      name: id
+      required: true
+      schema:
+        type: string
+      in: path
+      description: Identifier of the Resource
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated properties to be provided in response
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Requested index for start of resources to be provided in response
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      description: Requested number of resources to be provided in response
+      schema:
+        type: integer
+  requestBodies:
+    PartyRevSharingAlgorithm_FVO:
+      description: The PartyRevSharingAlgorithm to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm_FVO'
+          examples:
+            CreatePartyRevSharingAlgorithm:
+              $ref: '#/components/examples/CreatePartyRevSharingAlgorithm_request'
+      required: true
+    PartyRevSharingAlgorithm_MVO:
+      description: The PartyRevSharingAlgorithm to be patched
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm_MVO'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json_examples:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json_examples_request
+        application/merge-patch+json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm_MVO'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_merge-patch_json:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_merge-patch_json_request
+        application/json-patch+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example_request
+        application/json-patch-query+json:
+          schema:
+            $ref: '#/components/schemas/JsonPatchOperations'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example_request
+      required: true
+    PartyRevSharingAlgorithmCreateEvent:
+      description: PartyRevSharingAlgorithm create Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithmCreateEvent'
+          examples:
+            PartyRevSharingAlgorithmCreateEvent:
+              $ref: '#/components/examples/PartyRevSharingAlgorithmCreateEvent_request'
+      required: true
+    PartyRevSharingAlgorithmStateChangeEvent:
+      description: PartyRevSharingAlgorithm stateChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithmStateChangeEvent'
+          examples:
+            PartyRevSharingAlgorithmStateChangeEvent:
+              $ref: '#/components/examples/PartyRevSharingAlgorithmStateChangeEvent_request'
+      required: true
+    PartyRevSharingAlgorithmDeleteEvent:
+      description: PartyRevSharingAlgorithm delete Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithmDeleteEvent'
+          examples:
+            PartyRevSharingAlgorithmDeleteEvent:
+              $ref: '#/components/examples/PartyRevSharingAlgorithmDeleteEvent_request'
+      required: true
+    PartyRevSharingAlgorithmAttributeValueChangeEvent:
+      description: PartyRevSharingAlgorithm attributeValueChange Event payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithmAttributeValueChangeEvent'
+          examples:
+            PartyRevSharingAlgorithmAttributeValueChangeEvent:
+              $ref: '#/components/examples/PartyRevSharingAlgorithmAttributeValueChangeEvent_request'
+      required: true
+    Hub_FVO:
+      description: Data containing the callback endpoint to deliver the information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub_FVO'
+      required: true
+  responses:
+    '200':
+      description: OK
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    200PartyRevSharingAlgorithmArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+          examples:
+            party_revenue_algorithm_list_example:
+              $ref: '#/components/examples/party_revenue_algorithm_list_example_response'
+    200PartyRevSharingAlgorithm_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+          examples:
+            party_revenue_sharing_algorithm_retrieve_example:
+              $ref: '#/components/examples/party_revenue_sharing_algorithm_retrieve_example_response'
+    200PartyRevSharingAlgorithm_Patch:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json_examples:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json_examples_response
+        application/merge-patch+json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_merge-patch_json:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_merge-patch_json_response
+        application/json-patch+json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+              - type: string
+                nullable: true
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example_response
+        application/json-patch-query+json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+              - type: array
+                items:
+                  $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+              - type: string
+                nullable: true
+          examples:
+            PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example:
+              $ref: >-
+                #/components/examples/PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example_response
+    201PartyRevSharingAlgorithm:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartyRevSharingAlgorithm'
+          examples:
+            CreatePartyRevSharingAlgorithm:
+              $ref: '#/components/examples/CreatePartyRevSharingAlgorithm_response'
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Hub:
+      description: Notified
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub'
+  headers:
+    X-Total-Count:
+      description: Total number of items matching criteria
+      schema:
+        type: integer
+    X-Result-Count:
+      description: Actual number of items returned in the response body
+      schema:
+        type: integer
+  securitySchemes: {}
+  examples:
+    party_revenue_algorithm_list_example_response:
+      value:
+        - '@type': PartyRevSharingAlgorithm
+          href: >-
+            https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+          id: '4840'
+          name: >-
+            distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+            price
+          description: >-
+            distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+            price
+          policy:
+            - '@type': PolicyRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+              id: '5840'
+              name: >-
+                distribute charge revenue share calculate policy for Mobile handset 2023
+                distribution price
+              '@referredType': PolicySet
+              version: '1.0'
+          conditionVariable:
+            - '@type': PartyRevSharingPolicyConditionVariable
+              id: '5010'
+              value: '300'
+              policyCondition:
+                '@type': PolicyConditionRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+                id: '5020'
+                name: The sold price of single handset more than 300$
+                '@referredType': PolicyCondition
+              policyConditionVariable:
+                '@type': PolicyVariableRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+                id: '5040'
+                name: sold price
+                '@referredType': PolicyVariable
+          actionVariable:
+            - '@type': PartyRevSharingPolicyActionVariable
+              id: '5011'
+              value: 5%
+              policyAction:
+                '@type': PolicyActionRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+                id: '5021'
+                name: The revenue share percentage of sold price is 5%
+                '@referredType': PolicyAction
+              policyActionVariable:
+                '@type': PolicyVariableRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+                id: '5041'
+                name: The revenue share percentage of sold price
+                '@referredType': PolicyVariable
+      description: Here's an example of a request for retrieving multiple party revenue sharing algorithms.
+    party_revenue_sharing_algorithm_retrieve_example_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        description: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: Here's an example of a request for retrieving a specific party revenue sharing algorithm.
+    CreatePartyRevSharingAlgorithm_request:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        name: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        description: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: POST PartyRevSharingAlgorithm request example
+    CreatePartyRevSharingAlgorithm_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        description: >-
+          distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+          price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: POST PartyRevSharingAlgorithm response description.
+    PartyRevSharingAlgorithm_partial_update_application_json_examples_request:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        name: revenue share calculate policy for Mobile handset 2023 distribution price
+        description: revenue share calculate policy for Mobile handset 2023 distribution price
+      description: PATCH PartyRevSharingAlgorithm request leveraging json application example
+    PartyRevSharingAlgorithm_partial_update_application_json_examples_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: revenue share calculate policy for Mobile handset 2023 distribution price
+        description: revenue share calculate policy for Mobile handset 2023 distribution price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: PATCH PartyRevSharingAlgorithm representation.
+    PartyRevSharingAlgorithm_partial_update_application_merge-patch_json_request:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        name: revenue share calculate policy for Mobile handset 2023 distribution price
+        description: revenue share calculate policy for Mobile handset 2023 distribution price
+      description: PATCH PartyRevSharingAlgorithm request leveraging json application example
+    PartyRevSharingAlgorithm_partial_update_application_merge-patch_json_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: revenue share calculate policy for Mobile handset 2023 distribution price
+        description: revenue share calculate policy for Mobile handset 2023 distribution price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: PATCH PartyRevSharingAlgorithm representation.
+    PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example_request:
+      value:
+        - op: replace
+          path: /name
+          value: The revenue share calculate policy for Mobile handset 2023 distribution price
+        - op: replace
+          path: /description
+          value: The revenue share calculate policy for Mobile handset 2023 distribution price
+      description: PATCH PartyRevSharingAlgorithm request leveraging json application example
+    PartyRevSharingAlgorithm_partial_update_application_json-patch_json_example_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: The revenue share calculate policy for Mobile handset 2023 distribution price
+        description: The revenue share calculate policy for Mobile handset 2023 distribution price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '300'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: PATCH PartyRevSharingAlgorithm representation.
+    PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example_request:
+      value:
+        - op: replace
+          path: /conditionVariable.value?id=5010
+          value: 500
+      description: PATCH PartyRevSharingAlgorithm request leveraging json application example
+    PartyRevSharingAlgorithm_partial_update_application_json-patch-query_json_example_response:
+      value:
+        '@type': PartyRevSharingAlgorithm
+        href: >-
+          https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+        id: '4840'
+        name: The revenue share calculate policy for Mobile handset 2023 distribution price
+        description: The revenue share calculate policy for Mobile handset 2023 distribution price
+        policy:
+          - '@type': PolicyRef
+            href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+            id: '5840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            '@referredType': PolicySet
+            version: '1.0'
+        conditionVariable:
+          - '@type': PartyRevSharingPolicyConditionVariable
+            id: '5010'
+            value: '500'
+            policyCondition:
+              '@type': PolicyConditionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+              id: '5020'
+              name: The sold price of single handset more than 300$
+              '@referredType': PolicyCondition
+            policyConditionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+              id: '5040'
+              name: sold price
+              '@referredType': PolicyVariable
+        actionVariable:
+          - '@type': PartyRevSharingPolicyActionVariable
+            id: '5011'
+            value: 5%
+            policyAction:
+              '@type': PolicyActionRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+              id: '5021'
+              name: The revenue share percentage of sold price is 5%
+              '@referredType': PolicyAction
+            policyActionVariable:
+              '@type': PolicyVariableRef
+              href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+              id: '5041'
+              name: The revenue share percentage of sold price
+              '@referredType': PolicyVariable
+      description: PATCH PartyRevSharingAlgorithm representation.
+    PartyRevSharingAlgorithmCreateEvent_request:
+      value:
+        correlationId: 81003dd3-e325
+        description: PartyRevSharingAlgorithmCreateEvent illustration
+        domain: BusinessPartner
+        eventId: 4110-9b59-509a64cf85a8
+        eventTime: '2022-08-25T12:18:12.171Z'
+        eventType: PartyRevSharingAlgorithmCreateEvent
+        priority: '1'
+        timeOcurred: '2022-08-25T12:18:06.252Z'
+        title: PartyRevSharingAlgorithmCreateEvent
+        event:
+          partyRevSharingAlgorithm:
+            '@type': PartyRevSharingAlgorithm
+            href: >-
+              https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+            id: '4840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            description: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            policy:
+              - '@type': PolicyRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+                id: '5840'
+                name: >-
+                  distribute charge revenue share calculate policy for Mobile handset 2023
+                  distribution price
+                '@referredType': PolicySet
+                version: '1.0'
+            conditionVariable:
+              - '@type': PartyRevSharingPolicyConditionVariable
+                id: '5010'
+                value: '300'
+                policyCondition:
+                  '@type': PolicyConditionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+                  id: '5020'
+                  name: The sold price of single handset more than 300$
+                  '@referredType': PolicyCondition
+                policyConditionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+                  id: '5040'
+                  name: sold price
+                  '@referredType': PolicyVariable
+            actionVariable:
+              - '@type': PartyRevSharingPolicyActionVariable
+                id: '5011'
+                value: 5%
+                policyAction:
+                  '@type': PolicyActionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+                  id: '5021'
+                  name: The revenue share percentage of sold price is 5%
+                  '@referredType': PolicyAction
+                policyActionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+                  id: '5041'
+                  name: The revenue share percentage of sold price
+                  '@referredType': PolicyVariable
+        reportingSystem:
+          id: '759'
+          name: APP-745
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        source:
+          id: '705'
+          name: APP-317
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        '@baseType': Event
+        '@type': PartyRevSharingAlgorithmCreateEvent
+      description: Message example for PartyRevSharingAlgorithmCreate event
+    PartyRevSharingAlgorithmStateChangeEvent_request:
+      value:
+        correlationId: 97003dd3-e325
+        description: PartyRevSharingAlgorithmStateChangeEvent illustration
+        domain: BusinessPartner
+        eventId: 4210-9b59-509a64cf85a8
+        eventTime: '2022-08-25T12:18:12.171Z'
+        eventType: PartyRevSharingAlgorithmStateChangeEvent
+        priority: '1'
+        timeOcurred: '2022-08-25T12:18:06.252Z'
+        title: PartyRevSharingAlgorithmStateChangeEvent
+        event:
+          partyRevSharingAlgorithm:
+            '@type': PartyRevSharingAlgorithm
+            href: >-
+              https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+            id: '4840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            description: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            policy:
+              - '@type': PolicyRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+                id: '5840'
+                name: >-
+                  distribute charge revenue share calculate policy for Mobile handset 2023
+                  distribution price
+                '@referredType': PolicySet
+                version: '1.0'
+            conditionVariable:
+              - '@type': PartyRevSharingPolicyConditionVariable
+                id: '5010'
+                value: '300'
+                policyCondition:
+                  '@type': PolicyConditionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+                  id: '5020'
+                  name: The sold price of single handset more than 300$
+                  '@referredType': PolicyCondition
+                policyConditionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+                  id: '5040'
+                  name: sold price
+                  '@referredType': PolicyVariable
+            actionVariable:
+              - '@type': PartyRevSharingPolicyActionVariable
+                id: '5011'
+                value: 5%
+                policyAction:
+                  '@type': PolicyActionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+                  id: '5021'
+                  name: The revenue share percentage of sold price is 5%
+                  '@referredType': PolicyAction
+                policyActionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+                  id: '5041'
+                  name: The revenue share percentage of sold price
+                  '@referredType': PolicyVariable
+        reportingSystem:
+          id: '759'
+          name: APP-745
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        source:
+          id: '705'
+          name: APP-317
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        '@baseType': Event
+        '@type': PartyRevSharingAlgorithmStateChangeEvent
+      description: Message example for PartyRevSharingAlgorithmStateChange event
+    PartyRevSharingAlgorithmDeleteEvent_request:
+      value:
+        correlationId: 82cfc73d-deb7
+        description: PartyRevSharingAlgorithmDeleteEvent illustration
+        domain: BusinessPartner
+        eventId: 42d6-9751-40e4f01440c9
+        eventTime: '2022-08-25T12:18:12.202Z'
+        eventType: PartyRevSharingAlgorithmDeleteEvent
+        priority: '4'
+        timeOcurred: '2022-08-25T12:18:07.224Z'
+        title: PartyRevSharingAlgorithmDeleteEvent
+        event:
+          partyRevSharingAlgorithm:
+            id: '4840'
+            href: 'https://host:port/partyRevSharingAlgorithm/v5/partyRevSharingAlgorithm/4840'
+            '@type': PartyRevSharingAlgorithm
+        reportingSystem:
+          id: '759'
+          name: APP-745
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        source:
+          id: '705'
+          name: APP-317
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        '@baseType': Event
+        '@type': PartyRevSharingAlgorithmDeleteEvent
+      description: Message example for PartyRevSharingAlgorithmDelete event
+    PartyRevSharingAlgorithmAttributeValueChangeEvent_request:
+      value:
+        correlationId: 96003dd3-e325
+        description: PartyRevSharingAlgorithmAttributeValueEvent illustration
+        domain: BusinessPartner
+        eventId: 4110-9b59-509a64cf85a8
+        eventTime: '2022-08-25T12:18:12.171Z'
+        eventType: PartyRevSharingAlgorithmAttributeValueEvent
+        priority: '1'
+        timeOcurred: '2022-08-25T12:18:06.252Z'
+        title: PartyRevSharingAlgorithmAttributeValueEvent
+        event:
+          partyRevSharingAlgorithm:
+            '@type': PartyRevSharingAlgorithm
+            href: >-
+              https://mycsp.com:8080/tmf-api/PartyRevSharingModelManagement/v5/PartyRevSharingAlgorithm/4840
+            id: '4840'
+            name: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            description: >-
+              distribute charge revenue share calculate policy for Mobile handset 2023 distribution
+              price
+            policy:
+              - '@type': PolicyRef
+                href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/Policy/5840'
+                id: '5840'
+                name: >-
+                  distribute charge revenue share calculate policy for Mobile handset 2023
+                  distribution price
+                '@referredType': PolicySet
+                version: '1.0'
+            conditionVariable:
+              - '@type': PartyRevSharingPolicyConditionVariable
+                id: '5010'
+                value: '300'
+                policyCondition:
+                  '@type': PolicyConditionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyCondition/5020'
+                  id: '5020'
+                  name: The sold price of single handset more than 300$
+                  '@referredType': PolicyCondition
+                policyConditionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5040'
+                  id: '5040'
+                  name: sold price
+                  '@referredType': PolicyVariable
+            actionVariable:
+              - '@type': PartyRevSharingPolicyActionVariable
+                id: '5011'
+                value: 5%
+                policyAction:
+                  '@type': PolicyActionRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyAction/5021'
+                  id: '5021'
+                  name: The revenue share percentage of sold price is 5%
+                  '@referredType': PolicyAction
+                policyActionVariable:
+                  '@type': PolicyVariableRef
+                  href: 'https://mycsp.com:8080/tmf-api/PolicyManagement/v5/PolicyVariable/5041'
+                  id: '5041'
+                  name: The revenue share percentage of sold price
+                  '@referredType': PolicyVariable
+        reportingSystem:
+          id: '759'
+          name: APP-745
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        source:
+          id: '705'
+          name: APP-317
+          '@type': ReportingResource
+          '@referredType': LogicalResource
+        '@baseType': Event
+        '@type': PartyRevSharingAlgorithmAttributeValueEvent
+      description: Message example for PartyRevSharingAlgorithmAttributeValueChange event

@@ -1,0 +1,2275 @@
+openapi: 3.0.1
+info:
+  description: "TMF670 Defines a specific method of payment (e.g. direct debit with\
+    \ all details associated)\n-\tMain payment method attributes are its type, details,\
+    \ name, description, isPreffered, status, status date\nPayment Method API performs\
+    \ the following operations on payment method.\n-\tRetrieval of a payment method\
+    \ or a collection of payment method depending on filter criteria\n-\tPartial update\
+    \ of a payment method\n-\tCreation of a payment method \n-\tNotification of events\
+    \ on payment method:\no\tPayment method state change\no\tPayment method change\n\
+    o\tPayment method created\no\tPayment method deleted \n\n\\n\\n\\nCopyright ©\
+    \ TM Forum 2022. All Rights Reserved\\n\\n\\n\"\n"
+  title: Payment Method
+  version: 4.1.0
+servers:
+- url: https://serverRoot/tmf-api/paymentMethod/v4/
+tags:
+- name: paymentMethod
+- name: notification listeners (client side)
+- name: events subscription
+paths:
+  /paymentMethod:
+    get:
+      description: This operation list or find PaymentMethod entities
+      operationId: listPaymentMethod
+      parameters:
+      - description: Comma-separated properties to be provided in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      - description: Requested index for start of resources to be provided in response
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Requested number of resources to be provided in response
+        in: query
+        name: limit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                items:
+                  $ref: "#/components/schemas/PaymentMethod"
+                type: array
+          description: Success
+          headers:
+            X-Total-Count:
+              description: Total number of items matching criteria
+              schema:
+                type: integer
+            X-Result-Count:
+              description: Actual number of items returned in the response body
+              schema:
+                type: integer
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: List or find PaymentMethod objects
+      tags:
+      - paymentMethod
+    post:
+      description: This operation creates a PaymentMethod entity.
+      operationId: createPaymentMethod
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethod_Create"
+        description: The PaymentMethod to be created
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/PaymentMethod"
+          description: Created
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Creates a PaymentMethod
+      tags:
+      - paymentMethod
+      x-codegen-request-body-name: paymentMethod
+  /paymentMethod/{id}:
+    delete:
+      description: This operation deletes a PaymentMethod entity.
+      operationId: deletePaymentMethod
+      parameters:
+      - description: Identifier of the PaymentMethod
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: Deleted
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Deletes a PaymentMethod
+      tags:
+      - paymentMethod
+    get:
+      description: This operation retrieves a PaymentMethod entity. Attribute selection
+        is enabled for all first level attributes.
+      operationId: retrievePaymentMethod
+      parameters:
+      - description: Identifier of the PaymentMethod
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Comma-separated properties to provide in response
+        in: query
+        name: fields
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/PaymentMethod"
+          description: Success
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Retrieves a PaymentMethod by ID
+      tags:
+      - paymentMethod
+    patch:
+      description: This operation updates partially a PaymentMethod entity.
+      operationId: patchPaymentMethod
+      parameters:
+      - description: Identifier of the PaymentMethod
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethod_Update"
+        description: The PaymentMethod to be updated
+        required: true
+      responses:
+        "200":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/PaymentMethod"
+          description: Updated
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Updates partially a PaymentMethod
+      tags:
+      - paymentMethod
+      x-codegen-request-body-name: paymentMethod
+  /hub:
+    post:
+      description: "Sets the communication endpoint address the service instance must\
+        \ use to deliver information about its health state, execution state, failures\
+        \ and metrics."
+      operationId: registerListener
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/EventSubscriptionInput"
+        description: Data containing the callback endpoint to deliver the information
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Subscribed
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Register a listener
+      tags:
+      - events subscription
+      x-codegen-request-body-name: data
+  /hub/{id}:
+    delete:
+      description: "Resets the communication endpoint address the service instance\
+        \ must use to deliver information about its health state, execution state,\
+        \ failures and metrics."
+      operationId: unregisterListener
+      parameters:
+      - description: The id of the registered listener
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          content: {}
+          description: Deleted
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method not allowed
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Unregister a listener
+      tags:
+      - events subscription
+  /listener/paymentMethodCreateEvent:
+    post:
+      description: Example of a client listener for receiving the notification PaymentMethodCreateEvent
+      operationId: listenToPaymentMethodCreateEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethodCreateEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity PaymentMethodCreateEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/paymentMethodAttributeValueChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification PaymentMethodAttributeValueChangeEvent
+      operationId: listenToPaymentMethodAttributeValueChangeEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethodAttributeValueChangeEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity PaymentMethodAttributeValueChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/paymentMethodStatusChangeEvent:
+    post:
+      description: Example of a client listener for receiving the notification PaymentMethodStatusChangeEvent
+      operationId: listenToPaymentMethodStatusChangeEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethodStatusChangeEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity PaymentMethodStatusChangeEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+  /listener/paymentMethodDeleteEvent:
+    post:
+      description: Example of a client listener for receiving the notification PaymentMethodDeleteEvent
+      operationId: listenToPaymentMethodDeleteEvent
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/PaymentMethodDeleteEvent"
+        description: The event data
+        required: true
+      responses:
+        "201":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/EventSubscription"
+          description: Notified
+        "400":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Bad Request
+        "401":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Unauthorized
+        "403":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Forbidden
+        "404":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Not Found
+        "405":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Method Not allowed
+        "409":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Conflict
+        "500":
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: Internal Server Error
+      summary: Client listener for entity PaymentMethodDeleteEvent
+      tags:
+      - notification listeners (client side)
+      x-codegen-request-body-name: data
+components:
+  schemas:
+    AccountRef:
+      description: Account reference. A account may be a party account or a financial
+        account.
+      example:
+        '@referredType': '@referredType'
+        '@baseType': '@baseType'
+        '@type': '@type'
+        name: name
+        description: description
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: Unique identifier of the account
+          type: string
+        href:
+          description: Reference of the account
+          type: string
+        description:
+          description: Detailed description of the account
+          type: string
+        name:
+          description: Name of the account
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - id
+      type: object
+    Addressable:
+      description: Base schema for adressable entities
+      properties:
+        id:
+          description: unique identifier
+          type: string
+        href:
+          description: Hyperlink reference
+          format: uri
+          type: string
+      type: object
+    Entity:
+      description: Base entity schema for use in TMForum Open-APIs
+      properties:
+        id:
+          description: unique identifier
+          type: string
+        href:
+          description: Hyperlink reference
+          format: uri
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+      type: object
+    EntityRef:
+      description: Entity reference schema to be use for all entityRef class.
+      properties:
+        id:
+          description: unique identifier
+          type: string
+        href:
+          description: Hyperlink reference
+          format: uri
+          type: string
+        name:
+          description: Name of the related entity.
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - id
+      type: object
+    Extensible:
+      description: Base Extensible schema for use in TMForum Open-APIs
+      properties:
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+      type: object
+    PaymentMethod:
+      allOf:
+      - $ref: "#/components/schemas/Entity"
+      - description: "A Payment Method is a pure-virtual super-class that defines\
+          \ a specific method of payment such as Direct Debit, Cash, Digital Wallet,Tokenized\
+          \ Card, Bank Account Transfer, Bank Account Debit, Bank Card, Voucher, Check,\
+          \ Bucket PaymentMethod, Account PaymentMethod, and Loyalty PaymentMethod\
+          \ with all details associated. Use the @type attribute to specify the concrete\
+          \ type in the API calls.Defines a specific method of payment (e.g. direct\
+          \ debit with all details associated)"
+        properties:
+          name:
+            description: Friendly name assigned to the payment method
+            type: string
+          description:
+            description: Text description of the contents of the payment method
+            type: string
+          isPreferred:
+            description: If the method is the preferred one by the owner. Typically
+              used when querying for the payment methods of a specific customer or
+              account
+            type: boolean
+          authorizationCode:
+            description: "Review: Authorization code provided by a financial institution.\
+              \ Typically this would be populated for recurring payments using the\
+              \ method, as payments have an authorization code of their own."
+            type: string
+          status:
+            description: Status of the payment method
+            type: string
+          statusDate:
+            description: The last time the payment method status changed.
+            format: date-time
+            type: string
+          statusReason:
+            description: The reason for the last status change.
+            type: string
+          validFor:
+            $ref: "#/components/schemas/TimePeriod"
+          '@type':
+            description: "Type of payment method (e.g.: bank card, cash, voucher,etc). "
+            enum:
+            - cash
+            - digitalWallet
+            - tokenizedCard
+            - bankAccountTransfer
+            - bankAccountDebit
+            - bankCard
+            - voucher
+            - check
+            - bucketPaymentMethod
+            - accountPaymentMethod
+            - loyaltyPaymentMethod
+            - directDebit
+            type: string
+          relatedParty:
+            $ref: "#/components/schemas/RelatedParty"
+          relatedPlace:
+            $ref: "#/components/schemas/RelatedPlace"
+          account:
+            description: Reference to the accounts that are linked to the payment
+              method. May be a party account or a financial account.
+            items:
+              $ref: "#/components/schemas/AccountRef"
+            type: array
+        required:
+        - '@type'
+        - name
+        type: object
+        example: null
+      example:
+        statusDate: 2000-01-23T04:56:07.000+00:00
+        relatedPlace:
+          '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        authorizationCode: authorizationCode
+        validFor:
+          startDateTime: 1985-04-12T23:20:50.52Z
+          endDateTime: 1985-04-12T23:20:50.52Z
+        '@type': cash
+        description: description
+        isPreferred: true
+        relatedParty:
+          '@referredType': '@referredType'
+          role: role
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+        statusReason: statusReason
+        '@baseType': '@baseType'
+        name: name
+        id: id
+        href: https://openapi-generator.tech
+        '@schemaLocation': https://openapi-generator.tech
+        account:
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          description: description
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        - '@referredType': '@referredType'
+          '@baseType': '@baseType'
+          '@type': '@type'
+          name: name
+          description: description
+          id: id
+          href: href
+          '@schemaLocation': https://openapi-generator.tech
+        status: status
+    PaymentMethod_Create:
+      description: |-
+        A Payment Method is a pure-virtual super-class that defines a specific method of payment such as Direct Debit, Cash, Digital Wallet,Tokenized Card, Bank Account Transfer, Bank Account Debit, Bank Card, Voucher, Check, Bucket PaymentMethod, Account PaymentMethod, and Loyalty PaymentMethod with all details associated. Use the @type attribute to specify the concrete type in the API calls.
+        Skipped properties: id,href
+      properties:
+        authorizationCode:
+          description: "Review: Authorization code provided by a financial institution.\
+            \ Typically this would be populated for recurring payments using the method,\
+            \ as payments have an authorization code of their own."
+          example: "1234567890"
+          type: string
+        description:
+          description: Text description of the contents of the payment method
+          example: My gold mastercard.
+          type: string
+        isPreferred:
+          description: If the method is the preferred one by the owner. Typically
+            used when querying for the payment methods of a specific customer or account
+          example: true
+          type: boolean
+        name:
+          description: Friendly name assigned to the payment method
+          example: Main credit card
+          type: string
+        status:
+          description: Status of the payment method
+          example: Active
+          type: string
+        statusDate:
+          description: The last time the payment method status changed.
+          format: date-time
+          type: string
+        statusReason:
+          description: The reason for the last status change.
+          example: "This payment method has expired, therefore its status is now inactive."
+          type: string
+        account:
+          description: Reference to the accounts that are linked to the payment method.
+            May be a party account or a financial account.
+          items:
+            $ref: "#/components/schemas/AccountRef"
+          type: array
+        relatedParty:
+          $ref: "#/components/schemas/RelatedParty"
+        relatedPlace:
+          $ref: "#/components/schemas/RelatedPlace"
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "Type of payment method (e.g.: bank card, cash, voucher, etc)."
+          type: string
+      required:
+      - '@type'
+      - name
+      type: object
+    PaymentMethod_Update:
+      description: |-
+        A Payment Method is a pure-virtual super-class that defines a specific method of payment such as Direct Debit, Cash, Digital Wallet,Tokenized Card, Bank Account Transfer, Bank Account Debit, Bank Card, Voucher, Check, Bucket PaymentMethod, Account PaymentMethod, and Loyalty PaymentMethod with all details associated. Use the @type attribute to specify the concrete type in the API calls.
+        Skipped properties: id,href,@baseType,@schemaLocation,@type
+      properties:
+        authorizationCode:
+          description: "Review: Authorization code provided by a financial institution.\
+            \ Typically this would be populated for recurring payments using the method,\
+            \ as payments have an authorization code of their own."
+          example: "1234567890"
+          type: string
+        description:
+          description: Text description of the contents of the payment method
+          example: My gold mastercard.
+          type: string
+        isPreferred:
+          description: If the method is the preferred one by the owner. Typically
+            used when querying for the payment methods of a specific customer or account
+          example: true
+          type: boolean
+        name:
+          description: Friendly name assigned to the payment method
+          example: Main credit card
+          type: string
+        status:
+          description: Status of the payment method
+          example: Active
+          type: string
+        statusDate:
+          description: The last time the payment method status changed.
+          format: date-time
+          type: string
+        statusReason:
+          description: The reason for the last status change.
+          example: "This payment method has expired, therefore its status is now inactive."
+          type: string
+        account:
+          description: Reference to the accounts that are linked to the payment method.
+            May be a party account or a financial account.
+          items:
+            $ref: "#/components/schemas/AccountRef"
+          type: array
+        relatedParty:
+          $ref: "#/components/schemas/RelatedParty"
+        relatedPlace:
+          $ref: "#/components/schemas/RelatedPlace"
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+      required:
+      - name
+      type: object
+    RelatedParty:
+      description: Related Entity reference. A related party defines party or party
+        role linked to a specific entity.
+      example:
+        '@referredType': '@referredType'
+        role: role
+        '@baseType': '@baseType'
+        '@type': '@type'
+        name: name
+        id: id
+        href: https://openapi-generator.tech
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: unique identifier
+          type: string
+        href:
+          description: Hyperlink reference
+          format: uri
+          type: string
+        name:
+          description: Name of the related entity.
+          type: string
+        role:
+          description: Role played by the related party
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      required:
+      - '@referredType'
+      - id
+      type: object
+    RelatedPlace:
+      description: "A  Place and an associated role as installation adress, delivery\
+        \ address, etc...."
+      example:
+        '@referredType': '@referredType'
+        role: role
+        '@baseType': '@baseType'
+        '@type': '@type'
+        name: name
+        id: id
+        href: href
+        '@schemaLocation': https://openapi-generator.tech
+      properties:
+        id:
+          description: Unique identifier of the place
+          type: string
+        href:
+          description: Unique reference of the place
+          type: string
+        name:
+          description: "A user-friendly name for the place, such as [Paris Store],\
+            \ [London Store], [Main Home]"
+          type: string
+        role:
+          description: "Role of the place, such as: [home delivery], [shop retrieval])"
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      type: object
+    TimePeriod:
+      description: "A period of time, either as a deadline (endDateTime only) a startDateTime\
+        \ only, or both"
+      example:
+        startDateTime: 1985-04-12T23:20:50.52Z
+        endDateTime: 1985-04-12T23:20:50.52Z
+      properties:
+        endDateTime:
+          description: "End of the time period, using IETC-RFC-3339 format"
+          example: 1985-04-12T23:20:50.52Z
+          format: date-time
+          type: string
+        startDateTime:
+          description: "Start of the time period, using IETC-RFC-3339 format"
+          example: 1985-04-12T23:20:50.52Z
+          format: date-time
+          type: string
+      type: object
+    EventSubscription:
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      example:
+        query: query
+        callback: callback
+        id: id
+      properties:
+        id:
+          description: Id of the listener
+          type: string
+        callback:
+          description: The callback being registered.
+          type: string
+        query:
+          description: additional data to be passed
+          type: string
+      required:
+      - callback
+      - id
+      type: object
+    EventSubscriptionInput:
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      example:
+        query: query
+        callback: callback
+      properties:
+        callback:
+          description: The callback being registered.
+          type: string
+        query:
+          description: additional data to be passed
+          type: string
+      required:
+      - callback
+      type: object
+    PaymentMethodCreateEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        event:
+          paymentMethod:
+            statusDate: 2000-01-23T04:56:07.000+00:00
+            relatedPlace:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            authorizationCode: authorizationCode
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': cash
+            description: description
+            isPreferred: true
+            relatedParty:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: https://openapi-generator.tech
+              '@schemaLocation': https://openapi-generator.tech
+            statusReason: statusReason
+            '@baseType': '@baseType'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+            account:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            status: status
+        title: title
+        priority: priority
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        event:
+          $ref: "#/components/schemas/PaymentMethodCreateEventPayload"
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+      type: object
+    PaymentMethodCreateEventPayload:
+      description: The event data structure
+      example:
+        paymentMethod:
+          statusDate: 2000-01-23T04:56:07.000+00:00
+          relatedPlace:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          authorizationCode: authorizationCode
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': cash
+          description: description
+          isPreferred: true
+          relatedParty:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+          statusReason: statusReason
+          '@baseType': '@baseType'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          account:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          status: status
+      properties:
+        paymentMethod:
+          $ref: "#/components/schemas/PaymentMethod"
+      type: object
+    PaymentMethodAttributeValueChangeEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        fieldPath: fieldPath
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        title: title
+        priority: priority
+        event:
+          paymentMethod:
+            statusDate: 2000-01-23T04:56:07.000+00:00
+            relatedPlace:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            authorizationCode: authorizationCode
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': cash
+            description: description
+            isPreferred: true
+            relatedParty:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: https://openapi-generator.tech
+              '@schemaLocation': https://openapi-generator.tech
+            statusReason: statusReason
+            '@baseType': '@baseType'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+            account:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            status: status
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+        fieldPath:
+          description: The path identifying the object field concerned by this notification.
+          type: string
+        event:
+          $ref: "#/components/schemas/PaymentMethodAttributeValueChangeEventPayload"
+      type: object
+    PaymentMethodAttributeValueChangeEventPayload:
+      description: The event data structure
+      example:
+        paymentMethod:
+          statusDate: 2000-01-23T04:56:07.000+00:00
+          relatedPlace:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          authorizationCode: authorizationCode
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': cash
+          description: description
+          isPreferred: true
+          relatedParty:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+          statusReason: statusReason
+          '@baseType': '@baseType'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          account:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          status: status
+      properties:
+        paymentMethod:
+          $ref: "#/components/schemas/PaymentMethod"
+      type: object
+    PaymentMethodStatusChangeEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        event:
+          paymentMethod:
+            statusDate: 2000-01-23T04:56:07.000+00:00
+            relatedPlace:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            authorizationCode: authorizationCode
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': cash
+            description: description
+            isPreferred: true
+            relatedParty:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: https://openapi-generator.tech
+              '@schemaLocation': https://openapi-generator.tech
+            statusReason: statusReason
+            '@baseType': '@baseType'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+            account:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            status: status
+        title: title
+        priority: priority
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        event:
+          $ref: "#/components/schemas/PaymentMethodStatusChangeEventPayload"
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+      type: object
+    PaymentMethodStatusChangeEventPayload:
+      description: The event data structure
+      example:
+        paymentMethod:
+          statusDate: 2000-01-23T04:56:07.000+00:00
+          relatedPlace:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          authorizationCode: authorizationCode
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': cash
+          description: description
+          isPreferred: true
+          relatedParty:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+          statusReason: statusReason
+          '@baseType': '@baseType'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          account:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          status: status
+      properties:
+        paymentMethod:
+          $ref: "#/components/schemas/PaymentMethod"
+      type: object
+    PaymentMethodDeleteEvent:
+      description: The notification data structure
+      example:
+        eventId: eventId
+        domain: domain
+        eventTime: 2000-01-23T04:56:07.000+00:00
+        description: description
+        correlationId: correlationId
+        eventType: eventType
+        event:
+          paymentMethod:
+            statusDate: 2000-01-23T04:56:07.000+00:00
+            relatedPlace:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            authorizationCode: authorizationCode
+            validFor:
+              startDateTime: 1985-04-12T23:20:50.52Z
+              endDateTime: 1985-04-12T23:20:50.52Z
+            '@type': cash
+            description: description
+            isPreferred: true
+            relatedParty:
+              '@referredType': '@referredType'
+              role: role
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              id: id
+              href: https://openapi-generator.tech
+              '@schemaLocation': https://openapi-generator.tech
+            statusReason: statusReason
+            '@baseType': '@baseType'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+            account:
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            - '@referredType': '@referredType'
+              '@baseType': '@baseType'
+              '@type': '@type'
+              name: name
+              description: description
+              id: id
+              href: href
+              '@schemaLocation': https://openapi-generator.tech
+            status: status
+        title: title
+        priority: priority
+        timeOcurred: 2000-01-23T04:56:07.000+00:00
+      properties:
+        event:
+          $ref: "#/components/schemas/PaymentMethodDeleteEventPayload"
+        eventId:
+          description: The identifier of the notification.
+          type: string
+        eventTime:
+          description: Time of the event occurrence.
+          format: date-time
+          type: string
+        eventType:
+          description: The type of the notification.
+          type: string
+        correlationId:
+          description: The correlation id for this event.
+          type: string
+        domain:
+          description: The domain of the event.
+          type: string
+        title:
+          description: The title of the event.
+          type: string
+        description:
+          description: An explnatory of the event.
+          type: string
+        priority:
+          description: A priority.
+          type: string
+        timeOcurred:
+          description: The time the event occured.
+          format: date-time
+          type: string
+      type: object
+    PaymentMethodDeleteEventPayload:
+      description: The event data structure
+      example:
+        paymentMethod:
+          statusDate: 2000-01-23T04:56:07.000+00:00
+          relatedPlace:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          authorizationCode: authorizationCode
+          validFor:
+            startDateTime: 1985-04-12T23:20:50.52Z
+            endDateTime: 1985-04-12T23:20:50.52Z
+          '@type': cash
+          description: description
+          isPreferred: true
+          relatedParty:
+            '@referredType': '@referredType'
+            role: role
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            id: id
+            href: https://openapi-generator.tech
+            '@schemaLocation': https://openapi-generator.tech
+          statusReason: statusReason
+          '@baseType': '@baseType'
+          name: name
+          id: id
+          href: https://openapi-generator.tech
+          '@schemaLocation': https://openapi-generator.tech
+          account:
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          - '@referredType': '@referredType'
+            '@baseType': '@baseType'
+            '@type': '@type'
+            name: name
+            description: description
+            id: id
+            href: href
+            '@schemaLocation': https://openapi-generator.tech
+          status: status
+      properties:
+        paymentMethod:
+          $ref: "#/components/schemas/PaymentMethod"
+      type: object
+    DirectDebit:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: "Direct Debit is a fully automated payment instrument which is\
+          \ generally used for recurrent payments. It allows a creditor to initiate\
+          \ the payment order. In doing so, it exempts the debtor from having to send\
+          \ a separate payment order at each due date"
+        properties:
+          mandateId:
+            description: Unique mandate reference
+            type: string
+          mandateStatus:
+            description: The status of the mandate(Active/Inactive/Pending)
+            type: string
+          mandateType:
+            description: "The type of mandate e.g., single-use(single)/multi-use(recurring)"
+            type: string
+          mandateCategory:
+            description: "The identification code of the Scheme e.g., core/b2b"
+            type: string
+          signature:
+            description: The (e)Mandate electronic signature data
+            type: string
+          signatureDate:
+            description: The date of signing of the (e)Mandate
+            format: date-time
+            type: string
+          mandateStatusDate:
+            description: The date of the mandate status change
+            format: date-time
+            type: string
+          firstDebitDate:
+            description: The first debit date. The debit date of the collection is
+              the day when the payment of the Debtor is due to the Creditor
+            format: date-time
+            type: string
+          lastDebitDate:
+            description: The last debit date. The debit date of the collection is
+              the day when the payment of the Debtor is due to the Creditor
+            format: date-time
+            type: string
+          cancellationDate:
+            description: The date on which the (e)Mandate has been cancelled by the
+              Debtor or the Creditor.
+            format: date-time
+            type: string
+          accountNumber:
+            description: "The bank account number, this could refer to the iban or\
+              \ swift number."
+            type: string
+          accountNumberType:
+            description: "The type of account number (e.g.: IBAN, SWIFT, ...)"
+            type: string
+          reference:
+            description: A reference that the party can later use to identify the
+              direct debit.
+            type: string
+          BIC:
+            description: The Business Identifier Code/Swift code of the financial
+              institution where the account is located.
+            type: string
+          owner:
+            description: The owner of the bank account. This is also the account name.
+            type: string
+          bank:
+            description: The display name of the bank.
+            type: string
+          attachment:
+            items:
+              $ref: "#/components/schemas/AttachmentRefOrValue"
+            type: array
+        required:
+        - accountNumber
+        - bank
+        - firstDebitDate
+        - mandateType
+        - owner
+        type: object
+        example: null
+      example: null
+    AttachmentRefOrValue:
+      description: "An attachment by value or by reference. An attachment complements\
+        \ the description of an element, for example through a document, a video,\
+        \ a picture."
+      properties:
+        id:
+          description: Unique identifier for this particular attachment
+          type: string
+        href:
+          description: URI for this Attachment
+          format: uri
+          type: string
+        attachmentType:
+          description: "Attachment type such as video, picture"
+          type: string
+        content:
+          description: "The actual contents of the attachment object, if embedded,\
+            \ encoded as base64"
+          format: base64
+          type: string
+        description:
+          description: A narrative text describing the content of the attachment
+          type: string
+        mimeType:
+          description: "Attachment mime type such as extension file for video, picture\
+            \ and document"
+          type: string
+        name:
+          description: The name of the attachment
+          type: string
+        url:
+          description: "Uniform Resource Locator, is a web page address (a subset\
+            \ of URI)"
+          format: uri
+          type: string
+        size:
+          $ref: "#/components/schemas/Quantity"
+        validFor:
+          $ref: "#/components/schemas/TimePeriod"
+        '@baseType':
+          description: "When sub-classing, this defines the super-class"
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class Extensible name"
+          type: string
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+      type: object
+    Voucher:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A voucher method of payment.
+        properties:
+          code:
+            description: Code that identifies the voucher.
+            type: string
+          description:
+            description: "Description of the voucher i.e.: get one and receive one\
+              \ free."
+            type: string
+          value:
+            $ref: "#/components/schemas/Quantity"
+          discount:
+            description: The discount that the voucher applies when it's a discount
+              voucher.
+            type: string
+          expirationDate:
+            description: The voucher's expiration date.
+            format: date-time
+            type: string
+          campaign:
+            description: Campaign this voucher belongs to.
+            type: string
+        required:
+        - code
+        - expirationDate
+        - value
+        type: object
+        example: null
+      example: null
+    TokenizedCard:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A Tokenized Card method of payment.
+        properties:
+          brand:
+            description: Card brand. Might be used for display purposes
+            type: string
+          cardType:
+            description: Card type. Might be used for display purposes.
+            type: string
+          lastFourDigits:
+            description: The last four digits of the credit card.
+            type: string
+          tokenType:
+            description: "Token type (e.g.: emv)."
+            type: string
+          token:
+            description: The token. A series of randomly generated numbers.
+            type: string
+          issuer:
+            description: The entity that issued the token.
+            type: string
+          expirationDate:
+            description: The tokenised card's expiration date.
+            format: date-time
+            type: string
+          countryOfIssue:
+            description: "ISO 3166-1 Alpha-2 country code that designate the country\
+              \ where the tokenised card was issued.e.g. GB, NG, FR."
+            type: string
+        required:
+        - expirationDate
+        - lastFourDigits
+        type: object
+        example: null
+      example: null
+    DigitalWallet:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A digital wallet method of payment.
+        properties:
+          service:
+            description: "Organization, platform or currency backing the wallet (e.g.:\
+              \ PayPal, Yandex, BitCoin…)."
+            type: string
+          walletId:
+            description: Account identifier in that service.
+            type: string
+          walletUrl:
+            description: "URI pointing at the digital wallet (e.g.: //paypal.me/johndoe)."
+            type: string
+        required:
+        - service
+        - walletId
+        - walletUrl
+        type: object
+        example: null
+      example: null
+    Check:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A check method of payment.
+        properties:
+          checkId:
+            description: Unique identifier of the check.
+            type: string
+          drawer:
+            description: Person or entity writing the check.
+            type: string
+          payee:
+            description: Person or entity the check is addressed to.
+            type: string
+          signedDate:
+            description: Date when the check was signed.
+            format: date-time
+            type: string
+          bank:
+            description: Bank performing the payment of the check.
+            type: string
+        required:
+        - bank
+        - checkId
+        - drawer
+        - payee
+        - signedDate
+        type: object
+        example: null
+      example: null
+    Cash:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      description: "A cash method of payment. It has no additional data, but it could\
+        \ be extended to add information e.g.: the cashier who took the payment, the\
+        \ person who paid, etc"
+    BankCard:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A bank card method of payment.
+        properties:
+          brand:
+            description: The card brand
+            type: string
+          cardType:
+            description: "The type of card e.g. Credit, debit etc."
+            type: string
+          cardNumber:
+            description: The bank card number.
+            type: string
+          expirationDate:
+            description: Expiration date of the bank card.
+            format: date-time
+            type: string
+          cvv:
+            description: "The security code (e.g.: CVV, CVV2) of the card."
+            type: string
+          lastFourDigits:
+            description: The last four digits of the credit card.
+            type: string
+          nameOnCard:
+            description: The name on the card.
+            type: string
+          bank:
+            description: The bank that issued the card.
+            type: string
+        required:
+        - brand
+        - cardNumber
+        - expirationDate
+        - nameOnCard
+        type: object
+        example: null
+      example: null
+    BankAccountTransfer:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A bank transfer method of payment.
+        properties:
+          accountNumber:
+            description: "The bank account number, this could refer to the iban or\
+              \ swift number."
+            type: string
+          accountNumberType:
+            description: "The type of account number (e.g.: IBAN, SWIFT, ...)"
+            type: string
+          BIC:
+            description: The Business Identifier Code/Swift code of the financial
+              institution where the account is located.
+            type: string
+          owner:
+            description: The owner of the bank account. This is also the account name.
+            type: string
+          bank:
+            description: The display name of the bank.
+            type: string
+        required:
+        - accountNumber
+        - bank
+        - owner
+        type: object
+        example: null
+      example: null
+    BankAccountDebit:
+      allOf:
+      - $ref: "#/components/schemas/PaymentMethod"
+      - description: A bank account debit method of payment. This could be extended
+          to add any required authorization fields to allow recurring payments
+        properties:
+          accountNumber:
+            description: The Bank Account Number (this could refer to the IBAN or
+              SWIFT number)
+            type: string
+          accountNumberType:
+            description: "The type of account number (e.g.: IBAN, SWIFT, ...)"
+            type: string
+          BIC:
+            description: The Business Identifier Code/Swift code of the financial
+              institution where the account is located.
+            type: string
+          owner:
+            description: The owner of the bank account. This is also the account name.
+            type: string
+          bank:
+            description: The display name of the bank.
+            type: string
+        required:
+        - accountNumber
+        - bank
+        - owner
+        type: object
+        example: null
+      example: null
+    Quantity:
+      description: An amount in a given unit
+      properties:
+        amount:
+          default: 1.0
+          description: Numeric value in a given unit
+          format: float
+          type: number
+        units:
+          description: Unit
+          type: string
+      type: object
+    Error:
+      description: "Used when an API throws an Error, typically with a HTTP error\
+        \ response-code (3xx, 4xx, 5xx)"
+      example:
+        reason: reason
+        code: code
+        '@baseType': '@baseType'
+        '@type': '@type'
+        message: message
+        referenceError: https://openapi-generator.tech
+        '@schemaLocation': https://openapi-generator.tech
+        status: status
+      properties:
+        code:
+          description: "Application relevant detail, defined in the API or a common\
+            \ list."
+          type: string
+        reason:
+          description: Explanation of the reason for the error which can be shown
+            to a client user.
+          type: string
+        message:
+          description: More details and corrective actions related to the error which
+            can be shown to a client user.
+          type: string
+        status:
+          description: HTTP Error code extension
+          type: string
+        referenceError:
+          description: URI of documentation describing the error.
+          format: uri
+          type: string
+        '@baseType':
+          description: "When sub-classing, this defines the super-class."
+          type: string
+        '@schemaLocation':
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+          format: uri
+          type: string
+        '@type':
+          description: "When sub-classing, this defines the sub-class entity name."
+          type: string
+      required:
+      - code
+      - reason
+      type: object
+x-original-swagger-version: "2.0"
