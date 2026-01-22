@@ -1,0 +1,1195 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "ipv4-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "algorithm-add-topic": {
+      "address": "algorithm-add-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "algorithm-delete-topic": {
+      "address": "algorithm-delete-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "algorithm-update-topic": {
+      "address": "algorithm-update-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ipv4-add-topic": {
+      "address": "ipv4-add-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ipv4-delete-topic": {
+      "address": "ipv4-delete-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ipv4-update-topic": {
+      "address": "ipv4-update-topic",
+      "messages": {
+        "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop": {
+          "$ref": "#/components/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddAlgorithmEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddIPV4Envelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteAlgorithmEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteIPV4Envelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateAlgorithmEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateIPV4Envelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+            ],
+            "examples": [
+              "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop": {
+        "title": "AsyncAddAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.model.v1.AddAlgorithmRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "id": 3,
+              "parm1": 0,
+              "parm2": 0,
+              "parm3": 0,
+              "parm4": 0,
+              "parm5": 0,
+              "parm6": 0,
+              "parm7": 0,
+              "parm8": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop": {
+        "title": "AsyncAddIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.model.v1.AddIPV4RequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "id": 1014063179,
+              "netmask": 0,
+              "octet1": 14,
+              "octet2": 99,
+              "octet3": 189,
+              "octet4": 1890099,
+              "owner": 0,
+              "ownerType": 0,
+              "status": 2147483645
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop": {
+        "title": "AsyncDeleteAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "algorithmId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmRequestBody": {
+        "title": "AsyncDeleteAlgorithmRequestBody",
+        "type": "object",
+        "properties": {
+          "algorithmId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "algorithmId": 0
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop": {
+        "title": "AsyncDeleteIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4RequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "ipv4Id": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4RequestBody": {
+        "title": "AsyncDeleteIPV4RequestBody",
+        "type": "object",
+        "properties": {
+          "ipv4Id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "ipv4Id": 0
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop": {
+        "title": "AsyncUpdateAlgorithmEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "algorithmId": 0,
+              "parm1": 0,
+              "parm2": 0,
+              "parm3": 0,
+              "parm4": 0,
+              "parm5": 0,
+              "parm6": 0,
+              "parm7": 0,
+              "parm8": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmRequestBody": {
+        "title": "AsyncUpdateAlgorithmRequestBody",
+        "type": "object",
+        "properties": {
+          "algorithmId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parm1": {
+            "type": "integer",
+            "description": "The ipv4 type name",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm2": {
+            "type": "integer",
+            "description": "The model name of the ipv4",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm3": {
+            "type": "integer",
+            "description": "The status of the ipv4.",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm4": {
+            "type": "integer",
+            "description": "The unit address represents the network location of the ipv4",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm5": {
+            "type": "integer",
+            "description": "For CableCards, the Host ID of the component in which the CableCard is installed",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm6": {
+            "type": "integer",
+            "description": "For Motorola CableCards, the security data displayed when the card is inserted into the host.",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm7": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          },
+          "parm8": {
+            "type": "integer",
+            "format": "int32",
+            "examples": [
+              0
+            ]
+          }
+        },
+        "examples": [
+          {
+            "algorithmId": 0,
+            "parm1": 0,
+            "parm2": 0,
+            "parm3": 0,
+            "parm4": 0,
+            "parm5": 0,
+            "parm6": 0,
+            "parm7": 0,
+            "parm8": 0
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop": {
+        "title": "AsyncUpdateIPV4Envelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4RequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "ipv4Id": 0,
+              "netmask": 0,
+              "octet1": 14,
+              "octet2": 99,
+              "octet3": 189,
+              "octet4": 1890099,
+              "owner": 0,
+              "ownerType": 0,
+              "status": 2147483645
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4RequestBody": {
+        "title": "AsyncUpdateIPV4RequestBody",
+        "type": "object",
+        "properties": {
+          "ipv4Id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "netmask": {
+            "type": "integer",
+            "description": "The 1st octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 1st octet=aaa",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "octet1": {
+            "type": "integer",
+            "description": "For CableCards, the Host ID of the component in which the CableCard is installed",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              14
+            ]
+          },
+          "octet2": {
+            "type": "integer",
+            "description": "The 2nd octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 2nd octet=bbb",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              99
+            ]
+          },
+          "octet3": {
+            "type": "integer",
+            "description": "The 3rd octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 3rd octet=ccc",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              189
+            ]
+          },
+          "octet4": {
+            "type": "integer",
+            "description": "The 4th octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 4th octet=ddd",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              1890099
+            ]
+          },
+          "owner": {
+            "type": "integer",
+            "description": "The owner ID for this IP address. For example, device, ont, or phone ID.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "ownerType": {
+            "type": "integer",
+            "description": "The owner Type for this IP Address. This can be Device, ONT, or Phone",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "description": "The status of the IP Address.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              2147483645
+            ]
+          }
+        },
+        "examples": [
+          {
+            "ipv4Id": 0,
+            "netmask": 0,
+            "octet1": 14,
+            "octet2": 99,
+            "octet3": 189,
+            "octet4": 1890099,
+            "owner": 0,
+            "ownerType": 0,
+            "status": 2147483645
+          }
+        ],
+        "required": [
+          "netmask",
+          "octet1",
+          "octet2",
+          "octet3",
+          "octet4",
+          "owner",
+          "ownerType",
+          "status"
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.model.v1.AddAlgorithmRequestBody": {
+        "title": "AddAlgorithmRequestBody",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier for algorithm",
+            "format": "int32",
+            "maximum": 2000,
+            "minimum": 1001,
+            "examples": [
+              3
+            ]
+          },
+          "parm1": {
+            "type": "integer",
+            "description": "The algorithm type name",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm2": {
+            "type": "integer",
+            "description": "The model name of the algorithm",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm3": {
+            "type": "integer",
+            "description": "The status of the algorithm.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm4": {
+            "type": "integer",
+            "description": "The unit address represents the network location of the algorithm",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm5": {
+            "type": "integer",
+            "description": "For CableCards, the Host ID of the component in which the CableCard is installed",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm6": {
+            "type": "integer",
+            "description": "For Motorola CableCards, the security data displayed when the card is inserted into the host.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm7": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "parm8": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          }
+        },
+        "description": "Used for adding or updating a algorithm.",
+        "examples": [
+          {
+            "id": 3,
+            "parm1": 0,
+            "parm2": 0,
+            "parm3": 0,
+            "parm4": 0,
+            "parm5": 0,
+            "parm6": 0,
+            "parm7": 0,
+            "parm8": 0
+          }
+        ],
+        "required": [
+          "id"
+        ]
+      },
+      "com.etisoftware.ipv4_api.webapi.model.v1.AddIPV4RequestBody": {
+        "title": "AddIPV4RequestBody",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier for ipv4",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": 100000,
+            "examples": [
+              1014063179
+            ]
+          },
+          "netmask": {
+            "type": "integer",
+            "description": "For CableCards, the Host ID of the component in which the CableCard is installed",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "octet1": {
+            "type": "integer",
+            "description": "The 1st octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 1st octet=aaa",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              14
+            ]
+          },
+          "octet2": {
+            "type": "integer",
+            "description": "The 2nd octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 2nd octet=bbb",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              99
+            ]
+          },
+          "octet3": {
+            "type": "integer",
+            "description": "The 3rd octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 3rd octet=ccc",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              189
+            ]
+          },
+          "octet4": {
+            "type": "integer",
+            "description": "The 4th octet in the IP address. For example, IP=aaa.bbb.ccc.ddd, the 4th octet=ddd",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              1890099
+            ]
+          },
+          "owner": {
+            "type": "integer",
+            "description": "The owner ID for this IP address. For example, device, ont, or phone ID.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "ownerType": {
+            "type": "integer",
+            "description": "The owner Type for this IP Address. This can be Device, ONT, or Phone",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              0
+            ]
+          },
+          "status": {
+            "type": "integer",
+            "description": "The status of the IP Address.",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "examples": [
+              2147483645
+            ]
+          }
+        },
+        "description": "Used for adding or updating a ipv4.",
+        "examples": [
+          {
+            "id": 1014063179,
+            "netmask": 0,
+            "octet1": 14,
+            "octet2": 99,
+            "octet3": 189,
+            "octet4": 1890099,
+            "owner": 0,
+            "ownerType": 0,
+            "status": 2147483645
+          }
+        ],
+        "required": [
+          "id"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop",
+        "title": "AsyncAddAlgorithmEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop",
+        "title": "AsyncAddIPV4Envelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop",
+        "title": "AsyncDeleteAlgorithmEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop",
+        "title": "AsyncDeleteIPV4Envelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop",
+        "title": "AsyncUpdateAlgorithmEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+          }
+        },
+        "name": "com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop",
+        "title": "AsyncUpdateIPV4Envelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "algorithm-add-topic_receive_consumeAddAlgorithm": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/algorithm-add-topic"
+      },
+      "title": "algorithm-add-topic_receive",
+      "description": "Algorithm add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/algorithm-add-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddAlgorithmEnvelop"
+        }
+      ]
+    },
+    "algorithm-delete-topic_receive_consumeDeleteAlgorithm": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/algorithm-delete-topic"
+      },
+      "title": "algorithm-delete-topic_receive",
+      "description": "Algorithm delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/algorithm-delete-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteAlgorithmEnvelop"
+        }
+      ]
+    },
+    "algorithm-update-topic_receive_consumeUpdateAlgorithm": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/algorithm-update-topic"
+      },
+      "title": "algorithm-update-topic_receive",
+      "description": "Algorithm update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/algorithm-update-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateAlgorithmEnvelop"
+        }
+      ]
+    },
+    "ipv4-add-topic_receive_consumeAddIPV4": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ipv4-add-topic"
+      },
+      "title": "ipv4-add-topic_receive",
+      "description": "IPV4 add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ipv4-add-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncAddIPV4Envelop"
+        }
+      ]
+    },
+    "ipv4-delete-topic_receive_consumeDeleteIPV4": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ipv4-delete-topic"
+      },
+      "title": "ipv4-delete-topic_receive",
+      "description": "IPV4 delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ipv4-delete-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncDeleteIPV4Envelop"
+        }
+      ]
+    },
+    "ipv4-update-topic_receive_consumeUpdateIPV4": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ipv4-update-topic"
+      },
+      "title": "ipv4-update-topic_receive",
+      "description": "IPV4 update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ipv4-update-topic/messages/com.etisoftware.ipv4_api.webapi.consumers.data.AsyncUpdateIPV4Envelop"
+        }
+      ]
+    }
+  }
+}

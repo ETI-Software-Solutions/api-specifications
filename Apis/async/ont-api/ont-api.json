@@ -1,0 +1,369 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "ont-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "ont-add-update-topic": {
+      "address": "ont-add-update-topic",
+      "messages": {
+        "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateOntEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateOntEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel": {
+        "title": "CustomFieldModel",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The unique label for this custom field (alphanumeric, up to 20 characters long). This tag must be included if a CustomField structure is present.",
+            "minLength": 1,
+            "examples": [
+              "CTLR_VERSION"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value for this custom field (alphanumeric, up to 80 characters long). The value must meet the constraints for this field. A blank value is not allowed if a default value for the custom field has been defined. This tag must be included if a CustomField structure is present.",
+            "examples": [
+              "5.3.6"
+            ]
+          }
+        },
+        "description": "The custom fields for the location",
+        "examples": [
+          {
+            "label": "CTLR_VERSION",
+            "value": "5.3.6"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop": {
+        "title": "AsyncUpdateOntEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceTypeName": "Alcatel GPON ONT",
+              "discoveryAddress": "CALIXOLTNAME:1-1-1-2",
+              "ipAddress": "xxx.xxx.xxx.xxx",
+              "level": 41,
+              "macAddress": "02:42:9c:15:a4:c8",
+              "modelBase": 100,
+              "nodeName": "FTWYINXAOL",
+              "ontCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "ontLocation": "CALIXOLTNAME:1023459",
+              "physicalAddress": "CALIXOLTNAME:1-1-1-2-11",
+              "preferredAddress": "CALIXOLTNAME:1-1-1-2-11",
+              "previousAddress": "CALIXOLTNAME:1-1-1-2-1",
+              "provisionedAddress": "CALIXOLTNAME:1-1-1-2-12",
+              "registrationId": "A135CEG",
+              "serialNumber": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntRequestBody": {
+        "title": "AsyncUpdateOntRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceTypeName": {
+            "type": "string",
+            "description": "The device type name.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Alcatel GPON ONT"
+            ]
+          },
+          "discoveryAddress": {
+            "type": "string",
+            "description": "The discovered address in network for the ONT.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1-1-1-2"
+            ]
+          },
+          "ipAddress": {
+            "pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+            "type": "string",
+            "description": "The IP address of the ONT",
+            "minLength": 0,
+            "maxLength": 15,
+            "examples": [
+              "xxx.xxx.xxx.xxx"
+            ]
+          },
+          "level": {
+            "type": "integer",
+            "description": "The discovery level for the ONT. Valid values are 1=loaded,10=SIDPON,11=SIDPON loaded,20=SIDLOC,30=OLTPON,31=OLTPON loaded,40=OLTLOC,41=OLTLOC loaded.",
+            "format": "int64",
+            "maximum": 9999,
+            "examples": [
+              41
+            ]
+          },
+          "macAddress": {
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\.[0-9a-fA-F]{4}\\.[0-9a-fA-F]{4})$",
+            "type": "string",
+            "description": "The ONT's unique hardware identifier assigned to its network interface controller (NIC).",
+            "minLength": 0,
+            "maxLength": 17,
+            "examples": [
+              "02:42:9c:15:a4:c8"
+            ]
+          },
+          "modelBase": {
+            "type": "integer",
+            "description": "The base model for the ONT.",
+            "format": "int64",
+            "maximum": 9999999999,
+            "examples": [
+              100
+            ]
+          },
+          "nodeName": {
+            "type": "string",
+            "description": "The OLT name for the ONT.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "FTWYINXAOL"
+            ]
+          },
+          "ontCustomFields": {
+            "type": "array",
+            "description": "The custom fields for the location",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "ontLocation": {
+            "type": "string",
+            "description": "The ont location represents the network location of the ONT.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1023459"
+            ]
+          },
+          "physicalAddress": {
+            "type": "string",
+            "description": "The physical address in network for the ONT which can be different based on technology.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1-1-1-2-11"
+            ]
+          },
+          "preferredAddress": {
+            "type": "string",
+            "description": "The preferred address in network the customer wants ONT to be provisioned.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1-1-1-2-11"
+            ]
+          },
+          "previousAddress": {
+            "type": "string",
+            "description": "The previous address the ONT was provisioned.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1-1-1-2-1"
+            ]
+          },
+          "provisionedAddress": {
+            "type": "string",
+            "description": "The actual address the ONT is provisioned.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "CALIXOLTNAME:1-1-1-2-12"
+            ]
+          },
+          "registrationId": {
+            "type": "string",
+            "description": "A unique ID some ONT may have when installed on network.",
+            "minLength": 0,
+            "maxLength": 24,
+            "examples": [
+              "A135CEG"
+            ]
+          },
+          "serialNumber": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "deviceTypeName": "Alcatel GPON ONT",
+            "discoveryAddress": "CALIXOLTNAME:1-1-1-2",
+            "ipAddress": "xxx.xxx.xxx.xxx",
+            "level": 41,
+            "macAddress": "02:42:9c:15:a4:c8",
+            "modelBase": 100,
+            "nodeName": "FTWYINXAOL",
+            "ontCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "ontLocation": "CALIXOLTNAME:1023459",
+            "physicalAddress": "CALIXOLTNAME:1-1-1-2-11",
+            "preferredAddress": "CALIXOLTNAME:1-1-1-2-11",
+            "previousAddress": "CALIXOLTNAME:1-1-1-2-1",
+            "provisionedAddress": "CALIXOLTNAME:1-1-1-2-12",
+            "registrationId": "A135CEG",
+            "serialNumber": "string"
+          }
+        ],
+        "required": [
+          "deviceTypeName",
+          "nodeName"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+          }
+        },
+        "name": "com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop",
+        "title": "AsyncUpdateOntEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "ont-add-update-topic_receive_consumeUpdateOnt": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ont-add-update-topic"
+      },
+      "title": "ont-add-update-topic_receive",
+      "description": "Ont update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ont-add-update-topic/messages/com.etisoftware.ont_api.webapi.consumers.data.AsyncUpdateOntEnvelop"
+        }
+      ]
+    }
+  }
+}

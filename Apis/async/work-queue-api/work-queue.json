@@ -1,0 +1,1764 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "work-queue-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "controller-work-add-topic": {
+      "address": "controller-work-add-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "controller-work-delete-topic": {
+      "address": "controller-work-delete-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "controller-work-duplicate-topic": {
+      "address": "controller-work-duplicate-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "controller-work-notify-topic": {
+      "address": "controller-work-notify-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "controller-work-update-topic": {
+      "address": "controller-work-update-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "work-monitor-add-topic": {
+      "address": "work-monitor-add-topic",
+      "messages": {
+        "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddControllerWorkEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncCreateWorkMonitorEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncCreateWorkMonitorEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteControllerWorkEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDuplicateControllerWorkEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDuplicateControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncNotifyControllerWorkEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncNotifyControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateControllerWorkEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop": {
+        "title": "AsyncAddControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.model.v1.AddControllerWorkRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "channelNumber": 43,
+              "circuitId": "670186257069",
+              "controllerInterfaceName": "Alcatel BPON",
+              "deviceId": "ALCLA0AE3F19D01",
+              "deviceModelName": "GPON-A Data Port",
+              "deviceNumber": 17,
+              "deviceTypeName": "Calix E7-GPON",
+              "directoryNumber": "7708675309",
+              "downEndpointInstanceNumber": 505,
+              "downVcl": 99,
+              "downVlan": 20,
+              "dslamEquipment": "FTWYINXABB3",
+              "dslamId": "ANDVCT06H00",
+              "endpointInstanceNumber": 505,
+              "eventNumber": 1,
+              "ftthNodeName": "FTWYINLAB1",
+              "funcCode": "DEVFUNC_REBOOT",
+              "headendCode": "01",
+              "messageNumber": 3,
+              "monitorNumber": 150380639,
+              "ndsZip": "91709",
+              "ontSerialNumber": "ALCLA0AC9898",
+              "opcode": "CTLR_RFRSH_DEVICE",
+              "pbxGroupName": "ETI",
+              "phoneLine": 1,
+              "phoneNumber": 29,
+              "priority": 2,
+              "radiusUserName": "jsmith",
+              "scode": "9100",
+              "segmentId": "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4",
+              "subscriberId": "130099410339",
+              "subscriberNumber": 110,
+              "switchId": "TAMPFLXAPSA",
+              "unitAddress": "1WPG09-1-1-7-2-3",
+              "upEndpointInstanceNumber": 510,
+              "upVcl": 1,
+              "upVlan": 2,
+              "workOrderNumber": 7729,
+              "workState": 3,
+              "workTime": "2022-02-17 09:53:07"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop": {
+        "title": "AsyncCreateWorkMonitorEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.model.v1.AddWorkMonitorRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "notifyCmd": "string",
+              "notifyCmdParam": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop": {
+        "title": "AsyncDeleteControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "controllerWorkNumber": "6705"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkRequestBody": {
+        "title": "AsyncDeleteControllerWorkRequestBody",
+        "type": "object",
+        "properties": {
+          "controllerWorkNumber": {
+            "type": "string",
+            "description": "The controller work's database reference number for this controller work.",
+            "examples": [
+              "6705"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "controllerWorkNumber": "6705"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop": {
+        "title": "AsyncDuplicateControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "channelNumber": 43,
+              "circuitId": "670186257069",
+              "controllerInterfaceName": "Alcatel BPON",
+              "controllerWorkNumber": "6705",
+              "deviceId": "ALCLA0AE3F19D01",
+              "deviceModelName": "GPON-A Data Port",
+              "deviceNumber": 17,
+              "deviceTypeName": "Calix E7-GPON",
+              "directoryNumber": "7708675309",
+              "downEndpointInstanceNumber": 505,
+              "downVcl": 99,
+              "downVlan": 20,
+              "dslamEquipment": "FTWYINXABB3",
+              "dslamId": "ANDVCT06H00",
+              "endpointInstanceNumber": 505,
+              "eventNumber": 1,
+              "ftthNodeName": "FTWYINLAB1",
+              "funcCode": "DEVFUNC_REBOOT",
+              "headendCode": "01",
+              "messageNumber": 3,
+              "monitorNumber": 150380639,
+              "ndsZip": "91709",
+              "ontSerialNumber": "ALCLA0AC9898",
+              "opcode": "CTLR_RFRSH_DEVICE",
+              "pbxGroupName": "ETI",
+              "phoneLine": 1,
+              "phoneNumber": 29,
+              "priority": 2,
+              "radiusUserName": "jsmith",
+              "scode": "9100",
+              "segmentId": "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4",
+              "subscriberId": "130099410339",
+              "subscriberNumber": 110,
+              "switchId": "TAMPFLXAPSA",
+              "unitAddress": "1WPG09-1-1-7-2-3",
+              "upEndpointInstanceNumber": 510,
+              "upVcl": 1,
+              "upVlan": 2,
+              "workOrderNumber": 7729,
+              "workState": 3,
+              "workTime": "2022-02-17 09:53:07"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkRequestBody": {
+        "title": "AsyncDuplicateControllerWorkRequestBody",
+        "type": "object",
+        "properties": {
+          "channelNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint channel number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              43
+            ]
+          },
+          "circuitId": {
+            "type": "string",
+            "description": "The ATM network's circuit ID which is consists of multiple segments for this controller work.",
+            "minLength": 0,
+            "maxLength": 45,
+            "examples": [
+              "670186257069"
+            ]
+          },
+          "controllerInterfaceName": {
+            "type": "string",
+            "description": "The controller interface name for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "Alcatel BPON"
+            ]
+          },
+          "controllerWorkNumber": {
+            "type": "string",
+            "description": "The controller work's database reference number for this controller work.",
+            "examples": [
+              "6705"
+            ]
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "The device ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "ALCLA0AE3F19D01"
+            ]
+          },
+          "deviceModelName": {
+            "type": "string",
+            "description": "The device model's database description of device type.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "GPON-A Data Port"
+            ]
+          },
+          "deviceNumber": {
+            "type": "integer",
+            "description": "The device's database reference number for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              17
+            ]
+          },
+          "deviceTypeName": {
+            "type": "string",
+            "description": "The device type's database description for this controller work.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Calix E7-GPON"
+            ]
+          },
+          "directoryNumber": {
+            "type": "string",
+            "description": "The phone's directory number for this controller work.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "downEndpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint downstream instance number for with this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              505
+            ]
+          },
+          "downVcl": {
+            "type": "integer",
+            "description": "The ATM network's downstream vcl number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              99
+            ]
+          },
+          "downVlan": {
+            "type": "integer",
+            "description": "The downstream VLAN number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              20
+            ]
+          },
+          "dslamEquipment": {
+            "type": "string",
+            "description": "The unique DSLAM equipment ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "FTWYINXABB3"
+            ]
+          },
+          "dslamId": {
+            "type": "string",
+            "description": "The database ID for DSLAM node for this controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "ANDVCT06H00"
+            ]
+          },
+          "endpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint instance number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              505
+            ]
+          },
+          "eventNumber": {
+            "type": "integer",
+            "description": "The event number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "ftthNodeName": {
+            "type": "string",
+            "description": "The FTTH node name for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "FTWYINLAB1"
+            ]
+          },
+          "funcCode": {
+            "type": "string",
+            "description": "The secondary code that indicates specific operation (like reset pin or password) for this controller work.",
+            "examples": [
+              "DEVFUNC_REBOOT"
+            ]
+          },
+          "headendCode": {
+            "type": "string",
+            "description": "The headend's database code for this controller work's location.",
+            "minLength": 0,
+            "maxLength": 4,
+            "examples": [
+              "01"
+            ]
+          },
+          "messageNumber": {
+            "type": "integer",
+            "description": "The message number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              3
+            ]
+          },
+          "monitorNumber": {
+            "type": "integer",
+            "description": "If present, the monitor_nbr attribute value will contain an integer monitor number that can be used to query for provisioning work status associated with this transaction. If no provisioning work was generated, this attribute will be omitted.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              150380639
+            ]
+          },
+          "ndsZip": {
+            "type": "string",
+            "description": "The zipcode of the subscriber for the controller work.",
+            "minLength": 0,
+            "maxLength": 8,
+            "examples": [
+              "91709"
+            ]
+          },
+          "ontSerialNumber": {
+            "type": "string",
+            "description": "The ONT's database serial number associated with this controller work.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "ALCLA0AC9898"
+            ]
+          },
+          "opcode": {
+            "type": "string",
+            "description": "The operation code for this controller work.",
+            "examples": [
+              "CTLR_RFRSH_DEVICE"
+            ]
+          },
+          "pbxGroupName": {
+            "type": "string",
+            "description": "The private branch exchange (PBX) Group Name for this controller work.",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "ETI"
+            ]
+          },
+          "phoneLine": {
+            "type": "integer",
+            "description": "The phone line number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "description": "The phone's directory number's database reference for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              29
+            ]
+          },
+          "priority": {
+            "type": "integer",
+            "description": "The priority for this controller work. Valid values are 1=High, 2=Medium, 3=Low and 4=Message.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              2
+            ]
+          },
+          "radiusUserName": {
+            "type": "string",
+            "description": "The Remote Authentication Dial-In User Service (RADIUS) user name that is to be associated with a phone line within the controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "jsmith"
+            ]
+          },
+          "scode": {
+            "type": "string",
+            "description": "For passing information like port ID to a service router.",
+            "minLength": 0,
+            "maxLength": 100,
+            "examples": [
+              "9100"
+            ]
+          },
+          "segmentId": {
+            "type": "string",
+            "description": "The ATM network's segment ID within the circuit for this controller work.",
+            "minLength": 0,
+            "maxLength": 70,
+            "examples": [
+              "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The subscriber ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "130099410339"
+            ]
+          },
+          "subscriberNumber": {
+            "type": "integer",
+            "description": "The subscriber's database reference number for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              110
+            ]
+          },
+          "switchId": {
+            "type": "string",
+            "description": "The phone switch node ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "TAMPFLXAPSA"
+            ]
+          },
+          "unitAddress": {
+            "type": "string",
+            "description": "The unit address for this controller work.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "1WPG09-1-1-7-2-3"
+            ]
+          },
+          "upEndpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint upstream instance number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              510
+            ]
+          },
+          "upVcl": {
+            "type": "integer",
+            "description": "The ATM network's upstream vcl number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "upVlan": {
+            "type": "integer",
+            "description": "The upstream VLAN number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              2
+            ]
+          },
+          "workOrderNumber": {
+            "type": "integer",
+            "description": "The work order number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              7729
+            ]
+          },
+          "workState": {
+            "type": "integer",
+            "description": "The controller's work state. Valid values are 0=Pending, 1=Blocked, 2=Error, 3=Success, 4=Disabled.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              3
+            ]
+          },
+          "workTime": {
+            "type": "string",
+            "description": "Work time for this controller work. Format: yyyy-MM-dd HH:mm:ss",
+            "minLength": 0,
+            "maxLength": 19,
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "channelNumber": 43,
+            "circuitId": "670186257069",
+            "controllerInterfaceName": "Alcatel BPON",
+            "controllerWorkNumber": "6705",
+            "deviceId": "ALCLA0AE3F19D01",
+            "deviceModelName": "GPON-A Data Port",
+            "deviceNumber": 17,
+            "deviceTypeName": "Calix E7-GPON",
+            "directoryNumber": "7708675309",
+            "downEndpointInstanceNumber": 505,
+            "downVcl": 99,
+            "downVlan": 20,
+            "dslamEquipment": "FTWYINXABB3",
+            "dslamId": "ANDVCT06H00",
+            "endpointInstanceNumber": 505,
+            "eventNumber": 1,
+            "ftthNodeName": "FTWYINLAB1",
+            "funcCode": "DEVFUNC_REBOOT",
+            "headendCode": "01",
+            "messageNumber": 3,
+            "monitorNumber": 150380639,
+            "ndsZip": "91709",
+            "ontSerialNumber": "ALCLA0AC9898",
+            "opcode": "CTLR_RFRSH_DEVICE",
+            "pbxGroupName": "ETI",
+            "phoneLine": 1,
+            "phoneNumber": 29,
+            "priority": 2,
+            "radiusUserName": "jsmith",
+            "scode": "9100",
+            "segmentId": "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4",
+            "subscriberId": "130099410339",
+            "subscriberNumber": 110,
+            "switchId": "TAMPFLXAPSA",
+            "unitAddress": "1WPG09-1-1-7-2-3",
+            "upEndpointInstanceNumber": 510,
+            "upVcl": 1,
+            "upVlan": 2,
+            "workOrderNumber": 7729,
+            "workState": 3,
+            "workTime": "2022-02-17 09:53:07"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop": {
+        "title": "AsyncNotifyControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "controllerWorkNumber": "6705"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkRequestBody": {
+        "title": "AsyncNotifyControllerWorkRequestBody",
+        "type": "object",
+        "properties": {
+          "controllerWorkNumber": {
+            "type": "string",
+            "description": "The controller work's database reference number for this controller work.",
+            "examples": [
+              "6705"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "controllerWorkNumber": "6705"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop": {
+        "title": "AsyncUpdateControllerWorkEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "controllerWorkNumber": "6705",
+              "priority": 2,
+              "workState": 3
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkRequestBody": {
+        "title": "AsyncUpdateControllerWorkRequestBody",
+        "type": "object",
+        "properties": {
+          "controllerWorkNumber": {
+            "type": "string",
+            "description": "The controller work's database reference number for this controller work.",
+            "examples": [
+              "6705"
+            ]
+          },
+          "priority": {
+            "type": "integer",
+            "description": "The priority for this controller work. Valid values are 1=High, 2=Medium, 3=Low and 4=Message.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              2
+            ]
+          },
+          "workState": {
+            "type": "integer",
+            "description": "The controller's work state. Valid values are 0=Pending, 1=Blocked, 2=Error, 3=Success, 4=Disabled.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              3
+            ]
+          }
+        },
+        "examples": [
+          {
+            "controllerWorkNumber": "6705",
+            "priority": 2,
+            "workState": 3
+          }
+        ],
+        "required": [
+          "priority"
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.model.v1.AddControllerWorkRequestBody": {
+        "title": "AddControllerWorkRequestBody",
+        "type": "object",
+        "properties": {
+          "channelNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint channel number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              43
+            ]
+          },
+          "circuitId": {
+            "type": "string",
+            "description": "The ATM network's circuit ID which is consists of multiple segments for this controller work.",
+            "minLength": 0,
+            "maxLength": 45,
+            "examples": [
+              "670186257069"
+            ]
+          },
+          "controllerInterfaceName": {
+            "type": "string",
+            "description": "The controller interface name for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "Alcatel BPON"
+            ]
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "The device ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "ALCLA0AE3F19D01"
+            ]
+          },
+          "deviceModelName": {
+            "type": "string",
+            "description": "The device model's database description of device type.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "GPON-A Data Port"
+            ]
+          },
+          "deviceNumber": {
+            "type": "integer",
+            "description": "The device's database reference number for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              17
+            ]
+          },
+          "deviceTypeName": {
+            "type": "string",
+            "description": "The device type's database description for this controller work.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Calix E7-GPON"
+            ]
+          },
+          "directoryNumber": {
+            "type": "string",
+            "description": "The phone's directory number for this controller work.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "downEndpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint downstream instance number for with this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              505
+            ]
+          },
+          "downVcl": {
+            "type": "integer",
+            "description": "The ATM network's downstream vcl number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              99
+            ]
+          },
+          "downVlan": {
+            "type": "integer",
+            "description": "The downstream VLAN number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              20
+            ]
+          },
+          "dslamEquipment": {
+            "type": "string",
+            "description": "The unique DSLAM equipment ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "FTWYINXABB3"
+            ]
+          },
+          "dslamId": {
+            "type": "string",
+            "description": "The database ID for DSLAM node for this controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "ANDVCT06H00"
+            ]
+          },
+          "endpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint instance number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              505
+            ]
+          },
+          "eventNumber": {
+            "type": "integer",
+            "description": "The event number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "ftthNodeName": {
+            "type": "string",
+            "description": "The FTTH node name for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "FTWYINLAB1"
+            ]
+          },
+          "funcCode": {
+            "type": "string",
+            "description": "The secondary code that indicates specific operation (like reset pin or password) for this controller work.",
+            "examples": [
+              "DEVFUNC_REBOOT"
+            ]
+          },
+          "headendCode": {
+            "type": "string",
+            "description": "The headend's database code for this controller work's location.",
+            "minLength": 0,
+            "maxLength": 4,
+            "examples": [
+              "01"
+            ]
+          },
+          "messageNumber": {
+            "type": "integer",
+            "description": "The message number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              3
+            ]
+          },
+          "monitorNumber": {
+            "type": "integer",
+            "description": "If present, the monitor_nbr attribute value will contain an integer monitor number that can be used to query for provisioning work status associated with this transaction. If no provisioning work was generated, this attribute will be omitted.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              150380639
+            ]
+          },
+          "ndsZip": {
+            "type": "string",
+            "description": "The zipcode of the subscriber for the controller work.",
+            "minLength": 0,
+            "maxLength": 8,
+            "examples": [
+              "91709"
+            ]
+          },
+          "ontSerialNumber": {
+            "type": "string",
+            "description": "The ONT's database serial number associated with this controller work.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "ALCLA0AC9898"
+            ]
+          },
+          "opcode": {
+            "type": "string",
+            "description": "The operation code for this controller work.",
+            "examples": [
+              "CTLR_RFRSH_DEVICE"
+            ]
+          },
+          "pbxGroupName": {
+            "type": "string",
+            "description": "The private branch exchange (PBX) Group Name for this controller work.",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "ETI"
+            ]
+          },
+          "phoneLine": {
+            "type": "integer",
+            "description": "The phone line number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "description": "The phone's directory number's database reference for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              29
+            ]
+          },
+          "priority": {
+            "type": "integer",
+            "description": "The priority for this controller work. Valid values are 1=High, 2=Medium, 3=Low and 4=Message.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              2
+            ]
+          },
+          "radiusUserName": {
+            "type": "string",
+            "description": "The Remote Authentication Dial-In User Service (RADIUS) user name that is to be associated with a phone line within the controller work.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "jsmith"
+            ]
+          },
+          "scode": {
+            "type": "string",
+            "description": "For passing information like port ID to a service router.",
+            "minLength": 0,
+            "maxLength": 100,
+            "examples": [
+              "9100"
+            ]
+          },
+          "segmentId": {
+            "type": "string",
+            "description": "The ATM network's segment ID within the circuit for this controller work.",
+            "minLength": 0,
+            "maxLength": 70,
+            "examples": [
+              "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The subscriber ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "130099410339"
+            ]
+          },
+          "subscriberNumber": {
+            "type": "integer",
+            "description": "The subscriber's database reference number for this controller work.",
+            "format": "int64",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              110
+            ]
+          },
+          "switchId": {
+            "type": "string",
+            "description": "The phone switch node ID for this controller work.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "TAMPFLXAPSA"
+            ]
+          },
+          "unitAddress": {
+            "type": "string",
+            "description": "The unit address for this controller work.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "1WPG09-1-1-7-2-3"
+            ]
+          },
+          "upEndpointInstanceNumber": {
+            "type": "integer",
+            "description": "The ATM network's endpoint upstream instance number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              510
+            ]
+          },
+          "upVcl": {
+            "type": "integer",
+            "description": "The ATM network's upstream vcl number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "upVlan": {
+            "type": "integer",
+            "description": "The upstream VLAN number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              2
+            ]
+          },
+          "workOrderNumber": {
+            "type": "integer",
+            "description": "The work order number for this controller work.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              7729
+            ]
+          },
+          "workState": {
+            "type": "integer",
+            "description": "The controller's work state. Valid values are 0=Pending, 1=Blocked, 2=Error, 3=Success, 4=Disabled.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              3
+            ]
+          },
+          "workTime": {
+            "type": "string",
+            "description": "Work time for this controller work. Format: yyyy-MM-dd HH:mm:ss.",
+            "minLength": 0,
+            "maxLength": 19,
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          }
+        },
+        "description": "Used for adding a new controller work",
+        "examples": [
+          {
+            "channelNumber": 43,
+            "circuitId": "670186257069",
+            "controllerInterfaceName": "Alcatel BPON",
+            "deviceId": "ALCLA0AE3F19D01",
+            "deviceModelName": "GPON-A Data Port",
+            "deviceNumber": 17,
+            "deviceTypeName": "Calix E7-GPON",
+            "directoryNumber": "7708675309",
+            "downEndpointInstanceNumber": 505,
+            "downVcl": 99,
+            "downVlan": 20,
+            "dslamEquipment": "FTWYINXABB3",
+            "dslamId": "ANDVCT06H00",
+            "endpointInstanceNumber": 505,
+            "eventNumber": 1,
+            "ftthNodeName": "FTWYINLAB1",
+            "funcCode": "DEVFUNC_REBOOT",
+            "headendCode": "01",
+            "messageNumber": 3,
+            "monitorNumber": 150380639,
+            "ndsZip": "91709",
+            "ontSerialNumber": "ALCLA0AC9898",
+            "opcode": "CTLR_RFRSH_DEVICE",
+            "pbxGroupName": "ETI",
+            "phoneLine": 1,
+            "phoneNumber": 29,
+            "priority": 2,
+            "radiusUserName": "jsmith",
+            "scode": "9100",
+            "segmentId": "BNCYWAXXBB1:0-1 KNWCWAXABB9:2A.4",
+            "subscriberId": "130099410339",
+            "subscriberNumber": 110,
+            "switchId": "TAMPFLXAPSA",
+            "unitAddress": "1WPG09-1-1-7-2-3",
+            "upEndpointInstanceNumber": 510,
+            "upVcl": 1,
+            "upVlan": 2,
+            "workOrderNumber": 7729,
+            "workState": 3,
+            "workTime": "2022-02-17 09:53:07"
+          }
+        ],
+        "required": [
+          "controllerInterfaceName",
+          "opcode",
+          "priority",
+          "workTime"
+        ]
+      },
+      "com.etisoftware.api.work_queue_api.model.v1.AddWorkMonitorRequestBody": {
+        "title": "AddWorkMonitorRequestBody",
+        "type": "object",
+        "properties": {
+          "notifyCmd": {
+            "type": "string",
+            "description": "Notify command for this work.",
+            "minLength": 0,
+            "maxLength": 20
+          },
+          "notifyCmdParam": {
+            "type": "string",
+            "description": "Notify command parameter for this work.",
+            "minLength": 0,
+            "maxLength": 80
+          }
+        },
+        "description": "Creates a Work Monitor",
+        "examples": [
+          {
+            "notifyCmd": "string",
+            "notifyCmdParam": "string"
+          }
+        ],
+        "required": [
+          "notifyCmd",
+          "notifyCmdParam"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop",
+        "title": "AsyncAddControllerWorkEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop",
+        "title": "AsyncCreateWorkMonitorEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop",
+        "title": "AsyncDeleteControllerWorkEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop",
+        "title": "AsyncDuplicateControllerWorkEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop",
+        "title": "AsyncNotifyControllerWorkEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop",
+        "title": "AsyncUpdateControllerWorkEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "controller-work-add-topic_receive_consumeCreateControllerWork": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/controller-work-add-topic"
+      },
+      "title": "controller-work-add-topic_receive",
+      "description": "Controller Work add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/controller-work-add-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncAddControllerWorkEnvelop"
+        }
+      ]
+    },
+    "controller-work-delete-topic_receive_consumeDeleteControllerWork": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/controller-work-delete-topic"
+      },
+      "title": "controller-work-delete-topic_receive",
+      "description": "Controller Work delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/controller-work-delete-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncDeleteControllerWorkEnvelop"
+        }
+      ]
+    },
+    "controller-work-duplicate-topic_receive_consumeDuplicateControllerWork": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/controller-work-duplicate-topic"
+      },
+      "title": "controller-work-duplicate-topic_receive",
+      "description": "Controller Work duplicate consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/controller-work-duplicate-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncDuplicateControllerWorkEnvelop"
+        }
+      ]
+    },
+    "controller-work-notify-topic_receive_consumeNotifyControllerWork": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/controller-work-notify-topic"
+      },
+      "title": "controller-work-notify-topic_receive",
+      "description": "Controller Work notify consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/controller-work-notify-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncNotifyControllerWorkEnvelop"
+        }
+      ]
+    },
+    "controller-work-update-topic_receive_consumeUpdateControllerWork": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/controller-work-update-topic"
+      },
+      "title": "controller-work-update-topic_receive",
+      "description": "Controller Work update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/controller-work-update-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncUpdateControllerWorkEnvelop"
+        }
+      ]
+    },
+    "work-monitor-add-topic_receive_consumeWorkMonitorCreate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/work-monitor-add-topic"
+      },
+      "title": "work-monitor-add-topic_receive",
+      "description": "Work Monitor create consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/work-monitor-add-topic/messages/com.etisoftware.api.work_queue_api.consumers.data.AsyncCreateWorkMonitorEnvelop"
+        }
+      ]
+    }
+  }
+}

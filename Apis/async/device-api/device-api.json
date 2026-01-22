@@ -1,0 +1,1456 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "device-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "device-add-update-topic": {
+      "address": "device-add-update-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-delete-topic": {
+      "address": "device-delete-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-model-add-update-topic": {
+      "address": "device-model-add-update-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-model-delete-topic": {
+      "address": "device-model-delete-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-perform-operation-topic": {
+      "address": "device-perform-operation-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-status-add-topic": {
+      "address": "device-status-add-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+        },
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "device-status-delete-topic": {
+      "address": "device-status-delete-topic",
+      "messages": {
+        "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdateDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdateDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdateDeviceModelEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdateDeviceModelEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncCreateDeviceStatusEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncCreateDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteDeviceModelEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteDeviceModelEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteDeviceStatusEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncPerformDeviceOperationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncPerformDeviceOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateDeviceStatusEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop": {
+        "title": "AsyncAddUpdateDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for creating or updating a device.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "blockedServices": "DATA VOICE",
+              "deviceComment": "For Video",
+              "deviceCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "deviceId": "ALCLA0AE3F19D01",
+              "deviceModel": "GPON-A Video Port",
+              "deviceServices": {
+                "replace": true,
+                "serviceModels": [
+                  {
+                    "action": "add",
+                    "serviceName": "BASIC",
+                    "serviceNumber": 1
+                  }
+                ]
+              },
+              "deviceStatus": "Out Of Service",
+              "deviceType": "Alcatel GPON ONT",
+              "hostId": "3456012-1",
+              "locationId": "HEADEND 01 INVENTORY",
+              "securityData": "123-456-789",
+              "unitAddress": "1WPG09-1-1-7-2-3"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop": {
+        "title": "AsyncAddUpdateDeviceModelEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceModelRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "cableCard": true,
+              "deviceModelName": "string",
+              "deviceTypeName": "string",
+              "ontPortType": "P",
+              "ontType": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceRequestBody": {
+        "title": "AsyncAddUpdateDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "blockedServices": {
+            "type": "array",
+            "description": "This object can be included if you want to block the delivery of one or more services to this device. The services included in the object are the complete replacement list of services to be blocked (incremental adds and drops from the list are not supported). If the object is omitted and the device is being added, then no services will be blocked. If the object is omitted and the device is being updated, the existing list of blocked services (if any) will be unchanged (unless the command changes the LocationId of the device, in which case the list of blocked services will be automatically cleared). If you want to explicitly clear the list of blocked services, provide an empty BlockedServList.  Note that blocked services only impact provisioning for device-oriented interfaces (for example Motorola DAC or Cisco DNCS) and not subscriber-oriented interfaces (like VOD and IPTV).",
+            "examples": [
+              "DATA VOICE"
+            ],
+            "items": {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 12
+            }
+          },
+          "deviceComment": {
+            "type": "string",
+            "description": "Any additional information about this device. Alphanumeric, up to 30 characters long.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "For Video"
+            ]
+          },
+          "deviceCustomFields": {
+            "type": "array",
+            "description": "This object can be included if there are custom fields defined and you want to specify their values. The object should be omitted if there are no custom fields or if you don’t want to specify their values. Note: if the device is being added, then any custom fields with default values defined will be automatically assigned to this device if not explicitly specified in the CustomFieldList. For each custom field to be specified, one CustomField object must be present. If the CustomFieldList object is present, at least one CustomField object is expected.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "The unique identifier for device",
+            "examples": [
+              "ALCLA0AE3F19D01"
+            ]
+          },
+          "deviceModel": {
+            "type": "string",
+            "description": "The model of the device type. Alphanumeric, up to 20 characters long. This tag must be present if the device is being added. If the device is being updated, this tag can be omitted to leave the current value unchanged; however if it is present, then DeviceType must also be present. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "GPON-A Video Port"
+            ]
+          },
+          "deviceServices": {
+            "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceListModel"
+          },
+          "deviceStatus": {
+            "type": "string",
+            "description": "The status of this device. Alphanumeric, up to 16 characters long. This tag must be present if the device is being added. If the device is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match one the device status values that are configured in the system. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Out Of Service"
+            ]
+          },
+          "deviceType": {
+            "type": "string",
+            "description": "The type of this device. Alphanumeric, up to 16 characters long. This tag must be present if the device is being added. If the device is being updated, this tag can be omitted to leave the current value unchanged; however if it is present then  DeviceModel must also be present. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Alcatel GPON ONT"
+            ]
+          },
+          "hostId": {
+            "type": "string",
+            "description": "For CableCards (M-Cards and S-Cards), the host ID of the component (such as a set-top box or digital TV) in which the CableCard is installed. Digits and dashes only, up to 17 characters long. This is used to pair the CableCard to the host. Omit this field if the device is not a CableCard or the host ID is not known or is not being changed. A blank value will clear the host ID.",
+            "minLength": 0,
+            "maxLength": 17,
+            "examples": [
+              "3456012-1"
+            ]
+          },
+          "locationId": {
+            "type": "string",
+            "description": "Unique identifier for the location assigned to this device. Alphanumeric, up to 30 characters long. This tag must be present if the device is being added. If the device is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match a location that already exists in the system. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "HEADEND 01 INVENTORY"
+            ]
+          },
+          "securityData": {
+            "type": "string",
+            "description": "For Motorola CableCards (M-Cards and S-Cards), the security data displayed when the card is inserted into the host. Digits and dashes only, up to 14 characters long. This is used to pair the CableCard to the host. Omit this field if the device is not a Motorola CableCard or the security data is not known or is not being changed. A blank value will clear the security data.",
+            "minLength": 0,
+            "maxLength": 14,
+            "examples": [
+              "123-456-789"
+            ]
+          },
+          "unitAddress": {
+            "type": "string",
+            "description": "The unit address of this device. Alphanumeric, up to 20 characters long. The usage of this field varies significantly depending on device type. If the device type always requires a unit address, this tag must be present if the device is being added; otherwise it can be omitted on an add. If the device is being updated, this tag can be omitted to leave the current value unchanged. A blank value (to clear the current unit address) is allowed for some device types.",
+            "minLength": 0,
+            "maxLength": 32,
+            "examples": [
+              "1WPG09-1-1-7-2-3"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "blockedServices": "DATA VOICE",
+            "deviceComment": "For Video",
+            "deviceCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "deviceId": "ALCLA0AE3F19D01",
+            "deviceModel": "GPON-A Video Port",
+            "deviceServices": {
+              "replace": true,
+              "serviceModels": [
+                {
+                  "action": "add",
+                  "serviceName": "BASIC",
+                  "serviceNumber": 1
+                }
+              ]
+            },
+            "deviceStatus": "Out Of Service",
+            "deviceType": "Alcatel GPON ONT",
+            "hostId": "3456012-1",
+            "locationId": "HEADEND 01 INVENTORY",
+            "securityData": "123-456-789",
+            "unitAddress": "1WPG09-1-1-7-2-3"
+          }
+        ],
+        "required": [
+          "deviceModel",
+          "deviceStatus",
+          "deviceType",
+          "locationId"
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop": {
+        "title": "AsyncCreateDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.model.v1.DeviceStatusAddUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for creating a device status.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceStatusName": "In Service",
+              "deviceStatusNumber": 10,
+              "deviceStatusServices": "HSI BRONZE, IPTV BRONZE, VOICE BRONZE",
+              "overrideSubscriber": "Does Not Affect"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop": {
+        "title": "AsyncDeleteDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for deleting a device.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceId": "ALCLA0AE3F19D01"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop": {
+        "title": "AsyncDeleteDeviceModelEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceModelName": "string",
+              "deviceTypeName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelRequestBody": {
+        "title": "AsyncDeleteDeviceModelRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceModelName": {
+            "type": "string"
+          },
+          "deviceTypeName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "deviceModelName": "string",
+            "deviceTypeName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceRequestBody": {
+        "title": "AsyncDeleteDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "description": "The unique identifier for device",
+            "examples": [
+              "ALCLA0AE3F19D01"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "deviceId": "ALCLA0AE3F19D01"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop": {
+        "title": "AsyncDeleteDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for deleting device status.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceStatusName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusRequestBody": {
+        "title": "AsyncDeleteDeviceStatusRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceStatusName": {
+            "type": "string"
+          }
+        },
+        "description": "Used for deleting device status.",
+        "examples": [
+          {
+            "deviceStatusName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop": {
+        "title": "AsyncPerformDeviceOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for performing device operations.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceId": "ALCLA0AE3F19D01",
+              "operation": "Refresh"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationRequestBody": {
+        "title": "AsyncPerformDeviceOperationRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "description": "The unique identifier for device",
+            "examples": [
+              "ALCLA0AE3F19D01"
+            ]
+          },
+          "operation": {
+            "type": "string",
+            "description": "The operation to be performed.",
+            "minLength": 1,
+            "examples": [
+              "Refresh"
+            ]
+          }
+        },
+        "description": "Used for performing device operation.",
+        "examples": [
+          {
+            "deviceId": "ALCLA0AE3F19D01",
+            "operation": "Refresh"
+          }
+        ],
+        "required": [
+          "operation"
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceModelRequestBody": {
+        "title": "AsyncUpdateDeviceModelRequestBody",
+        "type": "object",
+        "properties": {
+          "cableCard": {
+            "type": "boolean",
+            "description": "cableCard"
+          },
+          "deviceModelName": {
+            "type": "string"
+          },
+          "deviceTypeName": {
+            "type": "string"
+          },
+          "ontPortType": {
+            "type": "string",
+            "description": "A single character string where valid values are P=POTS/Phone,V=Video,M=Moca,D=Data,G=1Gig Data,E=10Gig Data,T=T1",
+            "minLength": 0,
+            "maxLength": 1,
+            "examples": [
+              "P"
+            ]
+          },
+          "ontType": {
+            "type": "integer",
+            "description": "The ONT type can be 0 for Residential or 1 for Commercial.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": -999999999,
+            "examples": [
+              0
+            ]
+          }
+        },
+        "examples": [
+          {
+            "cableCard": true,
+            "deviceModelName": "string",
+            "deviceTypeName": "string",
+            "ontPortType": "P",
+            "ontType": 0
+          }
+        ],
+        "required": [
+          "ontPortType",
+          "ontType"
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop": {
+        "title": "AsyncUpdateDeviceStatusEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for updating a device status.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceStatusName": "string",
+              "deviceStatusNumber": 10,
+              "deviceStatusServices": "HSI BRONZE, IPTV BRONZE, VOICE BRONZE",
+              "overrideSubscriber": "Does Not Affect"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusRequestBody": {
+        "title": "AsyncUpdateDeviceStatusRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceStatusName": {
+            "type": "string"
+          },
+          "deviceStatusNumber": {
+            "type": "integer",
+            "description": "The custom status number. Numbers 1-9 are system/reserved numbers. Value must be greater than 9",
+            "format": "int64",
+            "minimum": 10,
+            "examples": [
+              10
+            ]
+          },
+          "deviceStatusServices": {
+            "type": "array",
+            "description": "List of service name assigned to this device status",
+            "examples": [
+              "HSI BRONZE, IPTV BRONZE, VOICE BRONZE"
+            ],
+            "items": {
+              "type": "string",
+              "description": "List of service name assigned to this device status",
+              "examples": [
+                "HSI BRONZE, IPTV BRONZE, VOICE BRONZE"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "overrideSubscriber": {
+            "type": "string",
+            "description": "The impact on subscriber services. Valid values are \"Does Not Affect\", \"Overrides\", and \"Adds To\".",
+            "enum": [
+              "Does Not Affect",
+              "Overrides",
+              "Adds To"
+            ],
+            "examples": [
+              "Does Not Affect"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "deviceStatusName": "string",
+            "deviceStatusNumber": 10,
+            "deviceStatusServices": "HSI BRONZE, IPTV BRONZE, VOICE BRONZE",
+            "overrideSubscriber": "Does Not Affect"
+          }
+        ],
+        "required": [
+          "overrideSubscriber"
+        ]
+      },
+      "com.etisoftware.device_api.webapi.model.v1.DeviceStatusAddUpdateRequestBody": {
+        "title": "DeviceStatusAddUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceStatusName": {
+            "type": "string",
+            "description": "The name of this device status. Alphanumeric, up to 16 characters long. This tag must be present if the device status is being added. If the device is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match one the device status values that are configured in the system. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "In Service"
+            ]
+          },
+          "deviceStatusNumber": {
+            "type": "integer",
+            "description": "The custom status number. Numbers 1-9 are system/reserved numbers. Value must be greater than 9",
+            "format": "int64",
+            "minimum": 10,
+            "examples": [
+              10
+            ]
+          },
+          "deviceStatusServices": {
+            "type": "array",
+            "description": "List of service name assigned to this device status",
+            "examples": [
+              "HSI BRONZE, IPTV BRONZE, VOICE BRONZE"
+            ],
+            "items": {
+              "type": "string",
+              "description": "List of service name assigned to this device status",
+              "examples": [
+                "HSI BRONZE, IPTV BRONZE, VOICE BRONZE"
+              ]
+            },
+            "uniqueItems": true
+          },
+          "overrideSubscriber": {
+            "type": "string",
+            "description": "The impact on subscriber services. Valid values are \"Does Not Affect\", \"Overrides\", and \"Adds To\".",
+            "enum": [
+              "Does Not Affect",
+              "Overrides",
+              "Adds To"
+            ],
+            "examples": [
+              "Does Not Affect"
+            ]
+          }
+        },
+        "description": "Used for updating a device type.",
+        "examples": [
+          {
+            "deviceStatusName": "In Service",
+            "deviceStatusNumber": 10,
+            "deviceStatusServices": "HSI BRONZE, IPTV BRONZE, VOICE BRONZE",
+            "overrideSubscriber": "Does Not Affect"
+          }
+        ],
+        "required": [
+          "deviceStatusName",
+          "overrideSubscriber"
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel": {
+        "title": "CustomFieldModel",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The unique label for this custom field (alphanumeric, up to 20 characters long). This tag must be included if a CustomField structure is present.",
+            "minLength": 1,
+            "examples": [
+              "CTLR_VERSION"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value for this custom field (alphanumeric, up to 80 characters long). The value must meet the constraints for this field. A blank value is not allowed if a default value for the custom field has been defined. This tag must be included if a CustomField structure is present.",
+            "examples": [
+              "5.3.6"
+            ]
+          }
+        },
+        "description": "This object can be included if there are custom fields defined and you want to specify their values. The object should be omitted if there are no custom fields or if you don’t want to specify their values. Note: if the device is being added, then any custom fields with default values defined will be automatically assigned to this device if not explicitly specified in the CustomFieldList. For each custom field to be specified, one CustomField object must be present. If the CustomFieldList object is present, at least one CustomField object is expected.",
+        "examples": [
+          {
+            "label": "CTLR_VERSION",
+            "value": "5.3.6"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceListModel": {
+        "title": "ServiceListModel",
+        "type": "object",
+        "properties": {
+          "replace": {
+            "type": "boolean"
+          },
+          "serviceModels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceModel"
+            }
+          }
+        },
+        "description": "<b>Can be included to make changes in the services assigned to this subscriber. Can have the following optional attribute:\n<ul><li>replace – set to true if the list of services represents a complete replacement for the services currently assigned to the subscriber. Set to false if the service list is to be applied incrementally to the services currently assigned to the account. If this attribute is not specified, replace=false is assumed. To delete all services from the subscriber, specify replace= true and do not supply any ServiceName tags. </li></ul></b>\n",
+        "examples": [
+          {
+            "replace": true,
+            "serviceModels": [
+              {
+                "action": "add",
+                "serviceName": "BASIC",
+                "serviceNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceModel": {
+        "title": "ServiceModel",
+        "type": "object",
+        "properties": {
+          "action": {
+            "pattern": "add|delete",
+            "type": "string",
+            "description": "Set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "examples": [
+              "add"
+            ]
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the service. Alphanumeric, up to 12 characters long. If no service exists with this name, or if this service is not marked as active, then an error is generated. A blank value is not allowed. ServiceName can have the following optional attribute:\n<ul><li>action – set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "BASIC"
+            ]
+          },
+          "serviceNumber": {
+            "type": "integer",
+            "description": "The unique service number",
+            "format": "int64",
+            "examples": [
+              1
+            ]
+          }
+        },
+        "examples": [
+          {
+            "action": "add",
+            "serviceName": "BASIC",
+            "serviceNumber": 1
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop",
+        "title": "AsyncAddUpdateDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop",
+        "title": "AsyncAddUpdateDeviceModelEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop",
+        "title": "AsyncCreateDeviceStatusEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop",
+        "title": "AsyncDeleteDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop",
+        "title": "AsyncDeleteDeviceModelEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop",
+        "title": "AsyncDeleteDeviceStatusEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop",
+        "title": "AsyncPerformDeviceOperationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+          }
+        },
+        "name": "com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop",
+        "title": "AsyncUpdateDeviceStatusEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "device-add-update-topic_receive_consumeAddUpdateDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-add-update-topic"
+      },
+      "title": "device-add-update-topic_receive",
+      "description": "Device add or update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-add-update-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceEnvelop"
+        }
+      ]
+    },
+    "device-delete-topic_receive_consumeDeleteDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-delete-topic"
+      },
+      "title": "device-delete-topic_receive",
+      "description": "Perform delete device consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-delete-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceEnvelop"
+        }
+      ]
+    },
+    "device-model-add-update-topic_receive_consumeUpdateDeviceModel": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-model-add-update-topic"
+      },
+      "title": "device-model-add-update-topic_receive",
+      "description": "Device model update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-model-add-update-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncAddUpdateDeviceModelEnvelop"
+        }
+      ]
+    },
+    "device-model-delete-topic_receive_consumeDeleteDeviceModel": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-model-delete-topic"
+      },
+      "title": "device-model-delete-topic_receive",
+      "description": "Delete device-model consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-model-delete-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceModelEnvelop"
+        }
+      ]
+    },
+    "device-perform-operation-topic_receive_consumePerformDeviceOperation": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-perform-operation-topic"
+      },
+      "title": "device-perform-operation-topic_receive",
+      "description": "Perform device operation consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-perform-operation-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncPerformDeviceOperationEnvelop"
+        }
+      ]
+    },
+    "device-status-add-topic_receive_consumeAddDeviceStatus": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-status-add-topic"
+      },
+      "title": "device-status-add-topic_receive",
+      "description": "DeviceStatus create consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-status-add-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncCreateDeviceStatusEnvelop"
+        }
+      ]
+    },
+    "device-status-add-topic_receive_consumeUpdateDeviceStatus": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-status-add-topic"
+      },
+      "title": "device-status-add-topic_receive",
+      "description": "DeviceStatus update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-status-add-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncUpdateDeviceStatusEnvelop"
+        }
+      ]
+    },
+    "device-status-delete-topic_receive_consumeDeleteDeviceStatus": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/device-status-delete-topic"
+      },
+      "title": "device-status-delete-topic_receive",
+      "description": "DeviceStatus delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/device-status-delete-topic/messages/com.etisoftware.device_api.webapi.consumers.data.AsyncDeleteDeviceStatusEnvelop"
+        }
+      ]
+    }
+  }
+}

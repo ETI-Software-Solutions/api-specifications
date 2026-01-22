@@ -1,0 +1,1577 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "ppv-event-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "ppv-delete-from-package-topic": {
+      "address": "ppv-delete-from-package-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-event-add-topic": {
+      "address": "ppv-event-add-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-event-delete-topic": {
+      "address": "ppv-event-delete-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-event-update-topic": {
+      "address": "ppv-event-update-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-order-add-topic": {
+      "address": "ppv-order-add-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-order-update-topic": {
+      "address": "ppv-order-update-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-package-add-topic": {
+      "address": "ppv-package-add-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ppv-package-update-topic": {
+      "address": "ppv-package-update-topic",
+      "messages": {
+        "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddPPVEventEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddPPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddPPVOrderEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddPPVOrderEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddPPVPackageEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddPPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeletePPVEventEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeletePPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeletePPVOrderEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeletePPVOrderEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeletePPVPackageEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeletePPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdatePPVEventEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdatePPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdatePPVPackageEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdatePPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop": {
+        "title": "AsyncAddPPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.model.v1.PpvEventAddBaseRequest"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "allowAruOrders": true,
+              "channelName": "ESPN PPV 01",
+              "endTime": "2022-02-17 09:53:07",
+              "eventCode": 10089,
+              "eventType": "Movie",
+              "previewTime": 30,
+              "price": 19.99,
+              "purchaseWindow": 30,
+              "rating": "PG",
+              "scheduleType": "Normal Digital",
+              "startTime": "2022-02-17 09:53:07",
+              "studio": "MCA/Universal",
+              "subject": "Comedy",
+              "supplier": "In Demand",
+              "title": "SHREK FOREVER AND EVER",
+              "titleId": 999999999
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop": {
+        "title": "AsyncAddPPVOrderEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.model.v1.PpvOrderAddRequest"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "amount": 19.99,
+              "eventNumber": 130584,
+              "subscriberId": "JOHNWICK9876"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop": {
+        "title": "AsyncAddPPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.model.v1.PpvEventPackageRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "allowAruOrders": true,
+              "endTime": "2022-02-17 09:53:07",
+              "eventCode": 10089,
+              "price": 19.99,
+              "scheduleType": "Normal Digital",
+              "startTime": "2022-02-17 09:53:07",
+              "title": "SHREK FOREVER AND EVER",
+              "titleId": 999999999
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop": {
+        "title": "AsyncDeletePPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "eventNumber": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventRequestBody": {
+        "title": "AsyncDeletePPVEventRequestBody",
+        "type": "object",
+        "properties": {
+          "eventNumber": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "eventNumber": 0
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop": {
+        "title": "AsyncDeletePPVOrderEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "eventNumber": 0,
+              "subscriberId": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderRequestBody": {
+        "title": "AsyncDeletePPVOrderRequestBody",
+        "type": "object",
+        "properties": {
+          "eventNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subscriberId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "eventNumber": 0,
+            "subscriberId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop": {
+        "title": "AsyncDeletePPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "packageEventNumber": 0,
+              "ppvEventNumber": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageRequestBody": {
+        "title": "AsyncDeletePPVPackageRequestBody",
+        "type": "object",
+        "properties": {
+          "packageEventNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ppvEventNumber": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "packageEventNumber": 0,
+            "ppvEventNumber": 0
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncPpvEventPackageEditRequestBody": {
+        "title": "AsyncPpvEventPackageEditRequestBody",
+        "type": "object",
+        "properties": {
+          "allowAruOrders": {
+            "type": "boolean",
+            "description": "Allow ARU Orders",
+            "examples": [
+              true
+            ]
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "eventNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "description": "The price of the PPV event",
+            "examples": [
+              19.99
+            ]
+          },
+          "startTime": {
+            "type": "string",
+            "description": "The start date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The PPV Event title. Alphanumeric, up to 24 characters long.",
+            "minLength": 0,
+            "maxLength": 24,
+            "examples": [
+              "SHREK FOREVER AND EVER"
+            ]
+          },
+          "titleId": {
+            "type": "integer",
+            "description": "The title ID for PPV Event. It is numeric with values between 0 and 999999999.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              999999999
+            ]
+          }
+        },
+        "examples": [
+          {
+            "allowAruOrders": true,
+            "endTime": "2022-02-17 09:53:07",
+            "eventNumber": 0,
+            "price": 19.99,
+            "startTime": "2022-02-17 09:53:07",
+            "title": "SHREK FOREVER AND EVER",
+            "titleId": 999999999
+          }
+        ],
+        "required": [
+          "price"
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop": {
+        "title": "AsyncUpdatePPVEventEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "allowAruOrders": true,
+              "endTime": "2022-02-17 09:53:07",
+              "eventNumber": 0,
+              "eventType": "Movie",
+              "previewTime": 30,
+              "price": 19.99,
+              "purchaseWindow": 30,
+              "rating": "PG",
+              "startTime": "2022-02-17 09:53:07",
+              "studio": "MCA/Universal",
+              "subject": "Comedy",
+              "supplier": "In Demand",
+              "title": "SHREK FOREVER AND EVER",
+              "titleId": 999999999
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop": {
+        "title": "AsyncUpdatePPVPackageEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncPpvEventPackageEditRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "allowAruOrders": true,
+              "endTime": "2022-02-17 09:53:07",
+              "eventNumber": 0,
+              "price": 19.99,
+              "startTime": "2022-02-17 09:53:07",
+              "title": "SHREK FOREVER AND EVER",
+              "titleId": 999999999
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVRequestBody": {
+        "title": "AsyncUpdatePPVRequestBody",
+        "type": "object",
+        "properties": {
+          "allowAruOrders": {
+            "type": "boolean",
+            "description": "Allow ARU Orders",
+            "examples": [
+              true
+            ]
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "eventNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eventType": {
+            "type": "string",
+            "description": "The PPV Event type. Alphanumeric, up to 8 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 8,
+            "examples": [
+              "Movie"
+            ]
+          },
+          "previewTime": {
+            "type": "integer",
+            "description": "The preview time in minutes allowed for PPV Event",
+            "format": "int32",
+            "maximum": 30,
+            "minimum": 0,
+            "examples": [
+              30
+            ]
+          },
+          "price": {
+            "type": "number",
+            "description": "The price of the PPV event",
+            "examples": [
+              19.99
+            ]
+          },
+          "purchaseWindow": {
+            "type": "integer",
+            "description": "The Purchase Window in minutes allowed before PPV Event starts",
+            "format": "int32",
+            "maximum": 30,
+            "minimum": 0,
+            "examples": [
+              30
+            ]
+          },
+          "rating": {
+            "type": "string",
+            "description": "The PPV Event rating. Alphanumeric, up to 5 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 5,
+            "examples": [
+              "PG"
+            ]
+          },
+          "startTime": {
+            "type": "string",
+            "description": "The start date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "studio": {
+            "type": "string",
+            "description": "The PPV Event studio. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "MCA/Universal"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "description": "The PPV Event subject. Alphanumeric, up to 12 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "Comedy"
+            ]
+          },
+          "supplier": {
+            "type": "string",
+            "description": "The PPV Event supplier. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "In Demand"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The PPV Event title. Alphanumeric, up to 24 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 24,
+            "examples": [
+              "SHREK FOREVER AND EVER"
+            ]
+          },
+          "titleId": {
+            "type": "integer",
+            "description": "The title ID for PPV Event. It is numeric with values between 0 and 999999999.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              999999999
+            ]
+          }
+        },
+        "examples": [
+          {
+            "allowAruOrders": true,
+            "endTime": "2022-02-17 09:53:07",
+            "eventNumber": 0,
+            "eventType": "Movie",
+            "previewTime": 30,
+            "price": 19.99,
+            "purchaseWindow": 30,
+            "rating": "PG",
+            "startTime": "2022-02-17 09:53:07",
+            "studio": "MCA/Universal",
+            "subject": "Comedy",
+            "supplier": "In Demand",
+            "title": "SHREK FOREVER AND EVER",
+            "titleId": 999999999
+          }
+        ],
+        "required": [
+          "endTime",
+          "eventType",
+          "previewTime",
+          "price",
+          "purchaseWindow",
+          "rating",
+          "startTime",
+          "studio",
+          "subject",
+          "supplier",
+          "title",
+          "titleId"
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.model.v1.PpvEventAddBaseRequest": {
+        "title": "PpvEventAddBaseRequest",
+        "type": "object",
+        "properties": {
+          "allowAruOrders": {
+            "type": "boolean",
+            "description": "Allow ARU Orders",
+            "examples": [
+              true
+            ]
+          },
+          "channelName": {
+            "type": "string",
+            "description": "The channel name. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "ESPN PPV 01"
+            ]
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "eventCode": {
+            "type": "integer",
+            "description": "The event code for PPV Event",
+            "format": "int32",
+            "maximum": 9999999,
+            "minimum": 0,
+            "examples": [
+              10089
+            ]
+          },
+          "eventType": {
+            "type": "string",
+            "description": "The PPV Event type. Alphanumeric, up to 8 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 8,
+            "examples": [
+              "Movie"
+            ]
+          },
+          "previewTime": {
+            "type": "integer",
+            "description": "The preview time in minutes allowed for PPV Event",
+            "format": "int32",
+            "maximum": 30,
+            "minimum": 0,
+            "examples": [
+              30
+            ]
+          },
+          "price": {
+            "type": "number",
+            "description": "The price of the PPV event",
+            "examples": [
+              19.99
+            ]
+          },
+          "purchaseWindow": {
+            "type": "integer",
+            "description": "The Purchase Window in minutes allowed before PPV Event starts",
+            "format": "int32",
+            "maximum": 30,
+            "minimum": 0,
+            "examples": [
+              30
+            ]
+          },
+          "rating": {
+            "type": "string",
+            "description": "The PPV Event rating. Alphanumeric, up to 5 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 5,
+            "examples": [
+              "PG"
+            ]
+          },
+          "scheduleType": {
+            "type": "string",
+            "description": "The Schedule Type of the PPV Event. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Normal Digital"
+            ]
+          },
+          "startTime": {
+            "type": "string",
+            "description": "The start date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "studio": {
+            "type": "string",
+            "description": "The PPV Event studio. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "MCA/Universal"
+            ]
+          },
+          "subject": {
+            "type": "string",
+            "description": "The PPV Event subject. Alphanumeric, up to 12 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "Comedy"
+            ]
+          },
+          "supplier": {
+            "type": "string",
+            "description": "The PPV Event supplier. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "In Demand"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The PPV Event title. Alphanumeric, up to 24 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 24,
+            "examples": [
+              "SHREK FOREVER AND EVER"
+            ]
+          },
+          "titleId": {
+            "type": "integer",
+            "description": "The title ID for PPV Event. It is numeric with values between 0 and 999999999.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              999999999
+            ]
+          }
+        },
+        "examples": [
+          {
+            "allowAruOrders": true,
+            "channelName": "ESPN PPV 01",
+            "endTime": "2022-02-17 09:53:07",
+            "eventCode": 10089,
+            "eventType": "Movie",
+            "previewTime": 30,
+            "price": 19.99,
+            "purchaseWindow": 30,
+            "rating": "PG",
+            "scheduleType": "Normal Digital",
+            "startTime": "2022-02-17 09:53:07",
+            "studio": "MCA/Universal",
+            "subject": "Comedy",
+            "supplier": "In Demand",
+            "title": "SHREK FOREVER AND EVER",
+            "titleId": 999999999
+          }
+        ],
+        "required": [
+          "channelName",
+          "endTime",
+          "eventCode",
+          "eventType",
+          "previewTime",
+          "price",
+          "purchaseWindow",
+          "rating",
+          "scheduleType",
+          "startTime",
+          "studio",
+          "subject",
+          "supplier",
+          "title",
+          "titleId"
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.model.v1.PpvEventPackageRequestBody": {
+        "title": "PpvEventPackageRequestBody",
+        "type": "object",
+        "properties": {
+          "allowAruOrders": {
+            "type": "boolean",
+            "description": "Allow ARU Orders",
+            "examples": [
+              true
+            ]
+          },
+          "endTime": {
+            "type": "string",
+            "description": "The end date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "eventCode": {
+            "type": "integer",
+            "description": "The event code for PPV Event",
+            "format": "int32",
+            "maximum": 9999999,
+            "minimum": 0,
+            "examples": [
+              10089
+            ]
+          },
+          "price": {
+            "type": "number",
+            "description": "The price of the PPV event Package",
+            "examples": [
+              19.99
+            ]
+          },
+          "scheduleType": {
+            "type": "string",
+            "description": "The Schedule Type of the PPV Event. Alphanumeric, up to 16 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 16,
+            "examples": [
+              "Normal Digital"
+            ]
+          },
+          "startTime": {
+            "type": "string",
+            "description": "The start date and time for PPV Event. Format: yyyy-MM-dd HH:mm:ss. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "examples": [
+              "2022-02-17 09:53:07"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The PPV Event title. Alphanumeric, up to 24 characters long. This must be present if the PPV Event is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 24,
+            "examples": [
+              "SHREK FOREVER AND EVER"
+            ]
+          },
+          "titleId": {
+            "type": "integer",
+            "description": "The title ID for PPV Event. It is numeric with values between 0 and 999999999.",
+            "format": "int32",
+            "maximum": 999999999,
+            "minimum": 0,
+            "examples": [
+              999999999
+            ]
+          }
+        },
+        "examples": [
+          {
+            "allowAruOrders": true,
+            "endTime": "2022-02-17 09:53:07",
+            "eventCode": 10089,
+            "price": 19.99,
+            "scheduleType": "Normal Digital",
+            "startTime": "2022-02-17 09:53:07",
+            "title": "SHREK FOREVER AND EVER",
+            "titleId": 999999999
+          }
+        ],
+        "required": [
+          "endTime",
+          "eventCode",
+          "price",
+          "scheduleType",
+          "startTime",
+          "title",
+          "titleId"
+        ]
+      },
+      "com.etisoftware.api.ppv_event_api.model.v1.PpvOrderAddRequest": {
+        "title": "PpvOrderAddRequest",
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "The price of the PPV event",
+            "examples": [
+              19.99
+            ]
+          },
+          "eventNumber": {
+            "type": "integer",
+            "description": "The PPV Order Number",
+            "format": "int32",
+            "minimum": 0,
+            "examples": [
+              130584
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The subcriber ID. Alphanumeric, up to 20 characters long. This must be present if the PPV Order is being added. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "JOHNWICK9876"
+            ]
+          }
+        },
+        "description": "Request Body For PPV Orders",
+        "examples": [
+          {
+            "amount": 19.99,
+            "eventNumber": 130584,
+            "subscriberId": "JOHNWICK9876"
+          }
+        ],
+        "required": [
+          "amount",
+          "eventNumber",
+          "subscriberId"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop",
+        "title": "AsyncAddPPVEventEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop",
+        "title": "AsyncAddPPVOrderEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop",
+        "title": "AsyncAddPPVPackageEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop",
+        "title": "AsyncDeletePPVEventEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop",
+        "title": "AsyncDeletePPVOrderEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop",
+        "title": "AsyncDeletePPVPackageEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop",
+        "title": "AsyncUpdatePPVEventEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop",
+        "title": "AsyncUpdatePPVPackageEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "ppv-delete-from-package-topic_receive_consumeDeletePPVFromPackage": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-delete-from-package-topic"
+      },
+      "title": "ppv-delete-from-package-topic_receive",
+      "description": "PPV package delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-delete-from-package-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVPackageEnvelop"
+        }
+      ]
+    },
+    "ppv-event-add-topic_receive_consumeAddPPVEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-event-add-topic"
+      },
+      "title": "ppv-event-add-topic_receive",
+      "description": "PPV event add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-event-add-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVEventEnvelop"
+        }
+      ]
+    },
+    "ppv-event-delete-topic_receive_consumeDeletePPVEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-event-delete-topic"
+      },
+      "title": "ppv-event-delete-topic_receive",
+      "description": "PPV event delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-event-delete-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVEventEnvelop"
+        }
+      ]
+    },
+    "ppv-event-update-topic_receive_consumeUpdatePPVEvent": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-event-update-topic"
+      },
+      "title": "ppv-event-update-topic_receive",
+      "description": "PPV event update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-event-update-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVEventEnvelop"
+        }
+      ]
+    },
+    "ppv-order-add-topic_receive_consumeAddPPVOrder": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-order-add-topic"
+      },
+      "title": "ppv-order-add-topic_receive",
+      "description": "PPV order add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-order-add-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVOrderEnvelop"
+        }
+      ]
+    },
+    "ppv-order-update-topic_receive_consumeDeletePPVOrder": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-order-update-topic"
+      },
+      "title": "ppv-order-update-topic_receive",
+      "description": "PPV order delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-order-update-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncDeletePPVOrderEnvelop"
+        }
+      ]
+    },
+    "ppv-package-add-topic_receive_consumeAddPPVPackage": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-package-add-topic"
+      },
+      "title": "ppv-package-add-topic_receive",
+      "description": "PPV package add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-package-add-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncAddPPVPackageEnvelop"
+        }
+      ]
+    },
+    "ppv-package-update-topic_receive_consumeUpdatePPVPackage": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ppv-package-update-topic"
+      },
+      "title": "ppv-package-update-topic_receive",
+      "description": "PPV package update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ppv-package-update-topic/messages/com.etisoftware.api.ppv_event_api.consumers.data.AsyncUpdatePPVPackageEnvelop"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1242 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "phone-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "phone-add-update-topic": {
+      "address": "phone-add-update-topic",
+      "messages": {
+        "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "phone-delete-topic": {
+      "address": "phone-delete-topic",
+      "messages": {
+        "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-delete-topic": {
+      "address": "subscriber-delete-topic",
+      "messages": {
+        "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-phone-add-update-topic": {
+      "address": "subscriber-phone-add-update-topic",
+      "messages": {
+        "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-phone-delete-topic": {
+      "address": "subscriber-phone-delete-topic",
+      "messages": {
+        "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeletePhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeletePhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteSubscriberPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteSubscriberPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncPhoneOperationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncPhoneOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateSubscriberPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateSubscriberPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel": {
+        "title": "CustomFieldModel",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The unique label for this custom field (alphanumeric, up to 20 characters long). This tag must be included if a CustomField structure is present.",
+            "minLength": 1,
+            "examples": [
+              "CTLR_VERSION"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value for this custom field (alphanumeric, up to 80 characters long). The value must meet the constraints for this field. A blank value is not allowed if a default value for the custom field has been defined. This tag must be included if a CustomField structure is present.",
+            "examples": [
+              "5.3.6"
+            ]
+          }
+        },
+        "description": "The custom fields for the phone",
+        "examples": [
+          {
+            "label": "CTLR_VERSION",
+            "value": "5.3.6"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceListModel": {
+        "title": "ServiceListModel",
+        "type": "object",
+        "properties": {
+          "replace": {
+            "type": "boolean"
+          },
+          "serviceModels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceModel"
+            }
+          }
+        },
+        "description": "<b>Can be included to make changes in the services assigned to this subscriber. Can have the following optional attribute:\n<ul><li>replace – set to true if the list of services represents a complete replacement for the services currently assigned to the subscriber. Set to false if the service list is to be applied incrementally to the services currently assigned to the account. If this attribute is not specified, replace=false is assumed. To delete all services from the subscriber, specify replace= true and do not supply any ServiceName tags. </li></ul></b>\n",
+        "examples": [
+          {
+            "replace": true,
+            "serviceModels": [
+              {
+                "action": "add",
+                "serviceName": "BASIC",
+                "serviceNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceModel": {
+        "title": "ServiceModel",
+        "type": "object",
+        "properties": {
+          "action": {
+            "pattern": "add|delete",
+            "type": "string",
+            "description": "Set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "examples": [
+              "add"
+            ]
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the service. Alphanumeric, up to 12 characters long. If no service exists with this name, or if this service is not marked as active, then an error is generated. A blank value is not allowed. ServiceName can have the following optional attribute:\n<ul><li>action – set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "BASIC"
+            ]
+          },
+          "serviceNumber": {
+            "type": "integer",
+            "description": "The unique service number",
+            "format": "int64",
+            "examples": [
+              1
+            ]
+          }
+        },
+        "examples": [
+          {
+            "action": "add",
+            "serviceName": "BASIC",
+            "serviceNumber": 1
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop": {
+        "title": "AsyncAddPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "directoryNumber": "string",
+              "newNumber": "7708675309",
+              "numberStatus": "Recently Disconnected",
+              "phoneCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "switchId": "METACFSFDV2"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneRequestBody": {
+        "title": "AsyncAddPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "directoryNumber": {
+            "type": "string"
+          },
+          "newNumber": {
+            "type": "string",
+            "description": "If the status is Recently Changed, you can optionally specify the new phone number in this field. Numeric, 10 digits long. The switch can use the new number in announcements when the old number is dialed. A blank value clears the new number assignment.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "numberStatus": {
+            "type": "string",
+            "description": "Status must be present if this is a new phone line. Status is optional on an update. If omitted on an update, the existing status is not changed. A blank value is not allowed.\nThe desired status for this phone line. Valid values are: <ul>\n\n<li> \nAvailable - This number is freely available to assign to subscribers. Invalid if the phone line is currently assigned to a subscriber account.\n</li>\n\n<li>  \nNormal - This number is assigned to a subscriber and is in one of the exchanges (NPA-NXX) configured for this switch. Invalid if the phone line is not currently assigned to a subscriber \n</li>\naccount.\n\n<li>  \nPorted In - This number is assigned to a subscriber, but has been ported into this switch from another carrier. Invalid if the phone line is not currently assigned to a subscriber \naccount.\n</li>\n\n<li>  \nPorted Out - This number is not assigned to a subscriber, and has been ported out of this switch to another carrier. Invalid if the phone line is currently assigned to a subscriber \naccount.\n</li>\n\n<li>  \nPort In Pending - This number is assigned to a subscriber, but is waiting to be ported into this switch from another carrier. Invalid if the phone line is not currently assigned to a \nsubscriber account.\n</li>\n\n<li>  \nRecently Changed - This number has been recently changed to another number. The new number can optionally be specified in the NewNumber field. Invalid if the phone line is currently\nassigned to a subscriber account.\n</li>\n\n<li>  \nRecently Disconnected - This number has been recently disconnected. Invalid if the phone line is currently assigned to a subscriber account.\n</li>\n\n<li> \nDeleted - This number is no longer available for assignment to subscribers. The phone line will be removed from the Vision 360 database when all history associated with the number has\naged out of the system. Invalid if the phone line is currently assigned to a subscriber account.\n</li>\n\n<li>  \nReserved - This number is not available for assignment to subscribers. Invalid if the phone line is currently assigned to a subscriber account.\n</li>\n\n</ul>",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "Recently Disconnected"
+            ]
+          },
+          "phoneCustomFields": {
+            "type": "array",
+            "description": "The custom fields for the phone",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "switchId": {
+            "type": "string",
+            "description": "The switch ID that is supporting this phone line for voice provisioning. Alphanumeric, up to 20 characters long. If specified, this must match the ID of a voice switch configured in Vision 360. If not specified, then Vision 360 will assign the default switch ID (which is configurable in Vision 360) if the phone line is being added; otherwise the current switch ID is not changed.  A blank value clears the current switch assignment.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "METACFSFDV2"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "directoryNumber": "string",
+            "newNumber": "7708675309",
+            "numberStatus": "Recently Disconnected",
+            "phoneCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "switchId": "METACFSFDV2"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop": {
+        "title": "AsyncDeletePhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "directoryNumber": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneRequestBody": {
+        "title": "AsyncDeletePhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "directoryNumber": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "directoryNumber": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop": {
+        "title": "AsyncDeleteSubscriberPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "directoryNumber": "string",
+              "newDirectoryNumber": "7708675309",
+              "numberStatus": "Recently Disconnected",
+              "subscriberId": "130099410339"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneRequestBody": {
+        "title": "AsyncDeleteSubscriberPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "directoryNumber": {
+            "type": "string"
+          },
+          "newDirectoryNumber": {
+            "type": "string",
+            "description": "If the status is Recently Changed, you can optionally specify the new phone number in this field.",
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "numberStatus": {
+            "type": "string",
+            "description": "The status of the line whether Available, Recently Disconnected, Deleted, etc. Valid values are:</br><ul><li>Available: <small>This number is freely available to assign to subscribers. Invalid if the phone line is currently assigned to a subscriber account.</small></li><li>Normal</li><li>Ported In</li><li>Ported Out</li><li>Port In Pending</li><li>Recently Changed</li><li>Recently Disconnected</li><li>Deleted</li><li>Reserved</li></ul>",
+            "examples": [
+              "Recently Disconnected"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The unique identifier for a subscriber.",
+            "examples": [
+              "130099410339"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "directoryNumber": "string",
+            "newDirectoryNumber": "7708675309",
+            "numberStatus": "Recently Disconnected",
+            "subscriberId": "130099410339"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop": {
+        "title": "AsyncPhoneOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "directoryNumber": "string",
+              "operation": "Refresh"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationRequestBody": {
+        "title": "AsyncPhoneOperationRequestBody",
+        "type": "object",
+        "properties": {
+          "directoryNumber": {
+            "type": "string"
+          },
+          "operation": {
+            "type": "string",
+            "description": "The operation to be performed",
+            "minLength": 1,
+            "examples": [
+              "Refresh"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "directoryNumber": "string",
+            "operation": "Refresh"
+          }
+        ],
+        "required": [
+          "operation"
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop": {
+        "title": "AsyncUpdateSubscriberPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "businessLineType": "Business",
+              "callReferenceValue": 1578,
+              "cidLocalName": "John Smith",
+              "deviceId": "ALCLA0AE3F19P01",
+              "directoryNumber": "string",
+              "dslEquipment": "ADLNCAXHBB1-1-1-11-12",
+              "dslEquipment2": "GLBYCT52H00-1-1-3-10",
+              "interfaceGroup": 1,
+              "mgcpAccessDevice": "FLMGCP01SW",
+              "mgcpAccessPort": "1",
+              "numberStatus": "Recently Disconnected",
+              "phoneCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "phoneMembers": [
+                {
+                  "endpoint": "SWITCHOE 00/0/00034",
+                  "memberDirectoryNumber": "7708675309",
+                  "memberOrder": "1",
+                  "sipPassword": "password",
+                  "sipUsername": "jsmith"
+                }
+              ],
+              "phoneServiceEnabled": true,
+              "phoneServices": {
+                "replace": true,
+                "serviceModels": [
+                  {
+                    "action": "add",
+                    "serviceName": "BASIC",
+                    "serviceNumber": 1
+                  }
+                ]
+              },
+              "pic1": "184",
+              "pic2": "184",
+              "pic3": "184",
+              "primaryDirectoryNumber": "7708675309",
+              "radiusFramedIP": "xxx.xxx.xxx.xxx",
+              "radiusPassword": "password",
+              "radiusUsername": "jsmith",
+              "ringCadence": 1,
+              "sipPassword": "password",
+              "sipUsername": "John Smith",
+              "subscriberId": "130099410339",
+              "switchId": "METACFSFDV2"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneRequestBody": {
+        "title": "AsyncUpdateSubscriberPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "businessLineType": {
+            "type": "string",
+            "description": "The type of phone line. Alphanumeric, 10 characters maximum. Valid values are </br><ul><li>Individual</li> <li>Business</li> <li>Trunk</li> <li>DID</li></br>. If this tag is omitted and the phone line is being added, the default value is Individual. A blank value is not allowed. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 10,
+            "enum": [
+              "Individual",
+              "DID",
+              "Trunk",
+              "Business"
+            ],
+            "examples": [
+              "Business"
+            ]
+          },
+          "callReferenceValue": {
+            "type": "integer",
+            "description": "The GR-303 call reference value assigned to this phone line. Integer, 4 digits maximum. A blank value clears the current CRV assignment. Supported only when switch provisioning or FTTH provisioning is licensed.",
+            "format": "int32",
+            "examples": [
+              1578
+            ]
+          },
+          "cidLocalName": {
+            "type": "string",
+            "description": "The string that will appear as the caller ID name when an outbound call is made from this number to another line on this switch. Alphanumeric, 15 characters maximum. A blank value clears this field, which means that the name from the subscriber’s account is used (truncated if necessary).  Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 15,
+            "examples": [
+              "John Smith"
+            ]
+          },
+          "deviceId": {
+            "type": "string",
+            "description": "The device ID for the device supporting this phone line (such as an FTTP ONT port or an MTA MAC address). Alphanumeric, 20 characters maximum. If this field is specified, the device must already exist in Triad and must already be assigned to this subscriber. A blank value clears the current device assignment. Supported only when FTTH or VOIP provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "ALCLA0AE3F19P01"
+            ]
+          },
+          "directoryNumber": {
+            "type": "string"
+          },
+          "dslEquipment": {
+            "type": "string",
+            "description": "This field identifies the network location from which DSL service is being provided for this phone line if applicable. Alphanumeric, 30 characters maximum. Generally, the DSL equipment number can include the DSLAM ID (which must match a DSLAM configured in Triad), rack number, shelf number, slot number, and port number, each separated by a delimiter character. The DSLAM ID and port number must be included. The delimiter character to be used and whether or not the rack, shelf, and/or slot are included in the DSL equipment number are configurable in Triad. The DSL equipment number format must be uniform across all DSLAMs (for example, if you need to specify the slot number for some DSLAMs, then the slot number must appear in the equipment number for all DSLAMs). The default DSL Equipment Number format is DSLAM ID and port number separated by a dash character. A blank value clears the current DSL Equipment Number. Supported only when DSL provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "ADLNCAXHBB1-1-1-11-12"
+            ]
+          },
+          "dslEquipment2": {
+            "type": "string",
+            "description": "If a second DSL port is bonded to this phone line, this field contains the DSL equipment number of that port. Alphanumeric, 30 characters maximum. See DSLEquipNumber for details on format. A blank value clears the field. Only supported when DSL provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "GLBYCT52H00-1-1-3-10"
+            ]
+          },
+          "interfaceGroup": {
+            "type": "integer",
+            "description": "The GR-303 interface group assigned to this phone line. Integer, 2 digits maximum. A blank value clears the current interface group assignment. Supported only when switch provisioning or FTTH provisioning is licensed.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "mgcpAccessDevice": {
+            "type": "string",
+            "description": "This field is used to assign the Access Device that this phone number will use on the Phone Switch. This field is only used when the Connection Type of the Phone Switch Configuration is set to “MGCP”.  Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 80,
+            "examples": [
+              "FLMGCP01SW"
+            ]
+          },
+          "mgcpAccessPort": {
+            "type": "string",
+            "description": "This field is used to assign the Access Line number on the specified Access Device that this phone number will use on the Phone Switch. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 80,
+            "examples": [
+              "1"
+            ]
+          },
+          "numberStatus": {
+            "type": "string",
+            "description": "Status must be present if this is a new phone line. Status is optional on an update. If omitted on an update, the existing numberStatus is not changed. A blank value is not allowed.</br>The desired numberStatus for this phone line. Valid values are:</br><ul><li>Available: <small>This number is freely available to assign to subscribers. Invalid if the phone line is currently assigned to a subscriber account.</small></li><li>Normal</li><li>Ported In</li><li>Ported Out</li><li>Port In Pending</li><li>Recently Changed</li><li>Recently Disconnected</li><li>Deleted</li><li>Reserved</li></ul>",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "Recently Disconnected"
+            ]
+          },
+          "phoneCustomFields": {
+            "type": "array",
+            "description": "The custom fields for the phone",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "phoneMembers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.model.v1.PhoneMemberModel"
+            }
+          },
+          "phoneServiceEnabled": {
+            "type": "boolean",
+            "description": "Flag indicating if service is to be enabled or disabled on this phone line. Valid values are true or false. If this tag is omitted and the phone line is being added, the default value is Y. A blank value is not allowed. This field is accepted for all voice related technologies, but only impacts switch provisioning and DSL provisioning.",
+            "examples": [
+              true
+            ]
+          },
+          "phoneServices": {
+            "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceListModel"
+          },
+          "pic1": {
+            "type": "string",
+            "description": "The Presubscribed Interexchange Carrier (PIC) code for the Long Distance Carrier on this phone line. Alphanumeric, 12 characters maximum. A blank value will result in the default PIC1 code for the switch being used. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "184"
+            ]
+          },
+          "pic2": {
+            "type": "string",
+            "description": "Presubscribed Interexchange Carrier (PIC) code for the Local Carrier on this phone line. Alphanumeric, 12 characters maximum. A blank value will result in the default PIC2 code for the switch being used. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "184"
+            ]
+          },
+          "pic3": {
+            "type": "string",
+            "description": "The Presubscribed Interexchange Carrier (PIC) code for the International Carrier on this phone line. Alphanumeric, 12 characters maximum. A blank value will result in the default PIC3 code for the switch being used. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "184"
+            ]
+          },
+          "primaryDirectoryNumber": {
+            "type": "string",
+            "description": "If this phone line is a secondary (teen) line, specify the primary phone number to which this secondary line is attached in this field. Numeric, 10 digits long. The primary phone number must already be assigned to this subscriber. If this phone line is not a secondary line, omit this field. A primary line can have multiple secondary lines. The maximum number of secondary lines allowed is switch dependent. A blank value clears this field. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "radiusFramedIP": {
+            "type": "string",
+            "description": "This field is used to assign a static IP address to the RADIUS User Name. Alphanumeric, 18 characters maximum. This field maps to the RADIUS Framed-IP-Address and Framed-IP-Netmask attributes in the RADIUS radreply table, and is of the form a.b.c.d/mask_bits where a.b.c.d represents an IP-Address in decimal dotted notation, andmask_bits represents the number of significant Netmask bits from the left (32 max).  For example “10.1.2.3/24” represents an IP-Address of 10.1.2.3 with a 24 bit Netmask of 255.255.255.0. A blank value clears the the framed network. Supported only when RADIUS provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 18,
+            "examples": [
+              "xxx.xxx.xxx.xxx"
+            ]
+          },
+          "radiusPassword": {
+            "type": "string",
+            "description": "The RADIUS user password to be associated with the RADIUS User Name in the RADIUS radcheck table.  Alphanumeric, 64 characters maximum, case sensitive. A blank value is not allowed. Supported only when RADIUS provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 64,
+            "examples": [
+              "password"
+            ]
+          },
+          "radiusUsername": {
+            "type": "string",
+            "description": "The Remote Authentication Dial-In User Service (RADIUS) user name that is to be associated with this phone line. Alphanumeric, 64 characters maximum, case sensitive. This field is needed only if RADIUS authentication is used for network access authentication.  It must be unique within the domain of the target RADIUS database.  A blank value deletes the User Name from the RADIUS system.  Supported only when RADIUS provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 64,
+            "examples": [
+              "jsmith"
+            ]
+          },
+          "ringCadence": {
+            "type": "integer",
+            "description": "If this phone line is a secondary (teen) line, specify the ring cadence number corresponding to the desired ring pattern in this field, should be > 0. Numeric, 1 digit. The range of values allowed is switch dependent. If a non-blank PrimaryNumber is specified, then this field must also be specified. If this line is not a secondary line, omit this field. A blank value is not allowed. Supported only when switch provisioning is licensed.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "sipPassword": {
+            "type": "string",
+            "description": "The SIP password assigned to this phone line. Alphanumeric, 20 characters maximum. A blank value clears this field. Supported only when switch provisioning, FTTH provisioning, or VOIP provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "password"
+            ]
+          },
+          "sipUsername": {
+            "type": "string",
+            "description": "The SIP Username assigned to this phone line. Alphanumeric, 20 characters maximum. A blank value clears this field. Supported only when switch provisioning, VOIP provisioning, or FTTH provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "John Smith"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "Unique identifier for the subscriber. Alphanumeric, up to 20 characters long. If no subscriber exists with this subscriber ID, then the command fails. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "130099410339"
+            ]
+          },
+          "switchId": {
+            "type": "string",
+            "description": "The switch ID that is supporting this phone line for voice provisioning. Alphanumeric, 20 characters maximum. If specified, this must match the ID of a voice switch configured in Triad. If not specified, then Triad will assign the default switch ID (which is configurable in Triad) if the phone line is being added to the subscriber account; otherwise the current switch ID is not changed.  A blank value clears the current switch assignment. Supported only when switch provisioning is licensed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "METACFSFDV2"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "businessLineType": "Business",
+            "callReferenceValue": 1578,
+            "cidLocalName": "John Smith",
+            "deviceId": "ALCLA0AE3F19P01",
+            "directoryNumber": "string",
+            "dslEquipment": "ADLNCAXHBB1-1-1-11-12",
+            "dslEquipment2": "GLBYCT52H00-1-1-3-10",
+            "interfaceGroup": 1,
+            "mgcpAccessDevice": "FLMGCP01SW",
+            "mgcpAccessPort": "1",
+            "numberStatus": "Recently Disconnected",
+            "phoneCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "phoneMembers": [
+              {
+                "endpoint": "SWITCHOE 00/0/00034",
+                "memberDirectoryNumber": "7708675309",
+                "memberOrder": "1",
+                "sipPassword": "password",
+                "sipUsername": "jsmith"
+              }
+            ],
+            "phoneServiceEnabled": true,
+            "phoneServices": {
+              "replace": true,
+              "serviceModels": [
+                {
+                  "action": "add",
+                  "serviceName": "BASIC",
+                  "serviceNumber": 1
+                }
+              ]
+            },
+            "pic1": "184",
+            "pic2": "184",
+            "pic3": "184",
+            "primaryDirectoryNumber": "7708675309",
+            "radiusFramedIP": "xxx.xxx.xxx.xxx",
+            "radiusPassword": "password",
+            "radiusUsername": "jsmith",
+            "ringCadence": 1,
+            "sipPassword": "password",
+            "sipUsername": "John Smith",
+            "subscriberId": "130099410339",
+            "switchId": "METACFSFDV2"
+          }
+        ],
+        "required": [
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.phone_api.webapi.model.v1.PhoneMemberModel": {
+        "title": "PhoneMemberModel",
+        "type": "object",
+        "properties": {
+          "endpoint": {
+            "type": "string",
+            "description": "The SIP Voice over IP switch name",
+            "minLength": 0,
+            "maxLength": 80,
+            "examples": [
+              "SWITCHOE 00/0/00034"
+            ]
+          },
+          "memberDirectoryNumber": {
+            "type": "string",
+            "description": "The telephone number that is associated with a telephone line",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7708675309"
+            ]
+          },
+          "memberOrder": {
+            "type": "string",
+            "description": "The order the member was added.",
+            "minLength": 0,
+            "maxLength": 5,
+            "examples": [
+              "1"
+            ]
+          },
+          "sipPassword": {
+            "type": "string",
+            "description": "The SIP password assigned to this phone line. ",
+            "minLength": 0,
+            "maxLength": 80,
+            "examples": [
+              "password"
+            ]
+          },
+          "sipUsername": {
+            "type": "string",
+            "description": "The SIP Username assigned to this phone line.",
+            "minLength": 0,
+            "maxLength": 80,
+            "examples": [
+              "jsmith"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "endpoint": "SWITCHOE 00/0/00034",
+            "memberDirectoryNumber": "7708675309",
+            "memberOrder": "1",
+            "sipPassword": "password",
+            "sipUsername": "jsmith"
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop",
+        "title": "AsyncAddPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop",
+        "title": "AsyncDeletePhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop",
+        "title": "AsyncDeleteSubscriberPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop",
+        "title": "AsyncPhoneOperationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop",
+        "title": "AsyncUpdateSubscriberPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "phone-add-update-topic_receive_consumeAddPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/phone-add-update-topic"
+      },
+      "title": "phone-add-update-topic_receive",
+      "description": "Phone a add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/phone-add-update-topic/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncAddPhoneEnvelop"
+        }
+      ]
+    },
+    "phone-delete-topic_receive_consumeDeletePhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/phone-delete-topic"
+      },
+      "title": "phone-delete-topic_receive",
+      "description": "Phone delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/phone-delete-topic/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeletePhoneEnvelop"
+        }
+      ]
+    },
+    "subscriber-delete-topic_receive_consumePhoneOperation": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-delete-topic"
+      },
+      "title": "subscriber-delete-topic_receive",
+      "description": "Phone perform operation consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-delete-topic/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncPhoneOperationEnvelop"
+        }
+      ]
+    },
+    "subscriber-phone-add-update-topic_receive_consumeAddUpdateSubscriberPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-phone-add-update-topic"
+      },
+      "title": "subscriber-phone-add-update-topic_receive",
+      "description": "Subscriber Phone update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-phone-add-update-topic/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncUpdateSubscriberPhoneEnvelop"
+        }
+      ]
+    },
+    "subscriber-phone-delete-topic_receive_consumeDeleteSubscriberPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-phone-delete-topic"
+      },
+      "title": "subscriber-phone-delete-topic_receive",
+      "description": "Subscriber Phone delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-phone-delete-topic/messages/com.etisoftware.phone_api.webapi.consumers.data.AsyncDeleteSubscriberPhoneEnvelop"
+        }
+      ]
+    }
+  }
+}

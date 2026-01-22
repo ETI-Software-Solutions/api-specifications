@@ -1,0 +1,1461 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "subscriber-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "subscriber-add-topic": {
+      "address": "subscriber-add-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-add-update-topic": {
+      "address": "subscriber-add-update-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-cancel-topic": {
+      "address": "subscriber-cancel-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-credit-add-topic": {
+      "address": "subscriber-credit-add-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-credit-cancel-topic": {
+      "address": "subscriber-credit-cancel-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-delete-topic": {
+      "address": "subscriber-delete-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "subscriber-operation-perform-topic": {
+      "address": "subscriber-operation-perform-topic",
+      "messages": {
+        "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdateSubscriberEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdateSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncCancelSubscriberEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncCancelSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteSubscriberEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncPerformSubscriberOperationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncPerformSubscriberOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncSubscriberCreditCancelEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncSubscriberCreditCancelEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncSubscriberCreditEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncSubscriberCreditEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncSubscriberOtcEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncSubscriberOtcEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel": {
+        "title": "CustomFieldModel",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The unique label for this custom field (alphanumeric, up to 20 characters long). This tag must be included if a CustomField structure is present.",
+            "minLength": 1,
+            "examples": [
+              "CTLR_VERSION"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value for this custom field (alphanumeric, up to 80 characters long). The value must meet the constraints for this field. A blank value is not allowed if a default value for the custom field has been defined. This tag must be included if a CustomField structure is present.",
+            "examples": [
+              "5.3.6"
+            ]
+          }
+        },
+        "description": "The custom fields for the subscriber",
+        "examples": [
+          {
+            "label": "CTLR_VERSION",
+            "value": "5.3.6"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.NoteModel": {
+        "title": "NoteModel",
+        "type": "object",
+        "properties": {
+          "noteCode": {
+            "type": "string",
+            "description": "The note code associated with the note. Alphanumeric, up to 12 characters long. The value must match one of the note codes configured for this note type. This tag is required if the Note structure is present. A blank value is not allowed.",
+            "examples": [
+              "CONVERSION"
+            ]
+          },
+          "noteText": {
+            "type": "string",
+            "description": "The note text associated with the note. Alphanumeric, up to 200 characters long. This tag is required if the Note structure is included. A blank value is not allowed.",
+            "examples": [
+              "DPI to Triad load 10-01-2011"
+            ]
+          },
+          "noteType": {
+            "type": "string",
+            "description": "The type of trigger for the note. Valid values are:\n<ul>\n<li>\tNew Subscriber – new subscriber being added </li>\n<li>\tEnable Service – service is being enabled</li>\n<li>\tDisableServNote – service is being disabled</li>\n<li>\tDisable Service – general manually entered note</li>\n</ul>\nThis tag is required if the Note structure is present. A blank value is not allowed.",
+            "examples": [
+              "New Subscriber"
+            ]
+          }
+        },
+        "description": "Used to create a Triad note field",
+        "examples": [
+          {
+            "noteCode": "CONVERSION",
+            "noteText": "DPI to Triad load 10-01-2011",
+            "noteType": "New Subscriber"
+          }
+        ],
+        "required": [
+          "noteCode",
+          "noteText",
+          "noteType"
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceListModel": {
+        "title": "ServiceListModel",
+        "type": "object",
+        "properties": {
+          "replace": {
+            "type": "boolean"
+          },
+          "serviceModels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceModel"
+            }
+          }
+        },
+        "description": "<b>Can be included to make changes in the services assigned to this subscriber. Can have the following optional attribute:\n<ul><li>replace – set to true if the list of services represents a complete replacement for the services currently assigned to the subscriber. Set to false if the service list is to be applied incrementally to the services currently assigned to the account. If this attribute is not specified, replace=false is assumed. To delete all services from the subscriber, specify replace= true and do not supply any ServiceName tags. </li></ul></b>\n",
+        "examples": [
+          {
+            "replace": true,
+            "serviceModels": [
+              {
+                "action": "add",
+                "serviceName": "BASIC",
+                "serviceNumber": 1
+              }
+            ]
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.ServiceModel": {
+        "title": "ServiceModel",
+        "type": "object",
+        "properties": {
+          "action": {
+            "pattern": "add|delete",
+            "type": "string",
+            "description": "Set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "examples": [
+              "add"
+            ]
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Name of the service. Alphanumeric, up to 12 characters long. If no service exists with this name, or if this service is not marked as active, then an error is generated. A blank value is not allowed. ServiceName can have the following optional attribute:\n<ul><li>action – set to ”add” to add the service to this resource. Set to ”delete” to delete the service from the resource. If this attribute is not specified, then action=”add” is assumed. If the replace=”yes” attribute was specified on the ServiceList tag, then action=”delete” is invalid. No error is generated when action=”add” is specified if the resource already has the service, or when action=”delete” is specified if the resource does not already have the service.</li></ul>",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "BASIC"
+            ]
+          },
+          "serviceNumber": {
+            "type": "integer",
+            "description": "The unique service number",
+            "format": "int64",
+            "examples": [
+              1
+            ]
+          }
+        },
+        "examples": [
+          {
+            "action": "add",
+            "serviceName": "BASIC",
+            "serviceNumber": 1
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop": {
+        "title": "AsyncAddUpdateSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.model.v1.AddUpdateSubscriberRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for updating a subscriber.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "contactPhone": "7705551234",
+              "emailAddress": "jsmith@testemailserver.com",
+              "forceRefresh": "yes",
+              "locationId": "HEADEND 01 INVENTORY",
+              "pin": "12345",
+              "pinRequired": true,
+              "ppvCap": 150,
+              "ppvPrivileges": "Y",
+              "ppvResetDay": 1,
+              "subscriberCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "subscriberId": "SK00101",
+              "subscriberName": "John Smith",
+              "subscriberNote": {
+                "noteCode": "CONVERSION",
+                "noteText": "DPI to Triad load 10-01-2011",
+                "noteType": "New Subscriber"
+              },
+              "subscriberServiceEnabled": true,
+              "subscriberServices": {
+                "replace": true,
+                "serviceModels": [
+                  {
+                    "action": "add",
+                    "serviceName": "BASIC",
+                    "serviceNumber": 1
+                  }
+                ]
+              }
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop": {
+        "title": "AsyncCancelSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberOtcBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for canceling a subscriber otc.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "operation": "Refresh",
+              "serviceHistNbr": 123,
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberOtcBody": {
+        "title": "AsyncCancelSubscriberOtcBody",
+        "type": "object",
+        "properties": {
+          "operation": {
+            "type": "string",
+            "description": "The operation to be performed",
+            "minLength": 1,
+            "examples": [
+              "Refresh"
+            ]
+          },
+          "serviceHistNbr": {
+            "type": "integer",
+            "description": "Service history number.",
+            "format": "int32",
+            "examples": [
+              123
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for canceling a subscriber otc.",
+        "examples": [
+          {
+            "operation": "Refresh",
+            "serviceHistNbr": 123,
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "operation",
+          "serviceHistNbr",
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberBody": {
+        "title": "AsyncDeleteSubscriberBody",
+        "type": "object",
+        "properties": {
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for deleting a subscriber.",
+        "examples": [
+          {
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop": {
+        "title": "AsyncDeleteSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for deleting a subscriber.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationBody": {
+        "title": "AsyncPerformSubscriberOperationBody",
+        "type": "object",
+        "properties": {
+          "operation": {
+            "type": "string",
+            "description": "The operation to be performed",
+            "minLength": 1,
+            "examples": [
+              "Refresh"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for performing a subscriber operation.",
+        "examples": [
+          {
+            "operation": "Refresh",
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "operation",
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop": {
+        "title": "AsyncPerformSubscriberOperationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for performing a subscriber operation.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "operation": "Refresh",
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelBody": {
+        "title": "AsyncSubscriberCreditCancelBody",
+        "type": "object",
+        "properties": {
+          "serviceHistNbr": {
+            "type": "integer",
+            "description": "Service history number.",
+            "format": "int32",
+            "examples": [
+              123
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for canceling subscriber credit.",
+        "examples": [
+          {
+            "serviceHistNbr": 123,
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "serviceHistNbr",
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop": {
+        "title": "AsyncSubscriberCreditCancelEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for canceling subscriber credit.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "serviceHistNbr": 123,
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop": {
+        "title": "AsyncSubscriberCreditEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.model.v1.SubscriberCreditRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for issuing a Credit for a subscriber.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "amount": 39.99,
+              "creditDate": "2025-06-01 or 2025/06/01",
+              "creditType": "SERVICE",
+              "otcName": "VOD PURCHASES",
+              "serviceName": "BASIC",
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop": {
+        "title": "AsyncSubscriberOtcEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.model.v1.SubcriberOtcRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for adding a One Time Charge for a subscriber.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "amount": 39.99,
+              "months": 3,
+              "numberOfUnits": 3,
+              "otcDate": "2025-06-01 or 2025/06/01",
+              "otcName": "VOD PURCHASES",
+              "subscriberId": "SK00101"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.model.v1.AddUpdateSubscriberRequestBody": {
+        "title": "AddUpdateSubscriberRequestBody",
+        "type": "object",
+        "properties": {
+          "contactPhone": {
+            "type": "string",
+            "description": "The contact telephone number of the subscriber. Numeric, up to 10 digits long. This is the phone number that is used by ARU applications to identify the subscriber for features such as PPV event ordering. The area code must be included if ANI or caller ID is used by the ARU application to automatically identify the subscriber, or if multiple area codes are included in the cable service area. Do not include any spaces, dashes, parentheses or other special characters. If the phone number is already assigned to another subscriber, then the command will fail. If Phone is omitted for a new subscriber, it is left blank. If Phone is omitted on an update, the current value is unchanged A blank value clears the phone number in the database.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "7705551234"
+            ]
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "The e-mail address for this subscriber. Alphanumeric, up to 40 characters long. If EmailAddress is omitted for a new subscriber, it is left blank. If EmailAddress is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "format": "email",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "jsmith@testemailserver.com"
+            ]
+          },
+          "forceRefresh": {
+            "type": "string",
+            "description": "Set to ”yes” to force provisioning to always be sent to the appropriate technologies routed to this subscriber. Set to “no” if provisioning should only occur because of any modifications made to one or more fields for this subscriber.  If this attribute is not specified, force_refresh=”yes” is assumed.",
+            "examples": [
+              "yes"
+            ]
+          },
+          "locationId": {
+            "type": "string",
+            "description": "Unique identifier for the location to be assigned to this subscriber. Alphanumeric, up to 30 characters long. If no location with this location ID exists, the command fails. If this tag is omitted, no change to location is made for this subscriber. A blank value clears the current location assignment for this subscriber. ",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "HEADEND 01 INVENTORY"
+            ]
+          },
+          "pin": {
+            "type": "string",
+            "description": "An alpharnumberic PIN assigned to a subscriber used for paid subscription services. Up to 5 alphanumeric characters.",
+            "minLength": 0,
+            "maxLength": 5,
+            "examples": [
+              "12345"
+            ]
+          },
+          "pinRequired": {
+            "type": "boolean",
+            "description": "Controls whether the PIN is required for PPV ordering. Valid values are true, false. If PINRequired is omitted for a new subscriber, the system default value is assigned. If PINRequired is omitted on an update, the current value is unchanged. A blank value is not allowed. PINRequired may not have any effect on the user experience when ordering IPPV, depending on the capabilities of the set-top.",
+            "examples": [
+              true
+            ]
+          },
+          "ppvCap": {
+            "type": "number",
+            "description": "The PPV order cap for this subscriber. Numeric with decimal point, up to 7 digits long. When the total value of PPV and VOD purchases made by this subscriber since midnight on the PPVResetDay meets or exceeds the PPV cap, further purchases of PPV or VOD are disabled. See PPVResetDay for more information. If this tag is omitted for a new subscriber, then the system default PPV cap is assigned. If this tag is omitted on an update, then no change to the PPV cap is made. The PPV cap only has an effect if PPV Privileges have been set to C.",
+            "maximum": 9999999,
+            "examples": [
+              150
+            ]
+          },
+          "ppvPrivileges": {
+            "type": "string",
+            "description": "Flag indicating the PPV and VOD ordering privileges for this subscriber. Valid values are Y (unlimited PPV ordering), N (no PPV ordering), or C (capped PPV ordering). If this tag is omitted for a new subscriber, the value N is assigned by default. If this tag is omitted for an update, then no change to PPV ordering privileges is made. ",
+            "examples": [
+              "Y"
+            ]
+          },
+          "ppvResetDay": {
+            "type": "number",
+            "description": "The day of the month when the total amount of PPV and VOD purchases is reset to zero for this subscriber. Numeric, up to 2 digits maximum. Valid values are 0 to 28, where 0 means that the total purchase amount is reset whenever PPV and VOD purchases are uploaded to the billing system. If this tag is omitted for a new subscriber, then the system default PPV reset day is assigned. If this tag is omitted on an update, then no change to the PPV reset day is made. The PPV reset day only has an effect if PPV Privileges have been set to C.",
+            "maximum": 28,
+            "minimum": 0,
+            "examples": [
+              1
+            ]
+          },
+          "subscriberCustomFields": {
+            "type": "array",
+            "description": "The custom fields for the subscriber",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          },
+          "subscriberName": {
+            "type": "string",
+            "description": "The name of the subscriber. Alphanumeric, up to 40 characters long. SubscriberName must be present if this is a new subscriber. SubscriberName is optional on an update. If omitted on an update, the existing subscriber name is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 40,
+            "examples": [
+              "John Smith"
+            ]
+          },
+          "subscriberNote": {
+            "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.NoteModel"
+          },
+          "subscriberServiceEnabled": {
+            "type": "boolean",
+            "description": "A boolean true/false indicating if service is to be enabled or disabled. Valid values are true, false. If this tag is omitted for a new subscriber, the value N is assigned by default. If this tag is omitted on an update, no change to the service enabled flag is made. Y is only valid if the subscriber is already assigned to a location, or if the subscriber is being assigned to a location by this command. ",
+            "examples": [
+              true
+            ]
+          },
+          "subscriberServices": {
+            "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.ServiceListModel"
+          }
+        },
+        "description": "Used for adding or updating a subscriber.",
+        "examples": [
+          {
+            "contactPhone": "7705551234",
+            "emailAddress": "jsmith@testemailserver.com",
+            "forceRefresh": "yes",
+            "locationId": "HEADEND 01 INVENTORY",
+            "pin": "12345",
+            "pinRequired": true,
+            "ppvCap": 150,
+            "ppvPrivileges": "Y",
+            "ppvResetDay": 1,
+            "subscriberCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "subscriberId": "SK00101",
+            "subscriberName": "John Smith",
+            "subscriberNote": {
+              "noteCode": "CONVERSION",
+              "noteText": "DPI to Triad load 10-01-2011",
+              "noteType": "New Subscriber"
+            },
+            "subscriberServiceEnabled": true,
+            "subscriberServices": {
+              "replace": true,
+              "serviceModels": [
+                {
+                  "action": "add",
+                  "serviceName": "BASIC",
+                  "serviceNumber": 1
+                }
+              ]
+            }
+          }
+        ],
+        "required": [
+          "subscriberId",
+          "subscriberName"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.model.v1.SubcriberOtcRequestBody": {
+        "title": "SubcriberOtcRequestBody",
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "The unit cost of this one-time charge.",
+            "minimum": 0.01,
+            "examples": [
+              39.99
+            ]
+          },
+          "months": {
+            "type": "integer",
+            "description": "The number of consecutive months that this one-time charge is to appear on the subscriber’s bill.",
+            "format": "int32",
+            "minimum": 1,
+            "examples": [
+              3
+            ]
+          },
+          "numberOfUnits": {
+            "type": "integer",
+            "description": "The number of units to be charged.",
+            "format": "int32",
+            "minimum": 1,
+            "examples": [
+              3
+            ]
+          },
+          "otcDate": {
+            "type": "string",
+            "description": "The date this one-time charge is to appear on the subscriber’s bill. Format yyyy-MM-dd or yyyy/MM/dd.",
+            "examples": [
+              "2025-06-01 or 2025/06/01"
+            ]
+          },
+          "otcName": {
+            "type": "string",
+            "description": "The One Time Charge Name.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "VOD PURCHASES"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for adding a One Time Charge for a subscriber.",
+        "examples": [
+          {
+            "amount": 39.99,
+            "months": 3,
+            "numberOfUnits": 3,
+            "otcDate": "2025-06-01 or 2025/06/01",
+            "otcName": "VOD PURCHASES",
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "amount",
+          "months",
+          "numberOfUnits",
+          "otcDate",
+          "otcName",
+          "subscriberId"
+        ]
+      },
+      "com.etisoftware.subscriber_api.webapi.model.v1.SubscriberCreditRequestBody": {
+        "title": "SubscriberCreditRequestBody",
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number",
+            "description": "The unit cost of this one-time charge.",
+            "minimum": 0.01,
+            "examples": [
+              39.99
+            ]
+          },
+          "creditDate": {
+            "type": "string",
+            "description": "The date this credit is to appear on the subscriber’s bill. Format yyyy-MM-dd or yyyy/MM/dd.",
+            "examples": [
+              "2025-06-01 or 2025/06/01"
+            ]
+          },
+          "creditType": {
+            "type": "string",
+            "description": "The type of credit. Must be either SERVICE or ONE_TIME_CHARGE.",
+            "enum": [
+              "service",
+              "one_time_charge"
+            ],
+            "examples": [
+              "SERVICE"
+            ]
+          },
+          "otcName": {
+            "type": "string",
+            "description": "The One Time Charge Name.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "VOD PURCHASES"
+            ]
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "The service name",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "BASIC"
+            ]
+          },
+          "subscriberId": {
+            "type": "string",
+            "description": "The Identifier of the subscriber. Alphanumeric, up to 20 characters long. Subscriber Identifier must be present if this is a new subscriber. Subscriber Identifier is optional on an update. If omitted on an update, the existing subscriber Identifier is not changed. A blank value is not allowed.",
+            "minLength": 0,
+            "maxLength": 20,
+            "examples": [
+              "SK00101"
+            ]
+          }
+        },
+        "description": "Used for issuing a Credit for a subscriber.",
+        "examples": [
+          {
+            "amount": 39.99,
+            "creditDate": "2025-06-01 or 2025/06/01",
+            "creditType": "SERVICE",
+            "otcName": "VOD PURCHASES",
+            "serviceName": "BASIC",
+            "subscriberId": "SK00101"
+          }
+        ],
+        "required": [
+          "amount",
+          "creditDate",
+          "creditType",
+          "subscriberId"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop",
+        "title": "AsyncAddUpdateSubscriberEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop",
+        "title": "AsyncCancelSubscriberEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop",
+        "title": "AsyncDeleteSubscriberEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop",
+        "title": "AsyncPerformSubscriberOperationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop",
+        "title": "AsyncSubscriberCreditCancelEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop",
+        "title": "AsyncSubscriberCreditEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+          }
+        },
+        "name": "com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop",
+        "title": "AsyncSubscriberOtcEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "subscriber-add-topic_receive_consumeAddUpdateSubscriberOtc": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-add-topic"
+      },
+      "title": "subscriber-add-topic_receive",
+      "description": "Subscriber OTC add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-add-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberOtcEnvelop"
+        }
+      ]
+    },
+    "subscriber-add-update-topic_receive_consumeAddUpdateSubscriber": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-add-update-topic"
+      },
+      "title": "subscriber-add-update-topic_receive",
+      "description": "Subscriber add or update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-add-update-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncAddUpdateSubscriberEnvelop"
+        }
+      ]
+    },
+    "subscriber-cancel-topic_receive_consumeCancelSubscriberOtc": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-cancel-topic"
+      },
+      "title": "subscriber-cancel-topic_receive",
+      "description": "Subscriber OTC cancel consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-cancel-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncCancelSubscriberEnvelop"
+        }
+      ]
+    },
+    "subscriber-credit-add-topic_receive_consumeAddSubscriberCredit": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-credit-add-topic"
+      },
+      "title": "subscriber-credit-add-topic_receive",
+      "description": "SubscriberCredit add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-credit-add-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditEnvelop"
+        }
+      ]
+    },
+    "subscriber-credit-cancel-topic_receive_consumeCancelSubscriberCredit": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-credit-cancel-topic"
+      },
+      "title": "subscriber-credit-cancel-topic_receive",
+      "description": "SubscriberCredit cancel consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-credit-cancel-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncSubscriberCreditCancelEnvelop"
+        }
+      ]
+    },
+    "subscriber-delete-topic_receive_consumeDeleteSubscriber": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-delete-topic"
+      },
+      "title": "subscriber-delete-topic_receive",
+      "description": "Subscriber delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-delete-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncDeleteSubscriberEnvelop"
+        }
+      ]
+    },
+    "subscriber-operation-perform-topic_receive_consumePerformSubscriberOperation": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/subscriber-operation-perform-topic"
+      },
+      "title": "subscriber-operation-perform-topic_receive",
+      "description": "Subscriber Operation perform consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/subscriber-operation-perform-topic/messages/com.etisoftware.subscriber_api.webapi.controller.v1.consumers.data.AsyncPerformSubscriberOperationEnvelop"
+        }
+      ]
+    }
+  }
+}

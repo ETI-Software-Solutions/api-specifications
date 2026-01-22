@@ -1,0 +1,3948 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "work-order-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "add-assign-device-topic": {
+      "address": "add-assign-device-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "assign-wo-location-topic": {
+      "address": "assign-wo-location-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "remove-pending-device-topic": {
+      "address": "remove-pending-device-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "unassign-device-topic": {
+      "address": "unassign-device-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "unassign-wo-location-topic": {
+      "address": "unassign-wo-location-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "update-device-topic": {
+      "address": "update-device-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "update-wo-location-topic": {
+      "address": "update-wo-location-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-notes-complete-topic": {
+      "address": "wo-notes-complete-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-notes-create-topic": {
+      "address": "wo-notes-create-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-notes-delete-topic": {
+      "address": "wo-notes-delete-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+        },
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-notes-update-topic": {
+      "address": "wo-notes-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+        },
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-otc-create-topic": {
+      "address": "wo-otc-create-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-otc-update-topic": {
+      "address": "wo-otc-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-pending-phone-add-udpdate-topic": {
+      "address": "wo-pending-phone-add-udpdate-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-pending-phone-swap-topic": {
+      "address": "wo-pending-phone-swap-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-pending-phone-unassign-topic": {
+      "address": "wo-pending-phone-unassign-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-pending-subscriber-update-topic": {
+      "address": "wo-pending-subscriber-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-schedule-add-update-topic": {
+      "address": "wo-schedule-add-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-schedule-delete-topic": {
+      "address": "wo-schedule-delete-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-task-create-update-topic": {
+      "address": "wo-task-create-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "wo-task-delete-topic": {
+      "address": "wo-task-delete-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "workorder-create-topic": {
+      "address": "workorder-create-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddAssignDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddAssignDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdatePendingPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdatePendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAssignLocationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAssignLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteNoteEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteNoteEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteTaskEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteTaskEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncNoteCreateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncNoteCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncOtcCreateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncOtcCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncOtcUpdateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncOtcUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncRemovePendingDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncRemovePendingDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncScheduleAddUpdateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncScheduleAddUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncScheduleDeleteEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncScheduleDeleteEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncSwapPendingPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncSwapPendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncTaskCreateUpdateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncTaskCreateUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUnassignDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUnassignDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUnassignLocationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUnassignLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUnassignPendingPhoneEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUnassignPendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateDeviceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateLocationEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateNoteEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateNoteEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdatePendingSubscriberEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdatePendingSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncWoCompleteEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncWoCompleteEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncWoCreateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncWoCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncWoDeleteEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncWoDeleteEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncWoUpdateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncWoUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel": {
+        "title": "CustomFieldModel",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The unique label for this custom field (alphanumeric, up to 20 characters long). This tag must be included if a CustomField structure is present.",
+            "minLength": 1,
+            "examples": [
+              "CTLR_VERSION"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value for this custom field (alphanumeric, up to 80 characters long). The value must meet the constraints for this field. A blank value is not allowed if a default value for the custom field has been defined. This tag must be included if a CustomField structure is present.",
+            "examples": [
+              "5.3.6"
+            ]
+          }
+        },
+        "description": "The custom fields for the location",
+        "examples": [
+          {
+            "label": "CTLR_VERSION",
+            "value": "5.3.6"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop": {
+        "title": "AsyncDeleteNoteEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "action": "string",
+              "newNoteCode": "string",
+              "newNoteText": "string",
+              "newNoteType": "string",
+              "oldNoteCode": "string",
+              "oldNoteText": "string",
+              "oldNoteType": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteRequestBody": {
+        "title": "AsyncDeleteNoteRequestBody",
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "newNoteCode": {
+            "type": "string"
+          },
+          "newNoteText": {
+            "type": "string"
+          },
+          "newNoteType": {
+            "type": "string"
+          },
+          "oldNoteCode": {
+            "type": "string"
+          },
+          "oldNoteText": {
+            "type": "string"
+          },
+          "oldNoteType": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "action": "string",
+            "newNoteCode": "string",
+            "newNoteText": "string",
+            "newNoteType": "string",
+            "oldNoteCode": "string",
+            "oldNoteText": "string",
+            "oldNoteType": "string",
+            "workorderId": 0
+          }
+        ],
+        "required": [
+          "action"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop": {
+        "title": "AsyncAddAssignDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceId": "string",
+              "deviceModel": "string",
+              "deviceStatus": "string",
+              "deviceType": "string",
+              "hostId": "string",
+              "locationId": "string",
+              "multiPortDevices": [
+                {
+                  "deviceId": "string",
+                  "deviceModel": "string",
+                  "deviceStatus": "string"
+                }
+              ],
+              "securityData": "string",
+              "unitAddress": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceRequestBody": {
+        "title": "AsyncAddAssignDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "deviceModel": {
+            "type": "string"
+          },
+          "deviceStatus": {
+            "type": "string"
+          },
+          "deviceType": {
+            "type": "string"
+          },
+          "hostId": {
+            "type": "string"
+          },
+          "locationId": {
+            "type": "string"
+          },
+          "multiPortDevices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.AddMultiPortDevice"
+            }
+          },
+          "securityData": {
+            "type": "string"
+          },
+          "unitAddress": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "deviceId": "string",
+            "deviceModel": "string",
+            "deviceStatus": "string",
+            "deviceType": "string",
+            "hostId": "string",
+            "locationId": "string",
+            "multiPortDevices": [
+              {
+                "deviceId": "string",
+                "deviceModel": "string",
+                "deviceStatus": "string"
+              }
+            ],
+            "securityData": "string",
+            "unitAddress": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop": {
+        "title": "AsyncAddUpdatePendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "cidlocalName": "string",
+              "crv": "string",
+              "customFields": [
+                {
+                  "label": "string",
+                  "maximumLength": "string",
+                  "minimumLength": "string",
+                  "order": 0,
+                  "readOnly": "string",
+                  "value": "string"
+                }
+              ],
+              "deviceId": "string",
+              "directoryNumber": "string",
+              "dslequipNumber": "string",
+              "dslequipNumber2": "string",
+              "interfaceGroup": "string",
+              "lineType": "string",
+              "mgcpaccessDevice": "string",
+              "mgcpaccessPort": "string",
+              "phoneNumber": "string",
+              "pic1": "string",
+              "pic2": "string",
+              "pic3": "string",
+              "primaryNumber": "string",
+              "radiusframedIP": "string",
+              "radiususerName": "string",
+              "radiususerPswd": "string",
+              "ringCadence": "string",
+              "serviceEnabled": "string",
+              "sippassword": "string",
+              "sipuserName": "string",
+              "switchId": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneRequestBody": {
+        "title": "AsyncAddUpdatePendingPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "cidlocalName": {
+            "type": "string"
+          },
+          "crv": {
+            "type": "string"
+          },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.model.CustomField"
+            }
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "directoryNumber": {
+            "type": "string"
+          },
+          "dslequipNumber": {
+            "type": "string"
+          },
+          "dslequipNumber2": {
+            "type": "string"
+          },
+          "interfaceGroup": {
+            "type": "string"
+          },
+          "lineType": {
+            "type": "string"
+          },
+          "mgcpaccessDevice": {
+            "type": "string"
+          },
+          "mgcpaccessPort": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "pic1": {
+            "type": "string"
+          },
+          "pic2": {
+            "type": "string"
+          },
+          "pic3": {
+            "type": "string"
+          },
+          "primaryNumber": {
+            "type": "string"
+          },
+          "radiusframedIP": {
+            "type": "string"
+          },
+          "radiususerName": {
+            "type": "string"
+          },
+          "radiususerPswd": {
+            "type": "string"
+          },
+          "ringCadence": {
+            "type": "string"
+          },
+          "serviceEnabled": {
+            "type": "string"
+          },
+          "sippassword": {
+            "type": "string"
+          },
+          "sipuserName": {
+            "type": "string"
+          },
+          "switchId": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "cidlocalName": "string",
+            "crv": "string",
+            "customFields": [
+              {
+                "label": "string",
+                "maximumLength": "string",
+                "minimumLength": "string",
+                "order": 0,
+                "readOnly": "string",
+                "value": "string"
+              }
+            ],
+            "deviceId": "string",
+            "directoryNumber": "string",
+            "dslequipNumber": "string",
+            "dslequipNumber2": "string",
+            "interfaceGroup": "string",
+            "lineType": "string",
+            "mgcpaccessDevice": "string",
+            "mgcpaccessPort": "string",
+            "phoneNumber": "string",
+            "pic1": "string",
+            "pic2": "string",
+            "pic3": "string",
+            "primaryNumber": "string",
+            "radiusframedIP": "string",
+            "radiususerName": "string",
+            "radiususerPswd": "string",
+            "ringCadence": "string",
+            "serviceEnabled": "string",
+            "sippassword": "string",
+            "sipuserName": "string",
+            "switchId": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop": {
+        "title": "AsyncAssignLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "locationId": "string",
+              "ppvcap": "string",
+              "ppvprivileges": "string",
+              "serviceEnabled": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationRequestBody": {
+        "title": "AsyncAssignLocationRequestBody",
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string"
+          },
+          "ppvcap": {
+            "type": "string"
+          },
+          "ppvprivileges": {
+            "type": "string"
+          },
+          "serviceEnabled": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "locationId": "string",
+            "ppvcap": "string",
+            "ppvprivileges": "string",
+            "serviceEnabled": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop": {
+        "title": "AsyncDeleteTaskEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "taskName": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskRequestBody": {
+        "title": "AsyncDeleteTaskRequestBody",
+        "type": "object",
+        "properties": {
+          "taskName": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "taskName": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop": {
+        "title": "AsyncNoteCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "noteCode": "string",
+              "noteText": "string",
+              "noteType": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateRequestBody": {
+        "title": "AsyncNoteCreateRequestBody",
+        "type": "object",
+        "properties": {
+          "noteCode": {
+            "type": "string"
+          },
+          "noteText": {
+            "type": "string"
+          },
+          "noteType": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "noteCode": "string",
+            "noteText": "string",
+            "noteType": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop": {
+        "title": "AsyncOtcCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "addOTCNote": {
+                "noteCode": "string",
+                "noteText": "string"
+              },
+              "otcdate": "2015-07-20",
+              "otcmonths": 0,
+              "otcname": "string",
+              "unitCost": 1.1,
+              "units": 0,
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateRequestBody": {
+        "title": "AsyncOtcCreateRequestBody",
+        "type": "object",
+        "properties": {
+          "addOTCNote": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.OTCNote"
+          },
+          "otcdate": {
+            "type": "string",
+            "format": "date"
+          },
+          "otcmonths": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "otcname": {
+            "type": "string"
+          },
+          "unitCost": {
+            "type": "number",
+            "format": "double"
+          },
+          "units": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "addOTCNote": {
+              "noteCode": "string",
+              "noteText": "string"
+            },
+            "otcdate": "2015-07-20",
+            "otcmonths": 0,
+            "otcname": "string",
+            "unitCost": 1.1,
+            "units": 0,
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop": {
+        "title": "AsyncOtcUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "action": "string",
+              "newOTCDate": "string",
+              "newOTCMonths": "string",
+              "newUnitCost": "string",
+              "newUnits": "string",
+              "otcId": "string",
+              "otcdate": "string",
+              "otcmonths": "string",
+              "otcname": "string",
+              "unitCost": "string",
+              "units": "string",
+              "updateOTCNote": {
+                "noteCode": "string",
+                "noteText": "string"
+              },
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateRequestBody": {
+        "title": "AsyncOtcUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "newOTCDate": {
+            "type": "string"
+          },
+          "newOTCMonths": {
+            "type": "string"
+          },
+          "newUnitCost": {
+            "type": "string"
+          },
+          "newUnits": {
+            "type": "string"
+          },
+          "otcId": {
+            "type": "string"
+          },
+          "otcdate": {
+            "type": "string"
+          },
+          "otcmonths": {
+            "type": "string"
+          },
+          "otcname": {
+            "type": "string"
+          },
+          "unitCost": {
+            "type": "string"
+          },
+          "units": {
+            "type": "string"
+          },
+          "updateOTCNote": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.OTCNote"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "action": "string",
+            "newOTCDate": "string",
+            "newOTCMonths": "string",
+            "newUnitCost": "string",
+            "newUnits": "string",
+            "otcId": "string",
+            "otcdate": "string",
+            "otcmonths": "string",
+            "otcname": "string",
+            "unitCost": "string",
+            "units": "string",
+            "updateOTCNote": {
+              "noteCode": "string",
+              "noteText": "string"
+            },
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop": {
+        "title": "AsyncRemovePendingDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "action": "string",
+              "deviceId": "string",
+              "statusName": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceRequestBody": {
+        "title": "AsyncRemovePendingDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "deviceId": {
+            "type": "string"
+          },
+          "statusName": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "action": "string",
+            "deviceId": "string",
+            "statusName": "string",
+            "workorderId": 0
+          }
+        ],
+        "required": [
+          "action",
+          "statusName"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop": {
+        "title": "AsyncScheduleAddUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "date": "string",
+              "override": "string",
+              "timeSlot": "string",
+              "workerPool": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateRequestBody": {
+        "title": "AsyncScheduleAddUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string"
+          },
+          "override": {
+            "type": "string"
+          },
+          "timeSlot": {
+            "type": "string"
+          },
+          "workerPool": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "date": "string",
+            "override": "string",
+            "timeSlot": "string",
+            "workerPool": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop": {
+        "title": "AsyncScheduleDeleteEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteRequestBody": {
+        "title": "AsyncScheduleDeleteRequestBody",
+        "type": "object",
+        "properties": {
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop": {
+        "title": "AsyncSwapPendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "newPhoneNumber": "string",
+              "phoneNumber": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneRequestBody": {
+        "title": "AsyncSwapPendingPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "newPhoneNumber": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "newPhoneNumber": "string",
+            "phoneNumber": "string",
+            "workorderId": 0
+          }
+        ],
+        "required": [
+          "newPhoneNumber"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop": {
+        "title": "AsyncTaskCreateUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "completed": "string",
+              "taskName": "string",
+              "units": 0,
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateRequestBody": {
+        "title": "AsyncTaskCreateUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "completed": {
+            "type": "string"
+          },
+          "taskName": {
+            "type": "string"
+          },
+          "units": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "completed": "string",
+            "taskName": "string",
+            "units": 0,
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop": {
+        "title": "AsyncUnassignDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceId": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceRequestBody": {
+        "title": "AsyncUnassignDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "deviceId": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop": {
+        "title": "AsyncUnassignLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationRequestBody": {
+        "title": "AsyncUnassignLocationRequestBody",
+        "type": "object",
+        "properties": {
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop": {
+        "title": "AsyncUnassignPendingPhoneEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "phoneNumber": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneRequestBody": {
+        "title": "AsyncUnassignPendingPhoneRequestBody",
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "phoneNumber": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop": {
+        "title": "AsyncUpdateDeviceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "deviceId": "string",
+              "deviceModel": "string",
+              "deviceStatus": "string",
+              "deviceType": "string",
+              "hostId": "string",
+              "locationId": "string",
+              "securityData": "string",
+              "unitAddress": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceRequestBody": {
+        "title": "AsyncUpdateDeviceRequestBody",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "deviceModel": {
+            "type": "string"
+          },
+          "deviceStatus": {
+            "type": "string"
+          },
+          "deviceType": {
+            "type": "string"
+          },
+          "hostId": {
+            "type": "string"
+          },
+          "locationId": {
+            "type": "string"
+          },
+          "securityData": {
+            "type": "string"
+          },
+          "unitAddress": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "deviceId": "string",
+            "deviceModel": "string",
+            "deviceStatus": "string",
+            "deviceType": "string",
+            "hostId": "string",
+            "locationId": "string",
+            "securityData": "string",
+            "unitAddress": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop": {
+        "title": "AsyncUpdateLocationEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "address1": "string",
+              "address2": "string",
+              "city": "string",
+              "headendCode": "string",
+              "locationCustomFields": [
+                {
+                  "label": "CTLR_VERSION",
+                  "value": "5.3.6"
+                }
+              ],
+              "locationId": "string",
+              "networkLocCode": "string",
+              "ratecenterName": "string",
+              "state": "string",
+              "xcoord": 1.1,
+              "ycoord": 1.1,
+              "zip": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationRequestBody": {
+        "title": "AsyncUpdateLocationRequestBody",
+        "type": "object",
+        "properties": {
+          "address1": {
+            "type": "string",
+            "description": "The first line of street address information for this location. Alphanumeric, up to 64 characters long. If Address1 is omitted for a new location, it is left blank. If Address1 is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 64
+          },
+          "address2": {
+            "type": "string",
+            "description": "The second line of street address information for this location. Alphanumeric, up to 64 characters long. If Address2 is omitted for a new location, it is left blank. If Address2 is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 64
+          },
+          "city": {
+            "type": "string",
+            "description": "The city for this location. Alphanumeric, up to 40 characters long. If City is omitted for a new location, it is left blank. If City is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 40
+          },
+          "headendCode": {
+            "type": "string",
+            "description": "The headend code for the headend that services this location. Alphanumeric (but restricted to digits 0 through 9 and capital letters A through Z), up to 4 characters long. Must match one of the headend codes configured.",
+            "minLength": 0,
+            "maxLength": 4
+          },
+          "locationCustomFields": {
+            "type": "array",
+            "description": "The custom fields for the location",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.lib.jpa.api.model.v1.CustomFieldModel"
+            }
+          },
+          "locationId": {
+            "type": "string"
+          },
+          "networkLocCode": {
+            "type": "string",
+            "description": "A network location code that identifies the physical location within the broadband network (for example, a node identifier). Alphanumeric, up to 16 characters long. If NetLocCode is omitted for a new location, it is left blank. If NetLocCode is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 16
+          },
+          "ratecenterName": {
+            "type": "string",
+            "description": "The rate center name for this location. Alphanumeric, up to 40 characters long. Must match one of the rate center names already configured. Only used for systems with switch provisioning. If RateCenterName is omitted for a new location, it is left blank. If RateCenterName is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 40
+          },
+          "state": {
+            "type": "string",
+            "description": "The state or province for this location. Alphanumeric, up to 10 characters long. If State is omitted for a new location, it is left blank. If State is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 10
+          },
+          "xcoord": {
+            "type": "number",
+            "description": "The X-coordinate of this location in the mapping system. Alphanumeric, up to 15 characters long. If XCoord is omitted for a new location, it set to zero. If XCoord is omitted on an update, the current value is unchanged.",
+            "maximum": 10000000000,
+            "minimum": -10000000000
+          },
+          "ycoord": {
+            "type": "number",
+            "description": "The Y-coordinate of this location in the mapping system. Alphanumeric, up to 15 characters long. If YCoord is omitted for a new location, it is set to zero. If YCoord is omitted on an update, the current value is unchanged.",
+            "maximum": 10000000000,
+            "minimum": -10000000000
+          },
+          "zip": {
+            "type": "string",
+            "description": "The zip code or postal code for this location. Alphanumeric, up to 13 characters long. If Zip is omitted for a new location, it is left blank. If Zip is omitted on an update, the current value is unchanged. A blank value clears the field in the database.",
+            "minLength": 0,
+            "maxLength": 13
+          }
+        },
+        "examples": [
+          {
+            "address1": "string",
+            "address2": "string",
+            "city": "string",
+            "headendCode": "string",
+            "locationCustomFields": [
+              {
+                "label": "CTLR_VERSION",
+                "value": "5.3.6"
+              }
+            ],
+            "locationId": "string",
+            "networkLocCode": "string",
+            "ratecenterName": "string",
+            "state": "string",
+            "xcoord": 1.1,
+            "ycoord": 1.1,
+            "zip": "string"
+          }
+        ],
+        "required": [
+          "headendCode"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop": {
+        "title": "AsyncUpdateNoteEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "action": "string",
+              "newNoteCode": "string",
+              "newNoteText": "string",
+              "newNoteType": "string",
+              "oldNoteCode": "string",
+              "oldNoteText": "string",
+              "oldNoteType": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteRequestBody": {
+        "title": "AsyncUpdateNoteRequestBody",
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "newNoteCode": {
+            "type": "string"
+          },
+          "newNoteText": {
+            "type": "string"
+          },
+          "newNoteType": {
+            "type": "string"
+          },
+          "oldNoteCode": {
+            "type": "string"
+          },
+          "oldNoteText": {
+            "type": "string"
+          },
+          "oldNoteType": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "action": "string",
+            "newNoteCode": "string",
+            "newNoteText": "string",
+            "newNoteType": "string",
+            "oldNoteCode": "string",
+            "oldNoteText": "string",
+            "oldNoteType": "string",
+            "workorderId": 0
+          }
+        ],
+        "required": [
+          "action"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop": {
+        "title": "AsyncUpdatePendingSubscriberEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "locationId": "string",
+              "ppvCap": "string",
+              "ppvPrivilege": "string",
+              "ratePlan": "string",
+              "serviceEnabled": true,
+              "subscriberId": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberRequestBody": {
+        "title": "AsyncUpdatePendingSubscriberRequestBody",
+        "type": "object",
+        "properties": {
+          "locationId": {
+            "type": "string"
+          },
+          "ppvCap": {
+            "type": "string"
+          },
+          "ppvPrivilege": {
+            "type": "string"
+          },
+          "ratePlan": {
+            "type": "string"
+          },
+          "serviceEnabled": {
+            "type": "boolean"
+          },
+          "subscriberId": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "locationId": "string",
+            "ppvCap": "string",
+            "ppvPrivilege": "string",
+            "ratePlan": "string",
+            "serviceEnabled": true,
+            "subscriberId": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop": {
+        "title": "AsyncWoCompleteEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "completedDate": "string",
+              "wonumber": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteRequestBody": {
+        "title": "AsyncWoCompleteRequestBody",
+        "type": "object",
+        "properties": {
+          "completedDate": {
+            "type": "string"
+          },
+          "wonumber": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "completedDate": "string",
+            "wonumber": "string",
+            "workorderId": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop": {
+        "title": "AsyncWoCreateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.CreateWorkorderRequest"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "autoCompleteDate": "string",
+              "cmplBackDate": "string",
+              "customFields": [
+                {
+                  "label": "string",
+                  "maximumLength": "string",
+                  "minimumLength": "string",
+                  "order": 0,
+                  "readOnly": "string",
+                  "value": "string"
+                }
+              ],
+              "sendEmailNotification": "string",
+              "subscriberId": "string",
+              "woComments": "string",
+              "woOwner": "string",
+              "woStatus": "string",
+              "woType": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop": {
+        "title": "AsyncWoDeleteEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "workorderNbr": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteRequestBody": {
+        "title": "AsyncWoDeleteRequestBody",
+        "type": "object",
+        "properties": {
+          "workorderNbr": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "workorderNbr": 0
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop": {
+        "title": "AsyncWoUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.UpdateWorkorderBasicsRequest"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "customFields": [
+                {
+                  "label": "string",
+                  "maximumLength": "string",
+                  "minimumLength": "string",
+                  "order": 0,
+                  "readOnly": "string",
+                  "value": "string"
+                }
+              ],
+              "woOwner": "string",
+              "woStatus": "string",
+              "woType": "string",
+              "wonumber": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.AddMultiPortDevice": {
+        "title": "AddMultiPortDevice",
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "string"
+          },
+          "deviceModel": {
+            "type": "string"
+          },
+          "deviceStatus": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "deviceId": "string",
+            "deviceModel": "string",
+            "deviceStatus": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.CreateWorkorderRequest": {
+        "title": "CreateWorkorderRequest",
+        "type": "object",
+        "properties": {
+          "autoCompleteDate": {
+            "type": "string"
+          },
+          "cmplBackDate": {
+            "type": "string"
+          },
+          "customFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.model.CustomField"
+            }
+          },
+          "sendEmailNotification": {
+            "type": "string"
+          },
+          "subscriberId": {
+            "type": "string"
+          },
+          "woComments": {
+            "type": "string"
+          },
+          "woOwner": {
+            "type": "string"
+          },
+          "woStatus": {
+            "type": "string"
+          },
+          "woType": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "autoCompleteDate": "string",
+            "cmplBackDate": "string",
+            "customFields": [
+              {
+                "label": "string",
+                "maximumLength": "string",
+                "minimumLength": "string",
+                "order": 0,
+                "readOnly": "string",
+                "value": "string"
+              }
+            ],
+            "sendEmailNotification": "string",
+            "subscriberId": "string",
+            "woComments": "string",
+            "woOwner": "string",
+            "woStatus": "string",
+            "woType": "string"
+          }
+        ],
+        "required": [
+          "subscriberId",
+          "woOwner",
+          "woStatus",
+          "woType"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.OTCNote": {
+        "title": "OTCNote",
+        "type": "object",
+        "properties": {
+          "noteCode": {
+            "type": "string"
+          },
+          "noteText": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "noteCode": "string",
+            "noteText": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.domain.inputmodel.v1.UpdateWorkorderBasicsRequest": {
+        "title": "UpdateWorkorderBasicsRequest",
+        "type": "object",
+        "properties": {
+          "customFields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.domain.model.CustomField"
+            }
+          },
+          "woOwner": {
+            "type": "string"
+          },
+          "woStatus": {
+            "type": "string"
+          },
+          "woType": {
+            "type": "string"
+          },
+          "wonumber": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "customFields": [
+              {
+                "label": "string",
+                "maximumLength": "string",
+                "minimumLength": "string",
+                "order": 0,
+                "readOnly": "string",
+                "value": "string"
+              }
+            ],
+            "woOwner": "string",
+            "woStatus": "string",
+            "woType": "string",
+            "wonumber": "string"
+          }
+        ],
+        "required": [
+          "woOwner",
+          "woStatus",
+          "woType"
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.domain.model.CustomField": {
+        "title": "CustomField",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "maximumLength": {
+            "type": "string"
+          },
+          "minimumLength": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "readOnly": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "label": "string",
+            "maximumLength": "string",
+            "minimumLength": "string",
+            "order": 0,
+            "readOnly": "string",
+            "value": "string"
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop",
+        "title": "AsyncDeleteNoteEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop",
+        "title": "AsyncAddAssignDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop",
+        "title": "AsyncAddUpdatePendingPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop",
+        "title": "AsyncAssignLocationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop",
+        "title": "AsyncDeleteTaskEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop",
+        "title": "AsyncNoteCreateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop",
+        "title": "AsyncOtcCreateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop",
+        "title": "AsyncOtcUpdateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop",
+        "title": "AsyncRemovePendingDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop",
+        "title": "AsyncScheduleAddUpdateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop",
+        "title": "AsyncScheduleDeleteEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop",
+        "title": "AsyncSwapPendingPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop",
+        "title": "AsyncTaskCreateUpdateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop",
+        "title": "AsyncUnassignDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop",
+        "title": "AsyncUnassignLocationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop",
+        "title": "AsyncUnassignPendingPhoneEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop",
+        "title": "AsyncUpdateDeviceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop",
+        "title": "AsyncUpdateLocationEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop",
+        "title": "AsyncUpdateNoteEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop",
+        "title": "AsyncUpdatePendingSubscriberEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop",
+        "title": "AsyncWoCompleteEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop",
+        "title": "AsyncWoCreateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop",
+        "title": "AsyncWoDeleteEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop",
+        "title": "AsyncWoUpdateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "add-assign-device-topic_receive_consumeAddAssignDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/add-assign-device-topic"
+      },
+      "title": "add-assign-device-topic_receive",
+      "description": "Add assign device consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/add-assign-device-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddAssignDeviceEnvelop"
+        }
+      ]
+    },
+    "assign-wo-location-topic_receive_consumeAssignDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/assign-wo-location-topic"
+      },
+      "title": "assign-wo-location-topic_receive",
+      "description": "Wo location assign consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/assign-wo-location-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAssignLocationEnvelop"
+        }
+      ]
+    },
+    "remove-pending-device-topic_receive_consumeRemovePendingDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/remove-pending-device-topic"
+      },
+      "title": "remove-pending-device-topic_receive",
+      "description": "Remove pending device consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/remove-pending-device-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncRemovePendingDeviceEnvelop"
+        }
+      ]
+    },
+    "unassign-device-topic_receive_consumeUnassignDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/unassign-device-topic"
+      },
+      "title": "unassign-device-topic_receive",
+      "description": "Unassign device consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/unassign-device-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignDeviceEnvelop"
+        }
+      ]
+    },
+    "unassign-wo-location-topic_receive_consumeUnassignLocation": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/unassign-wo-location-topic"
+      },
+      "title": "unassign-wo-location-topic_receive",
+      "description": "Wo location unassign consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/unassign-wo-location-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignLocationEnvelop"
+        }
+      ]
+    },
+    "update-device-topic_receive_consumeUpdateDevice": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/update-device-topic"
+      },
+      "title": "update-device-topic_receive",
+      "description": "Update device consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/update-device-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateDeviceEnvelop"
+        }
+      ]
+    },
+    "update-wo-location-topic_receive_consumeUpdateLocation": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/update-wo-location-topic"
+      },
+      "title": "update-wo-location-topic_receive",
+      "description": "Update wo location consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/update-wo-location-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateLocationEnvelop"
+        }
+      ]
+    },
+    "wo-notes-complete-topic_receive_consumeWoComplete": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-complete-topic"
+      },
+      "title": "wo-notes-complete-topic_receive",
+      "description": "Complete wo consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-complete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCompleteEnvelop"
+        }
+      ]
+    },
+    "wo-notes-create-topic_receive_consumeNotesCreate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-create-topic"
+      },
+      "title": "wo-notes-create-topic_receive",
+      "description": "Create wo notes consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-create-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncNoteCreateEnvelop"
+        }
+      ]
+    },
+    "wo-notes-delete-topic_receive_consumeDeleteNote": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-delete-topic"
+      },
+      "title": "wo-notes-delete-topic_receive",
+      "description": "Delete wo note consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-delete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.AsyncDeleteNoteEnvelop"
+        }
+      ]
+    },
+    "wo-notes-delete-topic_receive_consumeWoDelete": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-delete-topic"
+      },
+      "title": "wo-notes-delete-topic_receive",
+      "description": "Delete wo consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-delete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+        }
+      ]
+    },
+    "wo-notes-update-topic_receive_consumeNoteUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-update-topic"
+      },
+      "title": "wo-notes-update-topic_receive",
+      "description": "Update wo note consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdateNoteEnvelop"
+        }
+      ]
+    },
+    "wo-notes-update-topic_receive_consumeWoUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-notes-update-topic"
+      },
+      "title": "wo-notes-update-topic_receive",
+      "description": "Update wo consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-notes-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop"
+        }
+      ]
+    },
+    "wo-otc-create-topic_receive_consumeOtcCreate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-otc-create-topic"
+      },
+      "title": "wo-otc-create-topic_receive",
+      "description": "Create wo otc consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-otc-create-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcCreateEnvelop"
+        }
+      ]
+    },
+    "wo-otc-update-topic_receive_consumeOtcUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-otc-update-topic"
+      },
+      "title": "wo-otc-update-topic_receive",
+      "description": "Update wo otc consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-otc-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncOtcUpdateEnvelop"
+        }
+      ]
+    },
+    "wo-pending-phone-add-udpdate-topic_receive_consumeAddUpdatePendingPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-pending-phone-add-udpdate-topic"
+      },
+      "title": "wo-pending-phone-add-udpdate-topic_receive",
+      "description": "Add update pending phone consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-pending-phone-add-udpdate-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncAddUpdatePendingPhoneEnvelop"
+        }
+      ]
+    },
+    "wo-pending-phone-swap-topic_receive_consumeSwapPendingPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-pending-phone-swap-topic"
+      },
+      "title": "wo-pending-phone-swap-topic_receive",
+      "description": "Swap pending phone consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-pending-phone-swap-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncSwapPendingPhoneEnvelop"
+        }
+      ]
+    },
+    "wo-pending-phone-unassign-topic_receive_consumeUnassignPendingPhone": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-pending-phone-unassign-topic"
+      },
+      "title": "wo-pending-phone-unassign-topic_receive",
+      "description": "Unassign pending phone consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-pending-phone-unassign-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUnassignPendingPhoneEnvelop"
+        }
+      ]
+    },
+    "wo-pending-subscriber-update-topic_receive_consumeUpdatePendingSubscriber": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-pending-subscriber-update-topic"
+      },
+      "title": "wo-pending-subscriber-update-topic_receive",
+      "description": "Update pending subscriber consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-pending-subscriber-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncUpdatePendingSubscriberEnvelop"
+        }
+      ]
+    },
+    "wo-schedule-add-update-topic_receive_consumeScheduleCreateUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-schedule-add-update-topic"
+      },
+      "title": "wo-schedule-add-update-topic_receive",
+      "description": "Wo schedule create update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-schedule-add-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleAddUpdateEnvelop"
+        }
+      ]
+    },
+    "wo-schedule-delete-topic_receive_consumeScheduleDelete": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-schedule-delete-topic"
+      },
+      "title": "wo-schedule-delete-topic_receive",
+      "description": "Delete Wo schedule consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-schedule-delete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+        }
+      ]
+    },
+    "wo-task-create-update-topic_receive_consumeTaskCreate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-task-create-update-topic"
+      },
+      "title": "wo-task-create-update-topic_receive",
+      "description": "Create and update wo task consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-task-create-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncTaskCreateUpdateEnvelop"
+        }
+      ]
+    },
+    "wo-task-delete-topic_receive_consumeDeleteTask": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-task-delete-topic"
+      },
+      "title": "wo-task-delete-topic_receive",
+      "description": "Delete wo task consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-task-delete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncDeleteTaskEnvelop"
+        }
+      ]
+    },
+    "workorder-create-topic_receive_consumeWoCreate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/workorder-create-topic"
+      },
+      "title": "workorder-create-topic_receive",
+      "description": "Create wo consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/workorder-create-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoCreateEnvelop"
+        }
+      ]
+    }
+  }
+}

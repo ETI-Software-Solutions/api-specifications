@@ -1,0 +1,2867 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "node-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "dslam-node-add-topic": {
+      "address": "dslam-node-add-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "dslam-node-update-topic": {
+      "address": "dslam-node-update-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ftth-node-add-topic": {
+      "address": "ftth-node-add-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ftth-node-update-topic": {
+      "address": "ftth-node-update-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "node-add-topic": {
+      "address": "node-add-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "node-delete-topic": {
+      "address": "node-delete-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "node-update-topic": {
+      "address": "node-update-topic",
+      "messages": {
+        "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddDslamNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddDslamNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddFtthNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddFtthNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncFtthUpdateNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncFtthUpdateNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateDslamNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateDslamNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateNodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop": {
+        "title": "AsyncAddDslamNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.DslamNodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "aliasEndChannel": 0,
+              "aliasId": "string",
+              "aliasStartChannel": 0,
+              "aliasStartPort": 0,
+              "baseIpAddress": "string",
+              "controllerInterfaceName": "string",
+              "dataStag": 0,
+              "dataStagMode": 0,
+              "dataVci": 0,
+              "dataVlan": 0,
+              "dataVlanMode": 0,
+              "dataVpi": 0,
+              "dslam": 0,
+              "dslamType": "string",
+              "groupName": "string",
+              "id": "string",
+              "isActive": false,
+              "login": "string",
+              "maxPorts": 0,
+              "maxSlots": 0,
+              "nextControllerInterface1": "string",
+              "nextControllerInterface2": "string",
+              "password": "string",
+              "portOffset": 0,
+              "potsVci": 0,
+              "potsVpi": 0,
+              "rackOffset": 0,
+              "serviceMap": "string",
+              "shelfOffset": 0,
+              "sid": "string",
+              "slotOffset": 0,
+              "svcRouterPort1": "string",
+              "svcRouterPort2": "string",
+              "videoStag": 0,
+              "videoStagMode": 0,
+              "videoVci": 0,
+              "videoVlan": 0,
+              "videoVlanMode": 0,
+              "videoVpi": 0,
+              "voiceStag": 0,
+              "voiceStagMode": 0,
+              "voiceVlan": 0,
+              "voiceVlanMode": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop": {
+        "title": "AsyncAddFtthNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.FtthNodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "controllerType": "Type-A",
+              "dataConnectionId": "DATA-5678",
+              "dataConnectionType": "Ethernet",
+              "dataControllerInterface": "string",
+              "extendedParameters": [
+                {
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "ipAddress": "192.168.1.1",
+              "ipPort": 8080,
+              "login": "admin",
+              "name": "Node-1234",
+              "nodeEnabled": true,
+              "nodeIndex": 1,
+              "nodeType": "OLT",
+              "oltType": "GPON",
+              "password": "password123",
+              "potsConnectionId": "POTS-1234",
+              "potsConnectionType": "Analog",
+              "potsControllerInterface": "0",
+              "sid": "SID-5678",
+              "t1ConnectionId": "T1-5678",
+              "t1ConnectionType": "T1",
+              "t1ControllerInterface": "string",
+              "videoConnectionId": "VIDEO-1234",
+              "videoConnectionType": "HDMI",
+              "videoControllerInterface": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop": {
+        "title": "AsyncAddNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.NodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for creating node.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "altControllerInterfaceName": "string",
+              "altMapName": "string",
+              "controllerInterfaceName": "string",
+              "controllerType": "string",
+              "dataConnectionId": "string",
+              "dataConnectionType": "string",
+              "dataControllerInterfaceName": "string",
+              "dslamAliasEndChannel": 0,
+              "dslamAliasId": "string",
+              "dslamAliasStartChannel": 0,
+              "dslamAliasStartPort": 0,
+              "dslamBaseIpAddress": "string",
+              "dslamControllerInterfaceName": "string",
+              "dslamDataStag": 0,
+              "dslamDataStagMode": 0,
+              "dslamDataVci": 0,
+              "dslamDataVlan": 0,
+              "dslamDataVlanMode": 0,
+              "dslamDataVpi": 0,
+              "dslamGroupName": "string",
+              "dslamIsActive": true,
+              "dslamMapName": "string",
+              "dslamMaxPorts": 0,
+              "dslamMaxSlots": 0,
+              "dslamNextControllerInterfaceName1": "string",
+              "dslamNextControllerInterfaceName2": "string",
+              "dslamPortOffset": 0,
+              "dslamPotsVci": 0,
+              "dslamPotsVpi": 0,
+              "dslamRackOffset": 0,
+              "dslamShelfOffset": 0,
+              "dslamSlotOffset": 0,
+              "dslamSvcRouterPort1": "string",
+              "dslamType": "string",
+              "dslamVideoStag": 0,
+              "dslamVideoStagMode": 0,
+              "dslamVideoVci": 0,
+              "dslamVideoVlan": 0,
+              "dslamVideoVlanMode": 0,
+              "dslamVideoVpi": 0,
+              "dslamVoiceStag": 0,
+              "dslamVoiceStagMode": 0,
+              "dslamVoiceVlan": 0,
+              "dslamVoiceVlanMode": 0,
+              "dslamnodeName": "string",
+              "extendedParameters": [
+                {
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "ftthNodeLogin": "string",
+              "ftthNodeName": "string",
+              "ftthNodePassword": "string",
+              "heci": "string",
+              "hostname": "string",
+              "ipAddress": "string",
+              "ipPort": "string",
+              "login": "string",
+              "mapName": "string",
+              "name": "string",
+              "nodeDefinition": "string",
+              "nodeEnabled": true,
+              "nodeIndex": "string",
+              "oltType": "string",
+              "password": "string",
+              "potsConnectionId": "string",
+              "potsConnectionType": "string",
+              "potsControllerInterfaceName": "string",
+              "relayRack": "string",
+              "servingWireCenter": "string",
+              "sid": "string",
+              "t1ConnectionId": "string",
+              "t1ConnectionType": "string",
+              "t1ControllerInterfaceName": "string",
+              "vendorModel": "string",
+              "videoConnectionId": "string",
+              "videoConnectionType": "string",
+              "videoControllerInterfaceName": "string",
+              "wireCenter": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop": {
+        "title": "AsyncDeleteNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "nodeId": "2141"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeRequestBody": {
+        "title": "AsyncDeleteNodeRequestBody",
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "description": "The unique identifier for node",
+            "examples": [
+              "2141"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "nodeId": "2141"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop": {
+        "title": "AsyncFtthUpdateNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "controllerType": "Type-A",
+              "dataConnectionId": "DATA-5678",
+              "dataConnectionType": "Ethernet",
+              "dataControllerInterface": "string",
+              "extendedParameters": [
+                {
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "ipAddress": "192.168.1.1",
+              "ipPort": 8080,
+              "login": "admin",
+              "name": "Node-1234",
+              "nodeEnabled": true,
+              "nodeId": "2141",
+              "nodeIndex": 1,
+              "nodeType": "OLT",
+              "oltType": "GPON",
+              "password": "password123",
+              "potsConnectionId": "POTS-1234",
+              "potsConnectionType": "Analog",
+              "potsControllerInterface": "0",
+              "sid": "SID-5678",
+              "t1ConnectionId": "T1-5678",
+              "t1ConnectionType": "T1",
+              "t1ControllerInterface": "string",
+              "videoConnectionId": "VIDEO-1234",
+              "videoConnectionType": "HDMI",
+              "videoControllerInterface": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeRequestBody": {
+        "title": "AsyncFtthUpdateNodeRequestBody",
+        "type": "object",
+        "properties": {
+          "controllerType": {
+            "type": "string",
+            "description": "The type of controller associated with the FTTH node.",
+            "examples": [
+              "Type-A"
+            ]
+          },
+          "dataConnectionId": {
+            "type": "string",
+            "description": "The ID of the data connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "DATA-5678"
+            ]
+          },
+          "dataConnectionType": {
+            "type": "string",
+            "description": "The type of data connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "Ethernet"
+            ]
+          },
+          "dataControllerInterface": {
+            "type": "string",
+            "description": "The number of data controller interfaces."
+          },
+          "extendedParameters": {
+            "type": "array",
+            "description": "Extended parameters for the FTTH node.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.FtthNodeExtModel"
+            },
+            "uniqueItems": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "description": "The IP address of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 15,
+            "examples": [
+              "192.168.1.1"
+            ]
+          },
+          "ipPort": {
+            "type": "integer",
+            "description": "The port used by the FTTH node.",
+            "format": "int32",
+            "examples": [
+              8080
+            ]
+          },
+          "login": {
+            "type": "string",
+            "description": "The login username for the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "admin"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "Node-1234"
+            ]
+          },
+          "nodeEnabled": {
+            "type": "boolean",
+            "description": "Indicates if the FTTH node is enabled (true) or disabled (false).",
+            "examples": [
+              true
+            ]
+          },
+          "nodeId": {
+            "type": "string",
+            "description": "The unique identifier for node",
+            "examples": [
+              "2141"
+            ]
+          },
+          "nodeIndex": {
+            "type": "integer",
+            "description": "The index of the FTTH node.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "nodeType": {
+            "type": "string",
+            "description": "The type of the FTTH node.",
+            "examples": [
+              "OLT"
+            ]
+          },
+          "oltType": {
+            "type": "string",
+            "description": "The type of OLT associated with the FTTH node.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "GPON"
+            ]
+          },
+          "password": {
+            "type": "string",
+            "description": "The password for accessing the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "password123"
+            ]
+          },
+          "potsConnectionId": {
+            "type": "string",
+            "description": "The ID of the POTS connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "POTS-1234"
+            ]
+          },
+          "potsConnectionType": {
+            "type": "string",
+            "description": "The type of POTS connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "Analog"
+            ]
+          },
+          "potsControllerInterface": {
+            "type": "string",
+            "description": "The number of POTS controller interfaces.",
+            "examples": [
+              "0"
+            ]
+          },
+          "sid": {
+            "type": "string",
+            "description": "The SID (Service Identifier) of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "SID-5678"
+            ]
+          },
+          "t1ConnectionId": {
+            "type": "string",
+            "description": "The ID of the T1 connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "T1-5678"
+            ]
+          },
+          "t1ConnectionType": {
+            "type": "string",
+            "description": "The type of T1 connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "T1"
+            ]
+          },
+          "t1ControllerInterface": {
+            "type": "string",
+            "description": "The number of T1 controller interfaces."
+          },
+          "videoConnectionId": {
+            "type": "string",
+            "description": "The ID of the video connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "VIDEO-1234"
+            ]
+          },
+          "videoConnectionType": {
+            "type": "string",
+            "description": "The type of video connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "HDMI"
+            ]
+          },
+          "videoControllerInterface": {
+            "type": "string",
+            "description": "The number of video controller interfaces."
+          }
+        },
+        "examples": [
+          {
+            "controllerType": "Type-A",
+            "dataConnectionId": "DATA-5678",
+            "dataConnectionType": "Ethernet",
+            "dataControllerInterface": "string",
+            "extendedParameters": [
+              {
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "ipAddress": "192.168.1.1",
+            "ipPort": 8080,
+            "login": "admin",
+            "name": "Node-1234",
+            "nodeEnabled": true,
+            "nodeId": "2141",
+            "nodeIndex": 1,
+            "nodeType": "OLT",
+            "oltType": "GPON",
+            "password": "password123",
+            "potsConnectionId": "POTS-1234",
+            "potsConnectionType": "Analog",
+            "potsControllerInterface": "0",
+            "sid": "SID-5678",
+            "t1ConnectionId": "T1-5678",
+            "t1ConnectionType": "T1",
+            "t1ControllerInterface": "string",
+            "videoConnectionId": "VIDEO-1234",
+            "videoConnectionType": "HDMI",
+            "videoControllerInterface": "string"
+          }
+        ],
+        "required": [
+          "controllerType",
+          "name",
+          "nodeIndex",
+          "nodeType",
+          "sid"
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncNodeUpdateRequestBody": {
+        "title": "AsyncNodeUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "altControllerInterfaceName": {
+            "type": "string"
+          },
+          "altMapName": {
+            "type": "string"
+          },
+          "controllerInterfaceName": {
+            "type": "string"
+          },
+          "controllerType": {
+            "type": "string"
+          },
+          "dataConnectionId": {
+            "type": "string"
+          },
+          "dataConnectionType": {
+            "type": "string"
+          },
+          "dataControllerInterfaceName": {
+            "type": "string"
+          },
+          "dslamAliasEndChannel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamAliasId": {
+            "type": "string"
+          },
+          "dslamAliasStartChannel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamAliasStartPort": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamBaseIpAddress": {
+            "type": "string"
+          },
+          "dslamControllerInterfaceName": {
+            "type": "string"
+          },
+          "dslamDataStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamGroupName": {
+            "type": "string"
+          },
+          "dslamIsActive": {
+            "type": "boolean"
+          },
+          "dslamMapName": {
+            "type": "string"
+          },
+          "dslamMaxPorts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamMaxSlots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamNextControllerInterfaceName1": {
+            "type": "string"
+          },
+          "dslamNextControllerInterfaceName2": {
+            "type": "string"
+          },
+          "dslamPortOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamPotsVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamPotsVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamRackOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamShelfOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamSlotOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamSvcRouterPort1": {
+            "type": "string"
+          },
+          "dslamType": {
+            "type": "string"
+          },
+          "dslamVideoStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamnodeName": {
+            "type": "string"
+          },
+          "extendedParameters": {
+            "type": "array",
+            "description": "Extended parameters for the FTTH node.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.FtthNodeExtModel"
+            },
+            "uniqueItems": true
+          },
+          "ftthNodeLogin": {
+            "type": "string"
+          },
+          "ftthNodeName": {
+            "type": "string"
+          },
+          "ftthNodePassword": {
+            "type": "string"
+          },
+          "heci": {
+            "type": "string"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "ipPort": {
+            "type": "string"
+          },
+          "login": {
+            "type": "string"
+          },
+          "mapName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nodeDefinition": {
+            "type": "string"
+          },
+          "nodeEnabled": {
+            "type": "boolean"
+          },
+          "nodeId": {
+            "type": "string",
+            "description": "The unique identifier for node",
+            "examples": [
+              "2141"
+            ]
+          },
+          "nodeIndex": {
+            "type": "string"
+          },
+          "oltType": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "potsConnectionId": {
+            "type": "string"
+          },
+          "potsConnectionType": {
+            "type": "string"
+          },
+          "potsControllerInterfaceName": {
+            "type": "string"
+          },
+          "relayRack": {
+            "type": "string"
+          },
+          "servingWireCenter": {
+            "type": "string"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "t1ConnectionId": {
+            "type": "string"
+          },
+          "t1ConnectionType": {
+            "type": "string"
+          },
+          "t1ControllerInterfaceName": {
+            "type": "string"
+          },
+          "vendorModel": {
+            "type": "string"
+          },
+          "videoConnectionId": {
+            "type": "string"
+          },
+          "videoConnectionType": {
+            "type": "string"
+          },
+          "videoControllerInterfaceName": {
+            "type": "string"
+          },
+          "wireCenter": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "altControllerInterfaceName": "string",
+            "altMapName": "string",
+            "controllerInterfaceName": "string",
+            "controllerType": "string",
+            "dataConnectionId": "string",
+            "dataConnectionType": "string",
+            "dataControllerInterfaceName": "string",
+            "dslamAliasEndChannel": 0,
+            "dslamAliasId": "string",
+            "dslamAliasStartChannel": 0,
+            "dslamAliasStartPort": 0,
+            "dslamBaseIpAddress": "string",
+            "dslamControllerInterfaceName": "string",
+            "dslamDataStag": 0,
+            "dslamDataStagMode": 0,
+            "dslamDataVci": 0,
+            "dslamDataVlan": 0,
+            "dslamDataVlanMode": 0,
+            "dslamDataVpi": 0,
+            "dslamGroupName": "string",
+            "dslamIsActive": true,
+            "dslamMapName": "string",
+            "dslamMaxPorts": 0,
+            "dslamMaxSlots": 0,
+            "dslamNextControllerInterfaceName1": "string",
+            "dslamNextControllerInterfaceName2": "string",
+            "dslamPortOffset": 0,
+            "dslamPotsVci": 0,
+            "dslamPotsVpi": 0,
+            "dslamRackOffset": 0,
+            "dslamShelfOffset": 0,
+            "dslamSlotOffset": 0,
+            "dslamSvcRouterPort1": "string",
+            "dslamType": "string",
+            "dslamVideoStag": 0,
+            "dslamVideoStagMode": 0,
+            "dslamVideoVci": 0,
+            "dslamVideoVlan": 0,
+            "dslamVideoVlanMode": 0,
+            "dslamVideoVpi": 0,
+            "dslamVoiceStag": 0,
+            "dslamVoiceStagMode": 0,
+            "dslamVoiceVlan": 0,
+            "dslamVoiceVlanMode": 0,
+            "dslamnodeName": "string",
+            "extendedParameters": [
+              {
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "ftthNodeLogin": "string",
+            "ftthNodeName": "string",
+            "ftthNodePassword": "string",
+            "heci": "string",
+            "hostname": "string",
+            "ipAddress": "string",
+            "ipPort": "string",
+            "login": "string",
+            "mapName": "string",
+            "name": "string",
+            "nodeDefinition": "string",
+            "nodeEnabled": true,
+            "nodeId": "2141",
+            "nodeIndex": "string",
+            "oltType": "string",
+            "password": "string",
+            "potsConnectionId": "string",
+            "potsConnectionType": "string",
+            "potsControllerInterfaceName": "string",
+            "relayRack": "string",
+            "servingWireCenter": "string",
+            "sid": "string",
+            "t1ConnectionId": "string",
+            "t1ConnectionType": "string",
+            "t1ControllerInterfaceName": "string",
+            "vendorModel": "string",
+            "videoConnectionId": "string",
+            "videoConnectionType": "string",
+            "videoControllerInterfaceName": "string",
+            "wireCenter": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop": {
+        "title": "AsyncUpdateDslamNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "aliasEndChannel": 0,
+              "aliasId": "string",
+              "aliasStartChannel": 0,
+              "aliasStartPort": 0,
+              "baseIpAddress": "string",
+              "controllerInterfaceName": "string",
+              "dataStag": 0,
+              "dataStagMode": 0,
+              "dataVci": 0,
+              "dataVlan": 0,
+              "dataVlanMode": 0,
+              "dataVpi": 0,
+              "dslam": 0,
+              "dslamType": "string",
+              "groupName": "string",
+              "id": "string",
+              "isActive": false,
+              "login": "string",
+              "maxPorts": 0,
+              "maxSlots": 0,
+              "nextControllerInterface1": "string",
+              "nextControllerInterface2": "string",
+              "nodeId": "2141",
+              "password": "string",
+              "portOffset": 0,
+              "potsVci": 0,
+              "potsVpi": 0,
+              "rackOffset": 0,
+              "serviceMap": "string",
+              "shelfOffset": 0,
+              "sid": "string",
+              "slotOffset": 0,
+              "svcRouterPort1": "string",
+              "svcRouterPort2": "string",
+              "videoStag": 0,
+              "videoStagMode": 0,
+              "videoVci": 0,
+              "videoVlan": 0,
+              "videoVlanMode": 0,
+              "videoVpi": 0,
+              "voiceStag": 0,
+              "voiceStagMode": 0,
+              "voiceVlan": 0,
+              "voiceVlanMode": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeRequestBody": {
+        "title": "AsyncUpdateDslamNodeRequestBody",
+        "type": "object",
+        "properties": {
+          "aliasEndChannel": {
+            "type": "integer",
+            "description": "Ending channel for the alias",
+            "format": "int32"
+          },
+          "aliasId": {
+            "type": "string",
+            "description": "Alias identifier for the DSLAM node"
+          },
+          "aliasStartChannel": {
+            "type": "integer",
+            "description": "Starting channel for the alias",
+            "format": "int32"
+          },
+          "aliasStartPort": {
+            "type": "integer",
+            "description": "Starting port for the alias",
+            "format": "int32"
+          },
+          "baseIpAddress": {
+            "type": "string",
+            "description": "Base IP address for the DSLAM node"
+          },
+          "controllerInterfaceName": {
+            "type": "string",
+            "description": "Controller interface name"
+          },
+          "dataStag": {
+            "type": "integer",
+            "description": "Data Stag value",
+            "format": "int32"
+          },
+          "dataStagMode": {
+            "type": "integer",
+            "description": "Data Stag mode",
+            "format": "int32"
+          },
+          "dataVci": {
+            "type": "integer",
+            "description": "Data VCI value",
+            "format": "int32"
+          },
+          "dataVlan": {
+            "type": "integer",
+            "description": "Data VLAN value",
+            "format": "int32"
+          },
+          "dataVlanMode": {
+            "type": "integer",
+            "description": "Data VLAN mode",
+            "format": "int32"
+          },
+          "dataVpi": {
+            "type": "integer",
+            "description": "Data VPI value",
+            "format": "int32"
+          },
+          "dslam": {
+            "type": "integer",
+            "description": "DSLAM identifier",
+            "format": "int32"
+          },
+          "dslamType": {
+            "type": "string",
+            "description": "Type of DSLAM"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "Group name associated with the DSLAM"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the DSLAM node"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Indicates if the DSLAM is active"
+          },
+          "login": {
+            "type": "string",
+            "description": "Login for the DSLAM node"
+          },
+          "maxPorts": {
+            "type": "integer",
+            "description": "Maximum number of ports",
+            "format": "int32"
+          },
+          "maxSlots": {
+            "type": "integer",
+            "description": "Maximum number of slots",
+            "format": "int32"
+          },
+          "nextControllerInterface1": {
+            "type": "string",
+            "description": "Next controller interface 1"
+          },
+          "nextControllerInterface2": {
+            "type": "string",
+            "description": "Next controller interface 2"
+          },
+          "nodeId": {
+            "type": "string",
+            "description": "The unique identifier for node",
+            "examples": [
+              "2141"
+            ]
+          },
+          "password": {
+            "type": "string",
+            "description": "Password for the DSLAM node"
+          },
+          "portOffset": {
+            "type": "integer",
+            "description": "Offset for the port",
+            "format": "int32"
+          },
+          "potsVci": {
+            "type": "integer",
+            "description": "POTS VCI value",
+            "format": "int32"
+          },
+          "potsVpi": {
+            "type": "integer",
+            "description": "POTS VPI value",
+            "format": "int32"
+          },
+          "rackOffset": {
+            "type": "integer",
+            "description": "Offset for the rack",
+            "format": "int32"
+          },
+          "serviceMap": {
+            "type": "string",
+            "description": "Service map associated with the DSLAM"
+          },
+          "shelfOffset": {
+            "type": "integer",
+            "description": "Offset for the shelf",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string",
+            "description": "Service identifier for the DSLAM node"
+          },
+          "slotOffset": {
+            "type": "integer",
+            "description": "Offset for the slot",
+            "format": "int32"
+          },
+          "svcRouterPort1": {
+            "type": "string",
+            "description": "Service router port 1"
+          },
+          "svcRouterPort2": {
+            "type": "string",
+            "description": "Service router port 2"
+          },
+          "videoStag": {
+            "type": "integer",
+            "description": "Video Stag value",
+            "format": "int32"
+          },
+          "videoStagMode": {
+            "type": "integer",
+            "description": "Video Stag mode",
+            "format": "int32"
+          },
+          "videoVci": {
+            "type": "integer",
+            "description": "Video VCI value",
+            "format": "int32"
+          },
+          "videoVlan": {
+            "type": "integer",
+            "description": "Video VLAN value",
+            "format": "int32"
+          },
+          "videoVlanMode": {
+            "type": "integer",
+            "description": "Video VLAN mode",
+            "format": "int32"
+          },
+          "videoVpi": {
+            "type": "integer",
+            "description": "Video VPI value",
+            "format": "int32"
+          },
+          "voiceStag": {
+            "type": "integer",
+            "description": "Voice Stag value",
+            "format": "int32"
+          },
+          "voiceStagMode": {
+            "type": "integer",
+            "description": "Voice Stag mode",
+            "format": "int32"
+          },
+          "voiceVlan": {
+            "type": "integer",
+            "description": "Voice VLAN value",
+            "format": "int32"
+          },
+          "voiceVlanMode": {
+            "type": "integer",
+            "description": "Voice VLAN mode",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "aliasEndChannel": 0,
+            "aliasId": "string",
+            "aliasStartChannel": 0,
+            "aliasStartPort": 0,
+            "baseIpAddress": "string",
+            "controllerInterfaceName": "string",
+            "dataStag": 0,
+            "dataStagMode": 0,
+            "dataVci": 0,
+            "dataVlan": 0,
+            "dataVlanMode": 0,
+            "dataVpi": 0,
+            "dslam": 0,
+            "dslamType": "string",
+            "groupName": "string",
+            "id": "string",
+            "isActive": false,
+            "login": "string",
+            "maxPorts": 0,
+            "maxSlots": 0,
+            "nextControllerInterface1": "string",
+            "nextControllerInterface2": "string",
+            "nodeId": "2141",
+            "password": "string",
+            "portOffset": 0,
+            "potsVci": 0,
+            "potsVpi": 0,
+            "rackOffset": 0,
+            "serviceMap": "string",
+            "shelfOffset": 0,
+            "sid": "string",
+            "slotOffset": 0,
+            "svcRouterPort1": "string",
+            "svcRouterPort2": "string",
+            "videoStag": 0,
+            "videoStagMode": 0,
+            "videoVci": 0,
+            "videoVlan": 0,
+            "videoVlanMode": 0,
+            "videoVpi": 0,
+            "voiceStag": 0,
+            "voiceStagMode": 0,
+            "voiceVlan": 0,
+            "voiceVlanMode": 0
+          }
+        ],
+        "required": [
+          "dslamType",
+          "id"
+        ]
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop": {
+        "title": "AsyncUpdateNodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncNodeUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "description": "Used for updating node.",
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "altControllerInterfaceName": "string",
+              "altMapName": "string",
+              "controllerInterfaceName": "string",
+              "controllerType": "string",
+              "dataConnectionId": "string",
+              "dataConnectionType": "string",
+              "dataControllerInterfaceName": "string",
+              "dslamAliasEndChannel": 0,
+              "dslamAliasId": "string",
+              "dslamAliasStartChannel": 0,
+              "dslamAliasStartPort": 0,
+              "dslamBaseIpAddress": "string",
+              "dslamControllerInterfaceName": "string",
+              "dslamDataStag": 0,
+              "dslamDataStagMode": 0,
+              "dslamDataVci": 0,
+              "dslamDataVlan": 0,
+              "dslamDataVlanMode": 0,
+              "dslamDataVpi": 0,
+              "dslamGroupName": "string",
+              "dslamIsActive": true,
+              "dslamMapName": "string",
+              "dslamMaxPorts": 0,
+              "dslamMaxSlots": 0,
+              "dslamNextControllerInterfaceName1": "string",
+              "dslamNextControllerInterfaceName2": "string",
+              "dslamPortOffset": 0,
+              "dslamPotsVci": 0,
+              "dslamPotsVpi": 0,
+              "dslamRackOffset": 0,
+              "dslamShelfOffset": 0,
+              "dslamSlotOffset": 0,
+              "dslamSvcRouterPort1": "string",
+              "dslamType": "string",
+              "dslamVideoStag": 0,
+              "dslamVideoStagMode": 0,
+              "dslamVideoVci": 0,
+              "dslamVideoVlan": 0,
+              "dslamVideoVlanMode": 0,
+              "dslamVideoVpi": 0,
+              "dslamVoiceStag": 0,
+              "dslamVoiceStagMode": 0,
+              "dslamVoiceVlan": 0,
+              "dslamVoiceVlanMode": 0,
+              "dslamnodeName": "string",
+              "extendedParameters": [
+                {
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "ftthNodeLogin": "string",
+              "ftthNodeName": "string",
+              "ftthNodePassword": "string",
+              "heci": "string",
+              "hostname": "string",
+              "ipAddress": "string",
+              "ipPort": "string",
+              "login": "string",
+              "mapName": "string",
+              "name": "string",
+              "nodeDefinition": "string",
+              "nodeEnabled": true,
+              "nodeId": "2141",
+              "nodeIndex": "string",
+              "oltType": "string",
+              "password": "string",
+              "potsConnectionId": "string",
+              "potsConnectionType": "string",
+              "potsControllerInterfaceName": "string",
+              "relayRack": "string",
+              "servingWireCenter": "string",
+              "sid": "string",
+              "t1ConnectionId": "string",
+              "t1ConnectionType": "string",
+              "t1ControllerInterfaceName": "string",
+              "vendorModel": "string",
+              "videoConnectionId": "string",
+              "videoConnectionType": "string",
+              "videoControllerInterfaceName": "string",
+              "wireCenter": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.model.DslamNodeRequestBody": {
+        "title": "DslamNodeRequestBody",
+        "type": "object",
+        "properties": {
+          "aliasEndChannel": {
+            "type": "integer",
+            "description": "Ending channel for the alias",
+            "format": "int32"
+          },
+          "aliasId": {
+            "type": "string",
+            "description": "Alias identifier for the DSLAM node"
+          },
+          "aliasStartChannel": {
+            "type": "integer",
+            "description": "Starting channel for the alias",
+            "format": "int32"
+          },
+          "aliasStartPort": {
+            "type": "integer",
+            "description": "Starting port for the alias",
+            "format": "int32"
+          },
+          "baseIpAddress": {
+            "type": "string",
+            "description": "Base IP address for the DSLAM node"
+          },
+          "controllerInterfaceName": {
+            "type": "string",
+            "description": "Controller interface name"
+          },
+          "dataStag": {
+            "type": "integer",
+            "description": "Data Stag value",
+            "format": "int32"
+          },
+          "dataStagMode": {
+            "type": "integer",
+            "description": "Data Stag mode",
+            "format": "int32"
+          },
+          "dataVci": {
+            "type": "integer",
+            "description": "Data VCI value",
+            "format": "int32"
+          },
+          "dataVlan": {
+            "type": "integer",
+            "description": "Data VLAN value",
+            "format": "int32"
+          },
+          "dataVlanMode": {
+            "type": "integer",
+            "description": "Data VLAN mode",
+            "format": "int32"
+          },
+          "dataVpi": {
+            "type": "integer",
+            "description": "Data VPI value",
+            "format": "int32"
+          },
+          "dslam": {
+            "type": "integer",
+            "description": "DSLAM identifier",
+            "format": "int32"
+          },
+          "dslamType": {
+            "type": "string",
+            "description": "Type of DSLAM"
+          },
+          "groupName": {
+            "type": "string",
+            "description": "Group name associated with the DSLAM"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the DSLAM node"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Indicates if the DSLAM is active"
+          },
+          "login": {
+            "type": "string",
+            "description": "Login for the DSLAM node"
+          },
+          "maxPorts": {
+            "type": "integer",
+            "description": "Maximum number of ports",
+            "format": "int32"
+          },
+          "maxSlots": {
+            "type": "integer",
+            "description": "Maximum number of slots",
+            "format": "int32"
+          },
+          "nextControllerInterface1": {
+            "type": "string",
+            "description": "Next controller interface 1"
+          },
+          "nextControllerInterface2": {
+            "type": "string",
+            "description": "Next controller interface 2"
+          },
+          "password": {
+            "type": "string",
+            "description": "Password for the DSLAM node"
+          },
+          "portOffset": {
+            "type": "integer",
+            "description": "Offset for the port",
+            "format": "int32"
+          },
+          "potsVci": {
+            "type": "integer",
+            "description": "POTS VCI value",
+            "format": "int32"
+          },
+          "potsVpi": {
+            "type": "integer",
+            "description": "POTS VPI value",
+            "format": "int32"
+          },
+          "rackOffset": {
+            "type": "integer",
+            "description": "Offset for the rack",
+            "format": "int32"
+          },
+          "serviceMap": {
+            "type": "string",
+            "description": "Service map associated with the DSLAM"
+          },
+          "shelfOffset": {
+            "type": "integer",
+            "description": "Offset for the shelf",
+            "format": "int32"
+          },
+          "sid": {
+            "type": "string",
+            "description": "Service identifier for the DSLAM node"
+          },
+          "slotOffset": {
+            "type": "integer",
+            "description": "Offset for the slot",
+            "format": "int32"
+          },
+          "svcRouterPort1": {
+            "type": "string",
+            "description": "Service router port 1"
+          },
+          "svcRouterPort2": {
+            "type": "string",
+            "description": "Service router port 2"
+          },
+          "videoStag": {
+            "type": "integer",
+            "description": "Video Stag value",
+            "format": "int32"
+          },
+          "videoStagMode": {
+            "type": "integer",
+            "description": "Video Stag mode",
+            "format": "int32"
+          },
+          "videoVci": {
+            "type": "integer",
+            "description": "Video VCI value",
+            "format": "int32"
+          },
+          "videoVlan": {
+            "type": "integer",
+            "description": "Video VLAN value",
+            "format": "int32"
+          },
+          "videoVlanMode": {
+            "type": "integer",
+            "description": "Video VLAN mode",
+            "format": "int32"
+          },
+          "videoVpi": {
+            "type": "integer",
+            "description": "Video VPI value",
+            "format": "int32"
+          },
+          "voiceStag": {
+            "type": "integer",
+            "description": "Voice Stag value",
+            "format": "int32"
+          },
+          "voiceStagMode": {
+            "type": "integer",
+            "description": "Voice Stag mode",
+            "format": "int32"
+          },
+          "voiceVlan": {
+            "type": "integer",
+            "description": "Voice VLAN value",
+            "format": "int32"
+          },
+          "voiceVlanMode": {
+            "type": "integer",
+            "description": "Voice VLAN mode",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "aliasEndChannel": 0,
+            "aliasId": "string",
+            "aliasStartChannel": 0,
+            "aliasStartPort": 0,
+            "baseIpAddress": "string",
+            "controllerInterfaceName": "string",
+            "dataStag": 0,
+            "dataStagMode": 0,
+            "dataVci": 0,
+            "dataVlan": 0,
+            "dataVlanMode": 0,
+            "dataVpi": 0,
+            "dslam": 0,
+            "dslamType": "string",
+            "groupName": "string",
+            "id": "string",
+            "isActive": false,
+            "login": "string",
+            "maxPorts": 0,
+            "maxSlots": 0,
+            "nextControllerInterface1": "string",
+            "nextControllerInterface2": "string",
+            "password": "string",
+            "portOffset": 0,
+            "potsVci": 0,
+            "potsVpi": 0,
+            "rackOffset": 0,
+            "serviceMap": "string",
+            "shelfOffset": 0,
+            "sid": "string",
+            "slotOffset": 0,
+            "svcRouterPort1": "string",
+            "svcRouterPort2": "string",
+            "videoStag": 0,
+            "videoStagMode": 0,
+            "videoVci": 0,
+            "videoVlan": 0,
+            "videoVlanMode": 0,
+            "videoVpi": 0,
+            "voiceStag": 0,
+            "voiceStagMode": 0,
+            "voiceVlan": 0,
+            "voiceVlanMode": 0
+          }
+        ],
+        "required": [
+          "dslamType",
+          "id"
+        ]
+      },
+      "com.etisoftware.node_api.webapi.model.FtthNodeExtModel": {
+        "title": "FtthNodeExtModel",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "description": "Extended parameters for the FTTH node.",
+        "examples": [
+          {
+            "name": "string",
+            "value": "string"
+          }
+        ]
+      },
+      "com.etisoftware.node_api.webapi.model.FtthNodeRequestBody": {
+        "title": "FtthNodeRequestBody",
+        "type": "object",
+        "properties": {
+          "controllerType": {
+            "type": "string",
+            "description": "The type of controller associated with the FTTH node.",
+            "examples": [
+              "Type-A"
+            ]
+          },
+          "dataConnectionId": {
+            "type": "string",
+            "description": "The ID of the data connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "DATA-5678"
+            ]
+          },
+          "dataConnectionType": {
+            "type": "string",
+            "description": "The type of data connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "Ethernet"
+            ]
+          },
+          "dataControllerInterface": {
+            "type": "string",
+            "description": "The number of data controller interfaces."
+          },
+          "extendedParameters": {
+            "type": "array",
+            "description": "Extended parameters for the FTTH node.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.FtthNodeExtModel"
+            },
+            "uniqueItems": true
+          },
+          "ipAddress": {
+            "type": "string",
+            "description": "The IP address of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 15,
+            "examples": [
+              "192.168.1.1"
+            ]
+          },
+          "ipPort": {
+            "type": "integer",
+            "description": "The port used by the FTTH node.",
+            "format": "int32",
+            "examples": [
+              8080
+            ]
+          },
+          "login": {
+            "type": "string",
+            "description": "The login username for the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "admin"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "Node-1234"
+            ]
+          },
+          "nodeEnabled": {
+            "type": "boolean",
+            "description": "Indicates if the FTTH node is enabled (true) or disabled (false).",
+            "examples": [
+              true
+            ]
+          },
+          "nodeIndex": {
+            "type": "integer",
+            "description": "The index of the FTTH node.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "nodeType": {
+            "type": "string",
+            "description": "The type of the FTTH node.",
+            "examples": [
+              "OLT"
+            ]
+          },
+          "oltType": {
+            "type": "string",
+            "description": "The type of OLT associated with the FTTH node.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "GPON"
+            ]
+          },
+          "password": {
+            "type": "string",
+            "description": "The password for accessing the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "password123"
+            ]
+          },
+          "potsConnectionId": {
+            "type": "string",
+            "description": "The ID of the POTS connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "POTS-1234"
+            ]
+          },
+          "potsConnectionType": {
+            "type": "string",
+            "description": "The type of POTS connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "Analog"
+            ]
+          },
+          "potsControllerInterface": {
+            "type": "string",
+            "description": "The number of POTS controller interfaces.",
+            "examples": [
+              "0"
+            ]
+          },
+          "sid": {
+            "type": "string",
+            "description": "The SID (Service Identifier) of the FTTH node.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "SID-5678"
+            ]
+          },
+          "t1ConnectionId": {
+            "type": "string",
+            "description": "The ID of the T1 connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "T1-5678"
+            ]
+          },
+          "t1ConnectionType": {
+            "type": "string",
+            "description": "The type of T1 connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "T1"
+            ]
+          },
+          "t1ControllerInterface": {
+            "type": "string",
+            "description": "The number of T1 controller interfaces."
+          },
+          "videoConnectionId": {
+            "type": "string",
+            "description": "The ID of the video connection.",
+            "minLength": 0,
+            "maxLength": 50,
+            "examples": [
+              "VIDEO-1234"
+            ]
+          },
+          "videoConnectionType": {
+            "type": "string",
+            "description": "The type of video connection.",
+            "minLength": 0,
+            "maxLength": 10,
+            "examples": [
+              "HDMI"
+            ]
+          },
+          "videoControllerInterface": {
+            "type": "string",
+            "description": "The number of video controller interfaces."
+          }
+        },
+        "description": "Request body for creating or updating an FTTH node.",
+        "examples": [
+          {
+            "controllerType": "Type-A",
+            "dataConnectionId": "DATA-5678",
+            "dataConnectionType": "Ethernet",
+            "dataControllerInterface": "string",
+            "extendedParameters": [
+              {
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "ipAddress": "192.168.1.1",
+            "ipPort": 8080,
+            "login": "admin",
+            "name": "Node-1234",
+            "nodeEnabled": true,
+            "nodeIndex": 1,
+            "nodeType": "OLT",
+            "oltType": "GPON",
+            "password": "password123",
+            "potsConnectionId": "POTS-1234",
+            "potsConnectionType": "Analog",
+            "potsControllerInterface": "0",
+            "sid": "SID-5678",
+            "t1ConnectionId": "T1-5678",
+            "t1ConnectionType": "T1",
+            "t1ControllerInterface": "string",
+            "videoConnectionId": "VIDEO-1234",
+            "videoConnectionType": "HDMI",
+            "videoControllerInterface": "string"
+          }
+        ],
+        "required": [
+          "controllerType",
+          "name",
+          "nodeIndex",
+          "nodeType",
+          "sid"
+        ]
+      },
+      "com.etisoftware.node_api.webapi.model.NodeRequestBody": {
+        "title": "NodeRequestBody",
+        "type": "object",
+        "properties": {
+          "altControllerInterfaceName": {
+            "type": "string"
+          },
+          "altMapName": {
+            "type": "string"
+          },
+          "controllerInterfaceName": {
+            "type": "string"
+          },
+          "controllerType": {
+            "type": "string"
+          },
+          "dataConnectionId": {
+            "type": "string"
+          },
+          "dataConnectionType": {
+            "type": "string"
+          },
+          "dataControllerInterfaceName": {
+            "type": "string"
+          },
+          "dslamAliasEndChannel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamAliasId": {
+            "type": "string"
+          },
+          "dslamAliasStartChannel": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamAliasStartPort": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamBaseIpAddress": {
+            "type": "string"
+          },
+          "dslamControllerInterfaceName": {
+            "type": "string"
+          },
+          "dslamDataStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamDataVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamGroupName": {
+            "type": "string"
+          },
+          "dslamIsActive": {
+            "type": "boolean"
+          },
+          "dslamMapName": {
+            "type": "string"
+          },
+          "dslamMaxPorts": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamMaxSlots": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamNextControllerInterfaceName1": {
+            "type": "string"
+          },
+          "dslamNextControllerInterfaceName2": {
+            "type": "string"
+          },
+          "dslamPortOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamPotsVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamPotsVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamRackOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamShelfOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamSlotOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamSvcRouterPort1": {
+            "type": "string"
+          },
+          "dslamType": {
+            "type": "string"
+          },
+          "dslamVideoStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVci": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVideoVpi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceStag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceStagMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceVlan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamVoiceVlanMode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dslamnodeName": {
+            "type": "string"
+          },
+          "extendedParameters": {
+            "type": "array",
+            "description": "Extended parameters for the FTTH node.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.model.FtthNodeExtModel"
+            },
+            "uniqueItems": true
+          },
+          "ftthNodeLogin": {
+            "type": "string"
+          },
+          "ftthNodeName": {
+            "type": "string"
+          },
+          "ftthNodePassword": {
+            "type": "string"
+          },
+          "heci": {
+            "type": "string"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "ipAddress": {
+            "type": "string"
+          },
+          "ipPort": {
+            "type": "string"
+          },
+          "login": {
+            "type": "string"
+          },
+          "mapName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nodeDefinition": {
+            "type": "string"
+          },
+          "nodeEnabled": {
+            "type": "boolean"
+          },
+          "nodeIndex": {
+            "type": "string"
+          },
+          "oltType": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "potsConnectionId": {
+            "type": "string"
+          },
+          "potsConnectionType": {
+            "type": "string"
+          },
+          "potsControllerInterfaceName": {
+            "type": "string"
+          },
+          "relayRack": {
+            "type": "string"
+          },
+          "servingWireCenter": {
+            "type": "string"
+          },
+          "sid": {
+            "type": "string"
+          },
+          "t1ConnectionId": {
+            "type": "string"
+          },
+          "t1ConnectionType": {
+            "type": "string"
+          },
+          "t1ControllerInterfaceName": {
+            "type": "string"
+          },
+          "vendorModel": {
+            "type": "string"
+          },
+          "videoConnectionId": {
+            "type": "string"
+          },
+          "videoConnectionType": {
+            "type": "string"
+          },
+          "videoControllerInterfaceName": {
+            "type": "string"
+          },
+          "wireCenter": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "altControllerInterfaceName": "string",
+            "altMapName": "string",
+            "controllerInterfaceName": "string",
+            "controllerType": "string",
+            "dataConnectionId": "string",
+            "dataConnectionType": "string",
+            "dataControllerInterfaceName": "string",
+            "dslamAliasEndChannel": 0,
+            "dslamAliasId": "string",
+            "dslamAliasStartChannel": 0,
+            "dslamAliasStartPort": 0,
+            "dslamBaseIpAddress": "string",
+            "dslamControllerInterfaceName": "string",
+            "dslamDataStag": 0,
+            "dslamDataStagMode": 0,
+            "dslamDataVci": 0,
+            "dslamDataVlan": 0,
+            "dslamDataVlanMode": 0,
+            "dslamDataVpi": 0,
+            "dslamGroupName": "string",
+            "dslamIsActive": true,
+            "dslamMapName": "string",
+            "dslamMaxPorts": 0,
+            "dslamMaxSlots": 0,
+            "dslamNextControllerInterfaceName1": "string",
+            "dslamNextControllerInterfaceName2": "string",
+            "dslamPortOffset": 0,
+            "dslamPotsVci": 0,
+            "dslamPotsVpi": 0,
+            "dslamRackOffset": 0,
+            "dslamShelfOffset": 0,
+            "dslamSlotOffset": 0,
+            "dslamSvcRouterPort1": "string",
+            "dslamType": "string",
+            "dslamVideoStag": 0,
+            "dslamVideoStagMode": 0,
+            "dslamVideoVci": 0,
+            "dslamVideoVlan": 0,
+            "dslamVideoVlanMode": 0,
+            "dslamVideoVpi": 0,
+            "dslamVoiceStag": 0,
+            "dslamVoiceStagMode": 0,
+            "dslamVoiceVlan": 0,
+            "dslamVoiceVlanMode": 0,
+            "dslamnodeName": "string",
+            "extendedParameters": [
+              {
+                "name": "string",
+                "value": "string"
+              }
+            ],
+            "ftthNodeLogin": "string",
+            "ftthNodeName": "string",
+            "ftthNodePassword": "string",
+            "heci": "string",
+            "hostname": "string",
+            "ipAddress": "string",
+            "ipPort": "string",
+            "login": "string",
+            "mapName": "string",
+            "name": "string",
+            "nodeDefinition": "string",
+            "nodeEnabled": true,
+            "nodeIndex": "string",
+            "oltType": "string",
+            "password": "string",
+            "potsConnectionId": "string",
+            "potsConnectionType": "string",
+            "potsControllerInterfaceName": "string",
+            "relayRack": "string",
+            "servingWireCenter": "string",
+            "sid": "string",
+            "t1ConnectionId": "string",
+            "t1ConnectionType": "string",
+            "t1ControllerInterfaceName": "string",
+            "vendorModel": "string",
+            "videoConnectionId": "string",
+            "videoConnectionType": "string",
+            "videoControllerInterfaceName": "string",
+            "wireCenter": "string"
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop",
+        "title": "AsyncAddDslamNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop",
+        "title": "AsyncAddFtthNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop",
+        "title": "AsyncAddNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop",
+        "title": "AsyncDeleteNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop",
+        "title": "AsyncFtthUpdateNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop",
+        "title": "AsyncUpdateDslamNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop",
+        "title": "AsyncUpdateNodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "dslam-node-add-topic_receive_consumeAddDslamNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/dslam-node-add-topic"
+      },
+      "title": "dslam-node-add-topic_receive",
+      "description": "Dslam Node add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/dslam-node-add-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddDslamNodeEnvelop"
+        }
+      ]
+    },
+    "dslam-node-update-topic_receive_consumeUpdateDslamNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/dslam-node-update-topic"
+      },
+      "title": "dslam-node-update-topic_receive",
+      "description": "Dslam Node update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/dslam-node-update-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateDslamNodeEnvelop"
+        }
+      ]
+    },
+    "ftth-node-add-topic_receive_consumeAddFtthNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ftth-node-add-topic"
+      },
+      "title": "ftth-node-add-topic_receive",
+      "description": "Ftth Node add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ftth-node-add-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddFtthNodeEnvelop"
+        }
+      ]
+    },
+    "ftth-node-update-topic_receive_consumeUpdateFtthNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ftth-node-update-topic"
+      },
+      "title": "ftth-node-update-topic_receive",
+      "description": "Ftth Node update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ftth-node-update-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncFtthUpdateNodeEnvelop"
+        }
+      ]
+    },
+    "node-add-topic_receive_consumeAddNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/node-add-topic"
+      },
+      "title": "node-add-topic_receive",
+      "description": "Node add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/node-add-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncAddNodeEnvelop"
+        }
+      ]
+    },
+    "node-delete-topic_receive_consumeDeleteNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/node-delete-topic"
+      },
+      "title": "node-delete-topic_receive",
+      "description": "Node delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/node-delete-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncDeleteNodeEnvelop"
+        }
+      ]
+    },
+    "node-update-topic_receive_consumeUpdateNode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/node-update-topic"
+      },
+      "title": "node-update-topic_receive",
+      "description": "Node update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/node-update-topic/messages/com.etisoftware.node_api.webapi.consumers.data.AsyncUpdateNodeEnvelop"
+        }
+      ]
+    }
+  }
+}

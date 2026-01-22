@@ -1,0 +1,1276 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "custom-field-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "custom-field-add-topic": {
+      "address": "custom-field-add-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "custom-field-delete-topic": {
+      "address": "custom-field-delete-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "custom-field-update-topic": {
+      "address": "custom-field-update-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+        },
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ddf-custom-field-add-topic": {
+      "address": "ddf-custom-field-add-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ddf-custom-field-delete-topic": {
+      "address": "ddf-custom-field-delete-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "ddf-custom-field-update-topic": {
+      "address": "ddf-custom-field-update-topic",
+      "messages": {
+        "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddDDFCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteDDFCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateCustomFieldValuesEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateCustomFieldValuesEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateDDFCustomFieldEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop": {
+        "title": "AsyncAddCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldCreateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "choices": [
+                {
+                  "order": 0,
+                  "value": "string"
+                }
+              ],
+              "defaultValue": "string",
+              "isDuplicatesAllowed": true,
+              "label": "CSG Equipment Id",
+              "recordType": "SUBSCRIBER",
+              "recordValueType": "CHOICE",
+              "valueMaximumLength": 80,
+              "valueMinimumLength": 1
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop": {
+        "title": "AsyncAddDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.model.v1.DDFCustomFieldRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "defaultValue": "string",
+              "label": "string",
+              "recordType": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncCustomFieldValuesRequestBody": {
+        "title": "AsyncCustomFieldValuesRequestBody",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldValueRequestDto"
+            },
+            "minItems": 1
+          }
+        },
+        "examples": [
+          {
+            "id": "string",
+            "type": "string",
+            "values": [
+              {
+                "label": "string",
+                "value": "string"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "values"
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDDFCustomFieldUpdateRequestBody": {
+        "title": "AsyncDDFCustomFieldUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "recordType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "defaultValue": "string",
+            "label": "string",
+            "recordType": 0
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop": {
+        "title": "AsyncDeleteCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "label": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldRequestBody": {
+        "title": "AsyncDeleteCustomFieldRequestBody",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "label": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop": {
+        "title": "AsyncDeleteDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "label": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldRequestBody": {
+        "title": "AsyncDeleteDDFCustomFieldRequestBody",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "label": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop": {
+        "title": "AsyncUpdateCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldRequestData"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "choices": [
+                {
+                  "initialValue": "string",
+                  "order": 0,
+                  "value": "string"
+                }
+              ],
+              "defaultValue": "string",
+              "isDuplicatesAllowed": true,
+              "label": "string",
+              "recordType": "SUBSCRIBER",
+              "recordValueType": "CHOICE",
+              "valueMaximumLength": 80,
+              "valueMinimumLength": 1
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldRequestData": {
+        "title": "AsyncUpdateCustomFieldRequestData",
+        "type": "object",
+        "properties": {
+          "choices": {
+            "type": "array",
+            "description": "The list of choices for Choice type custom field.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldChoiceUpdateRequest"
+            }
+          },
+          "defaultValue": {
+            "type": "string",
+            "description": "The default value of custom field. Example=\"20MBUP10MBDN\"",
+            "minLength": 0,
+            "maxLength": 80
+          },
+          "isDuplicatesAllowed": {
+            "type": "boolean",
+            "description": "The custom field allows duplicate values",
+            "examples": [
+              true
+            ]
+          },
+          "label": {
+            "type": "string"
+          },
+          "recordType": {
+            "type": "string",
+            "description": "The type of custom field",
+            "enum": [
+              "SUBSCRIBER",
+              "LOCATION",
+              "DEVICE",
+              "WORKORDER",
+              "PHONE",
+              "ONT",
+              "SERVICE",
+              "CHANNEL",
+              "RATEPLAN",
+              "HEADEND",
+              "DSLAM",
+              "SWITCHNODE",
+              "FTTHNODE",
+              "FTTHRACK",
+              "FTTHSHELF",
+              "FTTHSLOT",
+              "FTTHPON",
+              "CONTROLLERINTERFACE",
+              "CIRCUIT",
+              "NODE",
+              "SHELF",
+              "CARD",
+              "CARDPORT",
+              "ONTPORT",
+              "APPCONFIG",
+              "SEGMENTCAPACITY",
+              "SERVICEMAP",
+              "RACK",
+              "AUTHCODE",
+              "DEVICETYPE",
+              "DEVMODEL",
+              "PPVEVENT"
+            ],
+            "examples": [
+              "SUBSCRIBER"
+            ]
+          },
+          "recordValueType": {
+            "type": "string",
+            "description": "The name of the custom field",
+            "examples": [
+              "CHOICE"
+            ]
+          },
+          "valueMaximumLength": {
+            "type": "integer",
+            "description": "The maximum length of custom field value",
+            "format": "int32",
+            "maximum": 80,
+            "minimum": 1,
+            "examples": [
+              80
+            ]
+          },
+          "valueMinimumLength": {
+            "type": "integer",
+            "description": "The minimum length of custom field value",
+            "format": "int32",
+            "maximum": 80,
+            "minimum": 1,
+            "examples": [
+              1
+            ]
+          }
+        },
+        "examples": [
+          {
+            "choices": [
+              {
+                "initialValue": "string",
+                "order": 0,
+                "value": "string"
+              }
+            ],
+            "defaultValue": "string",
+            "isDuplicatesAllowed": true,
+            "label": "string",
+            "recordType": "SUBSCRIBER",
+            "recordValueType": "CHOICE",
+            "valueMaximumLength": 80,
+            "valueMinimumLength": 1
+          }
+        ],
+        "required": [
+          "recordType",
+          "recordValueType"
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop": {
+        "title": "AsyncUpdateCustomFieldValuesEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncCustomFieldValuesRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "id": "string",
+              "type": "string",
+              "values": [
+                {
+                  "label": "string",
+                  "value": "string"
+                }
+              ]
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop": {
+        "title": "AsyncUpdateDDFCustomFieldEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDDFCustomFieldUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "defaultValue": "string",
+              "label": "string",
+              "recordType": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldChoiceRequest": {
+        "title": "CustomFieldChoiceRequest",
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "integer",
+            "description": "The ordering of custom field. Automatically assigned by order of creation. Example=1",
+            "format": "int32",
+            "minimum": 1
+          },
+          "value": {
+            "type": "string",
+            "description": "A choice value for a choice type custom field. Example = On"
+          }
+        },
+        "description": "The list of choices for Choice type custom field.",
+        "examples": [
+          {
+            "order": 0,
+            "value": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldChoiceUpdateRequest": {
+        "title": "CustomFieldChoiceUpdateRequest",
+        "type": "object",
+        "properties": {
+          "initialValue": {
+            "type": "string",
+            "description": "An initial choice value for a choice type custom field. Example = On"
+          },
+          "order": {
+            "type": "integer",
+            "description": "The ordering of custom field. Automatically assigned by order of creation. Example=1",
+            "format": "int32",
+            "minimum": 1
+          },
+          "value": {
+            "type": "string",
+            "description": "A choice value for a choice type custom field. Example = On"
+          }
+        },
+        "description": "The list of choices for Choice type custom field.",
+        "examples": [
+          {
+            "initialValue": "string",
+            "order": 0,
+            "value": "string"
+          }
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldCreateRequestBody": {
+        "title": "CustomFieldCreateRequestBody",
+        "type": "object",
+        "properties": {
+          "choices": {
+            "type": "array",
+            "description": "The list of choices for Choice type custom field.",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldChoiceRequest"
+            }
+          },
+          "defaultValue": {
+            "type": "string",
+            "description": "The default value of custom field. Example=\"20MBUP10MBDN\"",
+            "minLength": 0,
+            "maxLength": 80
+          },
+          "isDuplicatesAllowed": {
+            "type": "boolean",
+            "description": "The custom field allows duplicate values",
+            "examples": [
+              true
+            ]
+          },
+          "label": {
+            "type": "string",
+            "description": "The unique identifier for customField",
+            "minLength": 1,
+            "maxLength": 20,
+            "examples": [
+              "CSG Equipment Id"
+            ]
+          },
+          "recordType": {
+            "type": "string",
+            "description": "The type of custom field",
+            "enum": [
+              "SUBSCRIBER",
+              "LOCATION",
+              "DEVICE",
+              "WORKORDER",
+              "PHONE",
+              "ONT",
+              "SERVICE",
+              "CHANNEL",
+              "RATEPLAN",
+              "HEADEND",
+              "DSLAM",
+              "SWITCHNODE",
+              "FTTHNODE",
+              "FTTHRACK",
+              "FTTHSHELF",
+              "FTTHSLOT",
+              "FTTHPON",
+              "CONTROLLERINTERFACE",
+              "CIRCUIT",
+              "NODE",
+              "SHELF",
+              "CARD",
+              "CARDPORT",
+              "ONTPORT",
+              "APPCONFIG",
+              "SEGMENTCAPACITY",
+              "SERVICEMAP",
+              "RACK",
+              "AUTHCODE",
+              "DEVICETYPE",
+              "DEVMODEL",
+              "PPVEVENT"
+            ],
+            "examples": [
+              "SUBSCRIBER"
+            ]
+          },
+          "recordValueType": {
+            "type": "string",
+            "description": "The name of the custom field",
+            "examples": [
+              "CHOICE"
+            ]
+          },
+          "valueMaximumLength": {
+            "type": "integer",
+            "description": "The maximum length of custom field value",
+            "format": "int32",
+            "maximum": 80,
+            "minimum": 1,
+            "examples": [
+              80
+            ]
+          },
+          "valueMinimumLength": {
+            "type": "integer",
+            "description": "The minimum length of custom field value",
+            "format": "int32",
+            "maximum": 80,
+            "minimum": 1,
+            "examples": [
+              1
+            ]
+          }
+        },
+        "examples": [
+          {
+            "choices": [
+              {
+                "order": 0,
+                "value": "string"
+              }
+            ],
+            "defaultValue": "string",
+            "isDuplicatesAllowed": true,
+            "label": "CSG Equipment Id",
+            "recordType": "SUBSCRIBER",
+            "recordValueType": "CHOICE",
+            "valueMaximumLength": 80,
+            "valueMinimumLength": 1
+          }
+        ],
+        "required": [
+          "label",
+          "recordType",
+          "recordValueType"
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.model.v1.CustomFieldValueRequestDto": {
+        "title": "CustomFieldValueRequestDto",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 20
+          },
+          "value": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 80
+          }
+        },
+        "examples": [
+          {
+            "label": "string",
+            "value": "string"
+          }
+        ],
+        "required": [
+          "label"
+        ]
+      },
+      "com.etisoftware.custom_field_api.webapi.model.v1.DDFCustomFieldRequestBody": {
+        "title": "DDFCustomFieldRequestBody",
+        "type": "object",
+        "properties": {
+          "defaultValue": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "recordType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "defaultValue": "string",
+            "label": "string",
+            "recordType": 0
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop",
+        "title": "AsyncAddCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop",
+        "title": "AsyncAddDDFCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop",
+        "title": "AsyncDeleteCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop",
+        "title": "AsyncDeleteDDFCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop",
+        "title": "AsyncUpdateCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop",
+        "title": "AsyncUpdateCustomFieldValuesEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+          }
+        },
+        "name": "com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop",
+        "title": "AsyncUpdateDDFCustomFieldEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "custom-field-add-topic_receive_consumeAddCustomField": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/custom-field-add-topic"
+      },
+      "title": "custom-field-add-topic_receive",
+      "description": "Custom Field add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/custom-field-add-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddCustomFieldEnvelop"
+        }
+      ]
+    },
+    "custom-field-delete-topic_receive_consumeDeleteCustomField": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/custom-field-delete-topic"
+      },
+      "title": "custom-field-delete-topic_receive",
+      "description": "Custom Field delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/custom-field-delete-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteCustomFieldEnvelop"
+        }
+      ]
+    },
+    "custom-field-update-topic_receive_consumeUpdateCustomField": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/custom-field-update-topic"
+      },
+      "title": "custom-field-update-topic_receive",
+      "description": "Custom Field update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/custom-field-update-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldEnvelop"
+        }
+      ]
+    },
+    "custom-field-update-topic_receive_consumeUpdateCustomFieldValues": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/custom-field-update-topic"
+      },
+      "title": "custom-field-update-topic_receive",
+      "description": "Custom field value update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/custom-field-update-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateCustomFieldValuesEnvelop"
+        }
+      ]
+    },
+    "ddf-custom-field-add-topic_receive_consumeAddDDFCustomField": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ddf-custom-field-add-topic"
+      },
+      "title": "ddf-custom-field-add-topic_receive",
+      "description": "DDF Custom Field add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ddf-custom-field-add-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncAddDDFCustomFieldEnvelop"
+        }
+      ]
+    },
+    "ddf-custom-field-delete-topic_receive_consumeDeleteIPV4": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ddf-custom-field-delete-topic"
+      },
+      "title": "ddf-custom-field-delete-topic_receive",
+      "description": "DDF Custom Field delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ddf-custom-field-delete-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncDeleteDDFCustomFieldEnvelop"
+        }
+      ]
+    },
+    "ddf-custom-field-update-topic_receive_consumeUpdateIPV4": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/ddf-custom-field-update-topic"
+      },
+      "title": "ddf-custom-field-update-topic_receive",
+      "description": "DDF Custom Field update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/ddf-custom-field-update-topic/messages/com.etisoftware.custom_field_api.webapi.consumers.data.AsyncUpdateDDFCustomFieldEnvelop"
+        }
+      ]
+    }
+  }
+}

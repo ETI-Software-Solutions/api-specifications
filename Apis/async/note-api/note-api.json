@@ -1,0 +1,491 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "note-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "note-code-add-topic": {
+      "address": "note-code-add-topic",
+      "messages": {
+        "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "note-code-delete-topic": {
+      "address": "note-code-delete-topic",
+      "messages": {
+        "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "note-code-update-topic": {
+      "address": "note-code-update-topic",
+      "messages": {
+        "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "NoteCodeRequestBody": {
+        "title": "NoteCodeRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "isEditable": {
+            "type": "boolean",
+            "description": "Users can modify the note code text.  This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match a location that already exists in the system. A blank value is not allowed. ",
+            "examples": [
+              true
+            ]
+          },
+          "noteCode": {
+            "type": "string",
+            "description": "The unique identifier for note code. Note Code",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "DPI_SO"
+            ]
+          },
+          "noteDesc": {
+            "type": "string",
+            "description": "The description for note code. Alphanumeric, up to 30 characters long. This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged; however if it is present, then NoteCodeType must also be present. A blank value is not allowed. ",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "Delete Service HBO"
+            ]
+          },
+          "noteTriggers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.webapi.model.NoteTriggerRequestBody"
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "The explanation of what the note code does. Alphanumeric, up to 250 characters long. This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match one the noteCode status values that are configured in the system. A blank value is not allowed. ",
+            "minLength": 0,
+            "maxLength": 250,
+            "examples": [
+              "Lives on the Northside"
+            ]
+          }
+        },
+        "description": "Adds or updates an existing noteCode",
+        "required": [
+          "noteCode"
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddNoteCodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteNoteCodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncUpdateNoteCodeEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncUpdateNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop": {
+        "title": "AsyncAddNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/NoteCodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        }
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop": {
+        "title": "AsyncDeleteNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "noteCode": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeRequestBody": {
+        "title": "AsyncDeleteNoteCodeRequestBody",
+        "type": "object",
+        "properties": {
+          "noteCode": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "noteCode": "string"
+          }
+        ]
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop": {
+        "title": "AsyncUpdateNoteCodeEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        }
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeRequestBody": {
+        "title": "AsyncUpdateNoteCodeRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "isEditable": {
+            "type": "boolean",
+            "description": "Users can modify the note code text.  This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match a location that already exists in the system. A blank value is not allowed. ",
+            "examples": [
+              true
+            ]
+          },
+          "noteCode": {
+            "type": "string",
+            "description": "The unique identifier for note code. Note Code",
+            "minLength": 0,
+            "maxLength": 12,
+            "examples": [
+              "DPI_SO"
+            ]
+          },
+          "noteDesc": {
+            "type": "string",
+            "description": "The description for note code. Alphanumeric, up to 30 characters long. This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged; however if it is present, then NoteCodeType must also be present. A blank value is not allowed. ",
+            "minLength": 0,
+            "maxLength": 30,
+            "examples": [
+              "Delete Service HBO"
+            ]
+          },
+          "noteTriggers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.webapi.model.NoteTriggerRequestBody"
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "The explanation of what the note code does. Alphanumeric, up to 250 characters long. This tag must be present if the noteCode is being added. If the noteCode is being updated, this tag can be omitted to leave the current value unchanged. If a value is supplied, it must match one the noteCode status values that are configured in the system. A blank value is not allowed. ",
+            "minLength": 0,
+            "maxLength": 250,
+            "examples": [
+              "Lives on the Northside"
+            ]
+          }
+        },
+        "required": [
+          "noteCode"
+        ]
+      },
+      "com.etisoftware.webapi.model.NoteTriggerRequestBody": {
+        "title": "NoteTriggerRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "noteTrigDesc": {
+            "type": "string",
+            "description": "The unique label for note trigger.",
+            "examples": [
+              "Disable Service"
+            ]
+          }
+        },
+        "required": [
+          "noteTrigDesc"
+        ]
+      },
+      "org.springframework.hateoas.Links": {}
+    },
+    "messages": {
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop",
+        "title": "AsyncAddNoteCodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop",
+        "title": "AsyncDeleteNoteCodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+          }
+        },
+        "name": "com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop",
+        "title": "AsyncUpdateNoteCodeEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "note-code-add-topic_receive_consumeAddNoteCode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/note-code-add-topic"
+      },
+      "title": "note-code-add-topic_receive",
+      "description": "Note Code add consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/note-code-add-topic/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncAddNoteCodeEnvelop"
+        }
+      ]
+    },
+    "note-code-delete-topic_receive_consumeDeleteNoteCode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/note-code-delete-topic"
+      },
+      "title": "note-code-delete-topic_receive",
+      "description": "Note Code delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/note-code-delete-topic/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncDeleteNoteCodeEnvelop"
+        }
+      ]
+    },
+    "note-code-update-topic_receive_consumeUpdateNoteCode": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/note-code-update-topic"
+      },
+      "title": "note-code-update-topic_receive",
+      "description": "Note Code update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/note-code-update-topic/messages/com.etisoftware.note_api.webapi.consumers.data.AsyncUpdateNoteCodeEnvelop"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,786 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "resource-pool-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "vlan-allocate-topic": {
+      "address": "vlan-allocate-topic",
+      "messages": {
+        "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "vlan-reassign-topic": {
+      "address": "vlan-reassign-topic",
+      "messages": {
+        "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "vlan-release-topic": {
+      "address": "vlan-release-topic",
+      "messages": {
+        "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAllocateVlanEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAllocateVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncReassignVlanEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncReassignVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncReleaseVlanEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncReleaseVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop": {
+        "title": "AsyncAllocateVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.model.v1.vlan.requests.AllocationRequestDto"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "owner": {
+                "ownerId": "4857544311CFD669P01",
+                "ownerType": "DEVICE",
+                "poolNumber": 18295,
+                "port": 1,
+                "portIndex": 1,
+                "selectionKey": 25,
+                "source": "INTERNAL"
+              },
+              "selector": {
+                "groupName": "Alcatel North County",
+                "networkType": 2,
+                "nodeIndex": 12,
+                "nodeType": 2,
+                "ontIndex": 3,
+                "pon": 1,
+                "poolName": "Alcatel North County",
+                "port": 1,
+                "portIndex": 1,
+                "primaryTag": 50,
+                "primaryTagBase": 100,
+                "rack": "1",
+                "region": "North Tampa",
+                "secondaryTag": 200,
+                "secondaryTagBase": 50,
+                "serviceType": "DATA",
+                "shelf": 1,
+                "slot": 1,
+                "stagOverride": 1024
+              }
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop": {
+        "title": "AsyncReassignVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "newOwnerId": "string",
+              "newPortIndex": 0,
+              "ownerId": "string",
+              "primaryTag": 0,
+              "secondaryTag": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanRequestBody": {
+        "title": "AsyncReassignVlanRequestBody",
+        "type": "object",
+        "properties": {
+          "newOwnerId": {
+            "type": "string"
+          },
+          "newPortIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "primaryTag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "secondaryTag": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "newOwnerId": "string",
+            "newPortIndex": 0,
+            "ownerId": "string",
+            "primaryTag": 0,
+            "secondaryTag": 0
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop": {
+        "title": "AsyncReleaseVlanEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "ownerId": "string",
+              "ownerType": "string",
+              "primaryTag": 0,
+              "secondaryTag": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanRequestBody": {
+        "title": "AsyncReleaseVlanRequestBody",
+        "type": "object",
+        "properties": {
+          "ownerId": {
+            "type": "string"
+          },
+          "ownerType": {
+            "type": "string"
+          },
+          "primaryTag": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "secondaryTag": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "ownerId": "string",
+            "ownerType": "string",
+            "primaryTag": 0,
+            "secondaryTag": 0
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.model.v1.resourcescommon.ResourceOwnerDto": {
+        "title": "ResourceOwnerDto",
+        "type": "object",
+        "properties": {
+          "ownerId": {
+            "type": "string",
+            "description": "The unique identifier for the vlan assignment.",
+            "examples": [
+              "4857544311CFD669P01"
+            ]
+          },
+          "ownerType": {
+            "type": "string",
+            "description": "The type of device for the vlan assignment. Valid values are \"DEVICE\", \"ONT\", \"PHONE\".",
+            "enum": [
+              "Device",
+              "ONT",
+              "Phone"
+            ],
+            "examples": [
+              "DEVICE"
+            ]
+          },
+          "poolNumber": {
+            "type": "integer",
+            "description": "The unique number given to pool at time of creation.",
+            "format": "int32",
+            "examples": [
+              18295
+            ]
+          },
+          "port": {
+            "type": "integer",
+            "description": "The port number for the vlan values.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "portIndex": {
+            "type": "integer",
+            "description": "For assigning multiple vlans to a single port or services.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "selectionKey": {
+            "type": "integer",
+            "description": "For list pools whose formula resolves to this key in vlan entry table.",
+            "format": "int32",
+            "examples": [
+              25
+            ]
+          },
+          "source": {
+            "type": "string",
+            "description": "Indicates the vlan values came from inside (\"Internal\")or outside (\"External\") the Triad Vlan Resource Pool system.",
+            "enum": [
+              "INTERNAL",
+              "EXTERNAL"
+            ],
+            "examples": [
+              "INTERNAL"
+            ]
+          }
+        },
+        "description": "Details the owner of this resource",
+        "examples": [
+          {
+            "ownerId": "4857544311CFD669P01",
+            "ownerType": "DEVICE",
+            "poolNumber": 18295,
+            "port": 1,
+            "portIndex": 1,
+            "selectionKey": 25,
+            "source": "INTERNAL"
+          }
+        ],
+        "required": [
+          "ownerId",
+          "ownerType"
+        ]
+      },
+      "com.etisoftware.api.resource_pool.model.v1.vlan.VlanPoolSelectorDto": {
+        "title": "VlanPoolSelectorDto",
+        "type": "object",
+        "properties": {
+          "groupName": {
+            "type": "string",
+            "description": "Group name that pool_id might belong to – if used in a “Global” sense.",
+            "examples": [
+              "Alcatel North County"
+            ]
+          },
+          "networkType": {
+            "type": "integer",
+            "description": "The network type can be used to determine how to interpret the meaning of the primary and secondary tag values returned for an entry within the pool.  ATM implies the primaryTag represents a VPI value and secondaryTag represents a VCI value. IPv4 and IPv6 implies primaryTag is SVLAN and secondaryTag id is CVLAN for double tagging is being used. Valid values are 1=ATM, 2=IPv4, 3=IPv6",
+            "format": "int32",
+            "examples": [
+              2
+            ]
+          },
+          "nodeIndex": {
+            "type": "integer",
+            "description": "The unique customer assigned technology integer value assigned to the olt that is associated with this pool.",
+            "format": "int32",
+            "examples": [
+              12
+            ]
+          },
+          "nodeType": {
+            "type": "integer",
+            "description": "Triad assigned technology type specific integer id.",
+            "format": "int32",
+            "examples": [
+              2
+            ]
+          },
+          "ontIndex": {
+            "type": "integer",
+            "description": "ONT Index position on the PON.",
+            "format": "int32",
+            "examples": [
+              3
+            ]
+          },
+          "pon": {
+            "type": "integer",
+            "description": "The physical PON associated with the device/ONT/phone.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "poolName": {
+            "type": "string",
+            "description": "The name of the pool.",
+            "examples": [
+              "Alcatel North County"
+            ]
+          },
+          "port": {
+            "type": "integer",
+            "description": "The port number for the vlan values .",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "portIndex": {
+            "type": "integer",
+            "description": "For assigning multiple vlans to a single port or services.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "primaryTag": {
+            "type": "integer",
+            "description": "The service VLAN (S-Tag) is the vlan that the service provider configured in the network (the outer Q-tag).",
+            "format": "int32",
+            "examples": [
+              50
+            ]
+          },
+          "primaryTagBase": {
+            "type": "integer",
+            "description": "A base primary tag contant value intended for a calculated pool.",
+            "format": "int32",
+            "examples": [
+              100
+            ]
+          },
+          "rack": {
+            "type": "string",
+            "description": "The physical rack value associated with this pool.",
+            "examples": [
+              "1"
+            ]
+          },
+          "region": {
+            "type": "string",
+            "description": "Can be used to identify the region this pool is used.",
+            "examples": [
+              "North Tampa"
+            ]
+          },
+          "secondaryTag": {
+            "type": "integer",
+            "description": "The Customer VLAN tag (C-Tag) for double-tagging by service providers is the vlan that the customer uses(the inner tag).",
+            "format": "int32",
+            "examples": [
+              200
+            ]
+          },
+          "secondaryTagBase": {
+            "type": "integer",
+            "description": "A base secondary tag contant value intended for a calculated pool.",
+            "format": "int32",
+            "examples": [
+              50
+            ]
+          },
+          "serviceType": {
+            "type": "string",
+            "description": "Service type this pool is associated with.",
+            "examples": [
+              "DATA"
+            ]
+          },
+          "shelf": {
+            "type": "integer",
+            "description": "The physical shelf associated with the device/ONT/phone.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "slot": {
+            "type": "integer",
+            "description": "The physical slot associated with the device/ONT/phone.",
+            "format": "int32",
+            "examples": [
+              1
+            ]
+          },
+          "stagOverride": {
+            "type": "integer",
+            "description": "A base secondary tag contant value intended for a calculated pool.",
+            "format": "int32",
+            "examples": [
+              1024
+            ]
+          }
+        },
+        "description": "Selects pool",
+        "examples": [
+          {
+            "groupName": "Alcatel North County",
+            "networkType": 2,
+            "nodeIndex": 12,
+            "nodeType": 2,
+            "ontIndex": 3,
+            "pon": 1,
+            "poolName": "Alcatel North County",
+            "port": 1,
+            "portIndex": 1,
+            "primaryTag": 50,
+            "primaryTagBase": 100,
+            "rack": "1",
+            "region": "North Tampa",
+            "secondaryTag": 200,
+            "secondaryTagBase": 50,
+            "serviceType": "DATA",
+            "shelf": 1,
+            "slot": 1,
+            "stagOverride": 1024
+          }
+        ]
+      },
+      "com.etisoftware.api.resource_pool.model.v1.vlan.requests.AllocationRequestDto": {
+        "title": "AllocationRequestDto",
+        "type": "object",
+        "properties": {
+          "owner": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.model.v1.resourcescommon.ResourceOwnerDto"
+          },
+          "selector": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.model.v1.vlan.VlanPoolSelectorDto"
+          }
+        },
+        "examples": [
+          {
+            "owner": {
+              "ownerId": "4857544311CFD669P01",
+              "ownerType": "DEVICE",
+              "poolNumber": 18295,
+              "port": 1,
+              "portIndex": 1,
+              "selectionKey": 25,
+              "source": "INTERNAL"
+            },
+            "selector": {
+              "groupName": "Alcatel North County",
+              "networkType": 2,
+              "nodeIndex": 12,
+              "nodeType": 2,
+              "ontIndex": 3,
+              "pon": 1,
+              "poolName": "Alcatel North County",
+              "port": 1,
+              "portIndex": 1,
+              "primaryTag": 50,
+              "primaryTagBase": 100,
+              "rack": "1",
+              "region": "North Tampa",
+              "secondaryTag": 200,
+              "secondaryTagBase": 50,
+              "serviceType": "DATA",
+              "shelf": 1,
+              "slot": 1,
+              "stagOverride": 1024
+            }
+          }
+        ],
+        "required": [
+          "owner",
+          "selector"
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop",
+        "title": "AsyncAllocateVlanEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop",
+        "title": "AsyncReassignVlanEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+          }
+        },
+        "name": "com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop",
+        "title": "AsyncReleaseVlanEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "vlan-allocate-topic_receive_consumeAllocateVlan": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/vlan-allocate-topic"
+      },
+      "title": "vlan-allocate-topic_receive",
+      "description": "Vlan allocate consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/vlan-allocate-topic/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncAllocateVlanEnvelop"
+        }
+      ]
+    },
+    "vlan-reassign-topic_receive_consumeReassignVlan": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/vlan-reassign-topic"
+      },
+      "title": "vlan-reassign-topic_receive",
+      "description": "Vlan reassign consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/vlan-reassign-topic/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncReassignVlanEnvelop"
+        }
+      ]
+    },
+    "vlan-release-topic_receive_consumeReleaseVlan": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/vlan-release-topic"
+      },
+      "title": "vlan-release-topic_receive",
+      "description": "Vlan release consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/vlan-release-topic/messages/com.etisoftware.api.resource_pool.consumers.data.AsyncReleaseVlanEnvelop"
+        }
+      ]
+    }
+  }
+}
