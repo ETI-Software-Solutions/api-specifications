@@ -1,0 +1,941 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "service-api",
+    "version": "1.0",
+    "x-generator": "springwolf"
+  },
+  "defaultContentType": "application/json",
+  "servers": {
+    "kafka-server": {
+      "host": "kafka.kafka.svc:9092",
+      "protocol": "kafka"
+    }
+  },
+  "channels": {
+    "service-add-update-topic": {
+      "address": "service-add-update-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "service-class-add-update-topic": {
+      "address": "service-class-add-update-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "service-class-delete-topic": {
+      "address": "service-class-delete-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "service-class-rename-topic": {
+      "address": "service-class-rename-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "service-delete-topic": {
+      "address": "service-delete-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
+    "service-rename-topic": {
+      "address": "service-rename-topic",
+      "messages": {
+        "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Headers-1106304967": {
+        "title": "Headers-1106304967",
+        "type": "object",
+        "properties": {
+          "Authorization": {
+            "type": "string",
+            "enum": [
+              "Bearer <value>"
+            ],
+            "examples": [
+              "Bearer <value>"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "Authorization": "Bearer <value>"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdateServiceClassEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdateServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncAddUpdateServiceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncAddUpdateServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteServiceClassEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncDeleteServiceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncDeleteServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncRenameServiceClassEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncRenameServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncRenameServiceEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncRenameServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceBody": {
+        "title": "AsyncAddUpdateServiceBody",
+        "type": "object",
+        "properties": {
+          "billingDesc": {
+            "type": "string"
+          },
+          "chargeCode": {
+            "type": "string"
+          },
+          "customFieldList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.model.v1.CustomFieldRequest"
+            }
+          },
+          "isActive": {
+            "type": "string"
+          },
+          "servClassName": {
+            "type": "string"
+          },
+          "serviceDesc": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string"
+          },
+          "taxList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.model.v1.TaxRequest"
+            }
+          },
+          "zeroDetail": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "billingDesc": "string",
+            "chargeCode": "string",
+            "customFieldList": [
+              {
+                "fieldLabel": "string",
+                "fieldValue": "string"
+              }
+            ],
+            "isActive": "string",
+            "servClassName": "string",
+            "serviceDesc": "string",
+            "serviceName": "string",
+            "taxList": [
+              {
+                "taxClassName": "string",
+                "taxName": "string"
+              }
+            ],
+            "zeroDetail": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassBody": {
+        "title": "AsyncAddUpdateServiceClassBody",
+        "type": "object",
+        "properties": {
+          "excludedClassList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredClassList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "servClassType": {
+            "type": "string"
+          },
+          "serviceClassName": {
+            "type": "string"
+          },
+          "singleMemberOnly": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "excludedClassList": [
+              "string"
+            ],
+            "requiredClassList": [
+              "string"
+            ],
+            "servClassType": "string",
+            "serviceClassName": "string",
+            "singleMemberOnly": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop": {
+        "title": "AsyncAddUpdateServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "excludedClassList": [
+                "string"
+              ],
+              "requiredClassList": [
+                "string"
+              ],
+              "servClassType": "string",
+              "serviceClassName": "string",
+              "singleMemberOnly": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop": {
+        "title": "AsyncAddUpdateServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "billingDesc": "string",
+              "chargeCode": "string",
+              "customFieldList": [
+                {
+                  "fieldLabel": "string",
+                  "fieldValue": "string"
+                }
+              ],
+              "isActive": "string",
+              "servClassName": "string",
+              "serviceDesc": "string",
+              "serviceName": "string",
+              "taxList": [
+                {
+                  "taxClassName": "string",
+                  "taxName": "string"
+                }
+              ],
+              "zeroDetail": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceBody": {
+        "title": "AsyncDeleteServiceBody",
+        "type": "object",
+        "properties": {
+          "serviceName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "serviceName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassBody": {
+        "title": "AsyncDeleteServiceClassBody",
+        "type": "object",
+        "properties": {
+          "serviceClassName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "serviceClassName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop": {
+        "title": "AsyncDeleteServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "serviceClassName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop": {
+        "title": "AsyncDeleteServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "serviceName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceBody": {
+        "title": "AsyncRenameServiceBody",
+        "type": "object",
+        "properties": {
+          "newServiceName": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "newServiceName": "string",
+            "serviceName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassBody": {
+        "title": "AsyncRenameServiceClassBody",
+        "type": "object",
+        "properties": {
+          "newServClassName": {
+            "type": "string"
+          },
+          "serviceClassName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "newServClassName": "string",
+            "serviceClassName": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop": {
+        "title": "AsyncRenameServiceClassEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "newServClassName": "string",
+              "serviceClassName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop": {
+        "title": "AsyncRenameServiceEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "newServiceName": "string",
+              "serviceName": "string"
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.model.v1.CustomFieldRequest": {
+        "title": "CustomFieldRequest",
+        "type": "object",
+        "properties": {
+          "fieldLabel": {
+            "type": "string"
+          },
+          "fieldValue": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "fieldLabel": "string",
+            "fieldValue": "string"
+          }
+        ]
+      },
+      "com.etisoftware.serviceapi.webapi.model.v1.TaxRequest": {
+        "title": "TaxRequest",
+        "type": "object",
+        "properties": {
+          "taxClassName": {
+            "type": "string"
+          },
+          "taxName": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "taxClassName": "string",
+            "taxName": "string"
+          }
+        ]
+      }
+    },
+    "messages": {
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop",
+        "title": "AsyncAddUpdateServiceClassEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop",
+        "title": "AsyncAddUpdateServiceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop",
+        "title": "AsyncDeleteServiceClassEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop",
+        "title": "AsyncDeleteServiceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop",
+        "title": "AsyncRenameServiceClassEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
+      "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+          }
+        },
+        "name": "com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop",
+        "title": "AsyncRenameServiceEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      }
+    }
+  },
+  "operations": {
+    "service-add-update-topic_receive_consumeAddUpdateService": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-add-update-topic"
+      },
+      "title": "service-add-update-topic_receive",
+      "description": "Service add or update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-add-update-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceEnvelop"
+        }
+      ]
+    },
+    "service-class-add-update-topic_receive_consumeAddUpdateServiceClass": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-class-add-update-topic"
+      },
+      "title": "service-class-add-update-topic_receive",
+      "description": "Service Class add or update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-class-add-update-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncAddUpdateServiceClassEnvelop"
+        }
+      ]
+    },
+    "service-class-delete-topic_receive_consumeDeleteServiceClass": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-class-delete-topic"
+      },
+      "title": "service-class-delete-topic_receive",
+      "description": "Service Class delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-class-delete-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceClassEnvelop"
+        }
+      ]
+    },
+    "service-class-rename-topic_receive_consumeRenameServiceClass": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-class-rename-topic"
+      },
+      "title": "service-class-rename-topic_receive",
+      "description": "Service Class rename consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-class-rename-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceClassEnvelop"
+        }
+      ]
+    },
+    "service-delete-topic_receive_consumeDeleteService": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-delete-topic"
+      },
+      "title": "service-delete-topic_receive",
+      "description": "Service delete consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-delete-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncDeleteServiceEnvelop"
+        }
+      ]
+    },
+    "service-rename-topic_receive_consumeRenameService": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/service-rename-topic"
+      },
+      "title": "service-rename-topic_receive",
+      "description": "Service rename consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/service-rename-topic/messages/com.etisoftware.serviceapi.webapi.controller.v1.consumers.data.AsyncRenameServiceEnvelop"
+        }
+      ]
+    }
+  }
+}
