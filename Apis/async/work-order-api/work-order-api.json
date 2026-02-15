@@ -266,6 +266,19 @@
         }
       }
     },
+    "wo-service-update-topic": {
+      "address": "wo-service-update-topic",
+      "messages": {
+        "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop": {
+          "$ref": "#/components/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
+        }
+      },
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      }
+    },
     "wo-task-create-update-topic": {
       "address": "wo-task-create-update-topic",
       "messages": {
@@ -808,6 +821,27 @@
         "examples": [
           {
             "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoDeleteEnvelop"
+          }
+        ]
+      },
+      "SpringKafkaDefaultHeaders-AsyncWoServicesUpdateEnvelop": {
+        "title": "SpringKafkaDefaultHeaders-AsyncWoServicesUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "__TypeId__": {
+            "type": "string",
+            "description": "Spring Type Id Header",
+            "enum": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
+            ],
+            "examples": [
+              "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
+            ]
+          }
+        },
+        "examples": [
+          {
+            "__TypeId__": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
           }
         ]
       },
@@ -2835,6 +2869,82 @@
           }
         ]
       },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop": {
+        "title": "AsyncWoServicesUpdateEnvelop",
+        "type": "object",
+        "properties": {
+          "correlationId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "eventName": {
+            "type": "string"
+          },
+          "payload": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateRequestBody"
+          },
+          "spanId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        },
+        "examples": [
+          {
+            "correlationId": "string",
+            "eventId": "string",
+            "eventName": "string",
+            "payload": {
+              "action": "string",
+              "quantity": "string",
+              "rate": "string",
+              "serviceName": "string",
+              "workorderId": 0
+            },
+            "spanId": "string",
+            "timestamp": "2015-07-20T15:49:04-07:00",
+            "traceId": "string"
+          }
+        ]
+      },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateRequestBody": {
+        "title": "AsyncWoServicesUpdateRequestBody",
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "rate": {
+            "type": "string"
+          },
+          "serviceName": {
+            "type": "string"
+          },
+          "workorderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "examples": [
+          {
+            "action": "string",
+            "quantity": "string",
+            "rate": "string",
+            "serviceName": "string",
+            "workorderId": 0
+          }
+        ]
+      },
       "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop": {
         "title": "AsyncWoUpdateEnvelop",
         "type": "object",
@@ -3491,6 +3601,24 @@
           }
         }
       },
+      "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop": {
+        "headers": {
+          "$ref": "#/components/schemas/Headers-1106304967"
+        },
+        "payload": {
+          "schemaFormat": "application/vnd.aai.asyncapi+json;version=3.0.0",
+          "schema": {
+            "$ref": "#/components/schemas/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
+          }
+        },
+        "name": "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop",
+        "title": "AsyncWoServicesUpdateEnvelop",
+        "bindings": {
+          "kafka": {
+            "bindingVersion": "0.5.0"
+          }
+        }
+      },
       "com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoUpdateEnvelop": {
         "headers": {
           "$ref": "#/components/schemas/Headers-1106304967"
@@ -3887,6 +4015,24 @@
       "messages": [
         {
           "$ref": "#/channels/wo-schedule-delete-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncScheduleDeleteEnvelop"
+        }
+      ]
+    },
+    "wo-service-update-topic_receive_consumeScheduleCreateUpdate": {
+      "action": "receive",
+      "channel": {
+        "$ref": "#/channels/wo-service-update-topic"
+      },
+      "title": "wo-service-update-topic_receive",
+      "description": "Wo service update consumer",
+      "bindings": {
+        "kafka": {
+          "bindingVersion": "0.5.0"
+        }
+      },
+      "messages": [
+        {
+          "$ref": "#/channels/wo-service-update-topic/messages/com.etisoftware.work_order_api.webapi.consumers.data.AsyncWoServicesUpdateEnvelop"
         }
       ]
     },
