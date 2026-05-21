@@ -1444,13 +1444,7 @@
             ]
         },
         "Name": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {}
-                }
-            }
+            "type": "string"
         },
         "Order": {
             "type": "object",
