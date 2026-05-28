@@ -8,7 +8,10 @@
                     "type": "integer"
                 },
                 "AdjustmentPending": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Audit": {
                     "$ref": "#/definitions/Audit"
@@ -88,8 +91,7 @@
                     },
                     "required": [
                         "Address",
-                        "Name",
-                        "ResponsibleParty"
+                        "Name"
                     ]
                 },
                 "Billing": {
@@ -102,7 +104,10 @@
                     "$ref": "#/definitions/Campaign"
                 },
                 "Classification": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ClassificationDescription": {
                     "type": "string"
@@ -120,20 +125,24 @@
                     "type": "object",
                     "properties": {
                         "Code": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Score": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "ScoreDate": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
-                    },
-                    "required": [
-                        "Code",
-                        "Score",
-                        "ScoreDate"
-                    ]
+                    }
                 },
                 "CustomField": {
                     "type": "array",
@@ -223,15 +232,15 @@
                             "type": "string"
                         },
                         "Status": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "StatusDescription": {
                             "type": "string"
                         }
-                    },
-                    "required": [
-                        "Status"
-                    ]
+                    }
                 },
                 "DisconnectDate": {
                     "type": "string"
@@ -252,7 +261,10 @@
                             "$ref": "#/definitions/Name"
                         },
                         "Value": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
                     },
                     "required": [
@@ -264,16 +276,28 @@
                     "type": "object",
                     "properties": {
                         "BillingArrangement": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "BusinessUnit": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Group": {
-                            "$ref": "#/definitions/Group"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Identifier": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
                     },
                     "required": [
@@ -290,19 +314,24 @@
                             "type": "integer"
                         },
                         "TaxIdentifier": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "TaxType": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
-                    },
-                    "required": [
-                        "TaxIdentifier",
-                        "TaxType"
-                    ]
+                    }
                 },
                 "Identifier": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Language": {
                     "$ref": "#/definitions/Language"
@@ -347,13 +376,22 @@
                     ]
                 },
                 "Miscellaneous": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "MonetaryStatus": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "MonetaryStatusDescription": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Name": {
                     "$ref": "#/definitions/Name"
@@ -395,7 +433,10 @@
                             "type": "number"
                         },
                         "Pending": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "ProfileIdentifier": {
                             "type": "object"
@@ -425,28 +466,37 @@
                                 "type": "object",
                                 "properties": {
                                     "BeginDate": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
                                     },
                                     "EndDate": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
                                     },
                                     "Indicator": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
                                     },
                                     "Type": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
                                     }
-                                },
-                                "required": [
-                                    "BeginDate",
-                                    "EndDate",
-                                    "Indicator",
-                                    "Type"
-                                ]
+                                }
                             }
                         },
                         "SubType": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "SubTypeStatus": {
                             "type": "object"
@@ -469,27 +519,36 @@
                             "$ref": "#/definitions/Audit"
                         },
                         "ContactMethod": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Disclose": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "DisclosureParty": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
-                    },
-                    "required": [
-                        "Audit",
-                        "ContactMethod",
-                        "Disclose",
-                        "DisclosureParty"
-                    ]
+                    }
                 },
                 "Registration": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ReinstateServiceIndicator": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ResponsibleParty": {
                     "$ref": "#/definitions/ResponsibleParty"
@@ -510,19 +569,31 @@
                             "type": "integer"
                         },
                         "Pending": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Status": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
+                            "anyOf": [
+                                {
+                                    "type": [
+                                        "string",
+                                        "object"
+                                    ]
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    }
+                                }
+                            ]
                         }
-                    },
-                    "required": [
-                        "AccountId",
-                        "Status"
-                    ]
+                    }
                 },
                 "Type": {
                     "type": "string"
@@ -537,10 +608,10 @@
             "type": "object",
             "properties": {
                 "Account": {
-		    "type": "array",
-		    "items": {
-	                    "$ref": "#/definitions/Account"
-		    }
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Account"
+                    }
                 },
                 "Count": {
                     "type": "integer"
@@ -552,13 +623,64 @@
             ]
         },
         "Address": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {}
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Line1": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Line2": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "City": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "State": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "PostalCode": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "ForceIndicator": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "CanadianForceIndicator": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Country": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "Audit": {
             "type": "object",
@@ -644,13 +766,19 @@
                     "type": "string"
                 },
                 "BypassProrates": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Charge": {
                     "type": "number"
                 },
                 "ChargeMethod": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ChargeType": {
                     "type": "string"
@@ -664,7 +792,10 @@
                                 "$ref": "#/definitions/Name"
                             },
                             "Value": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             }
                         },
                         "required": [
@@ -674,7 +805,10 @@
                     }
                 },
                 "CustomerDiscount": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "CustomerDiscountBeginDate": {
                     "type": "string"
@@ -692,7 +826,10 @@
                     "type": "string"
                 },
                 "Discount": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "DiscountBeginDate": {
                     "type": "string"
@@ -722,7 +859,10 @@
                     "type": "string"
                 },
                 "ExpireIndicator": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ForceStatementCheckerIndicator": {
                     "type": "integer"
@@ -737,28 +877,46 @@
                     "type": "string"
                 },
                 "HardcopySourceIndicator": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Hold": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "NegotiatedCharge": {
                     "type": "number"
                 },
                 "NegotiatedChargeOverride": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "NewCycleDay": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "PPVDiscount": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "PPVDiscountChangeDate": {
                     "type": "string"
                 },
                 "PartialTaxExemptionCode": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "PreviousStatementDate": {
                     "type": "string"
@@ -776,7 +934,10 @@
                     "type": "string"
                 },
                 "TaxExemptionCategory": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "TaxGroup": {
                     "type": "integer"
@@ -787,27 +948,34 @@
             }
         },
         "Campaign": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {}
-                }
-            }
+            "type": [
+                "string",
+                "object"
+            ]
         },
         "Comment": {
-            "type": "object",
-            "properties": {
-                "content": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Serializable"
-                    }
+            "anyOf": [
+                {
+                    "type": "string"
                 },
-                "index": {
-                    "type": "integer"
+                {
+                    "type": "object",
+                    "properties": {
+                        "Text": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "-Index": {
+                            "type": "string"
+                        },
+                        "index": {
+                            "type": "integer"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "CustomField": {
             "type": "object",
@@ -821,10 +989,7 @@
                 "index": {
                     "type": "integer"
                 }
-            },
-            "required": [
-                "Value"
-            ]
+            }
         },
         "Equipment": {
             "type": "object",
@@ -866,7 +1031,10 @@
                     "type": "string"
                 },
                 "Outlet": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "OwnershipDescription": {
                     "type": "string"
@@ -881,7 +1049,10 @@
                     "type": "string"
                 },
                 "SubType": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Type": {
                     "type": "string"
@@ -941,7 +1112,10 @@
             ]
         },
         "Group": {
-            "type": "object"
+            "type": [
+                "string",
+                "object"
+            ]
         },
         "ItemList": {
             "type": "object",
@@ -979,7 +1153,10 @@
                                 "type": "integer"
                             },
                             "BypassJobEvaluation": {
-                                "type": "object"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "Campaign": {
                                 "$ref": "#/definitions/Campaign"
@@ -988,7 +1165,10 @@
                                 "type": "string"
                             },
                             "ClassCode": {
-                                "type": "object"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "ClientRequestIndicator": {
                                 "type": "integer"
@@ -1027,20 +1207,18 @@
                                         "type": "integer"
                                     },
                                     "WaiveIndicator": {
-                                        "type": "object"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
                                     }
-                                },
-                                "required": [
-                                    "Code",
-                                    "EndDate",
-                                    "SeasonalDays",
-                                    "StartDate",
-                                    "TriggeringServiceIdentifier",
-                                    "WaiveIndicator"
-                                ]
+                                }
                             },
                             "ExternalProvisioningStatus": {
-                                "type": "object"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "JobId": {
                                 "type": "integer"
@@ -1139,7 +1317,10 @@
                                 "type": "integer"
                             },
                             "Port": {
-                                "type": "object"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "ProductType": {
                                 "type": "string"
@@ -1174,7 +1355,10 @@
                                 ]
                             },
                             "SalesRepresentative": {
-                                "type": "integer"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "ServiceIdentifier": {
                                 "type": "integer"
@@ -1186,7 +1370,10 @@
                                 "type": "string"
                             },
                             "TelephoneNumberId": {
-                                "type": "object"
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
                             },
                             "Type": {
                                 "type": "string"
@@ -1304,22 +1491,20 @@
                                     "type": "string"
                                 },
                                 "StatusChangeOperator": {
-                                    "type": "object"
+                                    "type": [
+                                        "string",
+                                        "object"
+                                    ]
                                 },
                                 "StatusChangeTime": {
                                     "type": "string"
                                 }
                             },
                             "required": [
-                                "Comment",
                                 "JobPrinted",
-                                "RouteCardPrintDate",
-                                "RouteCardPrintSequence",
-                                "RouteCardPrintTime",
                                 "RouteCardPrinted",
                                 "Status",
                                 "StatusChangeDate",
-                                "StatusChangeOperator",
                                 "StatusChangeTime"
                             ]
                         },
@@ -1380,7 +1565,10 @@
                             "type": "string"
                         },
                         "Technician": {
-                            "type": "integer"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "TechnicianBeginTime": {
                             "type": "string"
@@ -1389,7 +1577,10 @@
                             "type": "string"
                         },
                         "TechnicianType": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Type": {
                             "type": "string"
@@ -1412,7 +1603,10 @@
             ]
         },
         "Language": {
-            "type": "object"
+            "type": [
+                "string",
+                "object"
+            ]
         },
         "LineOfBusiness": {
             "type": "object",
@@ -1427,7 +1621,10 @@
                     "type": "string"
                 },
                 "Router": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "ServiceStatus": {
                     "type": "string"
@@ -1444,7 +1641,62 @@
             ]
         },
         "Name": {
+<<<<<<< Updated upstream
             "type": "string"
+=======
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "First": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Last": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Middle": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Title": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Salutation": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Company": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Full": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                }
+            ]
+>>>>>>> Stashed changes
         },
         "Order": {
             "type": "object",
@@ -1503,7 +1755,10 @@
                     "type": "string"
                 },
                 "FootprintRelocationIndicator": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "LineOfBusiness": {
                     "type": "array",
@@ -1527,7 +1782,10 @@
                             "type": "integer"
                         },
                         "Batch": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         },
                         "Deposit": {
                             "type": "number"
@@ -1539,17 +1797,12 @@
                             "type": "string"
                         },
                         "SourceIdentifier": {
-                            "type": "object"
+                            "type": [
+                                "string",
+                                "object"
+                            ]
                         }
-                    },
-                    "required": [
-                        "AccountId",
-                        "Batch",
-                        "Deposit",
-                        "PrePay",
-                        "Source",
-                        "SourceIdentifier"
-                    ]
+                    }
                 },
                 "OrderId": {
                     "type": "integer"
@@ -1567,7 +1820,10 @@
                     "type": "number"
                 },
                 "RepeatTroubleCall": {
-                    "type": "object"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Requestor": {
                     "type": "string"
@@ -1579,7 +1835,10 @@
                     }
                 },
                 "SalesRepresentative": {
-                    "type": "integer"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Status": {
                     "type": "string"
@@ -1587,9 +1846,6 @@
             },
             "required": [
                 "BusinessUnit",
-                "Campaign",
-                "MarketingSource",
-                "MarketingType",
                 "OrderId",
                 "Reason"
             ]
@@ -1612,7 +1868,10 @@
             "type": "object",
             "properties": {
                 "Code": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "Description": {
                     "type": "string"
@@ -1629,7 +1888,10 @@
             "type": "object",
             "properties": {
                 "Code": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "object"
+                    ]
                 },
                 "index": {
                     "type": "integer"
@@ -1642,9 +1904,8 @@
         "ResponsibleParty": {
             "type": "object",
             "properties": {
-                "nameOrSalutation": {
-                    "type": "array",
-                    "items": {}
+                "Name": {
+                    "$ref": "#/definitions/Name"
                 }
             }
         },
@@ -1807,15 +2068,15 @@
                                                                 "type": "object",
                                                                 "properties": {
                                                                     "Identifier": {
-                                                                        "type": "string"
+                                                                        "type": [
+                                                                            "string",
+                                                                            "object"
+                                                                        ]
                                                                     },
                                                                     "index": {
                                                                         "type": "integer"
                                                                     }
-                                                                },
-                                                                "required": [
-                                                                    "Identifier"
-                                                                ]
+                                                                }
                                                             }
                                                         }
                                                     },
@@ -1880,45 +2141,88 @@
                             }
                         },
                         "head": {
-                            "type": "object",
-                            "properties": {
-                                "Client": {
+                            "anyOf": [
+                                {
                                     "type": "string"
                                 },
-                                "Destination": {
-                                    "type": "string"
-                                },
-                                "Origin": {
-                                    "type": "string"
-                                },
-                                "Region": {
-                                    "type": "string"
-                                },
-                                "RoundTrip": {
-                                    "type": "string"
-                                },
-                                "ServerId": {
-                                    "type": "string"
-                                },
-                                "Source": {
-                                    "type": "string"
-                                },
-                                "TransactionId": {
-                                    "type": "string"
-                                },
-                                "TriggerDate": {
-                                    "type": "string"
-                                },
-                                "TriggerTime": {
-                                    "type": "string"
-                                },
-                                "UserId": {
-                                    "type": "string"
-                                },
-                                "Version": {
-                                    "type": "number"
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Client": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Destination": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Origin": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Region": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "RoundTrip": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "ServerId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Source": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TransactionId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TriggerDate": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TriggerTime": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "UserId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Version": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        }
+                                    }
                                 }
-                            }
+                            ]
                         }
                     },
                     "required": [
