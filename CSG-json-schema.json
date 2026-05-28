@@ -1641,9 +1641,6 @@
             ]
         },
         "Name": {
-<<<<<<< Updated upstream
-            "type": "string"
-=======
             "anyOf": [
                 {
                     "type": "string"
@@ -1696,7 +1693,6 @@
                     }
                 }
             ]
->>>>>>> Stashed changes
         },
         "Order": {
             "type": "object",
