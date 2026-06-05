@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "SubscriberEvent": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "object",
+          "properties": {
+            "head": {
+              "type": [
+                "object",
+                "string",
+                "null"
+              ]
+            },
+            "body": {
+              "type": "object",
+              "properties": {
+                "ImportSub": {
+                  "type": "object",
+                  "properties": {
+                    "Info": {
+                      "type": "object",
+                      "properties": {
+                        "SubscriberId": {
+                          "type": "string"
+                        },
+                        "SubscriberName": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
