@@ -1,43 +1,2235 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "definitions": {
-    "SubscriberEvent": {
-      "type": "object",
-      "properties": {
-        "msg": {
-          "type": "object",
-          "properties": {
-            "head": {
-              "type": [
-                "object",
-                "string",
-                "null"
-              ]
-            },
-            "body": {
-              "type": "object",
-              "properties": {
-                "ImportSubscriber": {
-                  "type": "object",
-                  "properties": {
-                    "Info": {
-                      "type": "object",
-                      "properties": {
-                        "SubscriberId": {
-                          "type": "string"
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Account": {
+            "type": "object",
+            "properties": {
+                "AccountId": {
+                    "type": "integer"
+                },
+                "AdjustmentPending": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Audit": {
+                    "$ref": "#/definitions/Audit"
+                },
+                "AutoPackageIndicator": {
+                    "type": "string"
+                },
+                "Balance": {
+                    "type": "object",
+                    "properties": {
+                        "Current": {
+                            "type": "string"
                         },
-                        "SubscriberName": {
-                          "type": "string"
+                        "Deposit": {
+                            "type": "number"
+                        },
+                        "Dispute": {
+                            "type": "number"
+                        },
+                        "Highest": {
+                            "type": "number"
+                        },
+                        "PPV": {
+                            "type": "number"
+                        },
+                        "PPVPending": {
+                            "type": "number"
+                        },
+                        "PreviousStatement": {
+                            "type": "number"
+                        },
+                        "Projected": {
+                            "type": "number"
+                        },
+                        "Statement": {
+                            "type": "number"
+                        },
+                        "UnpaidDeposit": {
+                            "type": "number"
                         }
-                      }
+                    },
+                    "required": [
+                        "Current",
+                        "Deposit"
+                    ]
+                },
+                "Bankruptcy": {
+                    "type": "object",
+                    "properties": {
+                        "Audit": {
+                            "$ref": "#/definitions/Audit"
+                        },
+                        "Indicator": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Audit",
+                        "Indicator"
+                    ]
+                },
+                "BillTo": {
+                    "type": "object",
+                    "properties": {
+                        "Address": {
+                            "$ref": "#/definitions/Address"
+                        },
+                        "AddressInheritanceIndicator": {
+                            "type": "string"
+                        },
+                        "Name": {
+                            "$ref": "#/definitions/Name"
+                        },
+                        "ResponsibleParty": {
+                            "$ref": "#/definitions/ResponsibleParty"
+                        }
+                    },
+                    "required": [
+                        "Address",
+                        "Name"
+                    ]
+                },
+                "Billing": {
+                    "$ref": "#/definitions/Billing"
+                },
+                "BusinessUnit": {
+                    "type": "string"
+                },
+                "Campaign": {
+                    "$ref": "#/definitions/Campaign"
+                },
+                "Classification": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ClassificationDescription": {
+                    "type": "string"
+                },
+                "ConnectDate": {
+                    "type": "string"
+                },
+                "ConnectStatus": {
+                    "type": "string"
+                },
+                "ConnectStatusDescription": {
+                    "type": "string"
+                },
+                "Credit": {
+                    "type": "object",
+                    "properties": {
+                        "Code": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Score": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "ScoreDate": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
                     }
-                  }
+                },
+                "CustomField": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CustomField"
+                    }
+                },
+                "CustomerId": {
+                    "type": "integer"
+                },
+                "Delinquency": {
+                    "type": "object",
+                    "properties": {
+                        "Amount": {
+                            "type": "number"
+                        },
+                        "ChargeOff": {
+                            "type": "object",
+                            "properties": {
+                                "Amount": {
+                                    "type": "number"
+                                },
+                                "Reason": {
+                                    "$ref": "#/definitions/Reason"
+                                }
+                            },
+                            "required": [
+                                "Amount",
+                                "Reason"
+                            ]
+                        },
+                        "Collector": {
+                            "type": "integer"
+                        },
+                        "Cycle1": {
+                            "type": "object",
+                            "properties": {
+                                "Amount": {
+                                    "type": "number"
+                                },
+                                "Occurences": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "Amount",
+                                "Occurences"
+                            ]
+                        },
+                        "Cycle2": {
+                            "type": "object",
+                            "properties": {
+                                "Amount": {
+                                    "type": "number"
+                                },
+                                "Occurences": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "Amount",
+                                "Occurences"
+                            ]
+                        },
+                        "Cycle3": {
+                            "type": "object",
+                            "properties": {
+                                "Amount": {
+                                    "type": "number"
+                                },
+                                "Occurences": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "Amount",
+                                "Occurences"
+                            ]
+                        },
+                        "Days": {
+                            "type": "integer"
+                        },
+                        "DunningGroup": {
+                            "type": "integer"
+                        },
+                        "PromiseToPayDate": {
+                            "type": "string"
+                        },
+                        "Status": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "StatusDescription": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "DisconnectDate": {
+                    "type": "string"
+                },
+                "DisconnectReason": {
+                    "type": "string"
+                },
+                "DisconnectReasonDescription": {
+                    "type": "string"
+                },
+                "Disconnects": {
+                    "type": "integer"
+                },
+                "ECareApplication": {
+                    "type": "object",
+                    "properties": {
+                        "Name": {
+                            "$ref": "#/definitions/Name"
+                        },
+                        "Value": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "Name",
+                        "Value"
+                    ]
+                },
+                "Hierarchy": {
+                    "type": "object",
+                    "properties": {
+                        "BillingArrangement": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "BusinessUnit": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Group": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Identifier": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "BillingArrangement",
+                        "BusinessUnit",
+                        "Group",
+                        "Identifier"
+                    ]
+                },
+                "Identification": {
+                    "type": "object",
+                    "properties": {
+                        "PIN": {
+                            "type": "integer"
+                        },
+                        "TaxIdentifier": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "TaxType": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                },
+                "Identifier": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Language": {
+                    "$ref": "#/definitions/Language"
+                },
+                "LastMonetaryDate": {
+                    "type": "string"
+                },
+                "LastMonetaryType": {
+                    "type": "string"
+                },
+                "LastNonMonetaryDate": {
+                    "type": "string"
+                },
+                "LineOfBusiness": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LineOfBusiness"
+                    }
+                },
+                "LineOfBusinessCount": {
+                    "type": "integer"
+                },
+                "LocationId": {
+                    "type": "integer"
+                },
+                "ManagementGroup": {
+                    "type": "object",
+                    "properties": {
+                        "Audit": {
+                            "$ref": "#/definitions/Audit"
+                        },
+                        "Identifier": {
+                            "type": "string"
+                        },
+                        "Priority": {
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "Identifier",
+                        "Priority"
+                    ]
+                },
+                "Miscellaneous": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "MonetaryStatus": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "MonetaryStatusDescription": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Name": {
+                    "$ref": "#/definitions/Name"
+                },
+                "PPVCreditLimit": {
+                    "type": "number"
+                },
+                "Payment": {
+                    "type": "object",
+                    "properties": {
+                        "DebitDate": {
+                            "type": "string"
+                        },
+                        "DeclineDate": {
+                            "type": "string"
+                        },
+                        "DeclineReason": {
+                            "type": "object"
+                        },
+                        "DueDate": {
+                            "type": "string"
+                        },
+                        "EFTReturns": {
+                            "type": "integer"
+                        },
+                        "FixedAmount": {
+                            "type": "number"
+                        },
+                        "History": {
+                            "type": "string"
+                        },
+                        "LastAmount": {
+                            "type": "number"
+                        },
+                        "LastDate": {
+                            "type": "string"
+                        },
+                        "LockboxPending": {
+                            "type": "number"
+                        },
+                        "Pending": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "ProfileIdentifier": {
+                            "type": "object"
+                        },
+                        "Remittance": {
+                            "type": "object",
+                            "properties": {
+                                "LastChangeDate": {
+                                    "type": "string"
+                                },
+                                "Occurrences": {
+                                    "type": "integer"
+                                },
+                                "OriginalDate": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "LastChangeDate",
+                                "Occurrences",
+                                "OriginalDate"
+                            ]
+                        },
+                        "Restriction": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "BeginDate": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    },
+                                    "EndDate": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    },
+                                    "Indicator": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    },
+                                    "Type": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "SubType": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "SubTypeStatus": {
+                            "type": "object"
+                        },
+                        "TotalPending": {
+                            "type": "number"
+                        }
+                    },
+                    "required": [
+                        "Pending"
+                    ]
+                },
+                "Phone": {
+                    "$ref": "#/definitions/Phone"
+                },
+                "PrivacyInformation": {
+                    "type": "object",
+                    "properties": {
+                        "Audit": {
+                            "$ref": "#/definitions/Audit"
+                        },
+                        "ContactMethod": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Disclose": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "DisclosureParty": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                },
+                "Registration": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ReinstateServiceIndicator": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ResponsibleParty": {
+                    "$ref": "#/definitions/ResponsibleParty"
+                },
+                "RestrictPPV": {
+                    "type": "string"
+                },
+                "RestrictTroubleCall": {
+                    "type": "string"
+                },
+                "SalesRepresentative": {
+                    "type": "integer"
+                },
+                "Transfer": {
+                    "type": "object",
+                    "properties": {
+                        "AccountId": {
+                            "type": "integer"
+                        },
+                        "Pending": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Status": {
+                            "anyOf": [
+                                {
+                                    "type": [
+                                        "string",
+                                        "object"
+                                    ]
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "Type": {
+                    "type": "string"
                 }
-              }
+            },
+            "required": [
+                "AccountId",
+                "Name"
+            ]
+        },
+        "AccountList": {
+            "type": "object",
+            "properties": {
+                "Account": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Account"
+                    }
+                },
+                "Count": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Account",
+                "Count"
+            ]
+        },
+        "Address": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Line1": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Line2": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "City": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "State": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "PostalCode": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "ForceIndicator": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "CanadianForceIndicator": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Country": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "Audit": {
+            "type": "object",
+            "properties": {
+                "Creation": {
+                    "type": "object",
+                    "properties": {
+                        "Date": {
+                            "type": "string"
+                        },
+                        "Operator": {
+                            "type": "string"
+                        },
+                        "Terminal": {
+                            "type": "string"
+                        },
+                        "Time": {
+                            "type": "string"
+                        },
+                        "Transaction": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Date"
+                    ]
+                },
+                "LastUpdate": {
+                    "type": "object",
+                    "properties": {
+                        "Date": {
+                            "type": "string"
+                        },
+                        "Operator": {
+                            "type": "string"
+                        },
+                        "Terminal": {
+                            "type": "string"
+                        },
+                        "Time": {
+                            "type": "string"
+                        },
+                        "Transaction": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Date"
+                    ]
+                }
+            },
+            "required": [
+                "LastUpdate"
+            ]
+        },
+        "Before": {
+            "type": "object",
+            "properties": {
+                "Account": {
+                    "$ref": "#/definitions/Account"
+                },
+                "AccountList": {
+                    "$ref": "#/definitions/AccountList"
+                },
+                "Equipment": {
+                    "$ref": "#/definitions/Equipment"
+                },
+                "ItemList": {
+                    "$ref": "#/definitions/ItemList"
+                },
+                "JobList": {
+                    "$ref": "#/definitions/JobList"
+                },
+                "Order": {
+                    "$ref": "#/definitions/Order"
+                }
             }
-          }
+        },
+        "Billing": {
+            "type": "object",
+            "properties": {
+                "BeginDate": {
+                    "type": "string"
+                },
+                "BypassProrates": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Charge": {
+                    "type": "number"
+                },
+                "ChargeMethod": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ChargeType": {
+                    "type": "string"
+                },
+                "Consolidator": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Name": {
+                                "$ref": "#/definitions/Name"
+                            },
+                            "Value": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "Name",
+                            "Value"
+                        ]
+                    }
+                },
+                "CustomerDiscount": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "CustomerDiscountBeginDate": {
+                    "type": "string"
+                },
+                "CustomerDiscountEndDate": {
+                    "type": "string"
+                },
+                "CycleChange": {
+                    "type": "integer"
+                },
+                "CycleDay": {
+                    "type": "integer"
+                },
+                "CycleDaySetIndicator": {
+                    "type": "string"
+                },
+                "Discount": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "DiscountBeginDate": {
+                    "type": "string"
+                },
+                "DiscountDescription": {
+                    "type": "string"
+                },
+                "DiscountEndDate": {
+                    "type": "string"
+                },
+                "DiscountGroup": {
+                    "type": "integer"
+                },
+                "DiscountGroupBeginDate": {
+                    "type": "string"
+                },
+                "EBPP": {
+                    "type": "string"
+                },
+                "Electronic": {
+                    "type": "string"
+                },
+                "ElectronicOutsourced": {
+                    "type": "string"
+                },
+                "EndDate": {
+                    "type": "string"
+                },
+                "ExpireIndicator": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ForceStatementCheckerIndicator": {
+                    "type": "integer"
+                },
+                "Frequency": {
+                    "type": "integer"
+                },
+                "FromDate": {
+                    "type": "string"
+                },
+                "Hardcopy": {
+                    "type": "string"
+                },
+                "HardcopySourceIndicator": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Hold": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "NegotiatedCharge": {
+                    "type": "number"
+                },
+                "NegotiatedChargeOverride": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "NewCycleDay": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "PPVDiscount": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "PPVDiscountChangeDate": {
+                    "type": "string"
+                },
+                "PartialTaxExemptionCode": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "PreviousStatementDate": {
+                    "type": "string"
+                },
+                "StatementDate": {
+                    "type": "string"
+                },
+                "StatementHold": {
+                    "type": "string"
+                },
+                "SuspensionBeginDate": {
+                    "type": "string"
+                },
+                "SuspensionEndDate": {
+                    "type": "string"
+                },
+                "TaxExemptionCategory": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "TaxGroup": {
+                    "type": "integer"
+                },
+                "ThruDate": {
+                    "type": "string"
+                }
+            }
+        },
+        "Campaign": {
+            "type": [
+                "string",
+                "object"
+            ]
+        },
+        "Comment": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Text": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "-Index": {
+                            "type": "string"
+                        },
+                        "index": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            ]
+        },
+        "CustomField": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "$ref": "#/definitions/Name"
+                },
+                "Value": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Equipment": {
+            "type": "object",
+            "properties": {
+                "Audit": {
+                    "$ref": "#/definitions/Audit"
+                },
+                "BusinessUnit": {
+                    "type": "string"
+                },
+                "Code": {
+                    "type": "string"
+                },
+                "CollectionDate": {
+                    "type": "string"
+                },
+                "CurrentLocation": {
+                    "type": "integer"
+                },
+                "EquipmentId": {
+                    "type": "string"
+                },
+                "EventCount": {
+                    "type": "integer"
+                },
+                "FailureCount": {
+                    "type": "integer"
+                },
+                "ItemCount": {
+                    "type": "integer"
+                },
+                "Make": {
+                    "type": "string"
+                },
+                "Model": {
+                    "type": "string"
+                },
+                "ModelDescription": {
+                    "type": "string"
+                },
+                "Outlet": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "OwnershipDescription": {
+                    "type": "string"
+                },
+                "SerialNumber": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "StatusDescription": {
+                    "type": "string"
+                },
+                "SubType": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "TypeDescription": {
+                    "type": "string"
+                },
+                "categoryOrOwnership": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "declaredType": {
+                                "type": "object"
+                            },
+                            "name": {
+                                "type": "object",
+                                "properties": {
+                                    "localPart": {
+                                        "type": "string"
+                                    },
+                                    "namespaceURI": {
+                                        "type": "string"
+                                    },
+                                    "prefix": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "nil": {
+                                "type": "boolean"
+                            },
+                            "scope": {
+                                "type": "object"
+                            },
+                            "value": {
+                                "$ref": "#/definitions/Serializable"
+                            }
+                        }
+                    }
+                },
+                "commentOrCustomFieldOrComponent": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "BusinessUnit",
+                "CurrentLocation",
+                "EquipmentId",
+                "Model",
+                "SerialNumber",
+                "Status",
+                "StatusDescription",
+                "Type",
+                "TypeDescription"
+            ]
+        },
+        "Group": {
+            "type": [
+                "string",
+                "object"
+            ]
+        },
+        "ItemList": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer"
+                },
+                "Item": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "AccountId": {
+                                "type": "integer"
+                            },
+                            "ActivationDate": {
+                                "type": "string"
+                            },
+                            "Audit": {
+                                "$ref": "#/definitions/Audit"
+                            },
+                            "BeforeQuantity": {
+                                "type": "integer"
+                            },
+                            "BillCode": {
+                                "type": "string"
+                            },
+                            "BillCodeDescription": {
+                                "type": "string"
+                            },
+                            "Billing": {
+                                "$ref": "#/definitions/Billing"
+                            },
+                            "BillingIdentifier": {
+                                "type": "integer"
+                            },
+                            "BypassJobEvaluation": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "Campaign": {
+                                "$ref": "#/definitions/Campaign"
+                            },
+                            "CampaignDescription": {
+                                "type": "string"
+                            },
+                            "ClassCode": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "ClientRequestIndicator": {
+                                "type": "integer"
+                            },
+                            "Code": {
+                                "type": "string"
+                            },
+                            "CodeDescription": {
+                                "type": "string"
+                            },
+                            "CompleteIndicator": {
+                                "type": "string"
+                            },
+                            "ConnectDate": {
+                                "type": "string"
+                            },
+                            "DisconnectDate": {
+                                "type": "string"
+                            },
+                            "EarlyTerminationFee": {
+                                "type": "object",
+                                "properties": {
+                                    "Code": {
+                                        "type": "string"
+                                    },
+                                    "EndDate": {
+                                        "type": "string"
+                                    },
+                                    "SeasonalDays": {
+                                        "type": "integer"
+                                    },
+                                    "StartDate": {
+                                        "type": "string"
+                                    },
+                                    "TriggeringServiceIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "WaiveIndicator": {
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ]
+                                    }
+                                }
+                            },
+                            "ExternalProvisioningStatus": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "JobId": {
+                                "type": "integer"
+                            },
+                            "LineOfBusiness": {
+                                "$ref": "#/definitions/LineOfBusiness"
+                            },
+                            "MarketingSource": {
+                                "type": "string"
+                            },
+                            "MarketingType": {
+                                "type": "string"
+                            },
+                            "NumberOfInstallments": {
+                                "type": "integer"
+                            },
+                            "Offer": {
+                                "type": "object",
+                                "properties": {
+                                    "ComponentIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "Identifier": {
+                                        "type": "string"
+                                    },
+                                    "OriginalIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "ParentServiceIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "PenaltyOfferIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "PenaltyServiceIdentifier": {
+                                        "type": "integer"
+                                    },
+                                    "PricePlan": {
+                                        "type": "object",
+                                        "properties": {
+                                            "BeginDate": {
+                                                "type": "string"
+                                            },
+                                            "ClassChoiceIdentifier": {
+                                                "type": "integer"
+                                            },
+                                            "Identifier": {
+                                                "type": "string"
+                                            },
+                                            "OriginalBeginDate": {
+                                                "type": "string"
+                                            },
+                                            "OriginalIdentifier": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "required": [
+                                            "BeginDate",
+                                            "ClassChoiceIdentifier",
+                                            "Identifier",
+                                            "OriginalBeginDate",
+                                            "OriginalIdentifier"
+                                        ]
+                                    },
+                                    "Product": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Identifier": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Identifier"
+                                        ]
+                                    },
+                                    "RootServiceIdentifier": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "ComponentIdentifier",
+                                    "Identifier",
+                                    "OriginalIdentifier",
+                                    "ParentServiceIdentifier",
+                                    "PenaltyOfferIdentifier",
+                                    "PenaltyServiceIdentifier",
+                                    "PricePlan",
+                                    "Product",
+                                    "RootServiceIdentifier"
+                                ]
+                            },
+                            "Outlet": {
+                                "type": "string"
+                            },
+                            "ParentServiceIdentifier": {
+                                "type": "integer"
+                            },
+                            "Port": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "ProductType": {
+                                "type": "string"
+                            },
+                            "Provisionable": {
+                                "type": "string"
+                            },
+                            "Quantity": {
+                                "type": "integer"
+                            },
+                            "RequestedActivity": {
+                                "type": "object",
+                                "properties": {
+                                    "Date": {
+                                        "type": "string"
+                                    },
+                                    "Operator": {
+                                        "type": "string"
+                                    },
+                                    "Terminal": {
+                                        "type": "string"
+                                    },
+                                    "Time": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "Date",
+                                    "Operator",
+                                    "Terminal",
+                                    "Time"
+                                ]
+                            },
+                            "SalesRepresentative": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "ServiceIdentifier": {
+                                "type": "integer"
+                            },
+                            "Status": {
+                                "type": "string"
+                            },
+                            "SubType": {
+                                "type": "string"
+                            },
+                            "TelephoneNumberId": {
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "Type": {
+                                "type": "string"
+                            },
+                            "TypeClassification": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Code",
+                            "CodeDescription"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "Count",
+                "Item"
+            ]
+        },
+        "JobList": {
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer"
+                },
+                "Job": {
+                    "type": "object",
+                    "properties": {
+                        "AlternateAddress": {
+                            "type": "object",
+                            "properties": {
+                                "Address": {
+                                    "$ref": "#/definitions/Address"
+                                },
+                                "Name": {
+                                    "$ref": "#/definitions/Name"
+                                }
+                            },
+                            "required": [
+                                "Address",
+                                "Name"
+                            ]
+                        },
+                        "Audit": {
+                            "$ref": "#/definitions/Audit"
+                        },
+                        "AutoCreateItemCount": {
+                            "type": "integer"
+                        },
+                        "AutoCreateSequence": {
+                            "type": "string"
+                        },
+                        "BeginDate": {
+                            "type": "string"
+                        },
+                        "BeginTime": {
+                            "type": "string"
+                        },
+                        "Billing": {
+                            "$ref": "#/definitions/Billing"
+                        },
+                        "CallAheadNumber": {
+                            "type": "integer"
+                        },
+                        "CashOnDelivery": {
+                            "type": "number"
+                        },
+                        "Class": {
+                            "type": "string"
+                        },
+                        "Comment": {
+                            "$ref": "#/definitions/Comment"
+                        },
+                        "CompletionDate": {
+                            "type": "string"
+                        },
+                        "CompletionTime": {
+                            "type": "string"
+                        },
+                        "ControlMethod": {
+                            "type": "string"
+                        },
+                        "CustomField": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CustomField"
+                            }
+                        },
+                        "Dispatch": {
+                            "type": "object",
+                            "properties": {
+                                "Comment": {
+                                    "$ref": "#/definitions/Comment"
+                                },
+                                "JobPrinted": {
+                                    "type": "string"
+                                },
+                                "RouteCardPrintDate": {
+                                    "type": "string"
+                                },
+                                "RouteCardPrintSequence": {
+                                    "type": "integer"
+                                },
+                                "RouteCardPrintTime": {
+                                    "type": "string"
+                                },
+                                "RouteCardPrinted": {
+                                    "type": "string"
+                                },
+                                "Status": {
+                                    "type": "string"
+                                },
+                                "StatusChangeDate": {
+                                    "type": "string"
+                                },
+                                "StatusChangeOperator": {
+                                    "type": [
+                                        "string",
+                                        "object"
+                                    ]
+                                },
+                                "StatusChangeTime": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "JobPrinted",
+                                "RouteCardPrinted",
+                                "Status",
+                                "StatusChangeDate",
+                                "StatusChangeTime"
+                            ]
+                        },
+                        "JobId": {
+                            "type": "integer"
+                        },
+                        "JobNumber": {
+                            "type": "integer"
+                        },
+                        "Protected": {
+                            "type": "string"
+                        },
+                        "Resolution": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Resolution"
+                            }
+                        },
+                        "Schedule": {
+                            "type": "object",
+                            "properties": {
+                                "Category": {
+                                    "type": "integer"
+                                },
+                                "CustomerRequest": {
+                                    "type": "string"
+                                },
+                                "Date": {
+                                    "type": "string"
+                                },
+                                "Group": {
+                                    "$ref": "#/definitions/Group"
+                                },
+                                "RescheduleFromDate": {
+                                    "type": "string"
+                                },
+                                "RescheduleReason": {
+                                    "type": "string"
+                                },
+                                "TimeCode": {
+                                    "type": "string"
+                                },
+                                "TimeCodeDescription": {
+                                    "type": "string"
+                                },
+                                "TotalUnits": {
+                                    "type": "integer"
+                                }
+                            },
+                            "required": [
+                                "Date"
+                            ]
+                        },
+                        "Sequence": {
+                            "type": "integer"
+                        },
+                        "Status": {
+                            "type": "string"
+                        },
+                        "Technician": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "TechnicianBeginTime": {
+                            "type": "string"
+                        },
+                        "TechnicianEndTime": {
+                            "type": "string"
+                        },
+                        "TechnicianType": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Type": {
+                            "type": "string"
+                        },
+                        "TypeDescription": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "JobId",
+                        "Schedule",
+                        "Sequence",
+                        "Status"
+                    ]
+                }
+            },
+            "required": [
+                "Count",
+                "Job"
+            ]
+        },
+        "Language": {
+            "type": [
+                "string",
+                "object"
+            ]
+        },
+        "LineOfBusiness": {
+            "type": "object",
+            "properties": {
+                "Action": {
+                    "type": "string"
+                },
+                "Headend": {
+                    "type": "integer"
+                },
+                "Node": {
+                    "type": "string"
+                },
+                "Router": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "ServiceStatus": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Type"
+            ]
+        },
+        "Name": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "First": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Last": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Middle": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Title": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Salutation": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Company": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Full": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "Order": {
+            "type": "object",
+            "properties": {
+                "Audit": {
+                    "$ref": "#/definitions/Audit"
+                },
+                "Billing": {
+                    "$ref": "#/definitions/Billing"
+                },
+                "BusinessUnit": {
+                    "type": "string"
+                },
+                "Campaign": {
+                    "$ref": "#/definitions/Campaign"
+                },
+                "CampaignDescription": {
+                    "type": "string"
+                },
+                "Class": {
+                    "type": "string"
+                },
+                "CommentCode": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Code": {
+                                "type": "string"
+                            },
+                            "index": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "Code"
+                        ]
+                    }
+                },
+                "CompletionDate": {
+                    "type": "string"
+                },
+                "CompletionTime": {
+                    "type": "string"
+                },
+                "CustomField": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CustomField"
+                    }
+                },
+                "CustomerSequence": {
+                    "type": "integer"
+                },
+                "DueDate": {
+                    "type": "string"
+                },
+                "FootprintRelocationIndicator": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "LineOfBusiness": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LineOfBusiness"
+                    }
+                },
+                "MarketingSource": {
+                    "type": "string"
+                },
+                "MarketingType": {
+                    "type": "string"
+                },
+                "Method": {
+                    "type": "string"
+                },
+                "Monetary": {
+                    "type": "object",
+                    "properties": {
+                        "AccountId": {
+                            "type": "integer"
+                        },
+                        "Batch": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        },
+                        "Deposit": {
+                            "type": "number"
+                        },
+                        "PrePay": {
+                            "type": "number"
+                        },
+                        "Source": {
+                            "type": "string"
+                        },
+                        "SourceIdentifier": {
+                            "type": [
+                                "string",
+                                "object"
+                            ]
+                        }
+                    }
+                },
+                "OrderId": {
+                    "type": "integer"
+                },
+                "Protected": {
+                    "type": "string"
+                },
+                "Reason": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Reason"
+                    }
+                },
+                "RecurringCharge": {
+                    "type": "number"
+                },
+                "RepeatTroubleCall": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Requestor": {
+                    "type": "string"
+                },
+                "Resolution": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Resolution"
+                    }
+                },
+                "SalesRepresentative": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "BusinessUnit",
+                "OrderId",
+                "Reason"
+            ]
+        },
+        "Phone": {
+            "type": "object",
+            "properties": {
+                "Business": {
+                    "type": "string"
+                },
+                "Home": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Home"
+            ]
+        },
+        "Reason": {
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "index": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Code"
+            ]
+        },
+        "Resolution": {
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "type": [
+                        "string",
+                        "object"
+                    ]
+                },
+                "index": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "Code"
+            ]
+        },
+        "ResponsibleParty": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "$ref": "#/definitions/Name"
+                }
+            }
+        },
+        "Serializable": {
+            "type": "object"
+        },
+        "SubscriberEvent": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "object",
+                    "properties": {
+                        "body": {
+                            "type": "object",
+                            "properties": {
+                                "AccountDetailUpdated": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Account": {
+                                            "$ref": "#/definitions/Account"
+                                        }
+                                    },
+                                    "required": [
+                                        "Account"
+                                    ]
+                                },
+                                "AccountUpdated": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Account": {
+                                            "$ref": "#/definitions/Account"
+                                        },
+                                        "Before": {
+                                            "$ref": "#/definitions/Before"
+                                        }
+                                    },
+                                    "required": [
+                                        "Account",
+                                        "Before"
+                                    ]
+                                },
+                                "EquipmentUpdated": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Before": {
+                                            "$ref": "#/definitions/Before"
+                                        },
+                                        "Equipment": {
+                                            "$ref": "#/definitions/Equipment"
+                                        }
+                                    },
+                                    "required": [
+                                        "Equipment"
+                                    ]
+                                },
+                                "OrderDetailUpdated": {
+                                    "type": "object",
+                                    "properties": {
+                                        "AccountList": {
+                                            "$ref": "#/definitions/AccountList"
+                                        },
+                                        "Before": {
+                                            "$ref": "#/definitions/Before"
+                                        },
+                                        "Customer": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Audit": {
+                                                    "$ref": "#/definitions/Audit"
+                                                },
+                                                "CustomField": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/definitions/CustomField"
+                                                    }
+                                                },
+                                                "CustomerId": {
+                                                    "type": "integer"
+                                                },
+                                                "Email": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "Address": {
+                                                            "$ref": "#/definitions/Address"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "Address"
+                                                    ]
+                                                },
+                                                "Language": {
+                                                    "$ref": "#/definitions/Language"
+                                                },
+                                                "Name": {
+                                                    "$ref": "#/definitions/Name"
+                                                },
+                                                "Phone": {
+                                                    "$ref": "#/definitions/Phone"
+                                                },
+                                                "Type": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "CustomerId"
+                                            ]
+                                        },
+                                        "ItemList": {
+                                            "$ref": "#/definitions/ItemList"
+                                        },
+                                        "JobList": {
+                                            "$ref": "#/definitions/JobList"
+                                        },
+                                        "Location": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Address": {
+                                                    "$ref": "#/definitions/Address"
+                                                },
+                                                "Audit": {
+                                                    "$ref": "#/definitions/Audit"
+                                                },
+                                                "Bridger": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "BidirectionalUnit": {
+                                                            "type": "integer"
+                                                        },
+                                                        "GateControl": {
+                                                            "type": "integer"
+                                                        },
+                                                        "Private": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "BidirectionalUnit",
+                                                        "GateControl",
+                                                        "Private"
+                                                    ]
+                                                },
+                                                "CustomField": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/definitions/CustomField"
+                                                    }
+                                                },
+                                                "Drop": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "HookUpType": {
+                                                            "type": "string"
+                                                        },
+                                                        "HookUpTypeDescription": {
+                                                            "type": "string"
+                                                        },
+                                                        "Tag": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "Identifier": {
+                                                                        "type": [
+                                                                            "string",
+                                                                            "object"
+                                                                        ]
+                                                                    },
+                                                                    "index": {
+                                                                        "type": "integer"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "HookUpType",
+                                                        "HookUpTypeDescription",
+                                                        "Tag"
+                                                    ]
+                                                },
+                                                "Geographical": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "DesignatedMarketArea": {
+                                                            "type": "integer"
+                                                        },
+                                                        "TechnicianArea": {
+                                                            "type": "integer"
+                                                        },
+                                                        "TechnicianAreaDescription": {
+                                                            "type": "string"
+                                                        },
+                                                        "VertexCode": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "DesignatedMarketArea",
+                                                        "TechnicianArea",
+                                                        "TechnicianAreaDescription",
+                                                        "VertexCode"
+                                                    ]
+                                                },
+                                                "LineOfBusiness": {
+                                                    "$ref": "#/definitions/LineOfBusiness"
+                                                },
+                                                "LocationId": {
+                                                    "type": "integer"
+                                                },
+                                                "Type": {
+                                                    "type": "string"
+                                                },
+                                                "TypeDescription": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "LocationId"
+                                            ]
+                                        },
+                                        "Order": {
+                                            "$ref": "#/definitions/Order"
+                                        }
+                                    },
+                                    "required": [
+                                        "AccountList",
+                                        "Customer",
+                                        "JobList",
+                                        "Location",
+                                        "Order"
+                                    ]
+                                }
+                            }
+                        },
+                        "head": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "Client": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Destination": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Origin": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Region": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "RoundTrip": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "ServerId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Source": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TransactionId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TriggerDate": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "TriggerTime": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "UserId": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        },
+                                        "Version": {
+                                            "type": [
+                                                "string",
+                                                "object"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "body",
+                        "head"
+                    ]
+                }
+            },
+            "required": [
+                "msg"
+            ]
         }
-      }
     }
-  }
 }
