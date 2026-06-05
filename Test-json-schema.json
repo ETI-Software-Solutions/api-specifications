@@ -1908,7 +1908,7 @@
         "Serializable": {
             "type": "object"
         },
-        "SubscriberEvent": {
+        "CSGEvent": {
             "type": "object",
             "properties": {
                 "msg": {
