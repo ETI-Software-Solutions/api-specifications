@@ -1,0 +1,240 @@
+# sonar-crud.config.yaml — Single Source of Truth for the Sonar CRUD gateway spec.
+# build.py reads this + the two SDL files and emits sonar-crud-gateway.yaml
+# and sonar-crud.schemas.json. Nothing downstream is hand-edited.
+
+version: "1.0.0"
+
+# Where the generated JSON Schema bundle is published. The AsyncAPI spec
+# $refs into this absolute URL; RemoteSchemaResolver fetches it at schema
+# compile time (plain GET, no auth, no cache — see gap register G-04).
+schema_base_url: "https://schemas.etisoftware.com/sonar/1.0.0/sonar-crud.schemas.json"
+
+sdl:
+  queries: sonar-queries.graphql
+  mutations: sonar-mutations.graphql
+
+sonar:
+  host_var: sonarHost
+  host_default: sonar.etisoftware.com
+  pathname: /api/graphql
+  token_api: sonar          # -> {{ TOKEN.sonar.accessToken }}
+
+result:
+  kafka_topic: gateway.sonar.crud.results
+  callback_pathname: /callbacks/sonar
+
+# Selection-set wrapper applied to *Connection return types.
+# UNVERIFIED against the Sonar schema — the uploaded SDL has no Connection
+# type definitions. See gap register G-01.
+connection_wrapper:
+  entities_field: entities
+  page_info_field: page_info
+  page_info_selection: "records_per_page page page_count total_count"
+
+# SuccessResponse selection set. UNVERIFIED — see gap register G-02.
+success_response_selection: "success message"
+
+# Default flat selection set per entity when the caller omits `fields`.
+# Only `id` is asserted from the SDL argument lists; anything richer would
+# be speculation about entity type shape.
+default_fields: "id"
+
+entities:
+  account:
+    read:   { root: accounts,          kind: query }
+    create: { root: createAccount,     kind: mutation, returns: entity }
+    update: { root: updateAccount,     kind: mutation, returns: entity }
+    delete: { root: archiveAccount,    kind: mutation, returns: entity }
+
+  account_service:
+    read:   { root: account_services,      kind: query }
+    create: { root: addServiceToAccount,   kind: mutation, returns: entity }
+    update: { root: updateAccountService,  kind: mutation, returns: entity }
+    delete: { root: deleteAccountService,  kind: mutation, returns: success }
+
+  inventory_item:
+    read:   { root: inventory_items,       kind: query }
+    create: { root: createInventoryItems,  kind: mutation, returns: entity_list }
+    update: { root: updateInventoryItem,   kind: mutation, returns: entity }
+    delete: { root: deleteInventoryItem,   kind: mutation, returns: success }
+
+  ip_assignment:
+    read:   { root: ip_assignments,        kind: query }
+    create: { root: createIpAssignment,    kind: mutation, returns: entity }
+    update: { root: updateIpAssignment,    kind: mutation, returns: entity }
+    delete: { root: deleteIpAssignment,    kind: mutation, returns: success }
+
+# GraphQL scalar/input -> JSON Schema draft-07 mapping.
+# Anything not listed is treated as an opaque object (input objects whose
+# definitions are absent from the SDL corpus).
+type_map:
+  Int64Bit:  { type: [integer, string], pattern: "^-?[0-9]+$" }
+  Int:       { type: integer }
+  Float:     { type: number }
+  String:    { type: string }
+  Boolean:   { type: boolean }
+  ID:        { type: [string, integer] }
+  Date:      { type: string }
+  Datetime:  { type: string }
+  Time:      { type: string }
+  Numeric:   { type: [number, string] }
+
+# --------------------------------------------------------------------------
+# Vendor schema registry. build.py flattens the listed definitions into the
+# published bundle and verifies each against vendor.lock.json, so the runtime
+# only ever dereferences ONE remote $ref, one hop deep.
+# --------------------------------------------------------------------------
+vendor_schemas:
+  tmf639:
+    file: vendor/tmf639.json
+    prefix: tmf639
+  tmf638:
+    file: vendor/tmf638.json
+    prefix: tmf638
+
+# --------------------------------------------------------------------------
+# Identifier vocabulary. camelCase, declared ONCE, dereferenced everywhere:
+# by the request schemas (as $ref into the published bundle), by the lookup
+# hops (as vendor bindings), and by application.yaml (as runtime overrides).
+# Adding a second vendor means adding a `bindings` entry, nothing else.
+# --------------------------------------------------------------------------
+identifiers:
+
+  accountNumber:
+    title: Sonar account number
+    description: >-
+      Sonar exposes no account_number field. The account number IS the account
+      id, so the identifier binds to a different argument per entity.
+    schema:
+      type: [integer, string]
+      pattern: "^[0-9]{1,19}$"
+    bindings:
+      account:         { root: accounts,         arg: id }
+      account_service: { root: account_services, arg: account_id }
+      inventory_item:
+        root: inventory_items
+        arg: inventoryitemable_id
+        # Enum member is tenant/vendor data, not spec data: sent as a variable
+        # bound from application.yaml, with the SSOT value as fallback.
+        scope:
+          arg: inventoryitemable_type
+          config: sonar.identifiers.accountNumber.inventoryAssigneeType
+          default: Account
+
+  serialNumber:
+    title: ONT / CPE serial number
+    description: >-
+      Not a first-class argument on any Sonar root. Stored as an
+      inventory_model_field_data row, so it resolves through a scoped hop.
+    tmf: tmf639.Characteristic
+    characteristic: serialNumber
+    schema:
+      type: string
+      pattern: "^[A-Za-z0-9._:-]{1,128}$"
+    resolver:
+      root: inventory_model_field_data
+      value_arg: value
+      scope:
+        arg: inventory_model_field_id
+        config: sonar.identifiers.serialNumber.fieldId
+        default: 7
+
+# Intermediate hop selections. Must be flat identifier lists.
+hop_selection:
+  field_data: "id inventory_item_id value"
+  inventory_item_service: "id account_service_id"
+
+# --------------------------------------------------------------------------
+# Range / predicate support.
+#
+# Sonar `Search` shape and the EQ / LEQ operator names are documented by the
+# vendor (sonarsoftware.helpjuice.com, "How To Use GraphiQL to Understand the
+# Sonar API"). The remaining operator spellings are inferred by symmetry and
+# are isolated here so a correction is one edit, not a code change.
+# --------------------------------------------------------------------------
+search_dialect:
+  arg: search
+  buckets:
+    # integer_fields carries an operator. EQ and LEQ are documented by name;
+    # the other five spellings are inferred by symmetry (gap G-22).
+    numeric:
+      vendor_bucket: integer_fields
+      gql_types: [Int64Bit, Int, Float, Numeric]
+      ops: { eq: EQ, ne: NEQ, gt: GT, gte: GEQ, lt: LT, lte: LEQ }
+      member: '{"attribute": @ATTR, "operator": "@OP", "search_value": @VALUE}'
+    # string_fields takes match / partial_matching, NOT an operator.
+    text:
+      vendor_bucket: string_fields
+      gql_types: [String, ID]
+      ops: { eq: "false", contains: "true" }
+      op_placeholder: PARTIAL
+      member: '{"attribute": @ATTR, "search_value": @VALUE, "match": true, "partial_matching": @OP}'
+    # boolean_fields takes neither.
+    flag:
+      vendor_bucket: boolean_fields
+      gql_types: [Boolean]
+      member: '{"attribute": @ATTR, "search_value": @VALUE}'
+
+ranges:
+  entities: [account, account_service, inventory_item, ip_assignment]
+  max_predicates: 25
+
+# --------------------------------------------------------------------------
+# Targeted lookups. Each becomes its own action const, its own schema and its
+# own precompiled document chain, so classification does the dispatch.
+# --------------------------------------------------------------------------
+lookups:
+  - action: account_service.read.byAccountNumber
+    message: AccountServiceReadByAccountNumber
+    summary: Account services for one account number.
+    identifier: accountNumber
+    entity: account_service
+    hops:
+      - alias: sonar
+        root: account_services
+        args: { "@identifier": accountNumber, paginator: "$paginator", sorter: "$sorter" }
+
+  - action: inventory_item.read.byAccountNumber
+    message: InventoryItemReadByAccountNumber
+    summary: Inventory assigned directly to one account number.
+    identifier: accountNumber
+    entity: inventory_item
+    hops:
+      - alias: sonar
+        root: inventory_items
+        args: { "@identifier": accountNumber, paginator: "$paginator", sorter: "$sorter" }
+
+  - action: inventory_item.read.bySerialNumber
+    message: InventoryItemReadBySerialNumber
+    summary: One inventory item resolved from a serial number.
+    identifier: serialNumber
+    entity: inventory_item
+    hops:
+      - alias: serial_lookup
+        root: inventory_model_field_data
+        selection: "@hop:field_data"
+        args: { "@identifier": serialNumber }
+      - alias: sonar
+        root: inventory_items
+        args:
+          id: "@from:serial_lookup:data.inventory_model_field_data.entities[0].inventory_item_id"
+
+  - action: account_service.read.bySerialNumber
+    message: AccountServiceReadBySerialNumber
+    summary: The account service an ONT serial is bound to.
+    identifier: serialNumber
+    entity: account_service
+    hops:
+      - alias: serial_lookup
+        root: inventory_model_field_data
+        selection: "@hop:field_data"
+        args: { "@identifier": serialNumber }
+      - alias: item_lookup
+        root: inventory_items
+        selection: "@hop:inventory_item_service"
+        args:
+          id: "@from:serial_lookup:data.inventory_model_field_data.entities[0].inventory_item_id"
+      - alias: sonar
+        root: account_services
+        args:
+          id: "@from:item_lookup:data.inventory_items.entities[0].account_service_id"

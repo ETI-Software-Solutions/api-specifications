@@ -1,0 +1,200 @@
+# application.yaml — eti-event-gateway runtime configuration for the Sonar
+# CRUD facade.
+#
+# The spec (sonar-crud-gateway.yaml) is tenant-portable: identical bytes in
+# dev, staging and prod. Everything tenant-specific lives here. In particular
+# the two values that previously blocked deployment — the serial-number
+# inventory field id and the inventory assignee enum member — are now
+# CONFIG lookups with audited build-time defaults, so retargeting a tenant is
+# a ConfigMap edit and a restart, not a spec rebuild.
+#
+# Property names below are the ones the runtime actually reads; see
+# AUTHORING-SPECS.md §18.9 / §18.10.
+
+server:
+  port: 8081
+  servlet:
+    context-path: /event-gateway
+
+spring:
+  application:
+    name: eti-event-gateway
+  threads:
+    virtual:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Required once event-gateway.security.admin.enabled is true.
+          issuer-uri: ${EEG_ADMIN_JWT_ISSUER:https://idp.etisoftware.com/realms/eti}
+
+# --------------------------------------------------------------------------
+# Sonar tenant bindings.
+#
+# Dereferenced by the generated spec as, for example:
+#   {{ CONFIG['sonar']['identifiers']['serialNumber']['fieldId']
+#      | default(7, true) }}
+#
+# CONFIG is bound from the Spring Environment on every render, so a value set
+# here takes effect for every request after startup. It is NOT a @RefreshScope
+# bean, so treat a change here as requiring a pod restart (gap G-13); that is
+# the right cadence for tenant identity anyway.
+#
+# A missing or empty value falls back to the audited default and NARROWS the
+# query (id -1 matches no row) rather than widening it.
+# --------------------------------------------------------------------------
+sonar:
+  instance: ${SONAR_INSTANCE:example.sonar.software}
+  identifiers:
+    serialNumber:
+      # inventory_model_fields(name: "Serial Number").id for THIS tenant.
+      # Discover with:
+      #   { inventory_model_fields(name: "Serial Number")
+      #     { entities { id inventory_model_id unique } } }
+      # Closes gap G-15.
+      fieldId: ${SONAR_SERIAL_FIELD_ID:7}
+    accountNumber:
+      # InventoryitemableType enum member naming an account assignee.
+      # Discover with:
+      #   { __type(name: "InventoryitemableType") { enumValues { name } } }
+      # Closes gap G-16.
+      inventoryAssigneeType: ${SONAR_INVENTORY_ASSIGNEE_TYPE:Account}
+
+# --------------------------------------------------------------------------
+# Outbound OAuth2 tokens. TokensConfiguration IS @RefreshScope, so credential
+# rotation here is picked up by POST /actuator/refresh plus the next
+# TokenService tick (<= 5 min) with no restart.
+# --------------------------------------------------------------------------
+tokens:
+  apis:
+    sonar:
+      authUrl: ${SONAR_AUTH_URL:https://example.sonar.software/oauth/token}
+      grantType: client_credentials
+      clientId: ${SONAR_CLIENT_ID}
+      clientSecret: ${SONAR_CLIENT_SECRET}
+      scope: ${SONAR_SCOPE:api}
+
+event-gateway:
+  application-name: eti-event-gateway
+  context-path: /event-gateway
+  callback-sub-path: /
+  # Endpoint therefore mounts at:
+  #   /event-gateway/webhooks/sonar/crud
+
+  # Spec source. GIT has no factory branch and throws; use FILE or MEMORY.
+  api-source:
+    type: FILE
+  # NOTE: with type FILE, POST /specification/upload validates and then
+  # re-reads this file on rebuild — uploads do not persist. Mount the spec
+  # and roll the pod to change it, or switch to MEMORY for hot upload.
+
+  routing-executor:
+    pool:
+      size: 10
+      maxSize: 50
+    queueCapacity: 5000
+    threadPrefix: Event-Router-
+    drainTimeoutSeconds: 30
+
+  webhook-intake:
+    pool:
+      size: 4
+      maxSize: 8
+    queueCapacity: 200
+    retryAfterSeconds: 5
+
+  spec:
+    history-size: 5
+
+  jinja:
+    template-cache-size: 2048
+    template-cache-ttl-minutes: 60
+
+  security:
+    admin:
+      # MUST be true in production: when false, /admin, /specification and
+      # /actuator are entirely unauthenticated.
+      enabled: ${EEG_ADMIN_SECURITY:true}
+      required-scope: gateway:admin
+
+  dead-letter:
+    channel: sonar-crud-dlq
+
+  # receiveFrom failures are never written to the sink, so file-backed failure
+  # capture only covers publishTo. Kept on file so /admin/replay works for the
+  # result and callback legs.
+  failure-sink:
+    type: file
+    directory: /var/lib/eti-event-gateway/failures
+    prefix: failures-
+    suffix: .ndjson
+    body-preview: 2000
+
+  audit-log:
+    type: file
+    directory: /var/lib/eti-event-gateway/audit
+    prefix: audit-
+    suffix: .ndjson
+
+  payload-logging:
+    enabled: true
+    placeholder: "***REDACTED***"
+    # Setting either list REPLACES the in-code defaults, so both are spelled
+    # out in full rather than appended to.
+    redacted-header-names:
+      - authorization
+      - proxy-authorization
+      - cookie
+      - set-cookie
+      - x-api-key
+      - x-auth-token
+      - x-access-token
+      - x-csrf-token
+    redacted-body-field-names:
+      - password
+      - secret
+      - client_secret
+      - clientSecret
+      - token
+      - access_token
+      - accessToken
+      - refresh_token
+      - refreshToken
+      - id_token
+      - idToken
+      - api_key
+      - apiKey
+      - apikey
+      - x-api-key
+      - authorization
+      - auth
+      - private_key
+      - privateKey
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,refresh
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${event-gateway.application-name}
+  otlp:
+    tracing:
+      endpoint: ${EEG_OTEL_TRACES_EXPORTER_ENDPOINT:http://jaeger-collector.monitoring:4318/v1/traces}
+
+springdoc:
+  swagger-ui:
+    enabled: false          # admin surface; off outside dev
+
+logging:
+  level:
+    root: INFO
+    com.etisoftware.asyncapi.gateway: INFO
+    # Raise to DEBUG only with payload-logging understood: DEBUG emits bodies
+    # subject to x-log-redact, INFO emits only a sha256 fingerprint.

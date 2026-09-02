@@ -1,0 +1,171 @@
+{
+  "_readme": [
+    "Canned Sonar responses, keyed by the operationName build.py emits.",
+    "Deliberately shared by stage L2 (offline render prediction) and stage L4",
+    "(live routing through the gateway) so the two cannot drift: if a shape is",
+    "wrong here, both stages are wrong in the same way and stage L5 is what",
+    "catches it against a real tenant.",
+    "Shapes marked UNVERIFIED mirror gaps G-01 and G-02 and must be refreshed",
+    "from `harness.py --stage probe` output before they are trusted."
+  ],
+
+  "sonar": {
+    "InventoryItemReadBySerialNumberSerialLookup": {
+      "cases": [
+        {
+          "when": { "variable": "value", "equals": "MISSING-SERIAL-0000" },
+          "respond": { "data": { "inventory_model_field_data": {
+            "entities": [],
+            "page_info": { "records_per_page": 100, "page": 1,
+                           "page_count": 0, "total_count": 0 } } } }
+        }
+      ],
+      "default": { "data": { "inventory_model_field_data": {
+        "entities": [ { "id": 9001, "inventory_item_id": 4242,
+                        "value": "48575443ABCDEF01" } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "InventoryItemReadBySerialNumberSonar": {
+      "cases": [
+        {
+          "when": { "variable": "id", "equals": -1 },
+          "respond": { "data": { "inventory_items": {
+            "entities": [],
+            "page_info": { "records_per_page": 100, "page": 1,
+                           "page_count": 0, "total_count": 0 } } } }
+        }
+      ],
+      "default": { "data": { "inventory_items": {
+        "entities": [ { "id": 4242, "status": "DEPLOYED",
+                        "inventory_model_id": 41 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountServiceReadBySerialNumberSerialLookup": {
+      "default": { "data": { "inventory_model_field_data": {
+        "entities": [ { "id": 9002, "inventory_item_id": 4242,
+                        "value": "ZNTS-00-11-22-33" } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountServiceReadBySerialNumberItemLookup": {
+      "cases": [
+        {
+          "when": { "variable": "id", "equals": -1 },
+          "respond": { "data": { "inventory_items": {
+            "entities": [],
+            "page_info": { "records_per_page": 100, "page": 1,
+                           "page_count": 0, "total_count": 0 } } } }
+        }
+      ],
+      "default": { "data": { "inventory_items": {
+        "entities": [ { "id": 4242, "account_service_id": 777 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountServiceReadBySerialNumberSonar": {
+      "cases": [
+        {
+          "when": { "variable": "id", "equals": -1 },
+          "respond": { "data": { "account_services": {
+            "entities": [],
+            "page_info": { "records_per_page": 100, "page": 1,
+                           "page_count": 0, "total_count": 0 } } } }
+        }
+      ],
+      "default": { "data": { "account_services": {
+        "entities": [ { "id": 777 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountServiceReadByAccountNumberSonar": {
+      "default": { "data": { "account_services": {
+        "entities": [ { "id": 777 }, { "id": 778 } ],
+        "page_info": { "records_per_page": 50, "page": 1,
+                       "page_count": 1, "total_count": 2 } } } }
+    },
+
+    "InventoryItemReadByAccountNumberSonar": {
+      "default": { "data": { "inventory_items": {
+        "entities": [ { "id": 4242 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountServiceReadByRange": {
+      "default": { "data": { "account_services": {
+        "entities": [ { "id": 777, "data_usage_percentage": 91 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountReadByRange": {
+      "default": { "data": { "accounts": {
+        "entities": [ { "id": 12345 } ],
+        "page_info": { "records_per_page": 100, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountRead": {
+      "default": { "data": { "accounts": {
+        "entities": [ { "id": 12345, "name": "Fiber Test Account" } ],
+        "page_info": { "records_per_page": 25, "page": 1,
+                       "page_count": 1, "total_count": 1 } } } }
+    },
+
+    "AccountUpdate": {
+      "default": { "data": null, "errors": [
+        { "message": "You do not have permission to update this account." } ] }
+    }
+  },
+
+  "introspection": {
+    "_readme": "Read-only queries stage L5 runs to close vendor gaps.",
+    "G-01": {
+      "gap": "Connection selection wrapper",
+      "query": "{ __type(name: \"AccountConnection\") { fields { name } } }",
+      "expect_fields": ["entities", "page_info"]
+    },
+    "G-02": {
+      "gap": "SuccessResponse selection",
+      "query": "{ __type(name: \"SuccessResponse\") { fields { name } } }",
+      "expect_fields": ["success", "message"]
+    },
+    "G-15": {
+      "gap": "serial-number inventory field id",
+      "query": "{ inventory_model_fields(name: \"Serial Number\") { entities { id inventory_model_id unique } } }",
+      "writes_config": "sonar.identifiers.serialNumber.fieldId"
+    },
+    "G-16": {
+      "gap": "InventoryitemableType enum member for an account assignee",
+      "query": "{ __type(name: \"InventoryitemableType\") { enumValues { name } } }",
+      "writes_config": "sonar.identifiers.accountNumber.inventoryAssigneeType"
+    },
+    "G-17": {
+      "gap": "inventory_model_field_data value match semantics",
+      "query": "{ __type(name: \"Query\") { fields(includeDeprecated: false) { name } } }",
+      "manual": "Compare a full-serial query against a truncated-prefix query; identical counts mean partial matching."
+    },
+    "G-22": {
+      "gap": "Search operator enum spellings",
+      "query": "{ __type(name: \"SearchOperator\") { enumValues { name } } }",
+      "expect_fields": ["EQ", "NEQ", "GT", "GEQ", "LT", "LEQ"],
+      "writes_config": "search_dialect.buckets.numeric.ops"
+    },
+    "G-23": {
+      "gap": "date/datetime search bucket",
+      "query": "{ __type(name: \"Search\") { inputFields { name type { name kind ofType { name } } } } }",
+      "expect_fields": ["integer_fields", "string_fields", "boolean_fields"]
+    },
+    "G-25": {
+      "gap": "integer_fields.search_value width",
+      "query": "{ __type(name: \"IntegerSearch\") { inputFields { name type { name ofType { name } } } } }"
+    }
+  }
+}
