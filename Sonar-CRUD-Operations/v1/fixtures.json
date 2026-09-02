@@ -1,0 +1,386 @@
+{
+  "accept": [
+    {
+      "note": "read with no filters at all",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-0001"
+      }
+    },
+    {
+      "note": "read with paginator, sorter and a flat selection set",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-0002",
+        "requestedAt": "2026-09-02T14:00:00Z",
+        "fields": "id name account_status_id next_bill_date",
+        "variables": {
+          "paginator": {
+            "page": 1,
+            "records_per_page": 25
+          },
+          "sorter": [
+            {
+              "attribute": "name",
+              "direction": "ASC"
+            }
+          ],
+          "account_status_id": 3
+        }
+      }
+    },
+    {
+      "note": "Int64Bit accepted as a string to survive JS precision limits",
+      "definition": "AccountUpdateRequest",
+      "body": {
+        "action": "account.update",
+        "correlationId": "c-0003",
+        "variables": {
+          "id": "9007199254740993",
+          "input": {
+            "name": "Acme LLC"
+          }
+        }
+      }
+    },
+    {
+      "note": "inventory create, opaque input object passed through",
+      "definition": "InventoryItemCreateRequest",
+      "body": {
+        "action": "inventory_item.create",
+        "correlationId": "c-0004",
+        "fields": "id inventory_model_id",
+        "variables": {
+          "input": {
+            "inventory_model_id": 41,
+            "inventoryitemable_type": "Account",
+            "inventoryitemable_id": 12345,
+            "individual_inventory_items": [
+              {
+                "inventory_model_field_data": [
+                  {
+                    "inventory_model_field_id": 7,
+                    "value": "48575443ABCDEF01"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "note": "delete requires the non-null id",
+      "definition": "IpAssignmentDeleteRequest",
+      "body": {
+        "action": "ip_assignment.delete",
+        "correlationId": "c-0005",
+        "variables": {
+          "id": 777
+        }
+      }
+    },
+    {
+      "note": "callback path override",
+      "definition": "AccountServiceReadRequest",
+      "body": {
+        "action": "account_service.read",
+        "correlationId": "c-0006",
+        "callbackPath": "/results/provisioning"
+      }
+    },
+    {
+      "note": "account services by account number",
+      "definition": "AccountServiceReadByAccountNumberRequest",
+      "body": {
+        "action": "account_service.read.byAccountNumber",
+        "correlationId": "c-0200",
+        "accountNumber": 12345,
+        "paginator": {
+          "page": 1,
+          "records_per_page": 50
+        }
+      }
+    },
+    {
+      "note": "account number as a string, past 2^53",
+      "definition": "InventoryItemReadByAccountNumberRequest",
+      "body": {
+        "action": "inventory_item.read.byAccountNumber",
+        "correlationId": "c-0201",
+        "accountNumber": "9007199254740993"
+      }
+    },
+    {
+      "note": "ONT by serial as a TMF639 Characteristic",
+      "definition": "InventoryItemReadBySerialNumberRequest",
+      "body": {
+        "action": "inventory_item.read.bySerialNumber",
+        "correlationId": "c-0202",
+        "fields": "id status inventory_model_id",
+        "serialNumber": {
+          "name": "serialNumber",
+          "value": "48575443ABCDEF01"
+        }
+      }
+    },
+    {
+      "note": "service behind an ONT serial, three hops",
+      "definition": "AccountServiceReadBySerialNumberRequest",
+      "body": {
+        "action": "account_service.read.bySerialNumber",
+        "correlationId": "c-0203",
+        "serialNumber": {
+          "name": "serialNumber",
+          "value": "ZNTS-00-11-22-33"
+        }
+      }
+    },
+    {
+      "note": "numeric range, both bounds on one attribute",
+      "definition": "AccountServiceReadByRangeRequest",
+      "body": {
+        "action": "account_service.read.byRange",
+        "correlationId": "c-0204",
+        "fields": "id data_usage_percentage",
+        "where": {
+          "numeric": [
+            {
+              "attribute": "data_usage_percentage",
+              "op": "gte",
+              "value": 80
+            },
+            {
+              "attribute": "data_usage_percentage",
+              "op": "lte",
+              "value": 100
+            }
+          ]
+        }
+      }
+    },
+    {
+      "note": "range ANDed with a partial text match",
+      "definition": "AccountReadByRangeRequest",
+      "body": {
+        "action": "account.read.byRange",
+        "correlationId": "c-0205",
+        "where": {
+          "numeric": [
+            {
+              "attribute": "account_status_id",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "text": [
+            {
+              "attribute": "name",
+              "op": "contains",
+              "value": "Fiber"
+            }
+          ],
+          "flag": [
+            {
+              "attribute": "is_delinquent",
+              "value": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "reject": [
+    {
+      "note": "action const belongs to a different definition",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.create",
+        "correlationId": "c-1001"
+      }
+    },
+    {
+      "note": "correlationId is mandatory for result correlation",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read"
+      }
+    },
+    {
+      "note": "selection set escapes into a second operation",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-1002",
+        "fields": "id } } } mutation { archiveAccount(id: 1) { id"
+      }
+    },
+    {
+      "note": "introspection probe via the selection set",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-1003",
+        "fields": "__schema { types { name } }"
+      }
+    },
+    {
+      "note": "unknown GraphQL argument would be a server-side error",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-1004",
+        "variables": {
+          "not_a_real_argument": 1
+        }
+      }
+    },
+    {
+      "note": "unknown envelope key",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-1005",
+        "sqlInjection": "1; DROP TABLE accounts"
+      }
+    },
+    {
+      "note": "non-null id omitted on update",
+      "definition": "AccountUpdateRequest",
+      "body": {
+        "action": "account.update",
+        "correlationId": "c-1006",
+        "variables": {
+          "input": {
+            "name": "x"
+          }
+        }
+      }
+    },
+    {
+      "note": "Int64Bit as a non-numeric string",
+      "definition": "InventoryItemDeleteRequest",
+      "body": {
+        "action": "inventory_item.delete",
+        "correlationId": "c-1007",
+        "variables": {
+          "id": "abc"
+        }
+      }
+    },
+    {
+      "note": "callbackPath escaping to an absolute URL",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": "c-1008",
+        "callbackPath": "https://attacker.example/x"
+      }
+    },
+    {
+      "note": "empty correlationId defeats idempotency namespacing",
+      "definition": "AccountReadRequest",
+      "body": {
+        "action": "account.read",
+        "correlationId": ""
+      }
+    },
+    {
+      "note": "range predicate against a string column",
+      "definition": "AccountServiceReadByRangeRequest",
+      "body": {
+        "action": "account_service.read.byRange",
+        "correlationId": "c-1200",
+        "where": {
+          "numeric": [
+            {
+              "attribute": "name_override",
+              "op": "gte",
+              "value": 5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "note": "unknown attribute",
+      "definition": "AccountReadByRangeRequest",
+      "body": {
+        "action": "account.read.byRange",
+        "correlationId": "c-1201",
+        "where": {
+          "numeric": [
+            {
+              "attribute": "drop_table",
+              "op": "eq",
+              "value": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "note": "operator not in the declared dialect",
+      "definition": "AccountReadByRangeRequest",
+      "body": {
+        "action": "account.read.byRange",
+        "correlationId": "c-1202",
+        "where": {
+          "numeric": [
+            {
+              "attribute": "id",
+              "op": "regex",
+              "value": "x"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "note": "boolean bucket does not take an operator",
+      "definition": "AccountReadByRangeRequest",
+      "body": {
+        "action": "account.read.byRange",
+        "correlationId": "c-1203",
+        "where": {
+          "flag": [
+            {
+              "attribute": "is_delinquent",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "note": "empty predicate set would return the unfiltered table",
+      "definition": "AccountReadByRangeRequest",
+      "body": {
+        "action": "account.read.byRange",
+        "correlationId": "c-1204",
+        "where": {}
+      }
+    },
+    {
+      "note": "serial identifier sent as a bare string, not a Characteristic",
+      "definition": "InventoryItemReadBySerialNumberRequest",
+      "body": {
+        "action": "inventory_item.read.bySerialNumber",
+        "correlationId": "c-1205",
+        "serialNumber": "48575443ABCDEF01"
+      }
+    },
+    {
+      "note": "account number with non-digits",
+      "definition": "AccountServiceReadByAccountNumberRequest",
+      "body": {
+        "action": "account_service.read.byAccountNumber",
+        "correlationId": "c-1206",
+        "accountNumber": "12345; DROP"
+      }
+    }
+  ]
+}

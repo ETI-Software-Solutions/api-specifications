@@ -1,0 +1,2320 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.etisoftware.com/sonar/1.0.0/sonar-crud.schemas.json",
+  "title": "Sonar CRUD gateway request envelopes",
+  "description": "Derived from sonar-queries.graphql and sonar-mutations.graphql by build.py. Argument names, GraphQL types and nullability are taken verbatim from the SDL root fields. Input-object interiors are opaque because the SDL corpus contains no input type definitions.",
+  "definitions": {
+    "AccountReadRequest": {
+      "$comment": "Generated from `query accounts` in the Sonar SDL. Returns AccountConnection!. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "account.read"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "sonar_unique_id": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "_version": {
+              "type": "string"
+            },
+            "account_status_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "account_type_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "activation_date": {
+              "type": "string"
+            },
+            "activation_time": {
+              "type": "string"
+            },
+            "archived_at": {
+              "type": "string"
+            },
+            "archived_by_user_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "company_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "data_usage_percentage": {
+              "type": "integer"
+            },
+            "disconnection_reason_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "geopoint": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Geopoint"
+            },
+            "is_delinquent": {
+              "type": "boolean"
+            },
+            "is_eligible_for_archive": {
+              "type": "boolean"
+            },
+            "name": {
+              "type": "string"
+            },
+            "next_bill_date": {
+              "type": "string"
+            },
+            "next_recurring_charge_amount": {
+              "type": "integer"
+            },
+            "parent_account_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "include_archived": {
+              "type": "boolean"
+            },
+            "paginator": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Paginator"
+            },
+            "sorter": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Sorter"
+              }
+            },
+            "search": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Search"
+              }
+            },
+            "general_search": {
+              "type": "string"
+            },
+            "general_search_mode": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "GeneralSearchMode"
+            },
+            "aggregation": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Aggregator"
+              }
+            },
+            "reverse_relation_filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "ReverseRelationFilter"
+              }
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountCreateRequest": {
+      "$comment": "Generated from `mutation createAccount` in the Sonar SDL. Returns Account. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "account.create"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "CreateAccountMutationInput"
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountUpdateRequest": {
+      "$comment": "Generated from `mutation updateAccount` in the Sonar SDL. Returns Account. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "account.update"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "UpdateAccountMutationInput"
+            },
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountDeleteRequest": {
+      "$comment": "Generated from `mutation archiveAccount` in the Sonar SDL. Returns Account. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "account.delete"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountServiceReadRequest": {
+      "$comment": "Generated from `query account_services` in the Sonar SDL. Returns AccountServiceConnection!. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.read"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "sonar_unique_id": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "_version": {
+              "type": "string"
+            },
+            "account_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "addition_prorate_date": {
+              "type": "string"
+            },
+            "data_usage_last_calculated_date": {
+              "type": "string"
+            },
+            "data_usage_percentage": {
+              "type": "integer"
+            },
+            "is_additional": {
+              "type": "boolean"
+            },
+            "name_override": {
+              "type": "string"
+            },
+            "next_bill_date": {
+              "type": "string"
+            },
+            "number_of_times_billed": {
+              "type": "integer"
+            },
+            "package_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "price_override": {
+              "type": "integer"
+            },
+            "price_override_reason": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "service_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "unique_package_relationship_id": {
+              "type": "string"
+            },
+            "paginator": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Paginator"
+            },
+            "sorter": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Sorter"
+              }
+            },
+            "search": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Search"
+              }
+            },
+            "general_search": {
+              "type": "string"
+            },
+            "general_search_mode": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "GeneralSearchMode"
+            },
+            "aggregation": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Aggregator"
+              }
+            },
+            "reverse_relation_filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "ReverseRelationFilter"
+              }
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountServiceCreateRequest": {
+      "$comment": "Generated from `mutation addServiceToAccount` in the Sonar SDL. Returns AccountService. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.create"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "AddServiceToAccountMutationInput"
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountServiceUpdateRequest": {
+      "$comment": "Generated from `mutation updateAccountService` in the Sonar SDL. Returns AccountService. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.update"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "UpdateAccountServiceMutationInput"
+            },
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountServiceDeleteRequest": {
+      "$comment": "Generated from `mutation deleteAccountService` in the Sonar SDL. Returns SuccessResponse. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.delete"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "DeleteAccountServiceMutationInput"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "InventoryItemReadRequest": {
+      "$comment": "Generated from `query inventory_items` in the Sonar SDL. Returns InventoryItemConnection!. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.read"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "sonar_unique_id": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "_version": {
+              "type": "string"
+            },
+            "account_service_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "claimed_user_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "deployment_type_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "flapping": {
+              "type": "boolean"
+            },
+            "icmp_device_status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemDeviceStatus"
+            },
+            "icmp_status_flap_count": {
+              "type": "integer"
+            },
+            "icmp_status_last_change": {
+              "type": "string"
+            },
+            "icmp_threshold_violation": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemIcmpThresholdViolation"
+            },
+            "inventory_model_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "inventoryitemable_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "inventoryitemable_type": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryitemableType"
+            },
+            "latitude": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Latitude"
+            },
+            "longitude": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Longitude"
+            },
+            "metadata": {
+              "type": "string"
+            },
+            "overall_status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemDeviceStatus"
+            },
+            "override_status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemDeviceStatus"
+            },
+            "override_status_last_change": {
+              "type": "string"
+            },
+            "parent_inventory_item_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "preseem_status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "PreseemStatus"
+            },
+            "purchase_order_item_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "purchase_price": {
+              "type": "integer"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "segment_parent_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "snmp_device_status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemDeviceStatus"
+            },
+            "snmp_status_flap_count": {
+              "type": "integer"
+            },
+            "snmp_status_last_change": {
+              "type": "string"
+            },
+            "snmp_status_message": {
+              "type": "string"
+            },
+            "status": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "InventoryItemStatus"
+            },
+            "um_price": {
+              "type": "integer"
+            },
+            "paginator": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Paginator"
+            },
+            "sorter": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Sorter"
+              }
+            },
+            "search": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Search"
+              }
+            },
+            "general_search": {
+              "type": "string"
+            },
+            "general_search_mode": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "GeneralSearchMode"
+            },
+            "aggregation": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Aggregator"
+              }
+            },
+            "reverse_relation_filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "ReverseRelationFilter"
+              }
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "InventoryItemCreateRequest": {
+      "$comment": "Generated from `mutation createInventoryItems` in the Sonar SDL. Returns [InventoryItem]. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.create"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "CreateInventoryItemsMutationInput"
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "InventoryItemUpdateRequest": {
+      "$comment": "Generated from `mutation updateInventoryItem` in the Sonar SDL. Returns InventoryItem. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.update"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "UpdateInventoryItemsMutationInput"
+            },
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "InventoryItemDeleteRequest": {
+      "$comment": "Generated from `mutation deleteInventoryItem` in the Sonar SDL. Returns SuccessResponse. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.delete"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "IpAssignmentReadRequest": {
+      "$comment": "Generated from `query ip_assignments` in the Sonar SDL. Returns IpAssignmentConnection!. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "ip_assignment.read"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "sonar_unique_id": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "_version": {
+              "type": "string"
+            },
+            "account_service_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "description": {
+              "type": "string"
+            },
+            "ip_pool_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "ipassignmentable_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "ipassignmentable_type": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "IpassignmentableType"
+            },
+            "reference": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Text"
+            },
+            "soft": {
+              "type": "boolean"
+            },
+            "subnet": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "SubnetScalar"
+            },
+            "subnet_id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            },
+            "paginator": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "Paginator"
+            },
+            "sorter": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Sorter"
+              }
+            },
+            "search": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Search"
+              }
+            },
+            "general_search": {
+              "type": "string"
+            },
+            "general_search_mode": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "GeneralSearchMode"
+            },
+            "aggregation": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "Aggregator"
+              }
+            },
+            "reverse_relation_filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "x-graphql-input-type": "ReverseRelationFilter"
+              }
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "IpAssignmentCreateRequest": {
+      "$comment": "Generated from `mutation createIpAssignment` in the Sonar SDL. Returns IpAssignment. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId"
+      ],
+      "properties": {
+        "action": {
+          "const": "ip_assignment.create"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "CreateIpAssignmentMutationInput"
+            }
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "IpAssignmentUpdateRequest": {
+      "$comment": "Generated from `mutation updateIpAssignment` in the Sonar SDL. Returns IpAssignment. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "ip_assignment.update"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "object",
+              "additionalProperties": true,
+              "x-graphql-input-type": "UpdateIpAssignmentMutationInput"
+            },
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "IpAssignmentDeleteRequest": {
+      "$comment": "Generated from `mutation deleteIpAssignment` in the Sonar SDL. Returns SuccessResponse. Do not hand-edit.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "variables"
+      ],
+      "properties": {
+        "action": {
+          "const": "ip_assignment.delete"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "description": "Flat GraphQL selection set: identifiers separated by single spaces. Braces, parentheses and quotes are rejected so the value cannot terminate the enclosing selection set.",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "variables": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "string"
+              ],
+              "pattern": "^-?[0-9]+$"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        }
+      }
+    },
+    "AccountServiceReadByAccountNumberRequest": {
+      "$comment": "Lookup by `accountNumber`. GraphQL argument types are read off the Sonar SDL; the identifier constraint is dereferenced from #/definitions/identifier.accountNumber.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "accountNumber"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.read.byAccountNumber"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "accountNumber": {
+          "$ref": "#/definitions/identifier.accountNumber"
+        }
+      }
+    },
+    "InventoryItemReadByAccountNumberRequest": {
+      "$comment": "Lookup by `accountNumber`. GraphQL argument types are read off the Sonar SDL; the identifier constraint is dereferenced from #/definitions/identifier.accountNumber.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "accountNumber"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.read.byAccountNumber"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "accountNumber": {
+          "$ref": "#/definitions/identifier.accountNumber"
+        }
+      }
+    },
+    "InventoryItemReadBySerialNumberRequest": {
+      "$comment": "Lookup by `serialNumber`. GraphQL argument types are read off the Sonar SDL; the identifier constraint is dereferenced from #/definitions/identifier.serialNumber.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "serialNumber"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.read.bySerialNumber"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "serialNumber": {
+          "$ref": "#/definitions/identifier.serialNumber"
+        }
+      }
+    },
+    "AccountServiceReadBySerialNumberRequest": {
+      "$comment": "Lookup by `serialNumber`. GraphQL argument types are read off the Sonar SDL; the identifier constraint is dereferenced from #/definitions/identifier.serialNumber.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "serialNumber"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.read.bySerialNumber"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "serialNumber": {
+          "$ref": "#/definitions/identifier.serialNumber"
+        }
+      }
+    },
+    "AccountReadByRangeRequest": {
+      "$comment": "Range and comparison predicates over `accounts`. Bucket membership is derived from the SDL argument types.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "where"
+      ],
+      "properties": {
+        "action": {
+          "const": "account.read.byRange"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "where": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "Predicate buckets. Same attribute ORs, different attributes AND, per Sonar's documented Search semantics.",
+          "properties": {
+            "numeric": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "account_status_id",
+                      "account_type_id",
+                      "archived_by_user_id",
+                      "company_id",
+                      "data_usage_percentage",
+                      "disconnection_reason_id",
+                      "id",
+                      "next_recurring_charge_amount",
+                      "parent_account_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "eq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "ne"
+                    ]
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "_version",
+                      "name",
+                      "sonar_unique_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "contains",
+                      "eq"
+                    ]
+                  }
+                }
+              }
+            },
+            "flag": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "include_archived",
+                      "is_delinquent",
+                      "is_eligible_for_archive"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "AccountServiceReadByRangeRequest": {
+      "$comment": "Range and comparison predicates over `account_services`. Bucket membership is derived from the SDL argument types.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "where"
+      ],
+      "properties": {
+        "action": {
+          "const": "account_service.read.byRange"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "where": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "Predicate buckets. Same attribute ORs, different attributes AND, per Sonar's documented Search semantics.",
+          "properties": {
+            "numeric": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "account_id",
+                      "data_usage_percentage",
+                      "id",
+                      "number_of_times_billed",
+                      "package_id",
+                      "price_override",
+                      "quantity",
+                      "service_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "eq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "ne"
+                    ]
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "_version",
+                      "name_override",
+                      "price_override_reason",
+                      "sonar_unique_id",
+                      "unique_package_relationship_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "contains",
+                      "eq"
+                    ]
+                  }
+                }
+              }
+            },
+            "flag": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "is_additional"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "InventoryItemReadByRangeRequest": {
+      "$comment": "Range and comparison predicates over `inventory_items`. Bucket membership is derived from the SDL argument types.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "where"
+      ],
+      "properties": {
+        "action": {
+          "const": "inventory_item.read.byRange"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "where": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "Predicate buckets. Same attribute ORs, different attributes AND, per Sonar's documented Search semantics.",
+          "properties": {
+            "numeric": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "account_service_id",
+                      "claimed_user_id",
+                      "deployment_type_id",
+                      "icmp_status_flap_count",
+                      "id",
+                      "inventory_model_id",
+                      "inventoryitemable_id",
+                      "parent_inventory_item_id",
+                      "purchase_order_item_id",
+                      "purchase_price",
+                      "quantity",
+                      "segment_parent_id",
+                      "snmp_status_flap_count",
+                      "um_price"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "eq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "ne"
+                    ]
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "_version",
+                      "metadata",
+                      "snmp_status_message",
+                      "sonar_unique_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "contains",
+                      "eq"
+                    ]
+                  }
+                }
+              }
+            },
+            "flag": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "flapping"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "IpAssignmentReadByRangeRequest": {
+      "$comment": "Range and comparison predicates over `ip_assignments`. Bucket membership is derived from the SDL argument types.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "correlationId",
+        "where"
+      ],
+      "properties": {
+        "action": {
+          "const": "ip_assignment.read.byRange"
+        },
+        "correlationId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "requestedAt": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*( [A-Za-z_][A-Za-z0-9_]*)*$",
+          "maxLength": 2048
+        },
+        "paginator": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "sorter": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "callbackPath": {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9_\\-/\\.]*$",
+          "maxLength": 512
+        },
+        "where": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "Predicate buckets. Same attribute ORs, different attributes AND, per Sonar's documented Search semantics.",
+          "properties": {
+            "numeric": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "account_service_id",
+                      "id",
+                      "ip_pool_id",
+                      "ipassignmentable_id",
+                      "subnet_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "eq",
+                      "gt",
+                      "gte",
+                      "lt",
+                      "lte",
+                      "ne"
+                    ]
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "_version",
+                      "description",
+                      "sonar_unique_id"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  },
+                  "op": {
+                    "enum": [
+                      "contains",
+                      "eq"
+                    ]
+                  }
+                }
+              }
+            },
+            "flag": {
+              "type": "array",
+              "maxItems": 25,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "attribute",
+                  "value"
+                ],
+                "properties": {
+                  "attribute": {
+                    "enum": [
+                      "soft"
+                    ]
+                  },
+                  "value": {
+                    "type": [
+                      "number",
+                      "string",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "identifier.accountNumber": {
+      "$comment": "Sonar exposes no account_number field. The account number IS the account id, so the identifier binds to a different argument per entity.",
+      "title": "Sonar account number",
+      "type": [
+        "integer",
+        "string"
+      ],
+      "pattern": "^[0-9]{1,19}$"
+    },
+    "identifier.serialNumber": {
+      "$comment": "Not a first-class argument on any Sonar root. Stored as an inventory_model_field_data row, so it resolves through a scoped hop.",
+      "title": "ONT / CPE serial number",
+      "allOf": [
+        {
+          "$ref": "#/definitions/tmf639.Characteristic"
+        },
+        {
+          "type": "object",
+          "required": [
+            "name",
+            "value"
+          ],
+          "properties": {
+            "name": {
+              "const": "serialNumber"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$"
+            }
+          }
+        }
+      ]
+    },
+    "tmf638.ServiceRef": {
+      "description": "Service reference, for when Service is used by other entities",
+      "properties": {
+        "@baseType": {
+          "description": "When sub-classing, this defines the super-class",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "The actual type of the target instance when needed for disambiguation.",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri",
+          "type": "string"
+        },
+        "@type": {
+          "description": "When sub-classing, this defines the sub-class Extensible name",
+          "type": "string"
+        },
+        "href": {
+          "description": "Hyperlink reference",
+          "format": "uri",
+          "type": "string"
+        },
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the related entity.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "$comment": "Vendored from https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-v4.0.0.swagger.json (upstream sha256 d3c4136952a80c5f). Do not hand-edit; see vendor.lock.json."
+    },
+    "tmf639.Any": {
+      "$comment": "Vendored from https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json (upstream sha256 0de53c1e550fade7). Do not hand-edit; see vendor.lock.json."
+    },
+    "tmf639.Characteristic": {
+      "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+      "properties": {
+        "@baseType": {
+          "description": "When sub-classing, this defines the super-class",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri",
+          "type": "string"
+        },
+        "@type": {
+          "description": "When sub-classing, this defines the sub-class entity name",
+          "type": "string"
+        },
+        "characteristicRelationship": {
+          "items": {
+            "$ref": "#/definitions/tmf639.CharacteristicRelationship"
+          },
+          "type": "array"
+        },
+        "id": {
+          "description": "Unique identifier of the characteristic",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the characteristic",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/tmf639.Any",
+          "description": "The value of the characteristic"
+        },
+        "valueType": {
+          "description": "Data type of the value of the characteristic",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "type": "object",
+      "$comment": "Vendored from https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json (upstream sha256 0de53c1e550fade7). Do not hand-edit; see vendor.lock.json."
+    },
+    "tmf639.CharacteristicRelationship": {
+      "description": "Another Characteristic that is related to the current Characteristic;",
+      "properties": {
+        "@baseType": {
+          "description": "When sub-classing, this defines the super-class",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri",
+          "type": "string"
+        },
+        "@type": {
+          "description": "When sub-classing, this defines the sub-class entity name",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier of the characteristic",
+          "type": "string"
+        },
+        "relationshipType": {
+          "description": "The type of relationship",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "$comment": "Vendored from https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json (upstream sha256 0de53c1e550fade7). Do not hand-edit; see vendor.lock.json."
+    }
+  }
+}

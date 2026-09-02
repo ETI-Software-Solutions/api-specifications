@@ -1,0 +1,28 @@
+{
+  "tmf638": {
+    "definitions": [
+      "ServiceRef"
+    ],
+    "extract_sha256": "4a820add59e2db7e4fc337f1f9a4d46203e46ec65bcddcb88f235b4e5874ad23",
+    "fetched_utc": "2026-09-02T00:00:00+00:00",
+    "roots": [
+      "ServiceRef"
+    ],
+    "upstream_sha256": "d3c4136952a80c5fc829311f6bbdfe3d2cc22ab7309d2e0716d92f79c6e93a28",
+    "url": "https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-v4.0.0.swagger.json"
+  },
+  "tmf639": {
+    "definitions": [
+      "Any",
+      "Characteristic",
+      "CharacteristicRelationship"
+    ],
+    "extract_sha256": "baec544642be9975b8102996bb21fb43de1ec4678a79e5f51503b106bc476e6b",
+    "fetched_utc": "2026-09-02T00:00:00+00:00",
+    "roots": [
+      "Characteristic"
+    ],
+    "upstream_sha256": "0de53c1e550fade78b89c4172a9cb83217fa8d05341a2f61fc1719603e88fc62",
+    "url": "https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json"
+  }
+}
