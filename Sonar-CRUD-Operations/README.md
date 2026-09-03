@@ -626,7 +626,7 @@ the `errors` array is empty. A GraphQL-level failure (Sonar returns HTTP 200 wit
 
 ---
 
-## 8. Gap register
+## 8. Gap register (First Iteration)
 
 Blocking gaps must be closed before this reaches a production Sonar tenant.
 
@@ -814,7 +814,7 @@ reviewable act (`--refresh-vendor`), not a side effect of building.
 
 ---
 
-## 12. Gap register — additions
+## 12. Gap register — (Iteration)
 
 | # | Severity | Gap | Close it by |
 |---|---|---|---|
@@ -953,7 +953,7 @@ declared, the dead-letter channel must resolve to a real spec channel, and
 
 ---
 
-## 16. Gap register — additions and closures
+## 16. Gap register — additions and closures (FINAL)
 
 | # | Severity | Status |
 |---|---|---|
