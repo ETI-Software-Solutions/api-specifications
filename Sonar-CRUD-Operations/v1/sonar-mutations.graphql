@@ -1,0 +1,4277 @@
+type Mutation {
+  # Make additional funds available to the instance service fund.
+  #
+  # Arguments
+  # input: [Not documented]
+  addInstanceServiceFunds(
+    input: AddInstanceServiceFundsMutationInput
+  ): InstanceServiceFunds!
+  # Add a package to an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  addPackageToAccount(input: AddPackageToAccountMutationInput): [AccountService]
+  # Add a recurring or expiring service to an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  addServiceToAccount(input: AddServiceToAccountMutationInput): AccountService
+  # Allocate a report builder license to a user.
+  #
+  # Arguments
+  # input: [Not documented]
+  allocateLookerExploreLicenseToUser(
+    input: AllocateLookerExploreLicenseToUserMutationInput
+  ): LookerExploreLicense
+  # Allocate a report viewer license to a user.
+  #
+  # Arguments
+  # input: [Not documented]
+  allocateLookerViewLicenseToUser(
+    input: AllocateLookerViewLicenseToUserMutationInput
+  ): LookerViewLicense
+  # Apply a credit to an invoice with a due balance.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `Invoice`.
+  applyCreditToInvoice(
+    input: ApplyCreditToInvoiceMutationInput
+    id: Int64Bit!
+  ): Invoice
+  # Archive an account.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  archiveAccount(id: Int64Bit!): Account
+  # Assign generic inventory items to an assignee.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.generic_inventory_item_id
+  assignGenericInventoryItems(
+    input: AssignGenericInventoryItemsMutationInput
+    id: Int64Bit!
+  ): GenericInventoryItem
+  # Assign one or more inventory items to a new assignee.
+  #
+  # Arguments
+  # input: [Not documented]
+  # ids: The ID of an `InventoryItem`.
+  assignInventoryItems(
+    input: AssignInventoryItemsMutationInput
+    ids: [Int64Bit!]!
+  ): [InventoryItem]
+  # Perform manual Adtran Mosaic audit.
+  #
+  # Arguments
+  # input: [Not documented]
+  auditAdtranMosaic(input: AuditAdtranMosaicMutationInput): AdtranMosaicSetting
+  # Audit Calix Cloud subscribers to Sonar accounts.
+  #
+  # Arguments
+  # input: [Not documented]
+  auditCalixCloud(input: AuditCalixCloudMutationInput): CalixCloudSetting
+  # Perform manual repair of Adtran Mosaic Cloud audit entries.
+  #
+  # Arguments
+  # id: The ID of an Adtran Mosaic audit record.
+  auditRepairAdtranMosaic(id: Int64Bit!): SuccessResponse
+  # Cancel a print to mail batch.
+  #
+  # Arguments
+  # id: The ID of the print to mail batch.
+  cancelPrintToMailBatch(id: Int64Bit!): SuccessResponse
+  # Check in to a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  checkInToJob(input: CheckInToJobMutationInput): JobCheckIn
+  # Check out of a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  checkOutOfJob(input: CheckOutOfJobMutationInput): JobCheckIn
+  # Claim one or many inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  claimInventoryItems(input: ClaimInventoryItemsMutationInput): SuccessResponse
+  # Complete a task that requires a file for a completion type.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  completeFileTask(input: CompleteFileTaskMutationInput, id: Int64Bit!): Task
+  # Complete a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  completeJob(input: CompleteJobMutationInput): Job
+  # Complete or uncomplete a task.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  completeTask(input: CompleteTaskMutationInput, id: Int64Bit!): Task
+  # Consume generic inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.generic_inventory_item_id
+  consumeGenericInventoryItems(
+    input: ConsumeGenericInventoryItemsMutationInput
+    id: Int64Bit!
+  ): GenericInventoryItem
+  # Create an access log entry on an entity for the current user.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccessLog(input: CreateAccessLogMutationInput): AccessLog
+  # Create a new account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccount(input: CreateAccountMutationInput): Account
+  # Create a one time transaction from an adjustment service for an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountAdjustmentTransaction(
+    input: CreateAccountAdjustmentTransactionMutationInput
+  ): TransactionInterface
+  # Create account Adtran Mosaic service details.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountAdtranMosaicServiceDetail(
+    input: CreateAccountAdtranMosaicServiceDetailMutationInput
+  ): AccountAdtranMosaicServiceDetail
+  # Create an account calix service detail.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountCalixServiceDetail(
+    input: CreateAccountCalixServiceDetailMutationInput
+  ): AccountCalixServiceDetail
+  # Create a new account group.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountGroup(input: CreateAccountGroupMutationInput): AccountGroup
+  # Create a one time transaction for an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountOneTimeTransaction(
+    input: CreateAccountOneTimeTransactionMutationInput
+  ): [TransactionInterface]
+  # Create a new account status.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountStatus(input: CreateAccountStatusMutationInput): AccountStatus
+  # Create a new account type.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAccountType(input: CreateAccountTypeMutationInput): AccountType
+  # Create a new ACH batch.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAchBatch(input: CreateAchBatchMutationInput): [AchBatch]!
+  # Create an address list.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAddressList(input: CreateAddressListMutationInput): AddressList
+  # Create a new address status.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAddressStatus(input: CreateAddressStatusMutationInput): AddressStatus
+  # Create a new adjustment service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAdjustmentService(input: CreateAdjustmentServiceMutationInput): Service
+  # Create Adtran Mosaic settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAdtranMosaicSetting(
+    input: CreateAdtranMosaicSettingMutationInput
+  ): AdtranMosaicSetting
+  # Create a new alerting rotation.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAlertingRotation(
+    input: CreateAlertingRotationMutationInput
+  ): AlertingRotation
+  # Create a new alerting rotation day.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAlertingRotationDay(
+    input: CreateAlertingRotationDayMutationInput
+  ): AlertingRotationDay
+  # Create a new application firewall rule.
+  #
+  # Arguments
+  # input: [Not documented]
+  createApplicationFirewallRule(
+    input: CreateApplicationFirewallRuleMutationInput
+  ): ApplicationFirewallRule
+  # Create an authentication factor.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAuthenticationFactor(
+    input: CreateAuthenticationFactorMutationInput
+  ): AuthenticationFactor
+  # Create an Avalara bundled tax definition.
+  #
+  # Arguments
+  # input: [Not documented]
+  createAvalaraTaxDefinition(
+    input: CreateAvalaraTaxDefinitionMutationInput
+  ): AvalaraTaxDefinition
+  # Create a new bank account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createBankAccount(input: CreateBankAccountMutationInput): BankAccount
+  # Create a payment using a bank account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createBankAccountPayment(
+    input: CreateBankAccountPaymentMutationInput
+  ): Payment
+  # Create a new bank account processor.
+  #
+  # Arguments
+  # input: [Not documented]
+  createBankAccountProcessor(
+    input: CreateBankAccountProcessorMutationInput
+  ): BankAccountProcessor
+  # Create a new billing default.
+  #
+  # Arguments
+  # input: [Not documented]
+  createBillingDefault(input: CreateBillingDefaultMutationInput): BillingDefault
+  # Create a cable modem provisioner.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCableModemProvisioner(
+    input: CreateCableModemProvisionerMutationInput
+  ): CableModemProvisioner
+  # Create a calendar - iCalendar.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCalendarIcal(input: CreateCalendarIcalMutationInput): CalendarIcal
+  # Create a Calix Cloud setting.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCalixCloudSetting(
+    input: CreateCalixCloudSettingMutationInput
+  ): CalixCloudSetting
+  # Create a Calix integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCalixIntegration(
+    input: CreateCalixIntegrationMutationInput
+  ): CalixIntegration
+  # Create a call detail record (CDR).
+  #
+  # Arguments
+  # input: [Not documented]
+  createCallDetailRecord(
+    input: CreateCallDetailRecordMutationInput
+  ): CallDetailRecord
+  # Create a Flatfile import of call detail records (CDRs).
+  #
+  # Arguments
+  # input: [Not documented]
+  createCallDetailRecordImportFlatfile(
+    input: CreateCallDetailRecordImportFlatfileMutationInput
+  ): CallDetailRecordImportRecipe
+  # Create a call log.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCallLog(input: CreateCallLogMutationInput): CallLog
+  # Create a new canned reply.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCannedReply(input: CreateCannedReplyMutationInput): CannedReply
+  # Create a new canned reply category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCannedReplyCategory(
+    input: CreateCannedReplyCategoryMutationInput
+  ): CannedReplyCategory
+  # Create a new company.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCompany(input: CreateCompanyMutationInput): Company
+  # Create a new contact.
+  #
+  # Arguments
+  # input: [Not documented]
+  createContact(input: CreateContactMutationInput): Contact
+  # Create a new contract.
+  #
+  # Arguments
+  # input: [Not documented]
+  createContract(input: CreateContractMutationInput): Contract
+  # Create a new contract template.
+  #
+  # Arguments
+  # input: [Not documented]
+  createContractTemplate(
+    input: CreateContractTemplateMutationInput
+  ): ContractTemplate
+  # Create a Core credit card.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCoreCreditCard(input: CreateCoreCreditCardMutationInput): CoreCreditCard
+  # Create a Core payment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCorePayment(input: CreateCorePaymentMutationInput): CorePayment
+  # Create a new credit card.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCreditCard(input: CreateCreditCardMutationInput): CreditCard
+  # Create a credit card payment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCreditCardPayment(input: CreateCreditCardPaymentMutationInput): Payment
+  # Create a new credit card processor.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCreditCardProcessor(
+    input: CreateCreditCardProcessorMutationInput
+  ): CreditCardProcessor
+  # Create a new custom field.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCustomField(input: CreateCustomFieldMutationInput): CustomField
+  # Create a new custom link.
+  #
+  # Arguments
+  # input: [Not documented]
+  createCustomLink(input: CreateCustomLinkMutationInput): CustomLink
+  # Create a data service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDataService(input: CreateDataServiceMutationInput): Service
+  # Create a data usage top off.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDataUsageTopOff(
+    input: CreateDataUsageTopOffMutationInput
+  ): DataUsageTopOff
+  # Create data usage entries. This will also update each account last aggregation
+  # date to the earliest datetime in the submitted recordset.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDataUsages(input: [CreateDataUsageMutationInput]): SuccessResponse
+  # Create a delinquency exclusion.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDelinquencyExclusion(
+    input: CreateDelinquencyExclusionMutationInput
+  ): DelinquencyExclusion
+  # Create a department.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDepartment(input: CreateDepartmentMutationInput): Department
+  # Create a new deployment type.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDeploymentType(input: CreateDeploymentTypeMutationInput): DeploymentType
+  # Create a new deposit slip.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDepositSlip(input: CreateDepositSlipMutationInput): DepositSlip
+  # Create a DHCP server.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDhcpServer(input: CreateDhcpServerMutationInput): DhcpServer
+  # Create a DHCP server identifier.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDhcpServerIdentifier(
+    input: CreateDhcpServerIdentifierMutationInput
+  ): DhcpServerIdentifier
+  # Create a DID.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDid(input: CreateDidMutationInput): Did
+  # Create a DID assignment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDidAssignment(input: CreateDidAssignmentMutationInput): DidAssignment
+  # Create a Flatfile import of DIDs.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDidImportFlatfile(
+    input: CreateDidImportFlatfileMutationInput
+  ): DidImportRecipe
+  # Create a disconnection reason.
+  #
+  # Arguments
+  # input: [Not documented]
+  createDisconnectionReason(
+    input: CreateDisconnectionReasonMutationInput
+  ): DisconnectionReason
+  # Create a new messaging category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createEmailCategory(input: CreateEmailCategoryMutationInput): EmailCategory
+  # Create a new email domain.
+  #
+  # Arguments
+  # input: [Not documented]
+  createEmailDomain(input: CreateEmailDomainMutationInput): EmailDomain
+  # Create a new saved message.
+  #
+  # Arguments
+  # input: [Not documented]
+  createEmailMessage(input: CreateEmailMessageMutationInput): EmailMessage
+  # Create new saved message contents.
+  #
+  # Arguments
+  # input: [Not documented]
+  createEmailMessageContent(
+    input: CreateEmailMessageContentMutationInput
+  ): EmailMessageContent
+  # Create an LTE EPC.
+  #
+  # Arguments
+  # input: [Not documented]
+  createEpc(input: CreateEpcMutationInput): Epc
+  # Create a new expiring service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createExpiringService(input: CreateExpiringServiceMutationInput): Service
+  # Create an external marketing integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  createExternalMarketingProvider(
+    input: CreateExternalMarketingProviderMutationInput
+  ): ExternalMarketingProvider
+  # Create a FCC Form 477 report.
+  #
+  # Arguments
+  # input: [Not documented]
+  createFccForm477Report(
+    input: CreateFccForm477ReportMutationInput
+  ): FccForm477Report
+  # Create a FiberMap Integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  createFibermapIntegration(
+    input: CreateFibermapIntegrationMutationInput
+  ): FibermapIntegration
+  # Create a new general ledger code.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGeneralLedgerCode(
+    input: CreateGeneralLedgerCodeMutationInput
+  ): GeneralLedgerCode
+  # Create a generic inventory assignee.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGenericInventoryAssignee(
+    input: CreateGenericInventoryAssigneeMutationInput
+  ): GenericInventoryAssignee
+  # Create new generic inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGenericInventoryItems(
+    input: CreateGenericInventoryItemsMutationInput
+  ): GenericInventoryItem
+  # Create a new geo tax zone.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGeoTaxZone(input: CreateGeoTaxZoneMutationInput): GeoTaxZone
+  # Create a geofence.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGeofence(input: CreateGeofenceMutationInput): Geofence
+  # Create a Global Inventory Model Min/Max.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGlobalInventoryModelMinMax(
+    input: CreateGlobalInventoryModelMinMaxMutationInput
+  ): GlobalInventoryModelMinMax
+  # Create a GPS tracking provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createGpsTrackingProvider(
+    input: CreateGpsTrackingProviderMutationInput
+  ): GpsTrackingProvider
+  # Create an ActiveDirectory identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIdentityProviderActiveDirectory(
+    input: CreateIdentityProviderActiveDirectoryMutationInput
+  ): IdentityProvider
+  # Create a Google identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIdentityProviderGoogle(
+    input: CreateIdentityProviderGoogleMutationInput
+  ): IdentityProvider
+  # Create a Microsoft identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIdentityProviderMicrosoft(
+    input: CreateIdentityProviderMicrosoftMutationInput
+  ): IdentityProvider
+  # Create a SAML identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIdentityProviderSaml(
+    input: CreateIdentityProviderSamlMutationInput
+  ): IdentityProvider
+  # Create a new inbound mailbox.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInboundMailbox(input: CreateInboundMailboxMutationInput): InboundMailbox
+  # Create an inline device.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInlineDevice(input: CreateInlineDeviceMutationInput): InlineDevice
+  # Create a new internal location.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInternalLocation(
+    input: CreateInternalLocationMutationInput
+  ): InternalLocation
+  # Create an internal ticket.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInternalTicket(input: CreateInternalTicketMutationInput): Ticket
+  # Create an inventory item segment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryItemSegment(
+    input: CreateInventoryItemSegmentMutationInput
+  ): InventoryItem
+  # Create one or many inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryItems(
+    input: CreateInventoryItemsMutationInput
+  ): [InventoryItem]
+  # Create a new inventory location.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryLocation(
+    input: CreateInventoryLocationMutationInput
+  ): InventoryLocation
+  # Create a new inventory model.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryModel(input: CreateInventoryModelMutationInput): InventoryModel
+  # Create a new inventory model category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryModelCategory(
+    input: CreateInventoryModelCategoryMutationInput
+  ): InventoryModelCategory
+  # Create a new inventory model field.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryModelField(
+    input: CreateInventoryModelFieldMutationInput
+  ): InventoryModelField
+  # Create an Inventory Model Min/Max.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInventoryModelMinMax(
+    input: CreateInventoryModelMinMaxMutationInput
+  ): InventoryModelMinMax
+  # Create a new invoice.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInvoice(input: CreateInvoiceMutationInput): Invoice
+  # Create an invoice attachment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInvoiceAttachment(
+    input: CreateInvoiceAttachmentMutationInput
+  ): InvoiceAttachment
+  # Create an invoice message.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInvoiceMessage(input: CreateInvoiceMessageMutationInput): InvoiceMessage
+  # Create an invoice template.
+  #
+  # Arguments
+  # input: [Not documented]
+  createInvoiceTemplate(
+    input: CreateInvoiceTemplateMutationInput
+  ): InvoiceTemplate
+  # Create a new IP assignment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIpAssignment(input: CreateIpAssignmentMutationInput): IpAssignment
+  # Create a new IP assignment from a MAC/IP address pair.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIpAssignmentFromDhcpReservation(
+    input: CreateIpAssignmentFromDhcpReservationMutationInput
+  ): SuccessResponse
+  # Create a new IP pool.
+  #
+  # Arguments
+  # input: [Not documented]
+  createIpPool(input: CreateIpPoolMutationInput): IpPool
+  # Create a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  createJob(input: CreateJobMutationInput): Job
+  # Associate a service with a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  createJobService(input: CreateJobServiceMutationInput): JobService
+  # Create a job type.
+  #
+  # Arguments
+  # input: [Not documented]
+  createJobType(input: CreateJobTypeMutationInput): JobType
+  # Create linked addresses in bulk.
+  #
+  # Arguments
+  # input: [Not documented]
+  createLinkedAddresses(
+    input: CreateLinkedAddressesMutationInput
+  ): CreateLinkedAddressesResponse
+  # Create a new local prefix.
+  #
+  # Arguments
+  # input: [Not documented]
+  createLocalPrefix(input: CreateLocalPrefixMutationInput): LocalPrefix
+  # Create an LTE provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createLteProvider(input: CreateLteProviderMutationInput): LteProvider
+  # Create a new account mailing address.
+  #
+  # Arguments
+  # input: [Not documented]
+  createMailingAddress(input: CreateMailingAddressMutationInput): Address
+  # Create a new manufacturer.
+  #
+  # Arguments
+  # input: [Not documented]
+  createManufacturer(input: CreateManufacturerMutationInput): Manufacturer
+  # Create a map overlay.
+  #
+  # Arguments
+  # input: [Not documented]
+  createMapOverlay(input: CreateMapOverlayMutationInput): MapOverlay
+  # Create a mass email communication.
+  #
+  # Arguments
+  # input: [Not documented]
+  createMassEmail(input: CreateMassEmailMutationInput): MassEmail
+  # Create a mass message communication.
+  #
+  # Arguments
+  # input: [Not documented]
+  createMassMessage(
+    input: CreateMassMessageMutationInput
+  ): SuccessResponseWithId
+  # Create a messaging category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createMessageCategory(
+    input: CreateMessageCategoryMutationInput
+  ): MessageCategory
+  # Create a Netflow on premise record.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNetflowOnPremise(
+    input: CreateNetflowOnPremiseMutationInput
+  ): NetflowOnPremise
+  # Create a Network Monitoring Graph.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNetworkMonitoringGraph(
+    input: CreateNetworkMonitoringGraphMutationInput
+  ): NetworkMonitoringGraph
+  # Create a Network Monitoring Template.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNetworkMonitoringTemplate(
+    input: CreateNetworkMonitoringTemplateMutationInput
+  ): NetworkMonitoringTemplate
+  # Create a network site.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNetworkSite(input: CreateNetworkSiteMutationInput): NetworkSite
+  # Create a non-inventory item.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNonInventoryItem(
+    input: CreateNonInventoryItemMutationInput
+  ): NonInventoryItem
+  # Create a new note.
+  #
+  # Arguments
+  # input: [Not documented]
+  createNote(input: CreateNoteMutationInput): Note
+  # Create a new one time service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createOneTimeService(input: CreateOneTimeServiceMutationInput): Service
+  # Create an order group.
+  #
+  # Arguments
+  # input: [Not documented]
+  createOrderGroup(input: CreateOrderGroupMutationInput): OrderGroup
+  # Create an overage service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createOverageService(input: CreateOverageServiceMutationInput): Service
+  # Create a package.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPackage(input: CreatePackageMutationInput): Package
+  # Create a new PayPal credential.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPayPalCredential(
+    input: CreatePayPalCredentialMutationInput
+  ): PayPalCredential
+  # Create a new payment without a payment method.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPayment(input: CreatePaymentMutationInput): Payment
+  # Create multiple new payments without a payment method.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPayments(input: CreatePaymentsMutationInput): PaymentResultConnection!
+  # Create a personal access token.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPersonalAccessToken(
+    input: CreatePersonalAccessTokenMutationInput
+  ): PersonalAccessToken
+  # Create a new phone number.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPhoneNumber(input: CreateContactPhoneNumberMutationInput): PhoneNumber
+  # Create a new phone number type.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPhoneNumberType(
+    input: CreatePhoneNumberTypeMutationInput
+  ): PhoneNumberType
+  # Create a poller.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPoller(input: CreatePollerMutationInput): Poller
+  # Create a new printed invoice batch.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPrintedInvoiceBatch(
+    input: CreatePrintedInvoiceBatchMutationInput
+  ): SuccessResponse
+  # Create a public ticket.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPublicTicket(input: CreatePublicTicketMutationInput): Ticket
+  # Create a purchase order.
+  #
+  # Arguments
+  # input: [Not documented]
+  createPurchaseOrder(input: CreatePurchaseOrderMutationInput): PurchaseOrder
+  # Create a new RADIUS account.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRadiusAccount(input: CreateRadiusAccountMutationInput): RadiusAccount
+  # Create a RADIUS group.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRadiusGroup(input: CreateRadiusGroupMutationInput): RadiusGroup
+  # Create a RADIUS group reply attribute.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRadiusGroupReplyAttribute(
+    input: CreateRadiusGroupReplyAttributeMutationInput
+  ): RadiusGroupReplyAttribute
+  # Create a RADIUS server.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRadiusServer(input: CreateRadiusServerMutationInput): RadiusServer
+  # Create a rate center.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRateCenter(input: CreateRateCenterMutationInput): RateCenter
+  # Add an entity to your recent items list.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRecentItem(input: CreateRecentItemMutationInput): [RecentItem]
+  # Create a new recurring service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRecurringService(input: CreateRecurringServiceMutationInput): Service
+  # Create a report.
+  #
+  # Arguments
+  # input: [Not documented]
+  createReport(input: CreateReportMutationInput): AvailableReport
+  # Create a new role.
+  #
+  # Arguments
+  # input: [Not documented]
+  createRole(input: CreateRoleMutationInput): Role
+  # Create a saved message category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSavedMessageCategory(
+    input: CreateSavedMessageCategoryMutationInput
+  ): SavedMessageCategory
+  # Create a schedule address.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleAddress(
+    input: CreateScheduleAddressMutationInput
+  ): ScheduleAddress
+  # Create a schedule availability.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleAvailability(
+    input: CreateScheduleAvailabilityMutationInput
+  ): ScheduleAvailability
+  # Create a schedule availability day/time.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleAvailabilityDayTime(
+    input: CreateScheduleAvailabilityDayTimeMutationInput
+  ): ScheduleAvailabilityDayTime
+  # Create a schedule blocker.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleBlocker(
+    input: CreateScheduleBlockerMutationInput
+  ): ScheduleBlocker
+  # Create a schedule blocker day/time.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleBlockerDayTime(
+    input: CreateScheduleBlockerDayTimeMutationInput
+  ): ScheduleBlockerDayTime
+  # Create a schedule time off.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduleTimeOff(
+    input: CreateScheduleTimeOffMutationInput
+  ): ScheduleTimeOff
+  # Create a scheduled event.
+  #
+  # Arguments
+  # input: [Not documented]
+  createScheduledEvent(input: CreateScheduledEventMutationInput): ScheduledEvent
+  # Create a saved search filter for the current user.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSearchFilter(input: CreateSearchFilterMutationInput): SearchFilter
+  # Create a new service eligibility rule.
+  #
+  # Arguments
+  # input: [Not documented]
+  createServiceEligibilityRule(
+    input: CreateServiceEligibilityRuleMutationInput
+  ): ServiceEligibilityRule
+  # Create service metadata.
+  #
+  # Arguments
+  # input: [Not documented]
+  createServiceMetadata(
+    input: CreateServiceMetadataMutationInput
+  ): ServiceMetadata
+  # Create a new serviceable address.
+  #
+  # Arguments
+  # input: [Not documented]
+  createServiceableAddress(
+    input: CreateServiceableAddressMutationInput
+  ): Address
+  # Create a serviceable address account assignment future
+  #
+  # Arguments
+  # input: [Not documented]
+  createServiceableAddressAccountAssignmentFuture(
+    input: CreateServiceableAddressAccountAssignmentFutureMutationInput
+  ): ServiceableAddressAccountAssignmentFuture
+  # Create a Signature.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSignature(input: CreateSignatureMutationInput): Signature
+  # Create an SNMP OID.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSnmpOid(input: CreateSnmpOidMutationInput): SnmpOid
+  # Create an SNMP OID threshold.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSnmpOidThreshold(
+    input: CreateSnmpOidThresholdMutationInput
+  ): SnmpOidThreshold
+  # Create an SNMP override.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSnmpOverride(input: CreateSnmpOverrideMutationInput): SnmpOverride
+  # Create a Sonar Import.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSonarImport(input: CreateSonarImportMutationInput): ImportRecipe
+  # Create a stock keeping unit.
+  #
+  # Arguments
+  # input: [Not documented]
+  createStockKeepingUnit(
+    input: CreateStockKeepingUnitMutationInput
+  ): StockKeepingUnit
+  # Create a stored view.
+  #
+  # Arguments
+  # input: [Not documented]
+  createStoredView(input: CreateStoredViewMutationInput): StoredView
+  # Create a new subnet.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSubnet(input: CreateSubnetMutationInput): Subnet
+  # Create a subscription.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSubscription(input: CreateSubscriptionMutationInput): Subscription
+  # Create a new supernet.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSupernet(input: CreateSupernetMutationInput): Supernet
+  # Directly trigger a system backup of all database tables.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSystemBackup(input: CreateSystemBackupMutationInput): SystemBackup
+  # Create a destination that system backups can be exported to.
+  #
+  # Arguments
+  # input: [Not documented]
+  createSystemBackupDestination(
+    input: CreateSystemBackupDestinationMutationInput
+  ): SystemBackupDestination
+  # Create a new task.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTask(input: CreateTaskMutationInput): Task
+  # Create a new task group.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaskGroup(input: CreateTaskGroupMutationInput): TaskGroup
+  # Create a task template.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaskTemplate(input: CreateTaskTemplateMutationInput): TaskTemplate
+  # Create a task template item.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaskTemplateItem(
+    input: CreateTaskTemplateItemMutationInput
+  ): TaskTemplateItem
+  # Create a new tax.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTax(input: CreateTaxMutationInput): Tax
+  # Create a tax exemption.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaxExemption(input: CreateTaxExemptionMutationInput): TaxExemption
+  # Create a tax override.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaxOverride(input: CreateTaxOverrideMutationInput): TaxOverride
+  # Create a tax provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTaxProvider(input: CreateTaxProviderMutationInput): TaxProvider
+  # Create a new ticket category.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketCategory(input: CreateTicketCategoryMutationInput): TicketCategory
+  # Create a new ticket category family.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketCategoryFamily(
+    input: CreateTicketCategoryFamilyMutationInput
+  ): TicketCategoryFamily
+  # Create a ticket comment.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketComment(input: CreateTicketCommentMutationInput): TicketComment
+  # Create a new ticket group.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketGroup(input: CreateTicketGroupMutationInput): TicketGroup
+  # Create a ticket recipient.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketRecipient(
+    input: CreateTicketRecipientMutationInput
+  ): TicketRecipient
+  # Create a new ticket reply.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketReply(input: CreateTicketReplyMutationInput): TicketReply
+  # Create a ticket resolution reason.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTicketResolutionReason(
+    input: CreateTicketResolutionReasonMutationInput
+  ): TicketResolutionReason
+  # Create a new bank account that has already been tokenized.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTokenizedBankAccount(
+    input: CreateTokenizedBankAccountMutationInput
+  ): BankAccount
+  # Create a new credit card that has already been tokenized.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTokenizedCreditCard(
+    input: CreateTokenizedCreditCardMutationInput
+  ): CreditCard
+  # DEPRECATED: Create a new triggered email. See createTriggeredMessageMutation.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTriggeredEmail(input: CreateTriggeredEmailMutationInput): TriggeredEmail
+  # Create a triggered message.
+  #
+  # Arguments
+  # input: [Not documented]
+  createTriggeredMessage(
+    input: CreateTriggeredMessageMutationInput
+  ): TriggeredMessage
+  # Create a new uninventoried MAC address.
+  #
+  # Arguments
+  # input: [Not documented]
+  createUninventoriedMacAddress(
+    input: CreateUninventoriedMacAddressMutationInput
+  ): UninventoriedMacAddress
+  # Create a usage based billing policy.
+  #
+  # Arguments
+  # input: [Not documented]
+  createUsageBasedBillingPolicy(
+    input: CreateUsageBasedBillingPolicyMutationInput
+  ): UsageBasedBillingPolicy
+  # Create a free period in a `UsageBasedBillingPolicy`.
+  #
+  # Arguments
+  # input: [Not documented]
+  createUsageBasedBillingPolicyFreePeriod(
+    input: CreateUsageBasedBillingPolicyFreePeriodMutationInput
+  ): UsageBasedBillingPolicyFreePeriod
+  # Create a new user. The user will be sent an email with a temporary password
+  # after creation.
+  #
+  # Arguments
+  # input: [Not documented]
+  createUser(input: CreateUserMutationInput): User
+  # Create a new vehicle.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVehicle(input: CreateVehicleMutationInput): Vehicle
+  # Create a vendor.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVendor(input: CreateVendorMutationInput): Vendor
+  # Create a vendor item.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVendorItem(input: CreateVendorItemMutationInput): VendorItem
+  # Create a voice provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVoiceProvider(input: CreateVoiceProviderMutationInput): VoiceProvider
+  # Create a voice provider rate.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVoiceProviderRate(
+    input: CreateVoiceProviderRateMutationInput
+  ): VoiceProviderRate
+  # Create a Flatfile import of voice provider rates.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVoiceProviderRateImportFlatfile(
+    input: CreateVoiceProviderRateImportFlatfileMutationInput
+  ): VoiceProviderRateImportRecipe
+  # Create a voice service.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVoiceService(input: CreateVoiceServiceMutationInput): Service
+  # Create a single voice service configuration parameter.
+  #
+  # Arguments
+  # input: [Not documented]
+  createVoiceServiceGenericParameter(
+    input: CreateVoiceServiceGenericParameterMutationInput
+  ): VoiceServiceGenericParameter
+  # Create a webhook endpoint.
+  #
+  # Arguments
+  # input: [Not documented]
+  createWebhookEndpoint(
+    input: CreateWebhookEndpointMutationInput
+  ): WebhookEndpoint
+  # Create a webhook endpoint event.
+  #
+  # Arguments
+  # input: [Not documented]
+  createWebhookEndpointEvent(
+    input: CreateWebhookEndpointEventMutationInput
+  ): WebhookEndpointEvent
+  # Delete account Adtran Mosaic service details.
+  #
+  # Arguments
+  # id: fields.account_adtran_mosaic_service_detail_id
+  deleteAccountAdtranMosaicServiceDetail(id: Int64Bit!): SuccessResponse
+  # Delete an account calix service detail.
+  #
+  # Arguments
+  # id: The ID of an `AccountCalixServiceDetail`.
+  deleteAccountCalixServiceDetail(id: Int64Bit!): SuccessResponse
+  # Delete an account group.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteAccountGroup(id: Int64Bit!): SuccessResponse
+  # Delete a package from an account.
+  #
+  # Arguments
+  # unique_package_relationship_id: A unique ID that describes this
+  # unique instance of a `Package` assignment.
+  # input: [Not documented]
+  deleteAccountPackage(
+    unique_package_relationship_id: String!
+    input: DeleteAccountServiceMutationInput
+  ): SuccessResponse
+  # Delete a service from an account.
+  #
+  # Arguments
+  # id: The ID of an AccountService.
+  # input: [Not documented]
+  deleteAccountService(
+    id: Int64Bit!
+    input: DeleteAccountServiceMutationInput
+  ): SuccessResponse
+  # Delete an account status.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteAccountStatus(id: Int64Bit!): SuccessResponse
+  # Delete an account type.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteAccountType(id: Int64Bit!): SuccessResponse
+  # Delete an account voice service detail.
+  #
+  # Arguments
+  # id: The ID of an account voice service detail.
+  deleteAccountVoiceServiceDetail(id: Int64Bit!): SuccessResponse
+  # Delete an ACH batch.
+  #
+  # Arguments
+  # id: fields.ach_batch_id
+  deleteAchBatch(id: Int64Bit!): SuccessResponse
+  # Delete an address list.
+  #
+  # Arguments
+  # id: fields.address_list_id
+  deleteAddressList(id: Int64Bit!): SuccessResponse
+  # Delete an address status.
+  #
+  # Arguments
+  # id: Address status ID.
+  deleteAddressStatus(id: Int64Bit!): SuccessResponse
+  # Delete Adtran Mosaic settings.
+  #
+  # Arguments
+  # id: The ID of an Adtran Mosaic setting.
+  deleteAdtranMosaicSetting(id: Int64Bit!): SuccessResponse
+  # Delete an alerting rotation.
+  #
+  # Arguments
+  # id: The alerting rotation ID.
+  deleteAlertingRotation(id: Int64Bit!): SuccessResponse
+  # Delete an alerting rotation day.
+  #
+  # Arguments
+  # id: The alerting rotation day and time ID.
+  deleteAlertingRotationDay(id: Int64Bit!): SuccessResponse
+  # Delete an application firewall rule.
+  #
+  # Arguments
+  # id: fields.application_firewall_rule_id
+  deleteApplicationFirewallRule(id: Int64Bit!): SuccessResponse
+  # Delete an authentication factor.
+  #
+  # Arguments
+  # id: The ID of an `AuthenticationFactor`.
+  deleteAuthenticationFactor(id: Int64Bit!): SuccessResponse
+  # Delete a bank account.
+  #
+  # Arguments
+  # id: The ID of a BankAccount.
+  deleteBankAccount(id: Int64Bit!): SuccessResponse
+  # Delete a bank account processor.
+  #
+  # Arguments
+  # id: The ID of a BankProcessor.
+  deleteBankAccountProcessor(id: Int64Bit!): SuccessResponse
+  # Delete a billing default.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteBillingDefault(id: Int64Bit!): SuccessResponse
+  # Delete a cable modem provisioner.
+  #
+  # Arguments
+  # id: The ID of a `CableModemProvisioner`.
+  deleteCableModemProvisioner(id: Int64Bit!): SuccessResponse
+  # Delete a calendar - iCalendar.
+  #
+  # Arguments
+  # id: fields.calendar_ical_id
+  deleteCalendarIcal(id: Int64Bit!): SuccessResponse
+  # Delete a Calix Cloud setting.
+  #
+  # Arguments
+  # id: The ID of a `CalixCloudSetting`.
+  deleteCalixCloudSetting(id: Int64Bit!): SuccessResponse
+  # Delete a Calix integration.
+  #
+  # Arguments
+  # id: Calix Inegartion ID.
+  deleteCalixIntegration(id: Int64Bit!): SuccessResponse
+  # Delete a call detail record (CDR).
+  #
+  # Arguments
+  # id: fields.call_detail_record_id
+  deleteCallDetailRecord(id: Int64Bit!): SuccessResponse
+  # Delete a call log.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteCallLog(id: Int64Bit!): SuccessResponse
+  # Delete a canned reply.
+  #
+  # Arguments
+  # id: fields.canned_reply_id
+  deleteCannedReply(id: Int64Bit!): SuccessResponse
+  # Delete a canned reply category.
+  #
+  # Arguments
+  # id: The ID of a `CannedReplyCategory`.
+  deleteCannedReplyCategory(id: Int64Bit!): SuccessResponse
+  # Delete a contact.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteContact(id: Int64Bit!): SuccessResponse
+  # Delete an unsigned contract.
+  #
+  # Arguments
+  # id: fields.contract_id
+  deleteContract(id: Int64Bit!): SuccessResponse
+  # Delete a contract template.
+  #
+  # Arguments
+  # id: The ID of a `ContractTemplate`.
+  deleteContractTemplate(id: Int64Bit!): SuccessResponse
+  # Delete a credit card.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteCreditCard(id: Int64Bit!): SuccessResponse
+  # Delete a credit card processor.
+  #
+  # Arguments
+  # id: The ID of a CreditCardProcessor.
+  deleteCreditCardProcessor(id: Int64Bit!): SuccessResponse
+  # Delete a custom field.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteCustomField(id: Int64Bit!): SuccessResponse
+  # Delete a custom link.
+  #
+  # Arguments
+  # id: fields.custom_link_id
+  deleteCustomLink(id: Int64Bit!): SuccessResponse
+  # Delete a debit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Debit`.
+  deleteDebit(
+    input: DeleteTransactionMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # Delete a delinquency exclusion.
+  #
+  # Arguments
+  # id: fields.delinquency_exclusion_id
+  deleteDelinquencyExclusion(id: Int64Bit!): SuccessResponse
+  # Delete a department.
+  #
+  # Arguments
+  # id: The ID of a department.
+  deleteDepartment(id: Int64Bit!): SuccessResponse
+  # Delete a deployment type.
+  #
+  # Arguments
+  # id: The ID of a `DeploymentType`.
+  deleteDeploymentType(id: Int64Bit!): SuccessResponse
+  # Delete a deposit slip.
+  #
+  # Arguments
+  # id: The deposit slip ID.
+  deleteDepositSlip(id: Int64Bit!): SuccessResponse
+  # Delete a DHCP server.
+  #
+  # Arguments
+  # id: The ID of a `DhcpServer`.
+  deleteDhcpServer(id: Int64Bit!): SuccessResponse
+  # Delete a DHCP server identifier.
+  #
+  # Arguments
+  # id: The ID of a `DhcpServerIdentifier`.
+  deleteDhcpServerIdentifier(id: Int64Bit!): SuccessResponse
+  # Delete a DID.
+  #
+  # Arguments
+  # id: The ID of a `Did`.
+  deleteDid(id: Int64Bit!): SuccessResponse
+  # Delete a DID assignment.
+  #
+  # Arguments
+  # id: The ID of a `DidAssignment`.
+  deleteDidAssignment(id: Int64Bit!): SuccessResponse
+  # Delete a disconnection reason.
+  #
+  # Arguments
+  # id: Account Disconnection Reason ID
+  deleteDisconnectionReason(id: Int64Bit!): SuccessResponse
+  # Delete a discount.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Discount`.
+  deleteDiscount(
+    input: DeleteTransactionMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # Delete a messaging category.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteEmailCategory(id: Int64Bit!): SuccessResponse
+  # Delete an email domain.
+  #
+  # Arguments
+  # id: The ID of an `EmailDomain`.
+  deleteEmailDomain(id: Int64Bit!): SuccessResponse
+  # Delete a saved message.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteEmailMessage(id: Int64Bit!): SuccessResponse
+  # Delete saved message contents.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteEmailMessageContent(id: Int64Bit!): SuccessResponse
+  # Delete an LTE EPC.
+  #
+  # Arguments
+  # id: fields.epc_id
+  deleteEpc(id: Int64Bit!): SuccessResponse
+  # Delete an external marketing integration.
+  #
+  # Arguments
+  # id: The ID of an `ExternalMarketingProvider`.
+  deleteExternalMarketingProvider(id: Int64Bit!): SuccessResponse
+  # Delete a FiberMap Integration.
+  #
+  # Arguments
+  # id: FiberMap integration ID
+  deleteFibermapIntegration(id: Int64Bit!): SuccessResponse
+  # Delete a file.
+  #
+  # Arguments
+  # id: The ID of a `File`.
+  deleteFile(id: Int64Bit!): SuccessResponse
+  # Delete a general ledger code.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteGeneralLedgerCode(id: Int64Bit!): SuccessResponse
+  # Delete a generic inventory assignee.
+  #
+  # Arguments
+  # id: fields.generic_inventory_assignee_id
+  deleteGenericInventoryAssignee(id: Int64Bit!): SuccessResponse
+  # Delete generic inventory items.
+  #
+  # Arguments
+  # id: fields.generic_inventory_item_id
+  # input: [Not documented]
+  deleteGenericInventoryItems(
+    id: Int64Bit!
+    input: DeleteGenericInventoryItemsMutationInput
+  ): GenericInventoryItem
+  # Delete a geo tax zone.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteGeoTaxZone(id: Int64Bit!): SuccessResponse
+  # Delete a geofence.
+  #
+  # Arguments
+  # id: The ID of a `Geofence`.
+  deleteGeofence(id: Int64Bit!): SuccessResponse
+  # Delete a Global Inventory Model Min/Max.
+  #
+  # Arguments
+  # id: fields.global_inventory_model_min_max_id
+  deleteGlobalInventoryModelMinMax(id: Int64Bit!): SuccessResponse
+  # Delete a GPS tracking provider.
+  #
+  # Arguments
+  # id: A `GpsTrackingProvider` ID.
+  deleteGpsTrackingProvider(id: Int64Bit!): SuccessResponse
+  # Delete an identity provider.
+  #
+  # Arguments
+  # id: The ID of an `IdentityProvider`.
+  deleteIdentityProvider(id: Int64Bit!): SuccessResponse
+  # Delete an inbound mailbox.
+  #
+  # Arguments
+  # id: The ID of an `InboundMailbox`.
+  deleteInboundMailbox(id: Int64Bit!): SuccessResponse
+  # Delete an inline device.
+  #
+  # Arguments
+  # id: The ID of an `InlineDevice`.
+  deleteInlineDevice(id: Int64Bit!): SuccessResponse
+  # Delete an internal location.
+  #
+  # Arguments
+  # id: fields.internal_location_id
+  deleteInternalLocation(id: Int64Bit!): SuccessResponse
+  # Delete an inventory item.
+  #
+  # Arguments
+  # id: The ID of an `InventoryItem`.
+  deleteInventoryItem(id: Int64Bit!): SuccessResponse
+  # Delete an inventory item segment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryItem`.
+  deleteInventoryItemSegment(
+    input: DeleteInventoryItemSegmentMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # Delete an inventory location.
+  #
+  # Arguments
+  # id: The ID of an `InventoryLocation`.
+  deleteInventoryLocation(id: Int64Bit!): SuccessResponse
+  # Delete an inventory model.
+  #
+  # Arguments
+  # id: The ID of an `InventoryModel`.
+  deleteInventoryModel(id: Int64Bit!): SuccessResponse
+  # Delete an inventory model category.
+  #
+  # Arguments
+  # id: The ID of an InventoryModelCategory.
+  deleteInventoryModelCategory(id: Int64Bit!): SuccessResponse
+  # Delete an inventory model field.
+  #
+  # Arguments
+  # id: The ID of an `InventoryModelField`.
+  deleteInventoryModelField(id: Int64Bit!): SuccessResponse
+  # Delete an Inventory Model Min/Max.
+  #
+  # Arguments
+  # id: fields.inventory_model_min_max_id
+  deleteInventoryModelMinMax(id: Int64Bit!): SuccessResponse
+  # Delete an invoice.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `Invoice`.
+  deleteInvoice(
+    input: DeleteTransactionMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # Delete an invoice attachment.
+  #
+  # Arguments
+  # id: fields.invoice_attachment_id
+  deleteInvoiceAttachment(id: Int64Bit!): SuccessResponse
+  # Delete an invoice message.
+  #
+  # Arguments
+  # id: The ID of an `InvoiceMessage`.
+  deleteInvoiceMessage(id: Int64Bit!): SuccessResponse
+  # Delete an invoice template.
+  #
+  # Arguments
+  # id: The ID of an Invoice Template.
+  deleteInvoiceTemplate(id: Int64Bit!): SuccessResponse
+  # Delete an IP assignment.
+  #
+  # Arguments
+  # id: The ID of an `IpAssignment`.
+  deleteIpAssignment(id: Int64Bit!): SuccessResponse
+  # Delete an IP pool.
+  #
+  # Arguments
+  # id: The ID of an `IpPool`.
+  deleteIpPool(id: Int64Bit!): SuccessResponse
+  # Delete a job.
+  #
+  # Arguments
+  # id: The ID of a `Job`.
+  deleteJob(id: Int64Bit!): SuccessResponse
+  # Delete a service from a job.
+  #
+  # Arguments
+  # id: fields.job_service_id
+  deleteJobService(id: Int64Bit!): SuccessResponse
+  # Delete a job type.
+  #
+  # Arguments
+  # id: The ID of a `JobType`.
+  deleteJobType(id: Int64Bit!): SuccessResponse
+  # Delete a local prefix.
+  #
+  # Arguments
+  # id: The ID of a local prefix.
+  deleteLocalPrefix(id: Int64Bit!): SuccessResponse
+  # Delete an LTE provider.
+  #
+  # Arguments
+  # id: The ID of an `LteProvider`.
+  deleteLteProvider(id: Int64Bit!): SuccessResponse
+  # Delete an account mailing address.
+  #
+  # Arguments
+  # id: The ID of the address.
+  deleteMailingAddress(id: Int64Bit!): SuccessResponse
+  # Delete a manufacturer.
+  #
+  # Arguments
+  # id: The ID of a Manufacturer.
+  deleteManufacturer(id: Int64Bit!): SuccessResponse
+  # Delete a map overlay.
+  #
+  # Arguments
+  # id: The ID of a map overlay.
+  deleteMapOverlay(id: Int64Bit!): SuccessResponse
+  # Delete a messaging category.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteMessageCategory(id: Int64Bit!): SuccessResponse
+  # Delete a Netflow on premise record.
+  #
+  # Arguments
+  # id: The ID of a `NetflowOnPremise` record.
+  deleteNetflowOnPremise(id: Int64Bit!): SuccessResponse
+  # Delete a Network Monitoring Graph.
+  #
+  # Arguments
+  # id: The ID of a `NetworkMonitoringGraph`.
+  deleteNetworkMonitoringGraph(id: Int64Bit!): SuccessResponse
+  # Delete a Network Monitoring Template.
+  #
+  # Arguments
+  # id: The ID of a `NetworkMonitoringTemplate`.
+  deleteNetworkMonitoringTemplate(id: Int64Bit!): SuccessResponse
+  # Delete a network site.
+  #
+  # Arguments
+  # id: Network site id.
+  deleteNetworkSite(id: Int64Bit!): SuccessResponse
+  # Delete a non-inventory item.
+  #
+  # Arguments
+  # id: fields.non_inventory_item_id
+  deleteNonInventoryItem(id: Int64Bit!): SuccessResponse
+  # Delete a note.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteNote(id: Int64Bit!): SuccessResponse
+  # Delete an order group.
+  #
+  # Arguments
+  # id: The ID of an order group.
+  deleteOrderGroup(id: Int64Bit!): SuccessResponse
+  # Delete a package.
+  #
+  # Arguments
+  # id: The ID of a `Package`.
+  deletePackage(id: Int64Bit!): SuccessResponse
+  # Delete a PayPal credential.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deletePayPalCredential(id: Int64Bit!): SuccessResponse
+  # Delete a payment that was created without a payment method.
+  #
+  # Arguments
+  # id: The ID of a `Payment`.
+  deletePayment(id: Int64Bit!): SuccessResponse
+  # Delete a personal access token.
+  #
+  # Arguments
+  # id: fields.personal_access_token_id
+  deletePersonalAccessToken(id: Int64Bit!): SuccessResponse
+  # Delete a phone number.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deletePhoneNumber(id: Int64Bit!): SuccessResponse
+  # Delete a phone number type.
+  #
+  # Arguments
+  # id: [Not documented]
+  deletePhoneNumberType(id: Int64Bit!): SuccessResponse
+  # Delete a poller.
+  #
+  # Arguments
+  # id: The ID of a `Poller`.
+  deletePoller(id: Int64Bit!): SuccessResponse
+  # Delete a RADIUS account.
+  #
+  # Arguments
+  # id: The ID of a `RadiusAccount`.
+  deleteRadiusAccount(id: Int64Bit!): SuccessResponse
+  # Delete a RADIUS group.
+  #
+  # Arguments
+  # id: The ID of a `RadiusGroup`.
+  deleteRadiusGroup(id: Int64Bit!): SuccessResponse
+  # Delete a RADIUS group reply attribute.
+  #
+  # Arguments
+  # id: fields.radius_group_reply_attribute_id
+  deleteRadiusGroupReplyAttribute(id: Int64Bit!): SuccessResponse
+  # Delete a RADIUS server.
+  #
+  # Arguments
+  # id: The ID of a `RadiusServer`.
+  deleteRadiusServer(id: Int64Bit!): SuccessResponse
+  # Delete a rate center.
+  #
+  # Arguments
+  # id: The ID of a `RateCenter`.
+  deleteRateCenter(id: Int64Bit!): SuccessResponse
+  # Delete a refunded payment.
+  #
+  # Arguments
+  # id: fields.refunded_payment_id
+  deleteRefundedPayment(id: Int64Bit!): SuccessResponse
+  # Delete a reversed payment.
+  #
+  # Arguments
+  # id: fields.reversed_payment_id
+  # input: [Not documented]
+  deleteReversedPayment(
+    id: Int64Bit!
+    input: DeleteReversedPaymentMutationInput
+  ): SuccessResponse
+  # Delete a role.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteRole(id: Int64Bit!): SuccessResponse
+  # Delete a saved message category.
+  #
+  # Arguments
+  # id: ID of the Saved Message Category.
+  deleteSavedMessageCategory(id: Int64Bit!): SuccessResponse
+  # Delete a schedule address.
+  #
+  # Arguments
+  # id: fields.schedule_address_id
+  deleteScheduleAddress(id: Int64Bit!): SuccessResponse
+  # Delete a schedule availability.
+  #
+  # Arguments
+  # id: The ID of a `ScheduleAvailability`.
+  deleteScheduleAvailability(id: Int64Bit!): SuccessResponse
+  # Delete a schedule availability day/time.
+  #
+  # Arguments
+  # id: fields.schedule_availability_day_time_id
+  deleteScheduleAvailabilityDayTime(id: Int64Bit!): SuccessResponse
+  # Delete a schedule blocker.
+  #
+  # Arguments
+  # id: The ID of a `ScheduleBlocker`.
+  deleteScheduleBlocker(id: Int64Bit!): SuccessResponse
+  # Delete a schedule blocker day/time.
+  #
+  # Arguments
+  # id: fields.schedule_blocker_day_time_id
+  deleteScheduleBlockerDayTime(id: Int64Bit!): SuccessResponse
+  # Delete a schedule time off.
+  #
+  # Arguments
+  # id: fields.schedule_time_off_id
+  deleteScheduleTimeOff(id: Int64Bit!): SuccessResponse
+  # Delete a scheduled event.
+  #
+  # Arguments
+  # id: The ID of a `ScheduledEvent`
+  deleteScheduledEvent(id: Int64Bit!): SuccessResponse
+  # Delete a saved search filter for the current user.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteSearchFilter(id: Int64Bit!): SuccessResponse
+  # Delete a service.
+  #
+  # Arguments
+  # id: The ID of a Service.
+  deleteService(id: Int64Bit!): SuccessResponse
+  # Delete service metadata.
+  #
+  # Arguments
+  # id: The ID of a ServiceMetadata field.
+  deleteServiceMetadata(id: Int64Bit!): SuccessResponse
+  # Delete a serviceable address.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteServiceableAddress(id: Int64Bit!): SuccessResponse
+  # Delete a serviceable address account assignment future
+  #
+  # Arguments
+  # id: The ID of the serviceable address account assignment
+  # future. Deprecated: use `address_id` instead.
+  deleteServiceableAddressAccountAssignmentFuture(
+    id: Int64Bit!
+  ): SuccessResponse
+  # Delete a Signature.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteSignature(id: Int64Bit!): SuccessResponse
+  # Delete an SNMP OID.
+  #
+  # Arguments
+  # id: The ID of an `SnmpOid`.
+  deleteSnmpOid(id: Int64Bit!): SuccessResponse
+  # Delete an SNMP OID threshold.
+  #
+  # Arguments
+  # id: The ID of an `SnmpOidThreshold`.
+  deleteSnmpOidThreshold(id: Int64Bit!): SuccessResponse
+  # Delete an SNMP override.
+  #
+  # Arguments
+  # id: fields.snmp_override_id
+  deleteSnmpOverride(id: Int64Bit!): SuccessResponse
+  # Delete a stock keeping unit.
+  #
+  # Arguments
+  # id: The ID of a Stock Keeping Unit (SKU).
+  deleteStockKeepingUnit(id: Int64Bit!): SuccessResponse
+  # Delete a stored view.
+  #
+  # Arguments
+  # id: The ID of a `StoredView` entity.
+  deleteStoredView(id: Int64Bit!): SuccessResponse
+  # Delete a subnet.
+  #
+  # Arguments
+  # id: The ID of a `Subnet`.
+  deleteSubnet(id: Int64Bit!): SuccessResponse
+  # Delete a subscription.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteSubscription(id: Int64Bit!): SuccessResponse
+  # Delete a supernet.
+  #
+  # Arguments
+  # id: The ID of a `Supernet`.
+  deleteSupernet(id: Int64Bit!): SuccessResponse
+  # Delete a system backup destination.
+  #
+  # Arguments
+  # id: The ID of a destination that a system backup can be
+  # exported to.
+  deleteSystemBackupDestination(id: Int64Bit!): SuccessResponse
+  # Delete a task.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  deleteTask(id: Int64Bit!): SuccessResponse
+  # Delete a task group.
+  #
+  # Arguments
+  # id: The ID of a `TaskGroup`.
+  deleteTaskGroup(id: Int64Bit!): SuccessResponse
+  # Delete a task template.
+  #
+  # Arguments
+  # id: The ID of a `TaskTemplate`.
+  deleteTaskTemplate(id: Int64Bit!): SuccessResponse
+  # Delete a task template item.
+  #
+  # Arguments
+  # id: The ID of a `TaskTemplateItem`.
+  deleteTaskTemplateItem(id: Int64Bit!): SuccessResponse
+  # Delete a tax.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteTax(id: Int64Bit!): SuccessResponse
+  # Delete a tax exemption.
+  #
+  # Arguments
+  # id: fields.tax_exemption_id
+  deleteTaxExemption(id: Int64Bit!): SuccessResponse
+  # Delete a tax override.
+  #
+  # Arguments
+  # id: fields.tax_override_id
+  deleteTaxOverride(id: Int64Bit!): SuccessResponse
+  # Delete a tax provider.
+  #
+  # Arguments
+  # id: The ID of an `TaxProvider`.
+  deleteTaxProvider(id: Int64Bit!): SuccessResponse
+  # Delete a ticket.
+  #
+  # Arguments
+  # id: The ID of a `Ticket`.
+  deleteTicket(id: Int64Bit!): SuccessResponse
+  # Delete a ticket category.
+  #
+  # Arguments
+  # id: fields.ticket_category_id
+  deleteTicketCategory(id: Int64Bit!): SuccessResponse
+  # Delete a ticket category family.
+  #
+  # Arguments
+  # id: ID of the ticket category family.
+  deleteTicketCategoryFamily(id: Int64Bit!): SuccessResponse
+  # Delete a ticket comment.
+  #
+  # Arguments
+  # id: fields.ticket_comment_id
+  deleteTicketComment(id: Int64Bit!): SuccessResponse
+  # Delete a ticket group.
+  #
+  # Arguments
+  # id: The ID of a `TicketGroup`.
+  deleteTicketGroup(id: Int64Bit!): SuccessResponse
+  # Delete a ticket recipient.
+  #
+  # Arguments
+  # id: fields.ticket_recipient_id
+  deleteTicketRecipient(id: Int64Bit!): SuccessResponse
+  # Delete a ticket resolution reason.
+  #
+  # Arguments
+  # id: The ID of a `TicketResolutionReason`.
+  deleteTicketResolutionReason(id: Int64Bit!): SuccessResponse
+  # Delete multiple tickets.
+  #
+  # Arguments
+  # ids: The IDs of multiple `Ticket`s.
+  deleteTickets(ids: [Int64Bit!]!): SuccessResponse
+  # DEPRECATED: Delete a triggered email. See deleteTriggeredMessageMutation.
+  #
+  # Arguments
+  # id: [Not documented]
+  deleteTriggeredEmail(id: Int64Bit!): SuccessResponse
+  # Delete a triggered message.
+  #
+  # Arguments
+  # id: The ID of a `TriggeredMessage`.
+  deleteTriggeredMessage(id: Int64Bit!): SuccessResponse
+  # Delete an uninventoried MAC address.
+  #
+  # Arguments
+  # id: fields.uninventoried_mac_address_id
+  deleteUninventoriedMacAddress(id: Int64Bit!): SuccessResponse
+  # Delete a usage based billing policy.
+  #
+  # Arguments
+  # id: The ID of a `UsageBasedBillingPolicy`.
+  deleteUsageBasedBillingPolicy(id: Int64Bit!): SuccessResponse
+  # Delete a usage based billing policy free period.
+  #
+  # Arguments
+  # id: fields.usage_based_billing_policy_free_period_id
+  deleteUsageBasedBillingPolicyFreePeriod(id: Int64Bit!): SuccessResponse
+  # Delete a vehicle.
+  #
+  # Arguments
+  # id: The ID of a `Vehicle`.
+  deleteVehicle(id: Int64Bit!): SuccessResponse
+  # Delete a vendor item.
+  #
+  # Arguments
+  # id: The ID of a vendor item.
+  deleteVendorItem(id: Int64Bit!): SuccessResponse
+  # Delete a voice provider.
+  #
+  # Arguments
+  # id: The ID of a `VoiceProvider`.
+  deleteVoiceProvider(id: Int64Bit!): SuccessResponse
+  # Delete a voice provider rate.
+  #
+  # Arguments
+  # id: The ID of a `VoiceProviderRate`
+  deleteVoiceProviderRate(id: Int64Bit!): SuccessResponse
+  # Delete a single voice service configuration parameter.
+  #
+  # Arguments
+  # id: The ID of a voice service configuration parameter.
+  # input: [Not documented]
+  deleteVoiceServiceGenericParameter(
+    id: Int64Bit!
+    input: DeleteVoiceServiceGenericParameterMutationInput
+  ): SuccessResponse
+  # Delete a webhook endpoint.
+  #
+  # Arguments
+  # id: The ID of a webhook endpoint.
+  deleteWebhookEndpoint(id: Int64Bit!): SuccessResponse
+  # Delete a webhook endpoint event.
+  #
+  # Arguments
+  # id: The model and event attached to the webhook endpoint
+  deleteWebhookEndpointEvent(id: Int64Bit!): SuccessResponse
+  # Disconnect an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an Account.
+  disconnectAccount(
+    input: DisconnectAccountMutationInput
+    id: Int64Bit!
+  ): Account
+  # Disconnect a RADIUS session.
+  #
+  # Arguments
+  # id: The ID of a `RadiusSessionHistory`.
+  disconnectRadiusSession(id: Int64Bit!): RadiusSessionHistory
+  # Resend emailed invoices.
+  #
+  # Arguments
+  # input: [Not documented]
+  emailInvoiceBatch(input: EmailInvoiceBatchMutationInput): SuccessResponse
+  # Email an invoice to a contact manually.
+  #
+  # Arguments
+  # input: [Not documented]
+  emailInvoiceToContact(
+    input: EmailInvoiceToContactMutationInput
+  ): SuccessResponse
+  # Email an approved purchase order to its vendor.
+  #
+  # Arguments
+  # id: The ID of a purchase order.
+  emailPurchaseOrderToVendor(id: Int64Bit!): SuccessResponse
+  # Generate import credentials for use with Flatfile.
+  #
+  # Arguments
+  # input: [Not documented]
+  generateImportCredentialsFlatfile(
+    input: GenerateImportCredentialsFlatfileMutationInput
+  ): ImportCredentialsFlatfile
+  # Generate Splice Report from Vetro FiberMap.
+  #
+  # Arguments
+  # id: The ID of the address.
+  generateSpliceReport(id: Int64Bit!): SuccessResponse
+  # mutations.generateTestWebhookMutation
+  #
+  # Arguments
+  # id: The ID of a webhook endpoint.
+  generateTestWebhook(id: Int64Bit!): WebhookTestResponse
+  # Link a parent and child account.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the `Account` that is this `Account`s master.
+  linkAccounts(input: LinkAccountsMutationInput, id: Int64Bit!): Account
+  # Link Calix Cloud subscriber to Sonar account.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkCalixCloudSubscriberToAccount(
+    input: LinkCalixCloudSubscriberToAccountMutationInput
+  ): SuccessResponse
+  # Link an entity to a ticket.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Ticket`.
+  linkEntityToTicket(
+    input: LinkEntityToTicketMutationInput
+    id: Int64Bit!
+  ): Ticket
+  # Link Fibermap Plan To Network Site.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkFibermapPlanToNetworkSite(
+    input: LinkFibermapPlanToNetworkSiteMutationInput
+  ): NetworkSite
+  # Link Fibermap Service Location To Address.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkFibermapServiceLocationToAddress(
+    input: LinkFibermapServiceLocationToAddressMutationInput
+  ): Address
+  # Link a file to an entity.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkFileToEntity(input: LinkFileToEntityMutationInput): FileableInterface
+  # Link an inventory item to an account service.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkInventoryItemToAccountService(
+    input: LinkInventoryItemToAccountServiceMutationInput
+  ): SuccessResponse
+  # Link inventory model to account services.
+  #
+  # Arguments
+  # input: [Not documented]
+  linkInventoryModelToAccountServices(
+    input: LinkInventoryModelToAccountServicesMutationInput
+  ): SuccessResponse
+  # Link a parent and child invoice.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the `Invoice` that is this `Invoice`s master.
+  linkInvoices(input: LinkInvoicesMutationInput, id: Int64Bit!): Invoice
+  # Link a TowerCoverage submission to a new or existing serviceable address.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TowercoverageSubmission`.
+  linkTowercoverageSubmissionToServiceableAddressMutation(
+    input: LinkTowercoverageSubmissionToServiceableAddressMutationInput
+    id: Int64Bit!
+  ): TowercoverageSubmission
+  # Make the additional service provided primary and the current primary an
+  # additional service.
+  #
+  # Arguments
+  # id: The ID of an AccountService.
+  makeAccountServicePrimary(id: Int64Bit!): SuccessResponse
+  # Manually provision Calix SMx services for an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  manualProvisionCalixSmx(
+    input: ManualProvisionCalixSmxMutationInput
+  ): SuccessResponse
+  # Merge two subnets together.
+  #
+  # Arguments
+  # input: [Not documented]
+  mergeSubnets(input: MergeSubnetsMutationInput): Subnet
+  # Merge multiple tickets into one.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Ticket`.
+  mergeTickets(input: MergeTicketsMutationInput, id: Int64Bit!): Ticket
+  # Publish a report.
+  #
+  # Arguments
+  # dashboard_id: [Not documented]
+  publishReport(dashboard_id: String!): AvailableReport
+  # Forced reboot of an inventory item.
+  #
+  # Arguments
+  # inventory_item_id: The ID of an `InventoryItem`.
+  rebootInventoryItem(inventory_item_id: Int64Bit!): InventoryItem
+  # Recalculate the next recurring charge amount of an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  recalculateNextRecurringChargeAmount(
+    input: RecalculateNextRecurringChargeAmountMutationInput
+  ): SuccessResponse
+  # Receive a list of purchase order items into an inventory location.
+  #
+  # Arguments
+  # input: [Not documented]
+  receivePurchaseOrderItems(
+    input: ReceivePurchaseOrderItemsMutationInput
+  ): [InventoryItem]
+  # Re-enroll an authentication factor, resending the one-time password verification
+  # message if applicable.
+  #
+  # Arguments
+  # id: The ID of an `AuthenticationFactor`.
+  reenrollAuthenticationFactor(id: Int64Bit!): SuccessResponse
+  # Refund a payment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Payment`.
+  refundPayment(
+    input: RefundPaymentMutationInput
+    id: Int64Bit!
+  ): RefundedPayment
+  # Reindex a model in elastic.
+  #
+  # Arguments
+  # input: [Not documented]
+  reindexModel(input: ReindexModelMutationInput): SuccessResponse
+  # Reschedule a schedule blocker.
+  #
+  # Arguments
+  # input: [Not documented]
+  rescheduleScheduleBlocker(
+    input: RescheduleScheduleBlockerMutationInput
+  ): ScheduleBlockerOverride
+  # Resend a ticket autoreply email.
+  #
+  # Arguments
+  # input: [Not documented]
+  resendAutoreply(input: ResendAutoreplyMutationInput): SuccessResponse
+  # Resend a copy of a contract.
+  #
+  # Arguments
+  # id: fields.contract_id
+  resendContract(id: Int64Bit!): SuccessResponse
+  # Resend a failed print to mail batch.
+  #
+  # Arguments
+  # id: The ID of the print to mail batch.
+  resendPrintToMailBatch(id: Int64Bit!): SuccessResponse
+  # Resend the initial setup email to a newly created user.
+  #
+  # Arguments
+  # user_id: The ID of a User.
+  resendUserCreationEmail(user_id: Int64Bit!): SuccessResponse
+  # Software reset connection of an inventory item.
+  #
+  # Arguments
+  # inventory_item_id: The ID of an `InventoryItem`.
+  resetInventoryItem(inventory_item_id: Int64Bit!): InventoryItem
+  # Respond to an instance management request.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.instance_management_request_id
+  respondToInstanceManagementRequest(
+    input: RespondToInstanceManagementRequestMutationInput
+    id: Int64Bit!
+  ): InstanceManagementRequest
+  # Retries the creation of an address from a specific unmapped Vetro Fibermap
+  # Service location.
+  #
+  # Arguments
+  # input: [Not documented]
+  resyncFibermapServiceLocationToAddress(
+    input: ResyncFibermapServiceLocationToAddressMutationInput
+  ): FibermapServiceLocation
+  # Reverse a debit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  reverseDebit(input: ReverseTransactionMutationInput, id: Int64Bit!): Debit
+  # Reverse a discount.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Discount`.
+  reverseDiscount(
+    input: ReverseTransactionMutationInput
+    id: Int64Bit!
+  ): Discount
+  # Reverse a payment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Payment`.
+  reversePayment(
+    input: ReversePaymentMutationInput
+    id: Int64Bit!
+  ): ReversedPayment
+  # Schedule many jobs and schedule blocker overrides at the same time.
+  #
+  # Arguments
+  # input: [Not documented]
+  scheduleManyJobsAndScheduleBlockerOverrides(
+    input: ScheduleManyJobsAndScheduleBlockerOverridesMutationInput
+  ): SuccessResponse
+  # Schedule jobs and schedule blocker overrides and skip scheduling validations.
+  #
+  # Arguments
+  # input: [Not documented]
+  scheduleManyJobsAndScheduleBlockerOverridesSkipsValidation(
+    input: ScheduleManyJobsAndScheduleBlockerOverridesMutationInput
+  ): SuccessResponse
+  # Send an email to verify an email domain.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `EmailDomain`.
+  sendEmailDomainVerificationEmail(
+    input: SendEmailDomainVerificationEmailMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # mutations.sendTestEmailMutation
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `EmailDomain`.
+  sendTestEmail(
+    input: SendTestEmailMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # mutations.sendTestTriggeredEmailMutation
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.triggered_email_id
+  sendTestTriggeredEmail(
+    input: SendTestTriggeredEmailMutationInput
+    id: Int64Bit!
+  ): SuccessResponse
+  # Set the active stored view.
+  #
+  # Arguments
+  # input: [Not documented]
+  setActiveStoredView(input: SetActiveStoredViewMutationInput): SuccessResponse
+  # Split a subnet in half.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  splitSubnet(id: Int64Bit!): [Subnet]
+  # Synchronize a cable modem provisioner.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeCableModemProvisioner(
+    input: SynchronizeCableModemProvisionerMutationInput
+  ): CableModemProvisioner
+  # Synchronize Calix Cloud setting.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeCalixCloud(
+    input: SynchronizeCalixCloudMutationInput
+  ): CalixCloudSetting
+  # Full synchronization of a Calix integration.
+  #
+  # Arguments
+  # calix_integration_id: Calix Inegartion ID.
+  synchronizeCalixIntegration(calix_integration_id: Int64Bit!): CalixIntegration
+  # Removes all existing leases and writes new ones based on existing IP
+  # assignments.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeDhcpServer(input: SynchronizeDhcpServerMutationInput): DhcpServer
+  # Synchronize a Fibermap Integration.
+  #
+  # Arguments
+  # fibermap_integration_id: FiberMap integration ID
+  synchronizeFibermapIntegration(
+    fibermap_integration_id: Int64Bit!
+  ): FibermapIntegration
+  # Synchronize an inline device.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeInlineDevice(
+    input: SynchronizeInlineDeviceMutationInput
+  ): InlineDevice
+  # Synchronize an LTE provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeLteProvider(
+    input: SynchronizeLteProviderMutationInput
+  ): LteProvider
+  # Synchronize a RADIUS server.
+  #
+  # Arguments
+  # input: [Not documented]
+  synchronizeRadiusServer(
+    input: SynchronizeRadiusServerMutationInput
+  ): RadiusServer
+  # Perform Sonar takeover of Adtran Mosaic Cloud.
+  #
+  # Arguments
+  # input: [Not documented]
+  takeoverAdtranMosaic(
+    input: TakeoverAdtranMosaicMutationInput
+  ): AdtranMosaicSetting
+  # Toggle all notifications as read or unread.
+  #
+  # Arguments
+  # input: [Not documented]
+  toggleAllNotifications(
+    input: ToggleAllNotificationsMutationInput
+  ): SuccessResponse
+  # Toggle notifications as read or unread.
+  #
+  # Arguments
+  # input: [Not documented]
+  toggleNotifications(input: ToggleNotificationsMutationInput): SuccessResponse
+  # Unarchive an account.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  unarchiveAccount(id: Int64Bit!): Account
+  # Unclaim one or many inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  unclaimInventoryItems(
+    input: UnclaimInventoryItemsMutationInput
+  ): SuccessResponse
+  # Unlink a parent and child account.
+  #
+  # Arguments
+  # id: The ID of a child `Account`.
+  unlinkAccounts(id: Int64Bit!): Account
+  # Unlink an entity from a ticket.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Ticket`.
+  unlinkEntityFromTicket(
+    input: UnlinkEntityFromTicketMutationInput
+    id: Int64Bit!
+  ): Ticket
+  # Unlink a parent and child invoice.
+  #
+  # Arguments
+  # id: The ID of a child `Invoice`.
+  unlinkInvoices(id: Int64Bit!): Invoice
+  # Update an account.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateAccount(input: UpdateAccountMutationInput, id: Int64Bit!): Account
+  # Update account Adtran Mosaic service details.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.account_adtran_mosaic_service_detail_id
+  updateAccountAdtranMosaicServiceDetail(
+    input: UpdateAccountAdtranMosaicServiceDetailMutationInput
+    id: Int64Bit!
+  ): AccountAdtranMosaicServiceDetail
+  # Update a variety of account billing parameters.
+  #
+  # Arguments
+  # input: [Not documented]
+  # account_id: The ID of an Account.
+  updateAccountBillingParameter(
+    input: UpdateAccountBillingParameterMutationInput
+    account_id: Int64Bit!
+  ): AccountBillingParameter
+  # Update an account calix service detail.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `AccountCalixServiceDetail`.
+  updateAccountCalixServiceDetail(
+    input: UpdateAccountCalixServiceDetailMutationInput
+    id: Int64Bit!
+  ): AccountCalixServiceDetail
+  # Update an account group.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateAccountGroup(
+    input: UpdateAccountGroupMutationInput
+    id: Int64Bit!
+  ): AccountGroup
+  # Update an account service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an AccountService.
+  updateAccountService(
+    input: UpdateAccountServiceMutationInput
+    id: Int64Bit!
+  ): AccountService
+  # Update an account status.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateAccountStatus(
+    input: UpdateAccountStatusMutationInput
+    id: Int64Bit!
+  ): AccountStatus
+  # Update an account type.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateAccountType(
+    input: UpdateAccountTypeMutationInput
+    id: Int64Bit!
+  ): AccountType
+  # Update an account voice service detail.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an account voice service detail.
+  updateAccountVoiceServiceDetail(
+    input: UpdateAccountVoiceServiceDetailMutationInput
+    id: Int64Bit!
+  ): AccountVoiceServiceDetail
+  # Update an address list.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.address_list_id
+  updateAddressList(
+    input: UpdateAddressListMutationInput
+    id: Int64Bit!
+  ): AddressList
+  # Update an address status.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: Address status ID.
+  updateAddressStatus(
+    input: UpdateAddressStatusMutationInput
+    id: Int64Bit!
+  ): AddressStatus
+  # Update an adjustment service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateAdjustmentService(
+    input: UpdateAdjustmentServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update Adtran Mosaic audit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an Adtran Mosaic audit record.
+  updateAdtranMosaicAudit(
+    input: UpdateAdtranMosaicAuditMutationInput
+    id: Int64Bit!
+  ): AdtranMosaicAudit
+  # Update Adtran Mosaic settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an Adtran Mosaic setting.
+  updateAdtranMosaicSetting(
+    input: UpdateAdtranMosaicSettingMutationInput
+    id: Int64Bit!
+  ): AdtranMosaicSetting
+  # Update an alerting rotation.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The alerting rotation ID.
+  updateAlertingRotation(
+    input: UpdateAlertingRotationMutationInput
+    id: Int64Bit!
+  ): AlertingRotation
+  # Update an alerting rotation day.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The alerting rotation day and time ID.
+  updateAlertingRotationDay(
+    input: UpdateAlertingRotationDayMutationInput
+    id: Int64Bit!
+  ): AlertingRotationDay
+  # Update an application firewall rule.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.application_firewall_rule_id
+  updateApplicationFirewallRule(
+    input: UpdateApplicationFirewallRuleMutationInput
+    id: Int64Bit!
+  ): ApplicationFirewallRule
+  # Update an auth provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `AuthProvider`.
+  updateAuthProvider(
+    input: UpdateAuthProviderMutationInput
+    id: Int64Bit!
+  ): AuthProvider
+  # Update an authentication factor.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `AuthenticationFactor`.
+  updateAuthenticationFactor(
+    input: UpdateAuthenticationFactorMutationInput
+    id: Int64Bit!
+  ): AuthenticationFactor
+  # Update an Avalara bundled tax definition.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.avalara_tax_definition_id
+  updateAvalaraTaxDefinition(
+    input: UpdateAvalaraTaxDefinitionMutationInput
+    id: Int64Bit!
+  ): AvalaraTaxDefinition
+  # Update a bank account.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a BankAccount.
+  updateBankAccount(
+    input: UpdateBankAccountMutationInput
+    id: Int64Bit!
+  ): BankAccount
+  # Update a bank account processor.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a BankProcessor.
+  updateBankAccountProcessor(
+    input: UpdateBankAccountProcessorMutationInput
+    id: Int64Bit!
+  ): BankAccountProcessor
+  # Update a billing default.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateBillingDefault(
+    input: UpdateBillingDefaultMutationInput
+    id: Int64Bit!
+  ): BillingDefault
+  # Update the system billing settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateBillingSettings(
+    input: UpdateBillingSettingsMutationInput
+  ): BillingSetting
+  # Update a cable modem provisioner.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `CableModemProvisioner`.
+  updateCableModemProvisioner(
+    input: UpdateCableModemProvisionerMutationInput
+    id: Int64Bit!
+  ): CableModemProvisioner
+  # Update a calendar - iCalendar.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.calendar_ical_id
+  updateCalendarIcal(
+    input: UpdateCalendarIcalMutationInput
+    id: Int64Bit!
+  ): CalendarIcal
+  # Update a iCalendar calendar token
+  #
+  # Arguments
+  # id: fields.calendar_ical_id
+  updateCalendarIcalToken(id: Int64Bit!): CalendarIcal
+  # Update system settings related to calendars.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateCalendarSystemSettings(
+    input: UpdateCalendarSystemSettingsMutationInput
+  ): SystemSetting
+  # Update Calix Cloud audit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `CalixCloudAudit`.
+  updateCalixCloudAudit(
+    input: UpdateCalixCloudAuditMutationInput
+    id: Int64Bit!
+  ): CalixCloudAudit
+  # Update a Calix Cloud setting.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `CalixCloudSetting`.
+  updateCalixCloudSetting(
+    input: UpdateCalixCloudSettingMutationInput
+    id: Int64Bit!
+  ): CalixCloudSetting
+  # Update a Calix integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: Calix Inegartion ID.
+  updateCalixIntegration(
+    input: UpdateCalixIntegrationMutationInput
+    id: Int64Bit!
+  ): CalixIntegration
+  # Update a call detail record (CDR).
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.call_detail_record_id
+  updateCallDetailRecord(
+    input: UpdateCallDetailRecordMutationInput
+    id: Int64Bit!
+  ): CallDetailRecord
+  # Update a call log.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `CallLog`.
+  updateCallLog(input: UpdateCallLogMutationInput, id: Int64Bit!): CallLog
+  # Update a canned reply.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.canned_reply_id
+  updateCannedReply(
+    input: UpdateCannedReplyMutationInput
+    id: Int64Bit!
+  ): CannedReply
+  # Update a canned reply category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `CannedReplyCategory`.
+  updateCannedReplyCategory(
+    input: UpdateCannedReplyCategoryMutationInput
+    id: Int64Bit!
+  ): CannedReplyCategory
+  # Update a company.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateCompany(input: UpdateCompanyMutationInput, id: Int64Bit!): Company
+  # Update a contact.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateContact(input: UpdateContactMutationInput, id: Int64Bit!): Contact
+  # Update a contract.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.contract_id
+  updateContract(input: UpdateContractMutationInput, id: Int64Bit!): Contract
+  # Update a contract template.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `ContractTemplate`.
+  updateContractTemplate(
+    input: UpdateContractTemplateMutationInput
+    id: Int64Bit!
+  ): ContractTemplate
+  # Update a credit card.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateCreditCard(
+    input: UpdateCreditCardMutationInput
+    id: Int64Bit!
+  ): CreditCard
+  # Update a credit card processor.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateCreditCardProcessor(
+    input: UpdateCreditCardProcessorMutationInput
+    id: Int64Bit!
+  ): CreditCardProcessor
+  # Update a custom field.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateCustomField(
+    input: UpdateCustomFieldMutationInput
+    id: Int64Bit!
+  ): CustomField
+  # Update a custom link.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.custom_link_id
+  updateCustomLink(
+    input: UpdateCustomLinkMutationInput
+    id: Int64Bit!
+  ): CustomLink
+  # Update a data service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateDataService(
+    input: UpdateDataServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update a data usage history record.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `DataUsageHistory`.
+  updateDataUsageHistory(
+    input: UpdateDataUsageHistoryMutationInput
+    id: Int64Bit!
+  ): DataUsageHistory
+  # Update a debit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Debit`.
+  updateDebit(input: UpdateDebitMutationInput, id: Int64Bit!): Debit
+  # Update a delinquency exclusion.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.delinquency_exclusion_id
+  updateDelinquencyExclusion(
+    input: UpdateDelinquencyExclusionMutationInput
+    id: Int64Bit!
+  ): DelinquencyExclusion
+  # Update a department.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a department.
+  updateDepartment(
+    input: UpdateDepartmentMutationInput
+    id: Int64Bit!
+  ): Department
+  # Update a deployment type.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `DeploymentType`.
+  updateDeploymentType(
+    input: UpdateDeploymentTypeMutationInput
+    id: Int64Bit!
+  ): DeploymentType
+  # Update a deposit slip.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The deposit slip ID.
+  updateDepositSlip(
+    input: UpdateDepositSlipMutationInput
+    id: Int64Bit!
+  ): DepositSlip
+  # Update a DHCP server.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `DhcpServer`.
+  updateDhcpServer(
+    input: UpdateDhcpServerMutationInput
+    id: Int64Bit!
+  ): DhcpServer
+  # Update a DHCP server identifier.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `DhcpServerIdentifier`.
+  updateDhcpServerIdentifier(
+    input: UpdateDhcpServerIdentifierMutationInput
+    id: Int64Bit!
+  ): DhcpServerIdentifier
+  # Update a DID.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Did`.
+  updateDid(input: UpdateDidMutationInput, id: Int64Bit!): Did
+  # Update a DID assignment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `DidAssignment`.
+  updateDidAssignment(
+    input: UpdateDidAssignmentMutationInput
+    id: Int64Bit!
+  ): DidAssignment
+  # Update disconnection logs.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateDisconnectionLog(
+    input: UpdateDisconnectionLogMutationInput
+    id: Int64Bit!
+  ): DisconnectionLog
+  # Update a disconnection reason.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: Account Disconnection Reason ID
+  updateDisconnectionReason(
+    input: UpdateDisconnectionReasonMutationInput
+    id: Int64Bit!
+  ): DisconnectionReason
+  # Update a discount.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Discount`.
+  updateDiscount(input: UpdateDiscountMutationInput, id: Int64Bit!): Discount
+  # Update the assigned drivers on a vehicle.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Vehicle`.
+  updateDrivers(input: UpdateDriversMutationInput, id: Int64Bit!): Vehicle
+  # Update a messaging category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateEmailCategory(
+    input: UpdateEmailCategoryMutationInput
+    id: Int64Bit!
+  ): EmailCategory
+  # Update a saved message.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateEmailMessage(
+    input: UpdateEmailMessageMutationInput
+    id: Int64Bit!
+  ): EmailMessage
+  # Update saved message contents.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateEmailMessageContent(
+    input: UpdateEmailMessageContentMutationInput
+    id: Int64Bit!
+  ): EmailMessageContent
+  # Update the custom fields on an entity.
+  #
+  # Arguments
+  # input: [Not documented]
+  # customfielddataable_type: The type of entity that owns this
+  # custom field data.
+  # customfielddataable_id: The ID of the entity that owns this
+  # custom field data.
+  updateEntityCustomFields(
+    input: UpdateEntityCustomFieldsMutationInput
+    customfielddataable_type: CustomfielddataableType!
+    customfielddataable_id: Int64Bit!
+  ): [CustomFieldData]
+  # Update an LTE EPC.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.epc_id
+  updateEpc(input: UpdateEpcMutationInput, id: Int64Bit!): Epc
+  # Update an expiring service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateExpiringService(
+    input: UpdateExpiringServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update an external marketing integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `ExternalMarketingProvider`.
+  updateExternalMarketingProvider(
+    input: UpdateExternalMarketingProviderMutationInput
+    id: Int64Bit!
+  ): ExternalMarketingProvider
+  # Update a FiberMap Integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: FiberMap integration ID
+  updateFibermapIntegration(
+    input: UpdateFibermapIntegrationMutationInput
+    id: Int64Bit!
+  ): FibermapIntegration
+  # Update a Fibermap Plan.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: FiberMap plan ID
+  updateFibermapPlan(
+    input: UpdateFibermapPlanMutationInput
+    id: Int64Bit!
+  ): FibermapPlan
+  # Update a Fibermap Service Location.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: Fibermap service location ID.
+  updateFibermapServiceLocation(
+    input: UpdateFibermapServiceLocationMutationInput
+    id: Int64Bit!
+  ): FibermapServiceLocation
+  # Update a file.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `File`.
+  updateFile(input: UpdateFileMutationInput, id: Int64Bit!): File
+  # Update a general ledger code.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateGeneralLedgerCode(
+    input: UpdateGeneralLedgerCodeMutationInput
+    id: Int64Bit!
+  ): GeneralLedgerCode
+  # Update a generic inventory assignee.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.generic_inventory_assignee_id
+  updateGenericInventoryAssignee(
+    input: UpdateGenericInventoryAssigneeMutationInput
+    id: Int64Bit!
+  ): GenericInventoryAssignee
+  # Update a geo tax zone.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateGeoTaxZone(
+    input: UpdateGeoTaxZoneMutationInput
+    id: Int64Bit!
+  ): GeoTaxZone
+  # Update a geofence.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Geofence`.
+  updateGeofence(input: UpdateGeofenceMutationInput, id: Int64Bit!): Geofence
+  # Update a Global Inventory Model Min/Max.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.global_inventory_model_min_max_id
+  updateGlobalInventoryModelMinMax(
+    input: UpdateGlobalInventoryModelMinMaxMutationInput
+    id: Int64Bit!
+  ): GlobalInventoryModelMinMax
+  # Update a GPS tracking provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: A `GpsTrackingProvider` ID.
+  updateGpsTrackingProvider(
+    input: UpdateGpsTrackingProviderMutationInput
+    id: Int64Bit!
+  ): GpsTrackingProvider
+  # Update an ActiveDirectory identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IdentityProvider`.
+  updateIdentityProviderActiveDirectory(
+    input: UpdateIdentityProviderActiveDirectoryMutationInput
+    id: Int64Bit!
+  ): IdentityProvider
+  # Update a Google identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IdentityProvider`.
+  updateIdentityProviderGoogle(
+    input: UpdateIdentityProviderGoogleMutationInput
+    id: Int64Bit!
+  ): IdentityProvider
+  # Update a Microsoft identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IdentityProvider`.
+  updateIdentityProviderMicrosoft(
+    input: UpdateIdentityProviderMicrosoftMutationInput
+    id: Int64Bit!
+  ): IdentityProvider
+  # Update a SAML identity provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IdentityProvider`.
+  updateIdentityProviderSaml(
+    input: UpdateIdentityProviderSamlMutationInput
+    id: Int64Bit!
+  ): IdentityProvider
+  # Update an inbound mailbox.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InboundMailbox`.
+  updateInboundMailbox(
+    input: UpdateInboundMailboxMutationInput
+    id: Int64Bit!
+  ): InboundMailbox
+  # Update an inline device.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InlineDevice`.
+  updateInlineDevice(
+    input: UpdateInlineDeviceMutationInput
+    id: Int64Bit!
+  ): InlineDevice
+  # Update the autopay setting for an instance service fund.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateInstanceServiceFundAutoPay(
+    input: UpdateInstanceServiceFundAutoPayMutationInput
+  ): InstanceServiceFundAutoPay!
+  # Update an internal location.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.internal_location_id
+  updateInternalLocation(
+    input: UpdateInternalLocationMutationInput
+    id: Int64Bit!
+  ): InternalLocation
+  # Update an inventory item.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryItem`.
+  updateInventoryItem(
+    input: UpdateInventoryItemsMutationInput
+    id: Int64Bit!
+  ): InventoryItem
+  # Update the contents of inventory item model fields.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryItem`.
+  updateInventoryItemFields(
+    input: UpdateInventoryItemFieldsMutationInput
+    id: Int64Bit!
+  ): InventoryItem
+  # Update an inventory item segment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryItem`.
+  updateInventoryItemSegment(
+    input: UpdateInventoryItemSegmentMutationInput
+    id: Int64Bit!
+  ): [InventoryItem]
+  # Update an Inventory Item status.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryItem`.
+  updateInventoryItemStatus(
+    input: UpdateInventoryItemStatusMutationInput
+    id: Int64Bit!
+  ): InventoryItem
+  # Update one or more inventory items.
+  #
+  # Arguments
+  # input: [Not documented]
+  # ids: IDs of `InventoryItem`s.
+  updateInventoryItems(
+    input: UpdateInventoryItemsMutationInput
+    ids: [Int64Bit!]!
+  ): [InventoryItem]
+  # Update an inventory location.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryLocation`.
+  updateInventoryLocation(
+    input: UpdateInventoryLocationMutationInput
+    id: Int64Bit!
+  ): InventoryLocation
+  # Update an inventory model.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryModel`.
+  updateInventoryModel(
+    input: UpdateInventoryModelMutationInput
+    id: Int64Bit!
+  ): InventoryModel
+  # Update an inventory model category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an InventoryModelCategory.
+  updateInventoryModelCategory(
+    input: UpdateInventoryModelCategoryMutationInput
+    id: Int64Bit!
+  ): InventoryModelCategory
+  # Update an inventory model field.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InventoryModelField`.
+  updateInventoryModelField(
+    input: UpdateInventoryModelFieldMutationInput
+    id: Int64Bit!
+  ): InventoryModelField
+  # Update an Inventory Model Min/Max.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.inventory_model_min_max_id
+  updateInventoryModelMinMax(
+    input: UpdateInventoryModelMinMaxMutationInput
+    id: Int64Bit!
+  ): InventoryModelMinMax
+  # Update an invoice.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `Invoice`.
+  updateInvoice(input: UpdateInvoiceMutationInput, id: Int64Bit!): Invoice
+  # Update an invoice attachment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.invoice_attachment_id
+  updateInvoiceAttachment(
+    input: UpdateInvoiceAttachmentMutationInput
+    id: Int64Bit!
+  ): InvoiceAttachment
+  # Update an invoice message.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `InvoiceMessage`.
+  updateInvoiceMessage(
+    input: UpdateInvoiceMessageMutationInput
+    id: Int64Bit!
+  ): InvoiceMessage
+  # Update an invoice template.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an Invoice Template.
+  updateInvoiceTemplate(
+    input: UpdateInvoiceTemplateMutationInput
+    id: Int64Bit!
+  ): InvoiceTemplate
+  # Update an IP assignment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IpAssignment`.
+  updateIpAssignment(
+    input: UpdateIpAssignmentMutationInput
+    id: Int64Bit!
+  ): IpAssignment
+  # Update an IP pool.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `IpPool`.
+  updateIpPool(input: UpdateIpPoolMutationInput, id: Int64Bit!): IpPool
+  # Update a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Job`.
+  updateJob(input: UpdateJobMutationInput, id: Int64Bit!): Job
+  # Update the quantity of a service associated with a job.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.job_service_id
+  updateJobService(
+    input: UpdateJobServiceMutationInput
+    id: Int64Bit!
+  ): JobService
+  # Update a job skipping validation.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Job`.
+  updateJobSkipsValidation(input: UpdateJobMutationInput, id: Int64Bit!): Job
+  # Update a job type.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `JobType`.
+  updateJobType(input: UpdateJobTypeMutationInput, id: Int64Bit!): JobType
+  # Update a local prefix.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a local prefix.
+  updateLocalPrefix(
+    input: UpdateLocalPrefixMutationInput
+    id: Int64Bit!
+  ): LocalPrefix
+  # Update a report builder license.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.looker_explore_license_id
+  updateLookerExploreLicense(
+    input: UpdateLookerExploreLicenseMutationInput
+    id: Int64Bit!
+  ): LookerExploreLicense
+  # Update a report viewer license.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.looker_view_license_id
+  updateLookerViewLicense(
+    input: UpdateLookerViewLicenseMutationInput
+    id: Int64Bit!
+  ): LookerViewLicense
+  # Update an LTE provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `LteProvider`.
+  updateLteProvider(
+    input: UpdateLteProviderMutationInput
+    id: Int64Bit!
+  ): LteProvider
+  # Update an account mailing address.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the address.
+  updateMailingAddress(
+    input: UpdateMailingAddressMutationInput
+    id: Int64Bit!
+  ): Address
+  # Update a manufacturer.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Manufacturer.
+  updateManufacturer(
+    input: UpdateManufacturerMutationInput
+    id: Int64Bit!
+  ): Manufacturer
+  # Update a map overlay.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a map overlay.
+  updateMapOverlay(
+    input: UpdateMapOverlayMutationInput
+    id: Int64Bit!
+  ): MapOverlay
+  # Update your user profile.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateMe(input: UpdateMeMutationInput): Me
+  # Update a messaging category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateMessageCategory(
+    input: UpdateMessageCategoryMutationInput
+    id: Int64Bit!
+  ): MessageCategory
+  # Update the multi-factor authentication admin settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateMfaAdminSettings(
+    input: UpdateMfaAdminSettingsMutationInput
+  ): MfaAdminSetting
+  # Update a Netflow on premise record.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `NetflowOnPremise` record.
+  updateNetflowOnPremise(
+    input: UpdateNetflowOnPremiseMutationInput
+    id: Int64Bit!
+  ): NetflowOnPremise
+  # Update a Network Monitoring Graph.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `NetworkMonitoringGraph`.
+  updateNetworkMonitoringGraph(
+    input: UpdateNetworkMonitoringGraphMutationInput
+    id: Int64Bit!
+  ): NetworkMonitoringGraph
+  # Update a Network Monitoring Template.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `NetworkMonitoringTemplate`.
+  updateNetworkMonitoringTemplate(
+    input: UpdateNetworkMonitoringTemplateMutationInput
+    id: Int64Bit!
+  ): NetworkMonitoringTemplate
+  # Update a network site.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: Network site id.
+  updateNetworkSite(
+    input: UpdateNetworkSiteMutationInput
+    id: Int64Bit!
+  ): NetworkSite
+  # Update a non-inventory item.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.non_inventory_item_id
+  updateNonInventoryItem(
+    input: UpdateNonInventoryItemMutationInput
+    id: Int64Bit!
+  ): NonInventoryItem
+  # Update a note.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateNote(input: UpdateNoteMutationInput, id: Int64Bit!): Note
+  # Update a one time service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateOneTimeService(
+    input: UpdateOneTimeServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update an order group.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an order group.
+  updateOrderGroup(
+    input: UpdateOrderGroupMutationInput
+    id: Int64Bit!
+  ): OrderGroup
+  # Update an overage service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateOverageService(
+    input: UpdateOverageServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update a package.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Package`.
+  updatePackage(input: UpdatePackageMutationInput, id: Int64Bit!): Package
+  # Update the password policy that is applied to users.
+  #
+  # Arguments
+  # input: [Not documented]
+  updatePasswordPolicy(input: UpdatePasswordPolicyMutationInput): PasswordPolicy
+  # Update a PayPal credential.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updatePayPalCredential(
+    input: UpdatePayPalCredentialInput
+    id: Int64Bit!
+  ): PayPalCredential
+  # Update a payment that was created without a payment method.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Payment`.
+  updatePayment(input: UpdatePaymentMutationInput, id: Int64Bit!): Payment
+  # Update a phone number.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updatePhoneNumber(
+    input: UpdatePhoneNumberMutationInput
+    id: Int64Bit!
+  ): PhoneNumber
+  # Update a phone number type.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updatePhoneNumberType(
+    input: UpdatePhoneNumberTypeMutationInput
+    id: Int64Bit!
+  ): PhoneNumberType
+  # Update a poller.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Poller`.
+  updatePoller(input: UpdatePollerMutationInput, id: Int64Bit!): Poller
+  # Update the system poller settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updatePollerSettings(input: UpdatePollerSettingsMutationInput): PollerSetting
+  # Update the Preseem integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  updatePreseem(input: UpdatePreseemMutationInput): Preseem
+  # Update a print to mail order error.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the print to mail order error.
+  updatePrintToMailOrderError(
+    input: UpdatePrintToMailOrderErrorMutationInput
+    id: Int64Bit!
+  ): PrintToMailOrderError
+  # Update the print to mail settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updatePrintToMailSettings(
+    input: UpdatePrintToMailSettingsMutationInput
+  ): PrintToMailSetting
+  # Update a purchase order.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a purchase order.
+  updatePurchaseOrder(
+    input: UpdatePurchaseOrderMutationInput
+    id: Int64Bit!
+  ): PurchaseOrder
+  # Update system settings related to purchase orders.
+  #
+  # Arguments
+  # input: [Not documented]
+  updatePurchaseOrderSystemSettings(
+    input: UpdatePurchaseOrderSystemSettingsInput
+  ): SuccessResponse
+  # Update a RADIUS account.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `RadiusAccount`.
+  updateRadiusAccount(
+    input: UpdateRadiusAccountMutationInput
+    id: Int64Bit!
+  ): RadiusAccount
+  # Update a RADIUS group.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `RadiusGroup`.
+  updateRadiusGroup(
+    input: UpdateRadiusGroupMutationInput
+    id: Int64Bit!
+  ): RadiusGroup
+  # Update a RADIUS group reply attribute.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.radius_group_reply_attribute_id
+  updateRadiusGroupReplyAttribute(
+    input: UpdateRadiusGroupReplyAttributeMutationInput
+    id: Int64Bit!
+  ): RadiusGroupReplyAttribute
+  # Update a RADIUS server.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `RadiusServer`.
+  updateRadiusServer(
+    input: UpdateRadiusServerMutationInput
+    id: Int64Bit!
+  ): RadiusServer
+  # Update a rate center.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `RateCenter`.
+  updateRateCenter(
+    input: UpdateRateCenterMutationInput
+    id: Int64Bit!
+  ): RateCenter
+  # Update a recurring service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateRecurringService(
+    input: UpdateRecurringServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update a role.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateRole(input: UpdateRoleMutationInput, id: Int64Bit!): Role
+  # Update a saved message category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: ID of the Saved Message Category.
+  updateSavedMessageCategory(
+    input: UpdateSavedMessageCategoryMutationInput
+    id: Int64Bit!
+  ): SavedMessageCategory
+  # Update a schedule address.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.schedule_address_id
+  updateScheduleAddress(
+    input: UpdateScheduleAddressMutationInput
+    id: Int64Bit!
+  ): ScheduleAddress
+  # Update a schedule availability.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `ScheduleAvailability`.
+  updateScheduleAvailability(
+    input: UpdateScheduleAvailabilityMutationInput
+    id: Int64Bit!
+  ): ScheduleAvailability
+  # Update a schedule availability day/time.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.schedule_availability_day_time_id
+  updateScheduleAvailabilityDayTime(
+    input: UpdateScheduleAvailabilityDayTimeMutationInput
+    id: Int64Bit!
+  ): ScheduleAvailabilityDayTime
+  # Update a schedule blocker.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `ScheduleBlocker`.
+  updateScheduleBlocker(
+    input: UpdateScheduleBlockerMutationInput
+    id: Int64Bit!
+  ): ScheduleBlocker
+  # Update a schedule blocker day/time.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.schedule_blocker_day_time_id
+  updateScheduleBlockerDayTime(
+    input: UpdateScheduleBlockerDayTimeMutationInput
+    id: Int64Bit!
+  ): ScheduleBlockerDayTime
+  # Update a schedule time off.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.schedule_time_off_id
+  updateScheduleTimeOff(
+    input: UpdateScheduleTimeOffMutationInput
+    id: Int64Bit!
+  ): ScheduleTimeOff
+  # Update a scheduled event.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `ScheduledEvent`
+  updateScheduledEvent(
+    input: UpdateScheduledEventMutationInput
+    id: Int64Bit!
+  ): ScheduledEvent
+  # Update a saved search filter for the current user, or enable it for all users
+  # (superadmin only).
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a SearchFilter entity.
+  updateSearchFilter(
+    input: UpdateSearchFilterMutationInput
+    id: Int64Bit!
+  ): SearchFilter
+  # Update a service eligibility rule.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `ServiceEligibilityRule`.
+  updateServiceEligibilityRule(
+    input: UpdateServiceEligibilityRuleMutationInput
+    id: Int64Bit!
+  ): ServiceEligibilityRule
+  # Update service metadata.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a ServiceMetadata field.
+  updateServiceMetadata(
+    input: UpdateServiceMetadataMutationInput
+    id: Int64Bit!
+  ): ServiceMetadata
+  # Update a serviceable address.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateServiceableAddress(
+    input: UpdateServiceableAddressMutationInput
+    id: Int64Bit!
+  ): Address
+  # Update a serviceable address account assignment future
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the serviceable address account assignment
+  # future. Deprecated: use `address_id` instead.
+  updateServiceableAddressAccountAssignmentFuture(
+    input: UpdateServiceableAddressAccountAssignmentFutureMutationInput
+    id: Int64Bit!
+  ): ServiceableAddressAccountAssignmentFuture
+  # Update a Signature.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a signature.
+  updateSignature(input: UpdateSignatureMutationInput, id: Int64Bit!): Signature
+  # Update the SMS settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateSmsSettings(input: UpdateSmsSettingsMutationInput): SmsSetting
+  # Update an SNMP OID.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `SnmpOid`.
+  updateSnmpOid(input: UpdateSnmpOidMutationInput, id: Int64Bit!): SnmpOid
+  # Update an SNMP OID threshold.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `SnmpOidThreshold`.
+  updateSnmpOidThreshold(
+    input: UpdateSnmpOidThresholdMutationInput
+    id: Int64Bit!
+  ): SnmpOidThreshold
+  # Update an SNMP override.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.snmp_override_id
+  updateSnmpOverride(
+    input: UpdateSnmpOverrideMutationInput
+    id: Int64Bit!
+  ): SnmpOverride
+  # Update a stock keeping unit.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Stock Keeping Unit (SKU).
+  updateStockKeepingUnit(
+    input: UpdateStockKeepingUnitMutationInput
+    id: Int64Bit!
+  ): StockKeepingUnit
+  # Update a stored view.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `StoredView` entity.
+  updateStoredView(
+    input: UpdateStoredViewMutationInput
+    id: Int64Bit!
+  ): StoredView
+  # Update a subnet.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Subnet`.
+  updateSubnet(input: UpdateSubnetMutationInput, id: Int64Bit!): Subnet
+  # Update a supernet.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Supernet`.
+  updateSupernet(input: UpdateSupernetMutationInput, id: Int64Bit!): Supernet
+  # Update a system backup destination.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a destination that a system backup can be
+  # exported to.
+  updateSystemBackupDestination(
+    input: UpdateSystemBackupDestinationMutationInput
+    id: Int64Bit!
+  ): SystemBackupDestination
+  # Update settings for system backups.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateSystemBackupSettings(
+    input: UpdateSystemBackupSettingsMutationInput
+  ): SystemBackupSetting
+  # Update system configuration.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateSystemSettings(input: UpdateSystemSettingsMutationInput): SystemSetting
+  # Update a task.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateTask(input: UpdateTaskMutationInput, id: Int64Bit!): Task
+  # Update a task group.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TaskGroup`.
+  updateTaskGroup(input: UpdateTaskGroupMutationInput, id: Int64Bit!): TaskGroup
+  # Update a task template.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TaskTemplate`.
+  updateTaskTemplate(
+    input: UpdateTaskTemplateMutationInput
+    id: Int64Bit!
+  ): TaskTemplate
+  # Update a task template item.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TaskTemplateItem`.
+  updateTaskTemplateItem(
+    input: UpdateTaskTemplateItemMutationInput
+    id: Int64Bit!
+  ): TaskTemplateItem
+  # Update a tax.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateTax(input: UpdateTaxMutationInput, id: Int64Bit!): Tax
+  # Update a tax exemption.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.tax_exemption_id
+  updateTaxExemption(
+    input: UpdateTaxExemptionMutationInput
+    id: Int64Bit!
+  ): TaxExemption
+  # Update a tax override.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.tax_override_id
+  updateTaxOverride(
+    input: UpdateTaxOverrideMutationInput
+    id: Int64Bit!
+  ): TaxOverride
+  # Update a tax provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of an `TaxProvider`.
+  updateTaxProvider(
+    input: UpdateTaxProviderMutationInput
+    id: Int64Bit!
+  ): TaxProvider
+  # Update a ticket.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Ticket`.
+  updateTicket(input: UpdateTicketMutationInput, id: Int64Bit!): Ticket
+  # Update a ticket category.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.ticket_category_id
+  # updateOpenTickets: Whether to update open tickets for this
+  # category.
+  updateTicketCategory(
+    input: UpdateTicketCategoryMutationInput
+    id: Int64Bit!
+    updateOpenTickets: Boolean
+  ): TicketCategory
+  # Update a ticket category family.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: ID of the ticket category family.
+  updateTicketCategoryFamily(
+    input: UpdateTicketCategoryFamilyMutationInput
+    id: Int64Bit!
+  ): TicketCategoryFamily
+  # Update a ticket comment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.ticket_comment_id
+  updateTicketComment(
+    input: UpdateTicketCommentMutationInput
+    id: Int64Bit!
+  ): TicketComment
+  # Update a ticket group.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TicketGroup`.
+  updateTicketGroup(
+    input: UpdateTicketGroupMutationInput
+    id: Int64Bit!
+  ): TicketGroup
+  # Update a ticket recipient.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.ticket_recipient_id
+  updateTicketRecipient(
+    input: UpdateTicketRecipientMutationInput
+    id: Int64Bit!
+  ): TicketRecipient
+  # Update a ticket resolution reason.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TicketResolutionReason`.
+  updateTicketResolutionReason(
+    input: UpdateTicketResolutionReasonMutationInput
+    id: Int64Bit!
+  ): TicketResolutionReason
+  # Update the ticketing settings.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateTicketingSettings(
+    input: UpdateTicketingSettingsMutationInput
+  ): TicketingSetting
+  # Update the TowerCoverage integration.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateTowercoverageConfiguration(
+    input: UpdateTowercoverageConfigurationInput
+  ): TowercoverageConfiguration
+  # Update a Towercoverage submission.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TowercoverageSubmission`.
+  updateTowercoverageSubmission(
+    input: UpdateTowercoverageSubmissionMutationInput
+    id: Int64Bit!
+  ): TowercoverageSubmission
+  # DEPRECATED: Update a triggered email. See updateTriggeredMessageMutation.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateTriggeredEmail(
+    input: UpdateTriggeredEmailMutationInput
+    id: Int64Bit!
+  ): TriggeredEmail
+  # Update a triggered message.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `TriggeredMessage`.
+  updateTriggeredMessage(
+    input: UpdateTriggeredMessageMutationInput
+    id: Int64Bit!
+  ): TriggeredMessage
+  # Update an uninventoried MAC address.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.uninventoried_mac_address_id
+  updateUninventoriedMacAddress(
+    input: UpdateUninventoriedMacAddressMutationInput
+    id: Int64Bit!
+  ): UninventoriedMacAddress
+  # Update a usage based billing policy.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `UsageBasedBillingPolicy`.
+  updateUsageBasedBillingPolicy(
+    input: UpdateUsageBasedBillingPolicyMutationInput
+    id: Int64Bit!
+  ): UsageBasedBillingPolicy
+  # Update a usage based billing policy free period.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: fields.usage_based_billing_policy_free_period_id
+  updateUsageBasedBillingPolicyFreePeriod(
+    input: UpdateUsageBasedBillingPolicyFreePeriodMutationInput
+    id: Int64Bit!
+  ): UsageBasedBillingPolicyFreePeriod
+  # Update a user.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of the entity.
+  updateUser(input: UpdateUserMutationInput, id: Int64Bit!): User
+  # Update a vehicle.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Vehicle`.
+  updateVehicle(input: UpdateVehicleMutationInput, id: Int64Bit!): Vehicle
+  # Update a vendor.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a vendor.
+  updateVendor(input: UpdateVendorMutationInput, id: Int64Bit!): Vendor
+  # Update a vendor item.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a vendor item.
+  updateVendorItem(
+    input: UpdateVendorItemMutationInput
+    id: Int64Bit!
+  ): VendorItem
+  # Update a voice provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `VoiceProvider`.
+  updateVoiceProvider(
+    input: UpdateVoiceProviderMutationInput
+    id: Int64Bit!
+  ): VoiceProvider
+  # Update a voice provider rate.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `VoiceProviderRate`
+  updateVoiceProviderRate(
+    input: UpdateVoiceProviderRateMutationInput
+    id: Int64Bit!
+  ): VoiceProviderRate
+  # Update the charge percent for all rates of a voice provider.
+  #
+  # Arguments
+  # input: [Not documented]
+  updateVoiceProviderRateChargePercentMutation(
+    input: UpdateVoiceProviderRateChargePercentMutationInput
+  ): SuccessResponse
+  # Update a voice service.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a Service.
+  updateVoiceService(
+    input: UpdateVoiceServiceMutationInput
+    id: Int64Bit!
+  ): Service
+  # Update a single voice service configuration parameter.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a voice service configuration parameter.
+  updateVoiceServiceGenericParameter(
+    input: UpdateVoiceServiceGenericParameterMutationInput
+    id: Int64Bit!
+  ): VoiceServiceGenericParameter
+  # Update a webhook endpoint.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a webhook endpoint.
+  updateWebhookEndpoint(
+    input: UpdateWebhookEndpointMutationInput
+    id: Int64Bit!
+  ): WebhookEndpoint
+  # Validate the credentials for a cable modem provisioner. This will update the
+  # `status` of the cable modem provisioner.
+  #
+  # Arguments
+  # id: The ID of a `CableModemProvisioner`.
+  validateCableModemProvisionerCredentials(
+    id: Int64Bit!
+  ): CredentialValidationResponse
+  # Validate credentials of a Calix integration.
+  #
+  # Arguments
+  # calix_integration_id: Calix Inegartion ID.
+  validateCalixCredentials(
+    calix_integration_id: Int64Bit!
+  ): CredentialValidationResponse
+  # Validate the entered DHCP server credentials. This will update the `status` of
+  # the DHCP server.
+  #
+  # Arguments
+  # id: The ID of a `DhcpServer`.
+  validateDhcpServerCredentials(id: Int64Bit!): CredentialValidationResponse
+  # Validate an email domain's DNS records and email verification status.
+  #
+  # Arguments
+  # id: The ID of an `EmailDomain`.
+  # check_for_migration: Perform the check for the purposes of
+  # email provider migration.
+  validateEmailDomain(id: Int64Bit!, check_for_migration: Boolean): EmailDomain
+  # Validate the entered Fibermap Integration API Token.
+  #
+  # Arguments
+  # id: The ID of the entity.
+  validateFibermapIntegrationCredentials(
+    id: Int64Bit!
+  ): CredentialValidationResponse
+  # Validate GPS tracking provider credentials validate against external provider.
+  #
+  # Arguments
+  # id: A `GpsTrackingProvider` ID.
+  validateGpsTrackingProviderCredentials(
+    id: Int64Bit!
+  ): CredentialValidationResponse
+  # Validate the credentials for an inline device. This will update the `status` of
+  # the inline device.
+  #
+  # Arguments
+  # id: The ID of an `InlineDevice`.
+  validateInlineDeviceCredentials(id: Int64Bit!): CredentialValidationResponse
+  # Validate the entered LTE provider credentials. This will update the `status` of
+  # the LTE provider.
+  #
+  # Arguments
+  # id: The ID of an `LteProvider`.
+  validateLteProviderCredentials(id: Int64Bit!): CredentialValidationResponse
+  # Validate the entered RADIUS server credentials. This will update the `status` of
+  # the RADIUS server.
+  #
+  # Arguments
+  # id: The ID of a `RadiusServer`.
+  validateRadiusServerCredentials(id: Int64Bit!): CredentialValidationResponse
+  # Validate the entered tax provider credentials.
+  #
+  # Arguments
+  # id: The ID of an `TaxProvider`.
+  validateTaxProviderCredentials(id: Int64Bit!): CredentialValidationResponse
+  # Verify a one-time password for an authentication factor.
+  #
+  # Arguments
+  # input: [Not documented]
+  verifyOneTimePasswordForAuthenticationFactor(
+    input: VerifyOneTimePasswordForAuthenticationFactorMutationInput
+  ): SuccessResponse
+  # Verify the credentials for a system backup destination.
+  #
+  # Arguments
+  # id: The ID of a destination that a system backup can be
+  # exported to.
+  verifySystemBackupDestinationConnection(id: Int64Bit!): SuccessResponse
+  # Void a credit on an invoice.
+  #
+  # Arguments
+  # id: fields.credit_id
+  voidCredit(id: Int64Bit!): Credit
+  # Void an invoice.
+  #
+  # Arguments
+  # id: The ID of an `Invoice`.
+  voidInvoice(id: Int64Bit!): Invoice
+  # Void a payment.
+  #
+  # Arguments
+  # input: [Not documented]
+  # id: The ID of a `Payment`.
+  voidPayment(input: VoidPaymentMutationInput, id: Int64Bit!): VoidedPayment
+}
